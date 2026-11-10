@@ -1,0 +1,75 @@
+row_id,passage_id,ticker,form,filing_date,section,sampled_as,text_sha256,url,text
+XOM-001,2115436-0000034088-24-000007-ex99-0028,XOM,8-K,2024-02-02,ex99,non_keyword,937c3f72303d289bc8fcc521a90c09e3abd8052137d9005a12dece22b9064f72,https://www.sec.gov/Archives/edgar/data/34088/000003408824000007/f8k4q23991.htm,"4Q23 | 3Q23 | 4Q22 | Dollars in millions (unless otherwise noted) | 2023 | 2022
+Upstream
+2,258 | 2,241 | 2,118 | United States | 8,813 | 6,968
+3,512 | 2,560 | 3,297 | Non-U.S. | 10,948 | 10,034
+5,770 | 4,801 | 5,415 | Total | 19,761 | 17,002
+Energy Products
+227 | 261 | 343 | United States | 1,195 | 1,351
+485 | 386 | 405 | Non-U.S. | 1,580 | 1,059
+712 | 647 | 748 | Total | 2,775 | 2,410
+Chemical Products
+211 | 103 | 332 | United States | 751 | 1,123
+641 | 268 | 824 | Non-U.S. | 1,962 | 1,842
+852 | 371 | 1,156 | Total | 2,713 | 2,965
+Specialty Products
+22 | 16 | 12 | United States | 63 | 46
+127 | 95 | 90 | Non-U.S. | 391 | 222
+149 | 111 | 102 | Total | 454 | 268
+Other
+274 | 92 | 42 | Other | 622 | 59
+7,757 | 6,022 | 7,463 | Worldwide | 26,325 | 22,704
+CASH CAPITAL EXPENDITURES
+4Q23 | 3Q23 | 4Q22 | Dollars in millions (unless otherwise noted) | 2023 | 2022
+6,228 | 4,920 | 5,783 | Additions to property, plant and equipment | 21,919 | 18,407
+506 | 276 | 905 | Net investments and advances | 1,433 | 1,582
+6,734 | 5,196 | 6,688 | Total Cash Capital Expenditures | 23,352 | 19,989
+
+. | ATTACHMENT VI
+KEY FIGURES: QUARTER EARNINGS/(LOSS)
+
+Results Summary
+4Q23 | 3Q23 | Change vs 3Q23 | 4Q22 | Change vs 4Q22 | Dollars in millions (except per share data) | 2023 | 2022 | Change vs 2022
+7,630 | 9,070 | -1,440 | 12,750 | -5,120 | Earnings (U.S. GAAP) | 36,010 | 55,740 | -19,730
+9,963 | 9,117 | +846 | 14,035 | -4,072 | Earnings Excluding Identified Items (non-GAAP) | 38,572 | 59,101 | -20,529
+1.91 | 2.25 | -0.34 | 3.09 | -1.18 | Earnings Per Common Share ¹ | 8.89 | 13.26 | -4.37
+2.48 | 2.27 | +0.21 | 3.40 | -0.92 | Earnings Excl. Identified Items Per Common Share ¹ (non-GAAP) | 9.52 | 14.06 | -4.54
+7,757 | 6,022 | +1,735 | 7,463 | +294 | Capital and Exploration Expenditures | 26,325 | 22,704 | +3,621
+¹ Assuming dilution.
+
+Full-year Factor Analysis"
+XOM-002,2115436-0000034088-24-000018-item2-0016,XOM,10-K,2024-02-28,item2,non_keyword,436df75c69864c2a97e78098d731590927dbbe094ca968c736ea7dd6c91231b4,https://www.sec.gov/Archives/edgar/data/34088/000003408824000018/xom-20231231.htm,"Net acreage totaled 0.3 million acres at year-end 2023, of which 0.2 million acres were offshore. During the year, a total of 1 net development wells were completed. Development activities continued on the Tengiz Expansion project.
+
+Malaysia
+
+Net interests in production sharing contracts covered 0.2 million offshore acres at year-end 2023. During the year, a total of 0.5 net development well was completed.
+
+Qatar
+
+Through joint ventures with QatarEnergy, net acreage totaled 80 thousand offshore acres at year-end 2023. During the year, a total of 4.7 net development wells were completed. ExxonMobil participated in 52.3 million metric tons per year gross liquefied natural gas capacity and 3.4 billion cubic feet per day of flowing gas capacity at year-end. Development activities continued on the North Field East project and North Field Production Sustainment projects.
+
+Thailand
+
+Net acreage in concessions totaled 16 thousand onshore acres at year-end 2023. During the year, a total of 0.2 net development wells were completed.
+
+United Arab Emirates
+
+Net acreage in the Abu Dhabi offshore Upper Zakum oil concession was 81 thousand acres at year-end 2023. During the year, a total of 3.1 net development wells were completed. Development activities continued on the Upper Zakum 1 MBD Sustainment project.
+
+Australia / Oceania
+
+Australia
+
+Net acreage totaled 1.2 million offshore acres and nine thousand onshore acres at year-end 2023.
+
+The co-venturer-operated Gorgon Jansz liquefied natural gas (LNG) development consists of a subsea infrastructure for offshore production and transportation of the gas, a 15.6 million metric tons per year LNG facility, and a 280 million cubic feet per day domestic gas plant located on Barrow Island, Western Australia. During the year, development activities continued on the Gorgon Stage 2 project and Jansz Io Compression project.
+
+Papua New Guinea
+
+Net acreage totaled 2.1 million onshore acres at year-end 2023. During the year, a total of 0.4 net development wells were completed. The Papua New Guinea (PNG) liquefied natural gas (LNG) integrated development includes gas production and processing facilities in the PNG Highlands, onshore and offshore pipelines, and a 6.9 million metric tons per year LNG facility near Port Moresby.
+
+Worldwide Exploration
+
+Exploration activities were under way in several countries in which ExxonMobil has no established production operations and thus are not included above. Net acreage totaled 18.5 million acres at year-end 2023. During the year, a total of 0.6 net exploratory well was completed.
+
+6. Delivery Commitments"

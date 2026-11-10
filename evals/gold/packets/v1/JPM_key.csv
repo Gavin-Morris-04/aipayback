@@ -1,0 +1,320 @@
+row_id,passage_id,ticker,form,filing_date,section,sampled_as,text_sha256,url,text
+JPM-001,19617-0000019617-24-000225-item15-0120,JPM,10-K,2024-02-16,item15,non_keyword,2b377a6dbf608498b33a4d9921a316cda05660b2e5550b2a4144476a8f3401b0,https://www.sec.gov/Archives/edgar/data/19617/000001961724000225/jpm-20231231.htm,"Retained loans increased compared to December 31, 2022 driven by residential real estate loans associated with First Republic. Retained nonaccrual loans decreased compared to December 31, 2022 predominantly driven by loan sales, partially offset by the net impact of paydowns and additions, including those associated with First Republic. Net recoveries were lower for the year ended December 31, 2023 compared to the prior year driven by lower prepayments due to higher interest rates.
+
+Loans at fair value increased from December 31, 2022, driven by an increase in Home Lending as originations outpaced warehouse loan sales, and in CIB as purchases outpaced sales and paydowns.
+
+At December 31, 2023 and 2022, the carrying values of interest-only residential mortgage loans were $90.6 billion and $36.3 billion, respectively. The increase was driven by First Republic. These loans have an interest-only payment period generally followed by an adjustable-rate or fixed-rate fully amortizing payment period to maturity and are typically originated as higher-balance loans to higher-income borrowers. The credit performance of this portfolio is comparable with the performance of the broader prime mortgage portfolio.
+
+The carrying value of home equity lines of credit outstanding was $16.1 billion at December 31, 2023, which included $2.6 billion associated with First Republic. The carrying value of home equity lines of credit outstanding included $4.2 billion of HELOCs that have recast from interest-only to fully amortizing payments or have been modified and $4.3 billion of interest-only balloon HELOCs, which primarily mature after 2030. The Firm manages the risk of HELOCs during their revolving period by closing or reducing the undrawn line to the extent permitted by law when borrowers are exhibiting a material deterioration in their credit risk profile.
+
+The following table provides a summary of the Firm’s
+
+residential mortgage portfolio insured and/or guaranteed
+
+by U.S. government agencies, predominantly loans held-for-sale and loans at fair value. The Firm monitors its exposure to certain potential unrecoverable claim payments related to government-insured loans and considers this exposure in estimating the allowance for loan losses.
+
+(in millions) | December 31, 2023 | December 31, 2022
+Current | $446 | $659
+30-89 days past due | 102 | 136
+90 or more days past due | 182 | 302
+Total government guaranteed loans | $730 | $1,097
+
+Geographic composition and current estimated loan-to-value ratio of residential real estate loans"
+JPM-002,19617-0000019617-24-000225-item1a-0029,JPM,10-K,2024-02-16,item1a,keyword,7c99dded1bd1548c94eaf4dcffdd445121b2cb4e3ddcf7d8bf4cf7ee33bb9c5a,https://www.sec.gov/Archives/edgar/data/19617/000001961724000225/jpm-20231231.htm,"•it is possible that a third party, after establishing a foothold on an internal network without being detected, may gain access to other networks and systems.
+
+The risk of a security breach due to a cyber attack could increase in the future due to factors such as:
+
+•JPMorgan Chase’s ongoing expansion of its mobile banking and other internet-based product offerings and its internal use of internet-based products and applications, including those that use cloud computing services
+
+•advances in artificial intelligence, such as the use of machine learning and generative artificial intelligence by malicious actors to develop more advanced social engineering attacks, including targeted phishing attacks
+
+•the inability to maintain the security of information transmitted by JPMorgan Chase due to advances in quantum computing that may counteract or nullify existing information protections, and
+
+•the acquisition and integration of new businesses.
+
+In addition, a third party could misappropriate confidential information obtained by intercepting signals or communications from mobile devices used by JPMorgan Chase’s employees.
+
+The dynamic nature of the cyber threat landscape necessitates continuous enhancement and adaptation of cybersecurity controls. Failure to discover or address known vulnerabilities or shortcomings in cybersecurity controls, or to prioritize or complete enhancements to address them, in each case in a timely manner, may leave JPMorgan Chase vulnerable to cyber attacks, potentially resulting in data breaches, financial losses, reputational damage and regulatory penalties, including the failure to prioritize or complete enhancements relating to:
+
+•preventing unauthorized access and protecting against the misuse of access, including the maintenance and enhancement of controls related to secure software development practices and identity and access management, such as those relating to the management of administrative access to systems
+
+•detecting, escalating and addressing effectively and in a timely manner any vulnerabilities that may be present either in internally-developed software or externally-provided software or services, including vulnerabilities that could allow attackers to exploit unknown security flaws in software and hardware (“zero-day vulnerabilities”)
+
+•enhancing early detection of attacks against third-party vendors, including attacks targeting vulnerabilities in third-party open-source software, in support of the secure development and maintenance of internal systems
+
+•maintaining and enhancing controls related to technology asset management and inventory systems to prevent the risk of undetected vulnerabilities that could undermine JPMorgan Chase’s ability to operate an effective control process"
+JPM-003,19617-0000019617-24-000225-item1a-0038,JPM,10-K,2024-02-16,item1a,keyword,1dec5c70a7e1bdf171fe91939196a90d85f67183ed7d87855b27ece2344fb42b,https://www.sec.gov/Archives/edgar/data/19617/000001961724000225/jpm-20231231.htm,"JPMorgan Chase has developed and uses a variety of models and other analytical and judgment-based estimations to measure, monitor and implement controls over its market, credit, capital, liquidity, operational and other risks. JPMorgan Chase also uses internal models and estimations as a basis for its stress testing and in connection with the preparation of its financial statements under U.S. generally accepted accounting principles (“U.S. GAAP”).
+
+These models and estimations are based on a variety of assumptions and historical trends, and are periodically reviewed and modified as necessary. The models and estimations that JPMorgan Chase uses, including those that use machine learning, artificial intelligence or quantum computing, may not be effective in all cases to identify, observe and mitigate risk due to a variety of factors, such as:
+
+•reliance on historical trends that may not persist in the future, including assumptions underlying the models and estimations such as correlations among certain market indicators or asset prices
+
+•inherent limitations associated with forecasting uncertain economic and financial outcomes
+
+•historical trend information may be incomplete, or may not be indicative of severely negative market conditions such as extreme volatility, dislocation or lack of liquidity
+
+•sudden illiquidity in markets or declines in prices of certain loans and securities may make it more difficult to value certain financial instruments
+
+•technology that is introduced to run models or estimations may not perform as expected, or may not be well understood by the personnel using the technology
+
+•models and estimations may contain erroneous data, valuations, formulas or algorithms, and
+
+•review processes may fail to detect flaws in models and estimations.
+
+JPMorgan Chase may experience unexpected losses if models, estimates or judgments used or applied in connection with its risk management activities or the preparation of its financial statements are inadequate or incorrect. For example, where quoted market prices are not available for certain financial instruments that require a determination of their fair value, JPMorgan Chase may make fair value determinations based on internally developed models or other means which ultimately rely to some degree on management estimates and judgment. In addition, JPMorgan Chase may experience increased uncertainty in its estimates if assets acquired differ from those used to develop those models, which may lead to unexpected losses."
+JPM-004,19617-0000019617-25-000270-item1-0011,JPM,10-K,2025-02-14,item1,keyword,29c1feb718ff824a81b398b9a95c6b1a7d7ac75aa3d93fffdb2fbfc68042300d,https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm,"The Firm’s asset and wealth management businesses continue to be subject to ongoing rule-making and implementation of new regulations and other guidance, including by the SEC and certain U.S. states with respect to enhanced standards of conduct and conflicts of interest. In April 2024, the Department of Labor (“DOL”) finalized a new “fiduciary” rule that would significantly expand the scope for defining who can be deemed investment advice fiduciaries for purposes of retirement plans and individual retirement accounts (“IRAs”) under the Employee Retirement Income Security Act of 1974, as amended (the “Fiduciary Rule”). Among the most significant impacts of the rule and related amendments to prohibited transaction exemptions would be the impact on the fee and compensation practices at financial institutions that offer investment recommendations to retirement clients, including in the context of rollovers from an employer plan to an IRA. The effective date of the Fiduciary Rule has been stayed by two federal courts. Refer to Litigation and regulatory challenges on pages 6-7 for further information.
+
+Derivatives regulation:
+
+The Firm is subject to comprehensive regulation of its derivatives businesses. In the U.S., JPMorgan Chase Bank, N.A., J.P. Morgan Securities LLC and J.P. Morgan Securities plc are registered with the CFTC as “swap dealers”. In addition, JPMorgan Chase Bank, N.A. and J.P. Morgan Securities LLC are registered with the SEC as “security-based swap dealers”. As a result, these entities are subject to a comprehensive regulatory framework applicable to their swap or security-based swap activities, including capital requirements, rules requiring the collateralization of uncleared swaps and security-based swaps, rules regarding segregation of counterparty collateral, business conduct and documentation standards, rules requiring the central clearing of standardized over-the-counter (“OTC”) derivatives, requirements that certain standardized OTC swaps be traded on regulated trading venues, record-keeping and reporting obligations, and anti-fraud and anti-manipulation requirements. Similar requirements have also been established in the European Union (“EU”) under the European Market Infrastructure Regulation (“EMIR”) and the Markets in Financial Instruments Directive (“MiFID II”), as well as in the U.K. and other jurisdictions around the world.
+
+J.P. Morgan Securities LLC is also registered with the CFTC as a futures commission merchant and is a member of the National Futures Association.
+
+Data, privacy, cybersecurity and artificial intelligence regulation:
+
+The Firm and its subsidiaries are subject to laws, rules and regulations globally concerning data, including data protection, consumer protection, privacy, cybersecurity, artificial intelligence and related"
+JPM-005,19617-0000019617-25-000270-item1-0012,JPM,10-K,2025-02-14,item1,keyword,1542c0e4aab9dc0bac7f4dd8657f61cafba5077f158051d2a46f13604ba40dc0,https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm,"matters. These laws, rules and regulations are constantly evolving, subject to interpretation, remain a focus of regulators globally, may be enforced by private parties or government bodies, and continue to have a significant impact on all of the Firm’s businesses and operations.
+
+For example, the Digital Operational Resilience Act (DORA) mandates that the Firm’s financial services subsidiaries operating in the EU comply with requirements relating to information and communications technology (“ICT”) risk management, reporting, security control testing and ICT third party risks beginning in January 2025. In addition, the EU Artificial Intelligence Act regulates the development and deployment of artificial intelligence systems within the EU, with phased-in requirements that began in February 2025.
+
+The Bank Secrecy Act and Economic Sanctions:
+
+The Bank Secrecy Act (“BSA”) requires all financial institutions, including banks and securities broker-dealers, to establish a risk-based system of internal controls reasonably designed to prevent money laundering and the financing of terrorism. The BSA includes a variety of record-keeping and reporting requirements, as well as due diligence/know-your-customer documentation requirements. The Firm is also subject to the regulations and economic sanctions programs administered and enforced by the U.S. Treasury’s Office of Foreign Assets Control (“OFAC”) and EU and U.K. authorities which target entities or individuals that are, or are located in countries that are, involved in activities including terrorism, hostilities, embezzlement or human rights violations. The Firm is also subject to economic sanctions laws, rules and regulations in other jurisdictions in which it operates, including those that conflict with or prohibit a firm such as JPMorganChase from complying with certain laws, rules and regulations to which it is otherwise subject.
+
+Anti-Corruption:
+
+The Firm is subject to laws and regulations relating to corrupt and illegal payments to government officials and others in the jurisdictions in which it operates, including the U.S. Foreign Corrupt Practices Act and the U.K. Bribery Act.
+
+Compensation practices:
+
+The Firm’s compensation practices are subject to oversight by the Federal Reserve, as well as other agencies. The Federal Reserve has jointly issued guidance with the FDIC and the OCC that is designed to ensure that incentive compensation paid by banking organizations does not encourage imprudent risk-taking that threatens the organizations’ safety and soundness. The Financial Stability Board (“FSB”) has also established standards covering compensation principles for banks. The Firm’s compensation"
+JPM-006,19617-0000019617-25-000270-item1-0016,JPM,10-K,2025-02-14,item1,keyword,67eb563f6710116e66831811eb666e93dce44e611acf93f9d61a1c3bd21ae755,https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm,"(c)Presented as a percentage of the respective populations who self-identified gender, which was 99% of each of the Firm’s total global employees and senior level employees, and all members of the Operating Committee and the Board of Directors.
+
+(d)Presented as a percentage of total U.S.-based employees, total U.S.-based senior level employees, all members of the Operating Committee, and all members of the Board of Directors, respectively.
+
+(e)Senior level employees represents employees with the titles of Managing Director and above.
+
+(f)Excludes Brad D. Smith and Michele G. Buck, who were elected to the Firm’s Board of Directors, effective January 21, 2025 and March 17, 2025, respectively.
+
+(g)The Firm has not asked members of the Board of Directors to self-identify disability status.
+
+Attracting and retaining employees
+
+The goal of JPMorganChase’s recruitment efforts is to attract and hire highly qualified candidates in all roles and at all career levels. The Firm’s hiring practices focus on the skills and qualifications of a candidate relative to the job requirements.
+
+The Firm strives to provide both external candidates and internal employees who are seeking a different role with challenging and stimulating career opportunities. These opportunities range from internship training programs for students to entry-level, management and executive careers. During 2024, approximately 56% of the Firm’s employment opportunities were filled by external candidates, with the remainder filled by existing employees.
+
+Developing employees
+
+JPMorganChase supports the professional development and career growth of its employees. The Firm requires that its employees, including new hires, complete a training curriculum which covers, among other topics, compliance with the Firm’s Code of Conduct and information concerning Firm policies and standards, including those relating to cybersecurity. In addition, the Firm offers extensive voluntary training programs and educational resources to all employees covering a broad variety of topics such as leadership and management, artificial intelligence, data literacy and operational and professional skills. Leadership Edge, the Firm’s global leadership and management development center of excellence, is focused on creating one Firmwide leadership culture.
+
+Compensation and benefits"
+JPM-007,19617-0000019617-25-000270-item15-0170,JPM,10-K,2025-02-14,item15,keyword,aec036eb0c08fd0730304d47429fc0c522c7aa32e71ef7cfa326d002ab6e61db,https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm,"The Firm’s General Counsel reports to the CEO and is a member of the Operating Committee, the Firmwide Risk Committee and the Firmwide Control Committee. The Firm’s General Counsel and other members of Legal report on significant legal matters to the Firm’s Board of Directors and to the Audit Committee.
+
+Legal serves on and advises various committees and advises the Firm’s LOBs and Corporate on potential reputation risk issues.
+
+ESTIMATIONS AND MODEL RISK MANAGEMENT
+
+Estimations and Model risk, a subcategory of operational risk, is the potential for adverse consequences from decisions based on incorrect or misused estimation outputs.
+
+The Firm uses models and other analytical and judgment-based estimations, including those based upon machine learning or artificial intelligence techniques, across various businesses and functions. The estimation methods are of varying levels of sophistication and are used for many purposes, such as the valuation of positions and measurement of risk, assessing regulatory capital requirements, conducting stress testing, evaluating the allowance for credit losses and making business decisions. A dedicated independent function, Model Risk Governance and Review (“MRGR”), defines and governs the Firm’s policies relating to the management of model risk and risks associated with certain analytical and judgment-based estimations, such as those used in risk management, budget forecasting and capital planning and analysis.
+
+Model risks are owned by the users of the models within the LOBs and Corporate based on the specific purposes of such models. Users and developers of models are responsible for developing, implementing and testing their models, as well as referring models to MRGR for review and approval. Once models have been approved, model users and developers are responsible for maintaining a robust operating environment, and must monitor and evaluate the performance of the models on an ongoing basis. Model users and developers may seek to enhance models in response to changes in the relevant portfolios and in product and market developments, as well as to capture improvements in available modeling techniques and systems capabilities."
+JPM-008,19617-0000019617-25-000270-item1a-0029,JPM,10-K,2025-02-14,item1a,keyword,616915faa336117d82f2144ac96e00edcfe8d52feb322a93dac93af5251da70a,https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm,"The risk of a security breach due to a cyber attack could increase in the future due to factors such as:
+
+•JPMorganChase’s ongoing expansion of its digital banking and other internet-based product offerings and its internal use of internet-based products and applications, including those that use cloud computing services
+
+•advances in artificial intelligence, such as the use of machine learning, generative artificial intelligence and quantum computing by malicious actors to develop more advanced social engineering attacks, including targeted phishing attacks
+
+•the inability to maintain the security of information transmitted by JPMorganChase due to advances in quantum computing that may counteract or nullify existing information protections, and
+
+•the acquisition and integration of new businesses.
+
+In addition, a third party could misappropriate confidential information obtained by intercepting signals or communications from mobile devices used by JPMorganChase’s employees.
+
+The dynamic nature of the cyber threat landscape, including the pace of innovation and increased threat of novel attack methods, necessitates ongoing investment in, as well as enhancement and adaptation of, cybersecurity controls, including the adoption of enhanced security measures in certain jurisdictions. Failure to discover or address emerging threats, known vulnerabilities or shortcomings in cybersecurity controls, or to prioritize or complete enhancements to address them, in each case in a timely manner, may leave JPMorganChase vulnerable to cyber attacks, potentially resulting in data breaches, financial losses,
+
+reputational damage and regulatory penalties, including the failure to prioritize or complete enhancements relating to:
+
+•preventing unauthorized access and protecting against the misuse of access, including the maintenance and enhancement of controls related to secure software development practices and identity and access management, such as those relating to the management of administrative access to systems
+
+•detecting, escalating and addressing effectively and in a timely manner any vulnerabilities that may be present either in internally-developed software or externally-provided software or services, including vulnerabilities that could allow attackers to exploit unknown security flaws in software and hardware (“zero-day vulnerabilities”)
+
+•oversight of third-party vendors and early detection of attacks against those vendors, including ransomware attacks and attacks targeting vulnerabilities in third-party open-source software, in support of the secure development and maintenance of internal systems
+
+•maintaining and enhancing controls related to technology asset management and inventory systems to prevent the risk of undetected vulnerabilities that could undermine JPMorganChase’s ability to operate an effective control process"
+JPM-009,19617-0000019617-25-000270-item1a-0033,JPM,10-K,2025-02-14,item1a,keyword,6a2c7205e281713d5c4b7da6bbb872bdd5d2f746e8922a5fa48b4b092538c1c8,https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm,"Implementing processes relating to JPMorganChase’s collection, use, sharing and storage of personal information to comply with all applicable laws, rules and regulations in all relevant jurisdictions, including where the laws of different jurisdictions are in conflict, can:
+
+•increase JPMorganChase’s compliance and operating costs
+
+•hinder the development of new products or services, curtail the offering of existing products or services, or affect how products and services are offered to clients and customers
+
+•demand significant oversight by JPMorganChase’s management, and
+
+•require JPMorganChase to structure its businesses, operations and systems in less efficient ways.
+
+Not all of JPMorganChase’s clients, customers, vendors, counterparties and other external parties may have appropriate controls in place to protect the confidentiality, integrity or availability of the
+
+information exchanged between them and JPMorganChase, particularly where information is transmitted by electronic means. JPMorganChase could be exposed to litigation or regulatory fines, penalties or other sanctions if personal information of clients, customers, employees or others were to be mishandled or misused, such as situations where such information is:
+
+•erroneously provided to parties who are not permitted to have the information, or
+
+•intercepted or otherwise compromised by unauthorized third parties.
+
+The increasing sophistication of artificial intelligence technologies poses a greater risk of identity fraud, as malicious actors may exploit artificial intelligence to create convincing false identities or manipulate verification processes. This challenge necessitates ongoing enhancements to client verification systems and security protocols to prevent unauthorized access and protect sensitive client information. Failure to manage these risks or to implement effective countermeasures could lead to unauthorized transactions, financial losses, reputational damage and increased regulatory scrutiny.
+
+Concerns regarding the effectiveness of JPMorganChase’s measures to safeguard personal information, or the perception that those measures are inadequate, could cause JPMorganChase to lose existing or potential clients and customers or employees, and thereby reduce JPMorganChase’s revenues. Furthermore, any failure or perceived failure by JPMorganChase to comply with applicable privacy or data protection laws, rules and regulations, or any failure to appropriately calibrate, manage and monitor access by employees or third parties to personal information, could subject JPMorganChase to inquiries, examinations and investigations that could result in requirements to modify or cease certain operations or practices, significant liabilities or regulatory fines, penalties or other sanctions. Any of these could damage JPMorganChase’s reputation and otherwise adversely affect its businesses."
+JPM-010,19617-0000019617-25-000270-item1a-0036,JPM,10-K,2025-02-14,item1a,keyword,b12ebe8a1355f9d11905410f98fd7ae9fcf22914c9d78a2b531e2f76c6687b94,https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm,"The occurrence of one or more extraordinary events could also negatively impact the financial condition or creditworthiness of JPMorganChase’s clients and customers, and could lead to an increase in delinquencies, additions to the allowance for credit losses and higher net charge-offs, which can reduce JPMorganChase’s earnings.
+
+Data quality is essential to JPMorganChase’s business and operations, and if JPMorganChase fails to maintain adequate data management processes, this could adversely affect its ability to effectively manage its businesses, comply with applicable laws, rules and regulations, or remain competitive.
+
+JPMorganChase relies on accurate, timely and complete data to effectively operate its systems and processes, including:
+
+•assessing risk exposures and limits
+
+•monitoring and detecting fraudulent transactions and cyber threats
+
+•developing or maintaining models and other analytical and judgment-based estimations, including those that use machine learning or artificial intelligence
+
+•implementing and maintaining compliance programs, and
+
+•preparing financial statements, disclosures and regulatory reports, as well as internal reporting
+
+Any deficiencies in JPMorganChase’s data management processes, including with respect to the accuracy or completeness of data, the timeliness of data collection, the analysis or validation of data, or the safeguarding of data could undermine the reliability and effectiveness of its operations, including:
+
+•risk management practices, including inaccurate or untimely risk reporting
+
+•delivery of regulatory reporting or internal or external financial reporting
+
+•compliance practices, such as those relating to transaction monitoring, customer screening, blocking and rejecting transactions, recordkeeping or reporting
+
+•business activities, such as those related to managing JPMorganChase's market-making positions and liquidity and capital levels, including reliance on timely data for informed decision-making
+
+•providing services to clients and customers, including transaction processing, lending services, account management and customer support, or
+
+•fraud detection and prevention processes.
+
+Any or all of these factors could impair the ability of JPMorganChase to make sound business decisions, cause it to incur higher operational and compliance costs, result in operational breakdowns or failure to meet its regulatory requirements, negatively affect clients and customers, or lead to reputational harm.
+
+Enhanced regulatory and other standards for the oversight of vendors and other service providers can result in higher costs and other potential exposures.
+
+JPMorganChase must comply with enhanced regulatory and other standards associated with doing"
+JPM-011,19617-0000019617-25-000270-item1a-0038,JPM,10-K,2025-02-14,item1a,keyword,b1ec35ff105decab5183e9dbb1a7204e14d72d9d7f03a20ca8c630a151faf6d4,https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm,"JPMorganChase could recognize unexpected losses, its capital levels could be reduced and it could face greater regulatory scrutiny if its models, estimations or judgments, including those used in its financial statements, are inadequate or incorrect.
+
+JPMorganChase has developed and uses a variety of models and other analytical and judgment-based estimations to measure, monitor and implement controls over its market, credit, capital, liquidity, operational and other risks. JPMorganChase also uses internal models and estimations as a basis for its stress testing and in connection with the preparation of its financial statements under U.S. generally accepted accounting principles (“U.S. GAAP”).
+
+These models and estimations are based on a variety of assumptions and historical trends, and are periodically reviewed and modified as necessary. The models and estimations that JPMorganChase uses, including those that use machine learning or artificial intelligence, may not be effective in all cases to identify, observe and mitigate risk due to a variety of factors, such as:
+
+•reliance on historical trends that may not persist in the future, including assumptions underlying the models and estimations such as correlations among certain market indicators or asset prices
+
+•inherent limitations associated with forecasting uncertain economic and financial outcomes
+
+•historical trend information may be incomplete, or may not be indicative of severely negative market conditions such as extreme volatility, dislocation or lack of liquidity
+
+•sudden illiquidity in markets or declines in prices of certain loans and securities may make it more difficult to value certain financial instruments
+
+•technology that is introduced to run models or estimations may not perform as expected, or may not be well understood by the personnel using the technology
+
+•models and estimations may contain erroneous data, valuations, formulas or algorithms
+
+•review processes may fail to detect flaws in models and estimations, and
+
+•models may inadvertently incorporate biases present in data used in the models."
+JPM-012,19617-0000019617-25-000270-item1a-0046,JPM,10-K,2025-02-14,item1a,keyword,5b6e1d0e49b9b32beb5fcb896c8386d7aaf028dcf1e057baa5ac369a653a09f5,https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm,"•failure to manage risks associated with its client relationships, or with transactions or business activities in which JPMorganChase or its clients engage, including transactions or activities that may be unpopular among one or more constituencies
+
+•rapid and broad dissemination of misinformation and disinformation across the media landscape, including social networking sites
+
+•incorrect, biased or misleading results or content generated by artificial intelligence, leading to harmful outcomes, including discrimination in lending practices against vulnerable populations, fraud, manipulation of customers, privacy breaches or intellectual property infringement
+
+•deficiencies or perceived failures in managing ESG-related initiatives, including modifying or failing to meet publicly-announced targets
+
+•operational failures
+
+•litigation or regulatory fines, penalties or other sanctions
+
+•actions taken in executing regulatory and governmental requirements during a global or regional health emergency, spread of infectious disease, epidemic or pandemic
+
+•regulatory investigations or enforcement actions, or resolutions of these matters, and
+
+•failure or perceived failure to comply with laws, rules or regulations by JPMorganChase or its clients,
+
+customers, counterparties or other parties, including newly-acquired businesses, companies in which JPMorganChase has made principal investments, parties to joint ventures with JPMorganChase, and vendors with which JPMorganChase does business.
+
+Social and environmental activists have been targeting JPMorganChase and other financial services firms with public criticism concerning their business practices, including business relationships with clients that are engaged in certain sensitive industries, such as companies:
+
+•whose products are or are perceived to be harmful to human health, or
+
+•whose activities negatively affect or are perceived to negatively affect the environment, workers’ rights or communities.
+
+Activists have also taken actions intended to change or influence JPMorganChase’s business practices with respect to ESG matters, including public protests at JPMorganChase’s headquarters and other properties, and submitting specific ESG-related proposals for a vote by JPMorganChase’s shareholders."
+JPM-013,19617-0000019617-25-000270-item1a-0050,JPM,10-K,2025-02-14,item1a,keyword,e3a283b2b54eec83ad55c6c0dc474e602e5c0a3a0b0c52a46ac9eaf64aeb6a41,https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm,"The impact of these actions could be accentuated in trading markets that are smaller, less liquid and more volatile than more-developed markets. These types of government actions can negatively affect JPMorganChase’s operations in the relevant country, either directly or by suppressing the business activities of local clients or multi-national clients that conduct business in the jurisdiction.
+
+In addition, emerging markets countries, as well as more developed countries, have been susceptible to
+
+unfavorable social developments arising from poor economic conditions or governmental actions, including:
+
+•widespread demonstrations, civil unrest or general strikes
+
+•crime and corruption
+
+•security and personal safety issues
+
+•an outbreak or escalation of hostilities, or other geopolitical instabilities
+
+•overthrow of incumbent governments
+
+•terrorist attacks, and
+
+•other forms of internal discord.
+
+These economic, political, regulatory and social developments have in the past resulted in, and in the future could lead to, conditions that can adversely affect JPMorganChase’s operations in those countries and impair the revenues, growth and profitability of those operations. In addition, any of these events or circumstances in one country can affect JPMorganChase’s operations and investments in another country or countries, including in the U.S.
+
+People
+
+JPMorganChase’s ability to attract and retain qualified employees is critical to its success.
+
+JPMorganChase’s employees are its most important resource, and in many areas of the financial services industry, competition for qualified personnel is intense. JPMorganChase endeavors to attract talented new employees from a variety of backgrounds and retain, develop and motivate its existing employees. JPMorganChase's efforts to hire and retain talented employees could be hindered by factors such as:
+
+•the emerging need for more-skilled workers in an evolving labor and workplace environment, including due to changes in technology
+
+•targeted recruitment of JPMorganChase employees by competitors, and
+
+•modifications to or discontinuation of JPMorganChase's hybrid work models.
+
+JPMorganChase's performance and competitive position could be materially and adversely affected if it is unable to attract or retain qualified employees for its workforce or to devise and execute effective succession planning for key leadership roles, such as the Chief Executive Officer, members of the Operating Committee and other senior leaders.
+
+In addition, advances in technology, such as automation and artificial intelligence, may lead to workforce displacement. This could require JPMorganChase to invest in additional employee training, manage impacts on morale and retention, and compete for employment candidates who possess more advanced technological skills, all of which could
+
+have a negative impact on JPMorganChase's business and operations."
+JPM-014,19617-0000019617-25-000421-cover-0030,JPM,10-Q,2025-05-01,cover,non_keyword,4be3c537d5e25d409f71089ad1f46f3925fa8dd8bc3be533df116f618dcf367f,https://www.sec.gov/Archives/edgar/data/19617/000001961725000421/jpm-20250331.htm,"Selected metrics
+As of or for the three months ended March 31,
+(in millions, except ratio data) | 2025 | 2024 | Change
+Credit data and quality statistics
+Nonaccrual loans(a) | $3,266 | $3,647 | (10)%
+Net charge-offs/(recoveries)
+Banking & Wealth Management | 97 | 79 | 23
+Home Lending | (26) | (7) | (271)
+Card Services | 1,983 | 1,688 | 17
+Auto | 100 | 119 | (16)
+Total net charge-offs/(recoveries) | $2,154 | $1,879 | 15
+Net charge-off/(recovery) rate
+Banking & Wealth Management | 1.19% | 1.02%
+Home Lending | (0.04) | (0.01)
+Card Services | 3.58 | 3.32
+Auto | 0.56 | 0.62
+Total net charge-off/(recovery) rate | 1.54% | 1.33%
+30+ day delinquency rate
+Home Lending(b) | 1.04% | 0.70%
+Card Services | 2.21 | 2.23
+Auto | 1.20 | 1.03
+90+ day delinquency rate - Card Services | 1.16% | 1.16%
+Allowance for loan losses
+Banking & Wealth Management | $794 | $706 | 12
+Home Lending | 557 | 432 | 29
+Card Services | 15,008 | 12,606 | 19
+Auto | 637 | 742 | (14)
+Total allowance for loan losses | $16,996 | $14,486 | 17%
+
+(a)Excludes mortgage loans past due and insured by U.S. government agencies, which are primarily 90 or more days past due. These loans have been excluded based upon the government guarantee. At March 31, 2025 and 2024, mortgage loans 90 or more days past due and insured by U.S. government agencies were $81 million and $107 million, respectively. In addition, the Firm’s policy is generally to exempt credit card loans from being placed on nonaccrual status as permitted by regulatory guidance.
+
+(b)At March 31, 2025 and 2024, excluded mortgage loans insured by U.S. government agencies of $114 million and $147 million, respectively, that are 30 or more days past due. These amounts have been excluded based upon the government guarantee."

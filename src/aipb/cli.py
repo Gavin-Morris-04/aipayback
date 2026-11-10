@@ -8,6 +8,7 @@ import uuid
 from collections import defaultdict
 from datetime import date
 from decimal import Decimal
+from pathlib import Path
 from typing import Annotated
 
 import typer
@@ -17,6 +18,8 @@ from rich.table import Table
 from aipb import db
 from aipb.budget.guard import BudgetError, usd
 from aipb.context import AppContext
+from aipb.labeling import import_labels as import_mod
+from aipb.labeling import packets as packets_mod
 from aipb.llm.client import MissingApiKey, OfflineCacheMiss
 from aipb.sec.client import SecError
 from aipb.settings import anthropic_key_warnings
@@ -517,3 +520,69 @@ def stats(universe: UniverseOpt = "pilot", ticker: TickerOpt = None) -> None:
 
 def main() -> None:  # pragma: no cover
     sys.exit(app())
+
+
+# ---------------------------------------------------------------------------- labeling
+
+
+@app.command()
+def packets(
+    universe: UniverseOpt = "pilot",
+    total: Annotated[int, typer.Option(help="Rows across all companies (~1 min each).")] = 450,
+    non_keyword_share: Annotated[
+        float, typer.Option(help="Share of random rows with no AI keyword (recall check).")
+    ] = 0.05,
+) -> None:
+    """Write Excel labeling packets (one per company) for the finance student. Costs $0."""
+    ctx = _ctx()
+    members = _members(ctx, universe, None)
+    ticker_cik = _ciks_for(ctx, members)
+    conn = db.connect(ctx.paths.database)
+    try:
+        selected = packets_mod.build_packets(
+            conn, ticker_cik, ctx.lexicon, exports_dir=ctx.paths.exports_dir,
+            gold_dir=ctx.paths.gold_dir, total=total, non_keyword_share=non_keyword_share,
+        )  # fmt: skip
+    finally:
+        conn.close()
+    table = Table(title=f"Labeling packets ({universe})")
+    for col in ("ticker", "rows", "AI keyword", "random (no keyword)"):
+        table.add_column(col, justify="left" if col == "ticker" else "right")
+    for t, rows in selected.items():
+        kw = sum(r.sampled_as == "keyword" for r in rows)
+        table.add_row(t, str(len(rows)), str(kw), str(len(rows) - kw))
+    n = sum(len(r) for r in selected.values())
+    table.add_row("[bold]total[/]", str(n), "", "")
+    out.print(table)
+    out.print(
+        f"Excel files: {ctx.paths.exports_dir / 'packets'} (upload these to the shared Drive).\n"
+        f"Keys (commit these): {ctx.paths.gold_dir / 'packets'}"
+    )
+
+
+@app.command("import-labels")
+def import_labels_cmd(
+    folder: Annotated[
+        str | None, typer.Option("--dir", help="Folder of returned .xlsx files.")
+    ] = None,
+) -> None:
+    """Check returned packets and write evals/gold/{passages,promises}.csv. Costs $0."""
+    ctx = _ctx()
+    returned = Path(folder) if folder else ctx.paths.gold_dir / "returned"
+    if not returned.is_dir() or not any(returned.glob("*.xlsx")):
+        _fail(FileNotFoundError(f"No .xlsx files in {returned}. Put the returned packets there."))
+    reports = import_mod.import_labels(returned, ctx.paths.gold_dir)
+    table = Table(title="Label import")
+    for col in ("file", "company", "labeled", "not labeled yet", "promises", "problems"):
+        table.add_column(col, justify="left" if col in ("file", "company") else "right")
+    for r in reports:
+        table.add_row(
+            r.file, r.ticker, str(r.labeled), str(r.unlabeled), str(r.promises),
+            f"[red]{len(r.problems)}[/]" if r.problems else "0",
+        )  # fmt: skip
+    out.print(table)
+    report = ctx.paths.gold_dir / "import_report.md"
+    if any(r.problems for r in reports):
+        out.print(f"[yellow]Some rows need fixing. Send this to the finance student:[/] {report}")
+        raise typer.Exit(code=1)
+    out.print(f"All rows passed. Report: {report}")
