@@ -1,7 +1,8 @@
-"""SQLite working database (git-ignored). Always rebuildable from committed JSONL.
+"""SQLite working database (git-ignored). Always rebuildable from committed files.
 
-Phase 0 holds only the cost tables. Later phases add companies, filings, passages
-(FTS5), promises, verdicts and the rest of the data model in docs/PLAN.md.
+Phase 0: cost tables (from the ledger). Phase 1: companies, filings, documents, passages
+(+ FTS5 index) and XBRL facts (from the filings manifest and a fresh SEC download).
+Later phases add promises, verdicts and the rest of the data model in docs/PLAN.md.
 """
 
 from __future__ import annotations
@@ -47,12 +48,88 @@ CREATE TABLE IF NOT EXISTS runs (
     started TEXT,
     finished TEXT
 );
+CREATE TABLE IF NOT EXISTS companies (
+    cik INTEGER PRIMARY KEY,
+    ticker TEXT NOT NULL,
+    name TEXT NOT NULL,
+    sector TEXT,
+    universe TEXT NOT NULL,
+    source TEXT,
+    source_date TEXT
+);
+CREATE TABLE IF NOT EXISTS filings (
+    accession TEXT PRIMARY KEY,
+    cik INTEGER NOT NULL,           -- the company we track
+    filer_cik INTEGER NOT NULL,     -- registrant that filed it (differs after a re-registration)
+    form TEXT NOT NULL,
+    filing_date TEXT NOT NULL,
+    report_date TEXT,
+    items TEXT,
+    primary_doc TEXT,
+    parser_version TEXT,
+    parsed_at TEXT,
+    n_passages INTEGER
+);
+CREATE INDEX IF NOT EXISTS filings_cik ON filings(cik, filing_date);
+CREATE TABLE IF NOT EXISTS filing_docs (
+    accession TEXT NOT NULL,
+    role TEXT NOT NULL,
+    doc TEXT NOT NULL,
+    url TEXT NOT NULL,
+    sha256 TEXT NOT NULL,
+    bytes INTEGER NOT NULL,
+    PRIMARY KEY (accession, doc)
+);
+CREATE TABLE IF NOT EXISTS passages (
+    passage_id TEXT PRIMARY KEY,
+    cik INTEGER NOT NULL,
+    accession TEXT NOT NULL,
+    form TEXT NOT NULL,
+    filing_date TEXT NOT NULL,
+    doc_role TEXT NOT NULL,
+    section TEXT NOT NULL,
+    seq INTEGER NOT NULL,
+    text TEXT NOT NULL,
+    text_sha256 TEXT NOT NULL,
+    char_start INTEGER NOT NULL,
+    char_end INTEGER NOT NULL,
+    words INTEGER NOT NULL,
+    kw_hits TEXT,
+    fwd_cues TEXT,
+    kw_version TEXT,
+    dup_of TEXT
+);
+CREATE INDEX IF NOT EXISTS passages_filing ON passages(accession);
+CREATE INDEX IF NOT EXISTS passages_cik ON passages(cik, filing_date);
+CREATE VIRTUAL TABLE IF NOT EXISTS passages_fts USING fts5(
+    passage_id UNINDEXED, cik UNINDEXED, filing_date UNINDEXED, text,
+    tokenize = 'porter unicode61'
+);
+CREATE TABLE IF NOT EXISTS xbrl_facts (
+    cik INTEGER NOT NULL,
+    taxonomy TEXT NOT NULL,
+    tag TEXT NOT NULL,
+    unit TEXT NOT NULL,
+    period_start TEXT NOT NULL,
+    period_end TEXT NOT NULL,
+    value REAL NOT NULL,
+    fy INTEGER,
+    fp TEXT,
+    form TEXT,
+    filed TEXT,
+    accession TEXT NOT NULL,
+    frame TEXT,
+    PRIMARY KEY (cik, taxonomy, tag, unit, period_start, period_end, accession)
+);
 """
 
 
 def connect(path: Path) -> sqlite3.Connection:
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(path)
+    conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA foreign_keys=ON")
     conn.executescript(SCHEMA)
     return conn
 
@@ -112,3 +189,28 @@ def restore_costs(conn: sqlite3.Connection, ledger: Ledger) -> tuple[int, int]:
             ],
         )
     return len(calls), len(runs)
+
+
+def company_stats(conn: sqlite3.Connection, ciks: list[int]) -> dict[int, dict[str, int]]:
+    """Counts per company for `aipb stats` and the Phase 1 acceptance table."""
+    out: dict[int, dict[str, int]] = {}
+    for cik in ciks:
+        r: dict[str, int] = {}
+        for row in conn.execute(
+            "SELECT form, COUNT(*) n FROM filings WHERE cik=? GROUP BY form", (cik,)
+        ):
+            r[row["form"]] = row["n"]
+        row = conn.execute(
+            "SELECT COUNT(*) passages, "
+            "SUM(kw_hits IS NOT NULL AND kw_hits != '[]') kw, "
+            "SUM(kw_hits IS NOT NULL AND kw_hits != '[]' AND fwd_cues != '[]') kw_fwd, "
+            "SUM(kw_hits IS NOT NULL AND kw_hits != '[]' AND dup_of IS NULL) kw_canonical "
+            "FROM passages WHERE cik=?",
+            (cik,),
+        ).fetchone()
+        r.update({k: row[k] or 0 for k in ("passages", "kw", "kw_fwd", "kw_canonical")})
+        r["facts"] = conn.execute("SELECT COUNT(*) FROM xbrl_facts WHERE cik=?", (cik,)).fetchone()[
+            0
+        ]
+        out[cik] = r
+    return out

@@ -1,0 +1,11 @@
+ticker,name,sector,ai_heavy,notes,source,source_date,extra_ciks
+IBM,International Business Machines,Information Technology,yes,PLACEHOLDER until the finance student picks (docs/finance/PILOT_PICKER.md),placeholder,2026-11-10,
+MSFT,Microsoft,Information Technology,yes,PLACEHOLDER,placeholder,2026-11-10,
+CRM,Salesforce,Information Technology,yes,PLACEHOLDER,placeholder,2026-11-10,
+ACN,Accenture,Information Technology,yes,PLACEHOLDER,placeholder,2026-11-10,
+JPM,JPMorgan Chase,Financials,yes,PLACEHOLDER,placeholder,2026-11-10,
+WMT,Walmart,Consumer Staples,no,PLACEHOLDER,placeholder,2026-11-10,
+UNH,UnitedHealth Group,Health Care,no,PLACEHOLDER,placeholder,2026-11-10,
+CAT,Caterpillar,Industrials,no,PLACEHOLDER,placeholder,2026-11-10,
+XOM,Exxon Mobil,Energy,no,PLACEHOLDER. Re-registered in 2026 as ExxonMobil Holdings Corp; 2024-2025 filings are under predecessor CIK 34088,placeholder,2026-11-10,34088
+VZ,Verizon Communications,Communication Services,no,PLACEHOLDER,placeholder,2026-11-10,

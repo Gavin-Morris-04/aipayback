@@ -1,0 +1,66 @@
+# Keyword prefilter (Phase 1). Plain code, no LLM: it decides which passages are worth
+# sending to the Haiku classifier (Phase 2) and which go into the labeling packets.
+#
+# Built for HIGH RECALL: false positives are cheap (the classifier drops them), misses are
+# not. The labeling packets include a random sample of passages with NO keyword hit, so the
+# finance student's labels measure how many AI promises this list misses.
+#
+# Patterns are Python regular expressions matched against normalized text (ligatures
+# folded, curly quotes straightened). Bump `version` whenever the lists change.
+
+version: kw1
+
+# Matched ignoring case.
+ai_terms:
+  - '\bartificial[- ]intelligence\b'
+  - '\bmachine[- ]learning\b'
+  - '\bdeep[- ]learning\b'
+  - '\bneural[- ]net(work)?s?\b'
+  - '\blarge[- ]language[- ]models?\b'
+  - '\bfoundation(al)? models?\b'
+  - '\bnatural[- ]language[- ]processing\b'
+  - '\bgenerative\b'
+  - '\bagentic\b'
+  - '\bco-?pilots?\b'
+  - '\bchat-?bots?\b'
+  - '\bintelligent automation\b'
+  - '\bcomputer vision\b'
+  - '\baccelerated computing\b'
+  - '\bwatsonx\b'
+  - '\bagentforce\b'
+
+# Matched case-sensitively (short tokens that are ambiguous in lower case).
+ai_terms_case_sensitive:
+  - '\bAI\b'
+  - '\bA\.I\.'
+  - '\bGenAI\b'
+  - '\bGen AI\b'
+  - '\bLLMs?\b'
+  - '\bGPT(-\d+)?\b'
+  - '\bEinstein\b'
+
+# Forward-looking cues, matched ignoring case. A passage with an AI term AND a cue is a
+# stronger candidate, but AI-term-only passages still go to the classifier.
+forward_cues:
+  - '\bwill\b'
+  - '\bexpect(s|ed|ing|ation|ations)?\b'
+  - '\banticipat(e|es|ed|ing)\b'
+  - '\bplan(s|ned|ning)?\b'
+  - '\bintend(s|ed)?\b'
+  - '\btarget(s|ed|ing)?\b'
+  - '\bgoals?\b'
+  - '\baim(s|ed|ing)?\b'
+  - '\bcommit(s|ted|ment|ments)?\b'
+  - '\bforecast(s|ed)?\b'
+  - '\bproject(ed|ing|ions?)\b'
+  - '\boutlook\b'
+  - '\bguidance\b'
+  - '\bon track\b'
+  - '\bgoing forward\b'
+  - '\bover the (next|coming)\b'
+  - '\bin the (coming|future)\b'
+  - '\bby (the end of )?((fiscal|calendar) )?(year )?(20\d\d|fy\d\d)\b'
+  - '\brun[- ]rate\b'
+  - '\bseek(s|ing)? to\b'
+  - '\bbelieve(s)?\b'
+  - '\bestimate(s|d)?\b'

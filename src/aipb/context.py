@@ -14,7 +14,10 @@ from aipb.budget.pricing import PricingTable
 from aipb.llm.cache import OutputCache
 from aipb.llm.client import LLMClient, SdkFactory, default_sdk_factory
 from aipb.paths import Paths
+from aipb.sec.client import SecClient
+from aipb.sec.manifest import Manifest
 from aipb.settings import Settings
+from aipb.stages.prefilter import Lexicon
 
 
 @dataclass
@@ -59,6 +62,19 @@ class AppContext:
     @cached_property
     def cache(self) -> OutputCache:
         return OutputCache(self.paths.outputs_dir)
+
+    @cached_property
+    def sec(self) -> SecClient:
+        """SEC EDGAR client. Offline mode never touches the network (cache only)."""
+        return SecClient(self.settings.sec_contact_email, offline=self.settings.aipayback_offline)
+
+    @cached_property
+    def manifest(self) -> Manifest:
+        return Manifest(self.paths.filings_manifest)
+
+    @cached_property
+    def lexicon(self) -> Lexicon:
+        return Lexicon.load(self.paths.keywords_config)
 
     @cached_property
     def llm(self) -> LLMClient:

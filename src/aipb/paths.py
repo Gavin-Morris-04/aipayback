@@ -59,5 +59,34 @@ class Paths:
         return self.data / "aipb.sqlite"
 
     @property
+    def raw_dir(self) -> Path:
+        """Git-ignored SEC download cache. `aipb restore` refills it from the manifest."""
+        return self.data / "raw" / "sec"
+
+    @property
+    def manifests_dir(self) -> Path:
+        return self.data / "manifests"
+
+    @property
+    def filings_manifest(self) -> Path:
+        return self.manifests_dir / "filings.jsonl"
+
+    @property
+    def universe_dir(self) -> Path:
+        return self.config / "universe"
+
+    @property
+    def keywords_config(self) -> Path:
+        return self.config / "keywords.yaml"
+
+    @property
+    def exports_dir(self) -> Path:
+        return self.root / "exports"
+
+    @property
+    def gold_dir(self) -> Path:
+        return self.root / "evals" / "gold"
+
+    @property
     def dotenv(self) -> Path:
         return self.root / ".env"

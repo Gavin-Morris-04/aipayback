@@ -18,15 +18,21 @@ from aipb import db
 from aipb.budget.guard import BudgetError, usd
 from aipb.context import AppContext
 from aipb.llm.client import MissingApiKey, OfflineCacheMiss
+from aipb.sec.client import SecError
 from aipb.settings import anthropic_key_warnings
+from aipb.stages import ingest as ingest_stage
+from aipb.stages import parse as parse_stage
+from aipb.universe import Member, UniverseError, load_universe
 
 app = typer.Typer(
     help="AIPayback: did the AI promises in SEC filings pay off?",
     no_args_is_help=True,
     add_completion=False,
 )
-out = Console()
-err = Console(stderr=True)
+# Wide enough for the stats tables when output is piped or captured (rich defaults to 80).
+_WIDTH = None if sys.stdout.isatty() else 160
+out = Console(width=_WIDTH)
+err = Console(stderr=True, width=_WIDTH)
 
 
 def _ctx() -> AppContext:
@@ -287,16 +293,226 @@ def smoke(
 
 
 @app.command()
-def restore() -> None:
-    """Rebuild the local SQLite database from committed files. Makes zero API calls."""
+def restore(
+    no_download: Annotated[
+        bool, typer.Option("--no-download", help="Use only files already on disk.")
+    ] = False,
+) -> None:
+    """Rebuild the local database from committed files. Zero API calls; SEC downloads only.
+
+    Costs come from the ledger. Filings are re-downloaded from the manifest (and checked
+    against their sha256), then re-parsed, re-indexed and re-filtered.
+    """
     ctx = _ctx()
     conn = db.connect(ctx.paths.database)
     try:
         n_calls, n_runs = db.restore_costs(conn, ctx.ledger)
+        out.print(f"Restored {n_calls} LLM calls and {n_runs} runs from the ledger.")
+        manifest = ctx.manifest
+        if not len(manifest):
+            out.print("The filings manifest is empty: nothing to download yet (run aipb ingest).")
+            return
+        client = None if no_download else ctx.sec
+        ticker_cik = manifest.ciks()
+        _register_companies(ctx, conn, ticker_cik)
+        for ticker, cik in sorted(ticker_cik.items()):
+            rep = parse_stage.parse_company(
+                conn, manifest, ctx.paths.raw_dir, cik, client=client, log=err.print
+            )
+            facts = parse_stage.load_xbrl(
+                conn, ctx.paths.raw_dir, cik, client, manifest.filer_ciks(cik)
+            )
+            stats = parse_stage.prefilter_company(conn, cik, ctx.lexicon)
+            out.print(
+                f"{ticker}: {rep.parsed} filings parsed ({rep.skipped} up to date), "
+                f"{stats['passages']} passages, {stats['kw']} keyword hits, {facts} XBRL facts"
+            )
+    except SecError as exc:
+        _fail(exc)
     finally:
         conn.close()
-    out.print(f"Restored {n_calls} LLM calls and {n_runs} runs into {ctx.paths.database.name}.")
-    out.print("(Phase 1 adds re-downloading SEC filings and rebuilding passages.)")
+        if "sec" in ctx.__dict__:
+            ctx.sec.close()
+
+
+# ---------------------------------------------------------------------------- SEC pipeline
+
+UniverseOpt = Annotated[
+    str, typer.Option("--universe", "-u", help="Company list: config/universe/<name>.csv")
+]
+TickerOpt = Annotated[
+    list[str] | None, typer.Option("--ticker", "-t", help="Only this ticker (repeatable).")
+]
+
+
+def _members(ctx: AppContext, universe: str, tickers: list[str] | None) -> list[Member]:
+    try:
+        members = load_universe(ctx.paths.universe_dir, universe)
+    except UniverseError as exc:
+        _fail(exc)
+        raise
+    if tickers:
+        wanted = {t.upper() for t in tickers}
+        unknown = wanted - {m.ticker for m in members}
+        if unknown:
+            _fail(UniverseError(f"Not in {universe}.csv: {', '.join(sorted(unknown))}"))
+        members = [m for m in members if m.ticker in wanted]
+    return members
+
+
+def _register_companies(ctx: AppContext, conn, ticker_cik: dict[str, int]) -> None:
+    """Write the companies table from every universe file, using CIKs from the manifest."""
+    for path in sorted(ctx.paths.universe_dir.glob("*.csv")):
+        for m in load_universe(ctx.paths.universe_dir, path.stem):
+            if m.ticker in ticker_cik:
+                parse_stage.upsert_company(
+                    conn, cik=ticker_cik[m.ticker], ticker=m.ticker, name=m.name,
+                    sector=m.sector, universe=path.stem, source=m.source,
+                    source_date=m.source_date,
+                )  # fmt: skip
+
+
+@app.command()
+def ingest(
+    universe: UniverseOpt = "pilot",
+    ticker: TickerOpt = None,
+    since: Annotated[str, typer.Option(help="First filing date (YYYY-MM-DD).")] = "2024-01-01",
+) -> None:
+    """Download 10-K, 10-Q and 8-K (Item 2.02) filings plus XBRL facts from SEC EDGAR."""
+    ctx = _ctx()
+    members = _members(ctx, universe, ticker)
+    try:
+        start = date.fromisoformat(since)
+    except ValueError:
+        _fail(ValueError(f"--since must be YYYY-MM-DD, got {since!r}"))
+        return
+    try:
+        reports = ingest_stage.ingest(
+            ctx.sec, ctx.paths.raw_dir, ctx.manifest, members, start=start, log=err.print
+        )
+    except SecError as exc:
+        _fail(exc)
+        return
+    finally:
+        ctx.sec.close()
+    table = Table(title=f"Ingest: {universe} ({len(members)} companies)")
+    for col in ("ticker", "CIK", "filings", "new docs", "errors"):
+        table.add_column(col, justify="left" if col == "ticker" else "right")
+    for r in reports:
+        table.add_row(r.ticker, str(r.cik), str(r.filings), str(r.new_docs), str(len(r.errors)))
+    out.print(table)
+    st = ctx.sec.stats
+    out.print(
+        f"SEC requests: {st.requests}, cache hits: {st.cache_hits}, retries: {st.retries}, "
+        f"downloaded: {st.bytes_downloaded / 1e6:.1f} MB. Manifest: {len(ctx.manifest)} documents."
+    )
+    if any(r.errors for r in reports):
+        raise typer.Exit(code=1)
+
+
+def _ciks_for(ctx: AppContext, members: list[Member]) -> dict[str, int]:
+    known = ctx.manifest.ciks()
+    missing = [m.ticker for m in members if m.ticker not in known]
+    if missing:
+        err.print(f"Not ingested yet (run aipb ingest first): {', '.join(missing)}")
+    return {m.ticker: known[m.ticker] for m in members if m.ticker in known}
+
+
+@app.command()
+def parse(
+    universe: UniverseOpt = "pilot",
+    ticker: TickerOpt = None,
+    force: Annotated[bool, typer.Option("--force", help="Re-parse even if up to date.")] = False,
+) -> None:
+    """Parse downloaded filings into passages (FTS-indexed) and load XBRL facts. Costs $0."""
+    ctx = _ctx()
+    members = _members(ctx, universe, ticker)
+    ticker_cik = _ciks_for(ctx, members)
+    conn = db.connect(ctx.paths.database)
+    try:
+        _register_companies(ctx, conn, ticker_cik)
+        table = Table(title="Parse")
+        for col in ("ticker", "parsed", "up to date", "passages", "XBRL facts", "warnings"):
+            table.add_column(col, justify="left" if col == "ticker" else "right")
+        for t, cik in ticker_cik.items():
+            rep = parse_stage.parse_company(
+                conn, ctx.manifest, ctx.paths.raw_dir, cik, client=ctx.sec, force=force,
+                log=err.print,
+            )  # fmt: skip
+            facts = parse_stage.load_xbrl(
+                conn, ctx.paths.raw_dir, cik, ctx.sec, ctx.manifest.filer_ciks(cik)
+            )
+            table.add_row(
+                t, str(rep.parsed), str(rep.skipped), str(rep.passages), str(facts),
+                str(len(rep.warnings)),
+            )  # fmt: skip
+        out.print(table)
+    except SecError as exc:
+        _fail(exc)
+    finally:
+        conn.close()
+        ctx.sec.close()
+
+
+@app.command()
+def prefilter(universe: UniverseOpt = "pilot", ticker: TickerOpt = None) -> None:
+    """Tag AI keywords and forward-looking cues; mark boilerplate duplicates. Costs $0."""
+    ctx = _ctx()
+    members = _members(ctx, universe, ticker)
+    ticker_cik = _ciks_for(ctx, members)
+    conn = db.connect(ctx.paths.database)
+    try:
+        table = Table(title=f"Prefilter ({ctx.lexicon.version})")
+        for col in ("ticker", "passages", "AI keyword", "+ forward cue", "unique AI", "dups"):
+            table.add_column(col, justify="left" if col == "ticker" else "right")
+        for t, cik in ticker_cik.items():
+            s = parse_stage.prefilter_company(conn, cik, ctx.lexicon)
+            table.add_row(
+                t, str(s["passages"]), str(s["kw"]), str(s["kw_fwd"]), str(s["kw_canonical"]),
+                str(s["dups"]),
+            )  # fmt: skip
+        out.print(table)
+    finally:
+        conn.close()
+
+
+@app.command()
+def stats(universe: UniverseOpt = "pilot", ticker: TickerOpt = None) -> None:
+    """Per-company counts: filings, passages, keyword hits, dedup rate, XBRL facts."""
+    ctx = _ctx()
+    members = _members(ctx, universe, ticker)
+    ticker_cik = _ciks_for(ctx, members)
+    conn = db.connect(ctx.paths.database)
+    try:
+        rows = db.company_stats(conn, list(ticker_cik.values()))
+    finally:
+        conn.close()
+    sector = {m.ticker: m.sector for m in members}
+    table = Table(title=f"Corpus: {universe}")
+    cols = (
+        "ticker", "sector", "10-K", "10-Q", "8-K", "passages", "AI kw", "kw+fwd",
+        "unique AI", "dedup %", "XBRL facts",
+    )  # fmt: skip
+    for col in cols:
+        table.add_column(col, justify="left" if col in ("ticker", "sector") else "right")
+    totals = defaultdict(int)
+    for t, cik in ticker_cik.items():
+        r = rows.get(cik, {})
+        kw, uniq = r.get("kw", 0), r.get("kw_canonical", 0)
+        for k in ("10-K", "10-Q", "8-K", "passages", "kw", "kw_fwd", "kw_canonical", "facts"):
+            totals[k] += r.get(k, 0)
+        table.add_row(
+            t, sector.get(t, ""), str(r.get("10-K", 0)), str(r.get("10-Q", 0)),
+            str(r.get("8-K", 0)), f"{r.get('passages', 0):,}", str(kw), str(r.get("kw_fwd", 0)),
+            str(uniq), f"{100 * (kw - uniq) / kw:.0f}" if kw else "-", f"{r.get('facts', 0):,}",
+        )  # fmt: skip
+    kw, uniq = totals["kw"], totals["kw_canonical"]
+    table.add_row(
+        "[bold]total[/]", "", str(totals["10-K"]), str(totals["10-Q"]), str(totals["8-K"]),
+        f"{totals['passages']:,}", str(kw), str(totals["kw_fwd"]), str(uniq),
+        f"{100 * (kw - uniq) / kw:.0f}" if kw else "-", f"{totals['facts']:,}",
+    )  # fmt: skip
+    out.print(table)
 
 
 def main() -> None:  # pragma: no cover
