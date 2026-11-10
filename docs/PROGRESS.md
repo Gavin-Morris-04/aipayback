@@ -31,7 +31,7 @@ _Last updated: 2026-11-10 (Phase 0)_
 ### Blocked / waiting on
 | Who | Task | Blocks |
 |---|---|---|
-| CS student | Create the shared project Gmail; put it in `.env` as `SEC_CONTACT_EMAIL` | Phase 1 ingest |
+| ~~CS student~~ | ~~Create the shared project Gmail~~ **Done:** aipayback.team@gmail.com, set as `SEC_CONTACT_EMAIL` in `.env` on the main PC | — |
 | CS student | Create a Console API key with a workspace spend limit (suggested $5/month) and put it in `.env` as `AIPAYBACK_API_KEY` | Phase 0 smoke test |
 | CS student | Optional: `winget install ezwinports.make` (otherwise use `uv run aipb ...`) | nothing |
 | Finance student | Pick the 10 pilot companies (≥5 sectors, ≥4 AI-heavy) | Phase 1 final ingest |
