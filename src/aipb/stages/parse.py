@@ -192,7 +192,10 @@ def load_xbrl(
         if path.exists():
             doc = json.loads(path.read_bytes())
         elif client is not None:
-            doc = fetch_companyfacts(client, raw_dir, filer)
+            try:
+                doc = fetch_companyfacts(client, raw_dir, filer)
+            except SecError:  # offline, or the SEC has no facts for this filer
+                continue
         else:
             continue
         rows += [(cik, *f.row()[1:]) for f in iter_facts(doc)]
