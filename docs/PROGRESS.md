@@ -17,6 +17,12 @@ _Last updated: 2026-11-10 (Phase 0)_
 - **Secret protection:** a custom key-pattern hook plus detect-secrets (pre-commit, local hooks); CI runs the same patterns plus a gitleaks full-history scan.
 - **CI:** offline ruff + pytest on every push.
 - **Tests:** 51 passing (unit + CLI integration), all offline.
+- **Repo:** private at https://github.com/Gavin-Morris-04/aipayback. First push on 2026-11-10; CI and the gitleaks secret scan both green.
+- **Acceptance checks:**
+  - A planted fake Anthropic key was blocked by the pre-commit hook.
+  - A force-added `.env` was blocked.
+  - Neither reached history.
+  - Note: detect-secrets alone did not catch the planted key; the custom pattern hook did.
 
 ### In progress / next step
 - Waiting on the humans' setup tasks below. Then `uv run aipb smoke --fresh` makes one ~$0.00002 call, checks that its ledger cost matches the Console, and closes Phase 0.
