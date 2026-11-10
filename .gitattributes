@@ -1,0 +1,15 @@
+# Normalize line endings so Windows and Linux devices produce identical files.
+* text=auto eol=lf
+
+# Append-only JSONL logs: when two devices both add lines, keep both sides' lines.
+# Readers dedupe by id, so a duplicated line is harmless.
+data/ledger/*.jsonl merge=union
+data/outputs/**/*.jsonl merge=union
+data/manifests/*.jsonl merge=union
+data/sends/*.jsonl merge=union
+
+# Binary files
+*.xlsx binary
+*.png binary
+*.jpg binary
+*.pdf binary

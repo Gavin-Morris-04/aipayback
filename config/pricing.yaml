@@ -1,0 +1,33 @@
+# Claude API prices in USD per million tokens (MTok).
+# Source: https://platform.claude.com/docs/en/about-claude/pricing
+# Re-verify against that page before any large run, and update verified_on.
+verified_on: "2026-11-10"
+source: "https://platform.claude.com/docs/en/about-claude/pricing"
+
+# Message Batches API: 50% off input and output. It stacks with the cache multipliers.
+batch_multiplier: "0.5"
+
+models:
+  claude-haiku-5-5:
+    # The prompt length that picks the tier counts input + cache reads + cache writes.
+    tiers:
+      - max_prompt_tokens: 100000      # "prompts up to 100,000 tokens"
+        input: "0.10"
+        cache_write_5m: "0.125"
+        cache_write_1h: "0.20"
+        cache_read: "0.01"
+        output: "0.50"
+      - max_prompt_tokens: null        # "prompts over 100,000 tokens" (the guard refuses these)
+        input: "0.50"
+        cache_write_5m: "0.625"
+        cache_write_1h: "1.00"
+        cache_read: "0.05"
+        output: "2.50"
+  claude-sonnet-5-5:
+    tiers:
+      - max_prompt_tokens: null
+        input: "2.00"
+        cache_write_5m: "2.50"
+        cache_write_1h: "4.00"
+        cache_read: "0.10"
+        output: "10.00"

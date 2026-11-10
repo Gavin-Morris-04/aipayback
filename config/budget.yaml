@@ -1,0 +1,16 @@
+# Hard money rules for AIPayback. Enforced in code by aipb.budget.guard.
+#
+# Changing reserve_unlocked_usd releases part of the $4 reserve. Only do it with the
+# CS student's explicit approval, and record that approval in docs/DECISIONS.md in the
+# same commit.
+total_credit_usd: "19.00"
+app_cap_usd: "15.00"
+reserve_usd: "4.00"
+reserve_unlocked_usd: "0.00"
+
+# Any run whose worst-case estimate is above this needs --confirm.
+confirm_threshold_usd: "0.50"
+
+# Claude Haiku 5.5 charges 5x more per token for prompts over 100,000 tokens
+# (cache reads and writes count toward the prompt). Refuse anything above this.
+max_prompt_tokens: 100000

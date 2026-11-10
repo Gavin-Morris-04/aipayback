@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      # CI never calls the Claude API or SEC: a cache miss raises instead of spending.
+      AIPAYBACK_OFFLINE: "true"
+      AIPAYBACK_DEVICE: github-ci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: uv sync --locked
+      - name: Lint
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+      - name: Secret patterns
+        run: git ls-files -z | xargs -0 uv run python scripts/check_secrets.py
+      - name: Tests (offline)
+        run: uv run pytest -m "not live"

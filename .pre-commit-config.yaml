@@ -1,0 +1,26 @@
+# Local hooks only: they run inside the project's uv environment, so nothing extra is
+# downloaded (this machine's TLS setup breaks pre-commit's own downloads).
+repos:
+  - repo: local
+    hooks:
+      - id: block-secrets
+        name: block API keys and .env files
+        entry: uv run python scripts/check_secrets.py
+        language: system
+      - id: detect-secrets
+        name: detect-secrets (high-entropy strings)
+        entry: uv run detect-secrets-hook --baseline .secrets.baseline
+        language: system
+        # Hashes in committed JSONL and uv.lock are high-entropy by design;
+        # block-secrets still scans them for real key formats.
+        exclude: ^(data/|evals/results/|uv\.lock$)
+      - id: ruff-check
+        name: ruff check
+        entry: uv run ruff check --force-exclude
+        language: system
+        types: [python]
+      - id: ruff-format
+        name: ruff format
+        entry: uv run ruff format --force-exclude
+        language: system
+        types: [python]

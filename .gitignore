@@ -1,0 +1,29 @@
+# Secrets: never committed (see scripts/check_secrets.py)
+.env
+.env.*
+!.env.example
+
+# Python / tooling
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Rebuildable data (make restore): raw SEC downloads and the working database
+data/raw/
+data/*.sqlite
+data/*.sqlite-*
+
+# Generated outputs that are not the source of truth
+exports/
+site/dist/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
