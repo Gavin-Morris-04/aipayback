@@ -532,6 +532,9 @@ def packets(
     non_keyword_share: Annotated[
         float, typer.Option(help="Share of random rows with no AI keyword (recall check).")
     ] = 0.05,
+    force: Annotated[
+        bool, typer.Option("--force", help="Overwrite existing packets and their keys.")
+    ] = False,
 ) -> None:
     """Write Excel labeling packets (one per company) for the finance student. Costs $0."""
     ctx = _ctx()
@@ -542,7 +545,11 @@ def packets(
         selected = packets_mod.build_packets(
             conn, ticker_cik, ctx.lexicon, exports_dir=ctx.paths.exports_dir,
             gold_dir=ctx.paths.gold_dir, total=total, non_keyword_share=non_keyword_share,
+            force=force,
         )  # fmt: skip
+    except packets_mod.PacketsExist as exc:
+        _fail(exc)
+        return
     finally:
         conn.close()
     table = Table(title=f"Labeling packets ({universe})")

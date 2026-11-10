@@ -180,3 +180,14 @@ def test_two_files_for_one_company(packet, project):
 def test_import_without_files_says_where_to_put_them(project):
     result = run("import-labels", code=2)
     assert "Put the returned packets there" in " ".join(result.output.split())
+
+
+def test_packets_refuse_to_overwrite_keys_without_force(packet, project):
+    key_dir = project / "evals" / "gold" / "packets" / "v1"
+    stale = key_dir / "OLD_key.csv"
+    stale.write_text("row_id", encoding="utf-8")
+    result = run("packets", "-u", "test", code=2)
+    assert "already exist" in result.output and "--force" in " ".join(result.output.split())
+    run("packets", "-u", "test", "--total", "40", "--force")
+    assert not stale.exists()  # a forced rebuild drops companies no longer in the list
+    assert (key_dir / "EXMP_key.csv").exists()

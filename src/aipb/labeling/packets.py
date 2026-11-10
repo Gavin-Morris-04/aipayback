@@ -46,6 +46,10 @@ _HEADER_FILL = PatternFill("solid", fgColor="1F3864")
 _LABEL_FILL = PatternFill("solid", fgColor="FFF2CC")
 
 
+class PacketsExist(RuntimeError):
+    """Refuse to overwrite packet keys that returned labels may depend on."""
+
+
 @dataclass(frozen=True)
 class Row:
     row_id: str
@@ -277,9 +281,22 @@ def build_packets(
     gold_dir: Path,
     total: int = 450,
     non_keyword_share: float = 0.05,
+    force: bool = False,
 ) -> dict[str, list[Row]]:
-    selected = select_rows(conn, companies, total=total, non_keyword_share=non_keyword_share)
     key_dir = gold_dir / "packets" / S.PACKET_VERSION
+    existing = sorted(key_dir.glob("*_key.csv"))
+    if existing and not force:
+        raise PacketsExist(
+            f"Packets {S.PACKET_VERSION} already exist ({len(existing)} key files in {key_dir}). "
+            "Returned labels are matched through these keys, so overwriting them can orphan "
+            "labeling work. If labeling has started, bump PACKET_VERSION in "
+            "src/aipb/labeling/schema.py instead. Otherwise re-run with --force."
+        )
+    for old in existing:  # --force: drop keys of companies no longer in the list
+        old.unlink()
+    for old in (exports_dir / "packets").glob(f"*_packet_{S.PACKET_VERSION}.xlsx"):
+        old.unlink()
+    selected = select_rows(conn, companies, total=total, non_keyword_share=non_keyword_share)
     for ticker, rows in selected.items():
         write_workbook(
             exports_dir / "packets" / f"{ticker}_packet_{S.PACKET_VERSION}.xlsx", ticker, rows,
