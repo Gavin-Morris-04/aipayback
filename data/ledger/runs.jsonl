@@ -1,2 +1,4 @@
 {"command": "smoke", "device": "dev-95047d", "estimate_usd": "0.0000163", "event": "start", "git_sha": "5b0e9b3", "reserved_usd": "0.0000163", "run_id": "run-2026-11-11-18da0d47", "stage": "smoke", "status": "", "ts": "2026-11-11T19:05:24+00:00"}
 {"command": "", "device": "", "estimate_usd": "0", "event": "finish", "git_sha": "", "reserved_usd": "0", "run_id": "run-2026-11-11-18da0d47", "stage": "", "status": "ok", "ts": "2026-11-11T19:05:27+00:00"}
+{"command": "filter --variant default", "device": "dev-95047d", "estimate_usd": "0.1066367500", "event": "start", "git_sha": "8d1d503", "reserved_usd": "0.1066367500", "run_id": "run-2026-11-11-02d77aa5", "stage": "filter", "status": "", "ts": "2026-11-11T20:15:37+00:00"}
+{"command": "", "device": "", "estimate_usd": "0", "event": "finish", "git_sha": "", "reserved_usd": "0", "run_id": "run-2026-11-11-02d77aa5", "stage": "", "status": "ok", "ts": "2026-11-11T20:28:20+00:00"}
