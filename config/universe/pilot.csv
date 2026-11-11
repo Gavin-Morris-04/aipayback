@@ -1,11 +1,11 @@
 ticker,name,sector,ai_heavy,notes,source,source_date,extra_ciks
-IBM,International Business Machines,Information Technology,yes,PLACEHOLDER until the finance student picks (docs/finance/PILOT_PICKER.md),placeholder,2026-11-10,
-MSFT,Microsoft,Information Technology,yes,PLACEHOLDER,placeholder,2026-11-10,
-CRM,Salesforce,Information Technology,yes,PLACEHOLDER,placeholder,2026-11-10,
-ACN,Accenture,Information Technology,yes,PLACEHOLDER,placeholder,2026-11-10,
-JPM,JPMorgan Chase,Financials,yes,PLACEHOLDER,placeholder,2026-11-10,
-WMT,Walmart,Consumer Staples,no,PLACEHOLDER,placeholder,2026-11-10,
-UNH,UnitedHealth Group,Health Care,no,PLACEHOLDER,placeholder,2026-11-10,
-CAT,Caterpillar,Industrials,no,PLACEHOLDER,placeholder,2026-11-10,
-XOM,Exxon Mobil,Energy,no,PLACEHOLDER. Re-registered in 2026 as ExxonMobil Holdings Corp; 2024-2025 filings are under predecessor CIK 34088,placeholder,2026-11-10,34088
-VZ,Verizon Communications,Communication Services,no,PLACEHOLDER,placeholder,2026-11-10,
+AMZN,Amazon,Consumer Discretionary,yes,AI across AWS and its warehouses; claims about AI revenue and automation savings,finance lead pick,2026-11-11,
+BLK,BlackRock,Financials,yes,AI in asset management outside tech; productivity claims around its Aladdin platform,finance lead pick,2026-11-11,1364742
+CAT,Caterpillar Inc.,Industrials,no,Low-AI comparison: heavy industry with few AI mentions,finance lead pick,2026-11-11,
+FDX,FedEx,Industrials,yes,"AI and automation framed as cost savings in logistics, which shows up in later margins",finance lead pick,2026-11-11,
+META,Meta Platforms,Communication Services,yes,Huge AI spending with claims that it will pay off in ad revenue,finance lead pick,2026-11-11,
+MSFT,Microsoft,Information Technology,yes,"Clear AI revenue claims (Copilot, Azure AI) that later filings can confirm or not",finance lead pick,2026-11-11,
+NVDA,Nvidia,Information Technology,yes,Sells the hardware behind the AI boom; demand and revenue claims are easy to measure,finance lead pick,2026-11-11,
+PEP,PepsiCo,Consumer Staples,no,Low-AI comparison: consumer staples with few AI mentions,finance lead pick,2026-11-11,
+PFE,Pfizer,Health Care,yes,"AI in drug discovery and R&D productivity, a health-care test case",finance lead pick,2026-11-11,
+TSLA,"Tesla, Inc.",Consumer Discretionary,yes,"Bold AI promises with timelines (self-driving, robotics), good for testing “walked back”",finance lead pick,2026-11-11,

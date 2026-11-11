@@ -1,0 +1,601 @@
+row_id,passage_id,ticker,form,filing_date,section,sampled_as,text_sha256,url,text
+PFE-001,78003-0000078003-24-000017-ex99-0050,PFE,8-K,2024-01-30,ex99,keyword,8945a57f6d4da6095ad02189c10da35091a64fe625bee4458def9b1cab079dd7,https://www.sec.gov/Archives/edgar/data/78003/000007800324000017/pfe-12312023xex99.htm,"•the impact of any U.S. healthcare reform or legislation or any significant spending reduction or cost control efforts affecting Medicare, Medicaid or other publicly funded or subsidized health programs, including the Inflation Reduction Act of 2022, or changes in the tax treatment of employer-sponsored health insurance that may be implemented;
+
+•U.S. federal or state legislation or regulatory action and/or policy efforts affecting, among other things, pharmaceutical product pricing, intellectual property, reimbursement or access or restrictions on U.S. direct-to-consumer advertising;
+
+limitations on interactions with healthcare professionals and other industry stakeholders; as well as pricing pressures for our products as a result of highly competitive biopharmaceutical markets;
+
+•legislation or regulatory action in markets outside of the U.S., such as China or Europe, including, without limitation, laws related to pharmaceutical product pricing, intellectual property, medical regulation, environmental protections, reimbursement or access, including, in particular, continued government-mandated reductions in prices and access restrictions for certain biopharmaceutical products to control costs in those markets;
+
+•legal defense costs, insurance expenses, settlement costs and contingencies, including without limitation, those related to actual or alleged environmental contamination;
+
+•the risk and impact of an adverse decision or settlement and risk related to the adequacy of reserves related to legal proceedings;
+
+•the risk and impact of tax related litigation and investigations;
+
+•governmental laws and regulations affecting our operations, including, without limitation, the Inflation Reduction Act of 2022, changes in laws and regulations or their interpretation, including, among others, changes in tax laws and regulations internationally and in the U.S., the adoption of global minimum taxation requirements outside the U.S. generally effective in most jurisdictions since January 1, 2024 and potential changes to existing tax law by the current U.S. Presidential administration and Congress, including the proposed “Tax Relief for American Families and Workers Act of 2024”;
+
+Risks Related to Intellectual Property, Technology and Security:
+
+•any significant breakdown or interruption of our information technology systems and infrastructure (including cloud services);
+
+•any business disruption, theft of confidential or proprietary information, security threats on facilities or infrastructure, extortion or integrity compromise resulting from a cyber-attack or other malfeasance by, but not limited to, nation states, employees, business partners or others;
+
+•risks and challenges related to the use of artificial intelligence-based software;"
+PFE-002,78003-0000078003-24-000039-cover-0017,PFE,10-K,2024-02-22,cover,keyword,debc6e8b87c6ef8609360a9c5c10b9ce82f3b4cbe79c9a2c676a95b6d4a36e57,https://www.sec.gov/Archives/edgar/data/78003/000007800324000039/pfe-20231231.htm,"•the risk and impact of an adverse decision or settlement and risk related to the adequacy of reserves related to legal proceedings;
+
+•the risk and impact of tax related litigation and investigations;
+
+•governmental laws and regulations affecting our operations, including, without limitation, the IRA, changes in laws and regulations or their interpretation, including, among others, changes in tax laws and regulations internationally and in the U.S., the adoption of global minimum taxation requirements outside the U.S. generally effective in most jurisdictions since January 1, 2024 and potential changes to existing tax law by the current U.S. Presidential administration and Congress, including the proposed “Tax Relief for American Families and Workers Act of 2024”;
+
+Risks Related to Intellectual Property, Technology and Security:
+
+•any significant breakdown or interruption of our IT systems and infrastructure (including cloud services);
+
+•any business disruption, theft of confidential or proprietary information, security threats on facilities or infrastructure, extortion or integrity compromise resulting from a cyber-attack or other malfeasance by, but not limited to, nation states, employees, business partners or others;
+
+•risks and challenges related to the use of artificial intelligence-based software;
+
+•the risk that our currently pending or future patent applications may not be granted on a timely basis or at all, or any patent-term extensions that we seek may not be granted on a timely basis, if at all; and
+
+•risks to our products, patents and other intellectual property, such as: (i) claims of invalidity that could result in LOE; (ii) claims of patent infringement, including asserted and/or unasserted intellectual property claims; (iii) claims we may assert against intellectual property rights held by third parties; (iv) challenges faced by our collaboration or licensing partners to the validity of their patent rights; or (v) any pressure, or legal or regulatory action by, various stakeholders or governments that could potentially result in us not seeking intellectual property protection or agreeing not to enforce or being restricted from enforcing intellectual property rights related to our products, including Comirnaty and Paxlovid.
+
+PART I"
+PFE-003,78003-0000078003-24-000039-item1a-0026,PFE,10-K,2024-02-22,item1a,keyword,0da896bd29ef199b5ccc89151fd41c9d08fa444ac3100d6b4a002d435366a786,https://www.sec.gov/Archives/edgar/data/78003/000007800324000039/pfe-20231231.htm,"Significant disruptions of IT systems or breaches of information security could adversely affect our business. We extensively rely upon sophisticated IT systems (including cloud services) to operate our business. We produce, collect, process, store and transmit large amounts of confidential information (including personal information and intellectual property), and we deploy and operate an array of technical and procedural controls to maintain the confidentiality, integrity and availability of such confidential information. We develop and operate digital systems to engage patients, healthcare providers, governments, payors and supply chain partners to conduct business and deliver medicines, digital diagnostics, clinical trials and digital therapies. Such systems include mobile applications, wearable devices, internet websites and other digital technologies that may be targets of attack. We have outsourced significant elements of our operations, including significant elements of our IT infrastructure and, as a result, we manage relationships with many third-party providers who may or could have access to our confidential information. We rely on technology developed, supplied and/or maintained by third-parties that may make us vulnerable to “supply chain” style cyber-attacks. Further, technology and security vulnerabilities of acquisitions, business partners or third-party providers may not be identified during due diligence or soon enough to mitigate exploitation. The size and complexity of our IT and information security systems, and those of our third-party providers (and the large amounts of confidential information that is present on them), make such systems potentially vulnerable to service interruptions or to security breaches from inadvertent or intentional actions by, but not limited to, our employees, contingent workers, service providers, business partners, customers or malicious attackers. As a global pharmaceutical company, our systems and assets are the target of frequent cyber-attacks. Such cyber-attacks are of ever-increasing levels of sophistication, including the use of adversarial artificial intelligence techniques, and are made by groups and individuals with a wide range of motives (including, but not limited to, industrial espionage, extortion, property destruction and personal information theft) and expertise, including, but not limited to, organized criminal groups, “hacktivists,” nation states, employees, business partners and others. Due to the nature of some of these attacks, there is a risk that they may remain undetected for a period of time."
+PFE-004,78003-0000078003-24-000039-item1a-0027,PFE,10-K,2024-02-22,item1a,keyword,08a51c97b401bf090d91a63f7d684fd2be539e8a63036d0907fdaf065a1ba763,https://www.sec.gov/Archives/edgar/data/78003/000007800324000039/pfe-20231231.htm,"While we have invested in the protection of data and IT and develop and maintain systems and controls, our efforts, like those of other similar companies, have not always and may not in the future prevent service interruptions, extortion, theft of confidential, personal or proprietary information, compromise of data integrity or unauthorized information disclosure. Any technology service interruption or breach of our systems could adversely affect our business operations and/or result in the loss of personal data, confidential information or intellectual property. Such incidents could require disclosure to government authorities and/or regulators and could require notification to impacted individuals and any incident could result in financial, legal, business and reputational harm to us. We maintain cyber liability insurance; however, this insurance may not be sufficient to cover the financial, legal, business or reputational losses that may result from an interruption or breach of our systems.
+
+Artificial intelligence-based software is increasingly being used in the biopharmaceutical and global healthcare industries. As with many developing technologies, artificial intelligence-based software presents risks and challenges. For example, algorithms may be flawed; data sets may be insufficient, of poor quality, or contain biased information; and inappropriate or controversial data practices by data scientists, engineers, and end-users could impair results. If the analyses that artificial intelligence-based applications assist in producing are deficient or inaccurate, we could be subjected to competitive harm, potential legal liability and brand or reputational harm. Furthermore, use of artificial intelligence-based software may lead to the release of confidential information which may impact our ability to realize the benefits of our intellectual property.
+
+GENERAL RISKS
+
+BUSINESS DEVELOPMENT ACTIVITIES AND STRATEGIC GOALS"
+PFE-005,78003-0000078003-24-000103-ex99-0029,PFE,8-K,2024-05-01,ex99,keyword,6dc8c49174e4c7c2a41373b9166ad4c940f725a0e63828b2157e2777b3584f2a,https://www.sec.gov/Archives/edgar/data/78003/000007800324000103/pfe-3312024xex99.htm,"•legislation or regulatory action in markets outside of the U.S., such as China or Europe, including, without limitation, laws related to pharmaceutical product pricing, intellectual property, medical regulation, environmental protections, reimbursement or access, including, in particular, continued government-mandated reductions in prices and access restrictions for certain biopharmaceutical products to control costs in those markets;
+
+•legal defense costs, insurance expenses, settlement costs and contingencies, including without limitation, those related to actual or alleged environmental contamination;
+
+•the risk and impact of an adverse decision or settlement and risk related to the adequacy of reserves related to legal proceedings;
+
+•the risk and impact of tax related litigation and investigations;
+
+•governmental laws and regulations affecting our operations, including, without limitation, the Inflation Reduction Act of 2022, changes in laws and regulations or their interpretation, including, among others, changes in tax laws and regulations internationally and in the U.S., the adoption of global minimum taxation requirements outside the U.S. generally effective in most jurisdictions since January 1, 2024, and potential changes to existing tax law by the current U.S. Presidential administration and Congress, including the House-passed bill called “Tax Relief for American Families and Workers Act of 2024”;
+
+Risks Related to Intellectual Property, Technology and Security:
+
+•any significant breakdown or interruption of our information technology systems and infrastructure (including cloud services);
+
+•any business disruption, theft of confidential or proprietary information, security threats on facilities or infrastructure, extortion or integrity compromise resulting from a cyber-attack, which may include those using adversarial artificial intelligence techniques, or other malfeasance by, but not limited to, nation states, employees, business partners or others;
+
+•risks and challenges related to the use of software and services that include artificial intelligence-based functionality and other emerging technologies;
+
+•the risk that our currently pending or future patent applications may not be granted on a timely basis or at all, or any patent-term extensions that we seek may not be granted on a timely basis, if at all; and"
+PFE-006,78003-0000078003-24-000107-p1item2-0001,PFE,10-Q,2024-05-08,p1item2,keyword,ff7d04a78deb94157b4633ad99d1c6384c593eecc6660fcb8eca0bfc80adc646,https://www.sec.gov/Archives/edgar/data/78003/000007800324000107/pfe-20240331.htm,"ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF
+
+OPERATIONS
+
+GENERAL
+
+The following MD&A is intended to assist the reader in understanding our financial condition and results of operations, including an evaluation of the amounts and certainty of cash flows from operations and from outside sources, and is provided as a supplement to and should be read in conjunction with the condensed consolidated financial statements and related notes in Item 1. Financial Statements in this Form 10-Q.
+
+References to operational variances pertain to period-over-period changes that exclude the impact of foreign exchange rates. Although foreign exchange rate changes are part of our business, they are not within our control and because they can mask positive or negative trends in the business, we believe presenting operational variances excluding these foreign exchange changes provides useful information to evaluate our results.
+
+In the first quarter of 2024, we reclassified royalty income (substantially all of which is related to our Biopharma segment) from Other (income)/deductions––net and began presenting Royalty revenues as a separate line item within Total revenues in our consolidated statements of income. Prior-period amounts have been recast to conform to the current presentation.
+
+OVERVIEW OF OUR PERFORMANCE, OPERATING ENVIRONMENT, STRATEGY AND OUTLOOK
+
+Our Business and Strategy––Pfizer Inc. is a research-based, global biopharmaceutical company. We apply science and our global resources to bring therapies to people that extend and significantly improve their lives. Our 2024 key priorities are:
+
+•Achieve world-class oncology leadership
+
+•Deliver next wave of pipeline innovation
+
+•Maximize performance of our new products
+
+•Expand margins by realigning our cost base
+
+•Allocate capital to enhance shareholder value
+
+One way we believe we will be more efficient, effective and able to execute on these five strategic priorities is through technology, including artificial intelligence (AI).
+
+We manage our commercial operations through a global structure consisting of two operating segments: Biopharma and Business Innovation. Biopharma is the only reportable segment. See Note 13A.
+
+In the fourth quarter of 2023, we announced that we launched a multi-year, enterprise-wide cost realignment program that aims to realign our costs with our longer-term revenue expectations. See Note 3. For a description of anticipated savings related to this program, see the Costs and Expenses––Restructuring Charges and Other Costs Associated with Acquisitions and Cost-Reduction/Productivity Initiatives section within MD&A."
+PFE-007,78003-0000078003-24-000107-p1item2-0034,PFE,10-Q,2024-05-08,p1item2,keyword,7c766f78e319e5f706f0461205dd4b6223e5b5118b38c07ab5adc7a12242be65,https://www.sec.gov/Archives/edgar/data/78003/000007800324000107/pfe-20240331.htm,"•legislation or regulatory action in markets outside of the U.S., such as China or Europe, including, without limitation, laws related to pharmaceutical product pricing, intellectual property, medical regulation, environmental protections, reimbursement or access, including, in particular, continued government-mandated reductions in prices and access restrictions for certain biopharmaceutical products to control costs in those markets;
+
+•legal defense costs, insurance expenses, settlement costs and contingencies, including without limitation, those related to actual or alleged environmental contamination;
+
+•the risk and impact of an adverse decision or settlement and risk related to the adequacy of reserves related to legal proceedings;
+
+•the risk and impact of tax related litigation and investigations;
+
+•governmental laws and regulations affecting our operations, including, without limitation, the IRA, changes in laws and regulations or their interpretation, including, among others, changes in tax laws and regulations internationally and in the U.S., the adoption of global minimum taxation requirements outside the U.S. generally effective in most jurisdictions since January 1, 2024 and potential changes to existing tax law by the current U.S. Presidential administration and Congress, including the House-passed bill called “Tax Relief for American Families and Workers Act of 2024”;
+
+Risks Related to Intellectual Property, Technology and Security
+
+•any significant breakdown or interruption of our information technology systems and infrastructure (including cloud services);
+
+•any business disruption, theft of confidential or proprietary information, security threats on facilities or infrastructure, extortion or integrity compromise resulting from a cyber-attack, which may include those using adversarial artificial intelligence techniques, or other malfeasance by, but not limited to, nation states, employees, business partners or others;
+
+•risks and challenges related to the use of software and services that include artificial intelligence-based functionality and other emerging technologies;
+
+•the risk that our currently pending or future patent applications may not be granted on a timely basis or at all, or any patent-term extensions that we seek may not be granted on a timely basis, if at all; and"
+PFE-008,78003-0000078003-24-000166-p1item1-0012,PFE,10-Q,2024-08-05,p1item1,non_keyword,29090804ae5205252f93fa7b2af49711bc91b5f67617d4edd2439de597ebc1e2,https://www.sec.gov/Archives/edgar/data/78003/000007800324000166/pfe-20240630.htm,"Haleon––We owned 32% of Haleon as of December 31, 2023. In March 2024, we sold approximately 30% of our investment in Haleon through the sale of 791 million ordinary shares in a global public offering, and the sale of 102 million ordinary shares directly to Haleon for total consideration of $3.5 billion. We recognized a gain on the sale of our Haleon shares of $150 million during the first quarter of 2024 in Other (income)/deductions––net (see Note 4). After the share sale, we owned approximately 23% of the outstanding voting shares of Haleon as of June 30, 2024.
+
+The fair value of our investment in Haleon as of June 30, 2024, based on quoted market prices of Haleon stock, was $8.4 billion. Haleon is a foreign investee whose reporting currency is the U.K. pound, and therefore we translate its financial statements into U.S. dollars and recognize the impact of foreign currency translation adjustments in the carrying value of our investment and in other comprehensive income. We record our share of earnings from Haleon on a quarterly basis on a one-quarter lag in Other (income)/deductions––net.
+
+The following table summarizes the change in the carrying value of our investment in Haleon:
+Three Months Ended | Six Months Ended
+(MILLIONS) | June 30, 2024 | July 2, 2023 | June 30, 2024 | July 2, 2023
+Beginning carrying value reported in Equity-method investments | $7,922 | $10,980 | $11,451 | $10,824
+Carrying value of shares sold | (3,312)
+Dividends | (157) | (88) | (157) | (88)
+Currency translation adjustments and other(a) | 1 | 185 | (130) | 274
+Basis difference adjustments and amortization(b), (c) | (1) | (101) | (1)
+Pfizer share of Haleon investee capital transaction(b), (d) | (91) | (91)
+Pfizer share of Haleon earnings(b) | 121 | 151 | 136 | 219
+Ending carrying value reported in Equity-method investments | $7,796 | $11,228 | $7,796 | $11,228
+
+(a)See Note 6.
+
+(b)Included in Other (income)/deductions––net.
+
+(c)Adjustments in the six months ended June 30, 2024 are associated with (i) the impact of Haleon’s brand divestitures and impairments of intangible assets and (ii) changes in Haleon’s tax rates on intangible asset-related deferred tax liabilities. See Note 4.
+
+(d)Amounts for the three and six months ended June 30, 2024 relate to Pfizer’s share of an investee capital transaction recognized by Haleon for treasury stock Haleon purchased in the first quarter of 2024."
+PFE-009,78003-0000078003-24-000166-p1item2-0001,PFE,10-Q,2024-08-05,p1item2,keyword,0494ab253661ac3be20b24719e3a5c27f0cb4d125c8e962b2f7b36f434cb4421,https://www.sec.gov/Archives/edgar/data/78003/000007800324000166/pfe-20240630.htm,"ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF
+
+OPERATIONS
+
+GENERAL
+
+The following MD&A is intended to assist the reader in understanding our financial condition and results of operations, including an evaluation of the amounts and certainty of cash flows from operations and from outside sources, and is provided as a supplement to and should be read in conjunction with the condensed consolidated financial statements and related notes in Item 1. Financial Statements in this Form 10-Q.
+
+References to operational variances pertain to period-over-period changes that exclude the impact of foreign exchange rates. Although foreign exchange rate changes are part of our business, they are not within our control and because they can mask positive or negative trends in the business, we believe presenting operational variances excluding these foreign exchange changes provides useful information to evaluate our results.
+
+In the first quarter of 2024, we reclassified royalty income (substantially all of which is related to our Biopharma segment) from Other (income)/deductions––net and began presenting Royalty revenues as a separate line item within Total revenues in our consolidated statements of operations. Prior-period amounts have been recast to conform to the current presentation.
+
+OVERVIEW OF OUR PERFORMANCE, OPERATING ENVIRONMENT, STRATEGY AND OUTLOOK
+
+Our Business and Strategy––Pfizer Inc. is a research-based, global biopharmaceutical company. We apply science and our global resources to bring therapies to people that extend and significantly improve their lives. Our 2024 key priorities are:
+
+•Achieve world-class oncology leadership
+
+•Deliver next wave of pipeline innovation
+
+•Maximize performance of our new products
+
+•Expand margins by realigning our cost base
+
+•Allocate capital to enhance shareholder value
+
+One way we believe we will be more efficient, effective and able to execute on these five strategic priorities is through technology, including artificial intelligence.
+
+We manage our commercial operations through a global structure consisting of three operating segments: Biopharma, PC1 and Pfizer Ignite. Biopharma is the only reportable segment. See Note 13A."
+PFE-010,78003-0000078003-24-000166-p1item2-0043,PFE,10-Q,2024-08-05,p1item2,keyword,01838448fa9af7bd0b41bc4d6a5aba3e0d84360e97fcbe283daebf6f4dc5fe87,https://www.sec.gov/Archives/edgar/data/78003/000007800324000166/pfe-20240630.htm,"•legislation or regulatory action in markets outside of the U.S., such as China or Europe, including, without limitation, laws related to pharmaceutical product pricing, intellectual property, medical regulation, environmental protections, reimbursement or access, including, in particular, continued government-mandated reductions in prices and access restrictions for certain biopharmaceutical products to control costs in those markets;
+
+•legal defense costs, insurance expenses, settlement costs and contingencies, including without limitation, those related to legal proceedings and actual or alleged environmental contamination;
+
+•the risk and impact of an adverse decision or settlement and risk related to the adequacy of reserves related to legal proceedings;
+
+•the risk and impact of tax related litigation and investigations;
+
+•governmental laws and regulations affecting our operations, including, without limitation, the IRA, changes in laws and regulations or their interpretation, including, among others, changes in tax laws and regulations internationally and in the U.S., the adoption of global minimum taxation requirements outside the U.S. generally effective in most jurisdictions since January 1, 2024 and potential changes to existing tax law by the current U.S. Presidential administration and Congress, including the House-passed bill called “Tax Relief for American Families and Workers Act of 2024”;
+
+Risks Related to Intellectual Property, Technology and Security
+
+•any significant breakdown or interruption of our information technology systems and infrastructure (including cloud services);
+
+•any business disruption, theft of confidential or proprietary information, security threats on facilities or infrastructure, extortion or integrity compromise resulting from a cyber-attack, which may include those using adversarial artificial intelligence techniques, or other malfeasance by, but not limited to, nation states, employees, business partners or others;
+
+•risks and challenges related to the use of software and services that include artificial intelligence-based functionality and other emerging technologies;
+
+•the risk that our currently pending or future patent applications may not be granted on a timely basis or at all, or any patent-term extensions that we seek may not be granted on a timely basis, if at all; and
+
+•risks to our products, patents and other intellectual property, such as: (i) claims of invalidity that could result in patent revocation; (ii) claims of patent infringement, including asserted and/or unasserted intellectual property claims; (iii) claims"
+PFE-011,78003-0000078003-24-000188-ex99-0039,PFE,8-K,2024-10-29,ex99,keyword,dbb655494d29975ddf7e384a5235dc616075843f8b24ce51c1d2b8e621688168,https://www.sec.gov/Archives/edgar/data/78003/000007800324000188/pfe-9292024xex99.htm,"•legislation or regulatory action in markets outside of the U.S., such as China or Europe, including, without limitation, laws related to pharmaceutical product pricing, intellectual property, medical regulation, environmental protections, reimbursement or access, including, in particular, continued government-mandated reductions in prices and access restrictions for certain biopharmaceutical products to control costs in those markets;
+
+•legal defense costs, insurance expenses, settlement costs and contingencies, including without limitation, those related to legal proceedings and actual or alleged environmental contamination;
+
+•the risk and impact of an adverse decision or settlement and risk related to the adequacy of reserves related to legal proceedings;
+
+•the risk and impact of tax related litigation and investigations;
+
+•governmental laws and regulations affecting our operations, including, without limitation, the Inflation Reduction Act of 2022, changes in laws and regulations or their interpretation, including, among others, changes in tax laws and regulations internationally and in the U.S., the adoption of global minimum taxation requirements outside the U.S. generally effective in most jurisdictions since January 1, 2024, and potential changes to existing tax laws following the November 2024 U.S. elections;
+
+Risks Related to Intellectual Property, Technology and Security:
+
+•any significant breakdown or interruption of our information technology systems and infrastructure (including cloud services);
+
+•any business disruption, theft of confidential or proprietary information, security threats on facilities or infrastructure, extortion or integrity compromise resulting from a cyber-attack, which may include those using adversarial artificial intelligence techniques, or other malfeasance by, but not limited to, nation states, employees, business partners or others;
+
+•risks and challenges related to the use of software and services that include artificial intelligence-based functionality and other emerging technologies;
+
+•the risk that our currently pending or future patent applications may not be granted on a timely basis or at all, or any patent-term extensions that we seek may not be granted on a timely basis, if at all; and"
+PFE-012,78003-0000078003-24-000191-p1item2-0046,PFE,10-Q,2024-11-04,p1item2,keyword,697c2819d6aef219484daa0abcb8387edcaeca8c55639949cc224f0c279b84c5,https://www.sec.gov/Archives/edgar/data/78003/000007800324000191/pfe-20240929.htm,"•legislation or regulatory action in markets outside of the U.S., such as China or Europe, including, without limitation, laws related to pharmaceutical product pricing, intellectual property, medical regulation, environmental protections, reimbursement or access, including, in particular, continued government-mandated reductions in prices and access restrictions for certain biopharmaceutical products to control costs in those markets;
+
+•legal defense costs, insurance expenses, settlement costs and contingencies, including without limitation, those related to legal proceedings and actual or alleged environmental contamination;
+
+•the risk and impact of an adverse decision or settlement and risk related to the adequacy of reserves related to legal proceedings;
+
+•the risk and impact of tax related litigation and investigations;
+
+•governmental laws and regulations affecting our operations, including, without limitation, the IRA, changes in laws and regulations or their interpretation, including, among others, changes in tax laws and regulations internationally and in the U.S., the adoption of global minimum taxation requirements outside the U.S. generally effective in most jurisdictions since January 1, 2024 and potential changes to existing tax laws following the November 2024 U.S. elections;
+
+Risks Related to Intellectual Property, Technology and Security
+
+•any significant breakdown or interruption of our information technology systems and infrastructure (including cloud services);
+
+•any business disruption, theft of confidential or proprietary information, security threats on facilities or infrastructure, extortion or integrity compromise resulting from a cyber-attack, which may include those using adversarial artificial intelligence techniques, or other malfeasance by, but not limited to, nation states, employees, business partners or others;
+
+•risks and challenges related to the use of software and services that include artificial intelligence-based functionality and other emerging technologies;
+
+•the risk that our currently pending or future patent applications may not be granted on a timely basis or at all, or any patent-term extensions that we seek may not be granted on a timely basis, if at all; and"
+PFE-013,78003-0000078003-25-000017-ex99-0041,PFE,8-K,2025-02-04,ex99,keyword,e22e318b43174080dd042367b578017d1ce6d356f1f75074f9515a49e89d0bd9,https://www.sec.gov/Archives/edgar/data/78003/000007800325000017/pfe-12312024xex99.htm,"•governmental laws and regulations affecting our operations, including, without limitation, the Inflation Reduction Act of 2022, changes in laws and regulations or their interpretation, including, among others, changes in tariffs, tax laws and regulations internationally and in the U.S., the adoption of global minimum taxation requirements outside the U.S. generally effective in most jurisdictions since January 1, 2024, and potential changes to existing tax laws, tariffs, or changes to other laws and regulations in the U.S., including by the U.S. Presidential administration and Congress, as well as in other countries;
+
+Risks Related to Intellectual Property, Technology and Cybersecurity:
+
+•the risk that our currently pending or future patent applications may not be granted on a timely basis or at all, or any patent-term extensions that we seek may not be granted on a timely basis, if at all;
+
+•risks to our products, patents and other intellectual property, such as: (i) claims of invalidity that could result in patent revocation; (ii) claims of patent infringement, including asserted and/or unasserted intellectual property claims; (iii) claims we may assert against intellectual property rights held by third parties; (iv) challenges faced by our collaboration or licensing partners to the validity of their patent rights; or (v) any pressure, or legal or regulatory action by, various stakeholders or governments that could potentially result in us not seeking intellectual property protection or agreeing not to enforce or being restricted from enforcing intellectual property rights related to our products, including Comirnaty and Paxlovid;
+
+•any significant breakdown or interruption of our information technology systems and infrastructure (including cloud services);
+
+•any business disruption, theft of confidential or proprietary information, security threats on facilities or infrastructure, extortion or integrity compromise resulting from a cyber-attack, which may include those using adversarial artificial intelligence techniques, or other malfeasance by, but not limited to, nation states, employees, business partners or others; and
+
+•risks and challenges related to the use of software and services that include artificial intelligence-based functionality and other emerging technologies."
+PFE-014,78003-0000078003-25-000054-cover-0005,PFE,10-K,2025-02-27,cover,keyword,2508571723331914c4334defa17794b4297993729442a13188347aeea0e8072f,https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/pfe-20241231.htm,"Indicates calculation not meaningful or results are greater than 100%
+Form 10-K | This Annual Report on Form 10-K for the fiscal year ended December 31, 2024
+2023 Form 10-K | Our Annual Report on Form 10-K for the fiscal year ended December 31, 2023
+340B Program | 340B Drug Pricing Program
+Proxy Statement | Proxy Statement for the 2025 Annual Meeting of Shareholders, which will be filed no later than 120 days after December 31, 2024
+ABO | Accumulated benefit obligation; represents the present value of the benefit obligation earned through the end of the year but does not factor in future compensation increases
+ACIP | Advisory Committee on Immunization Practices
+ADC | Antibody-Drug Conjugate
+Alexion | Alexion Pharma International Operations Limited, a subsidiary of AstraZeneca PLC
+ALK | anaplastic lymphoma kinase
+Alliance revenues | Revenues from alliance agreements under which we co-promote products discovered or developed by other companies or us
+Arena | Arena Pharmaceuticals, Inc.
+AI | artificial intelligence
+Arvinas | Arvinas, Inc.
+Astellas | Astellas Pharma Inc., Astellas US LLC and Astellas Pharma US, Inc.
+ATTR-CM | transthyretin amyloid cardiomyopathy
+Biohaven | Biohaven Pharmaceutical Holding Company Limited
+BioNTech | BioNTech SE
+Biopharma | Global Biopharmaceuticals Business
+Blackstone | Blackstone Life Sciences
+BLA | Biologics License Application
+BMS | Bristol-Myers Squibb Company
+BOD | Board of Directors
+CDC | U.S. Centers for Disease Control and Prevention
+cGMP | current Good Manufacturing Practices
+CGRP | calcitonin gene-related peptide
+CMS | Centers for Medicare & Medicaid Services
+CODM | Chief Operating Decision Maker
+Comirnaty(a) | Unless otherwise noted, refers to, as applicable, and as authorized or approved, the Pfizer-BioNTech COVID-19 Vaccine; Comirnaty (COVID-19 Vaccine, mRNA) original monovalent formula; the Pfizer-BioNTech COVID-19 Vaccine, Bivalent (Original and Omicron BA.4/BA.5); the Pfizer-BioNTech COVID-19 Vaccine (2023-2024 Formula); Comirnaty (COVID-19 Vaccine, mRNA) 2023-2024 Formula; Pfizer-BioNTech COVID-19 Vaccine (2024-2025 Formula); Comirnaty (COVID-19 Vaccine, mRNA) 2024-2025 Formula; Comirnaty Original/Omicron BA.1; Comirnaty Original/Omicron BA.4/BA.5; Comirnaty Omicron XBB.1.5; Comirnaty JN.1 and Comirnaty KP.2.
+Consumer Healthcare JV | GSK Consumer Healthcare JV
+COVID-19 | novel coronavirus disease of 2019
+DEA | U.S. Drug Enforcement Agency
+Developed Markets | Includes, but is not limited to, the following markets: Western Europe, Japan, Canada, Central Europe, Australia, Scandinavian countries, South Korea, the Balkans, New Zealand and Finland
+DMD | Duchenne muscular dystrophy
+EC | European Commission
+EMA | European Medicines Agency"
+PFE-015,78003-0000078003-25-000054-cover-0017,PFE,10-K,2025-02-27,cover,keyword,7004c0f739428fcc3a0d1466a797124f22d3f4d3e20aefba6488be5ecccb648b,https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/pfe-20241231.htm,"•the risk and impact of tax related litigation and investigations;
+
+•governmental laws, regulations and policies affecting our operations, including, without limitation, the IRA, as well as changes in such laws, regulations or policies, or their interpretation, including, among others, changes in tariffs, tax laws and regulations internationally and in the U.S., the adoption of global minimum taxation requirements outside the U.S. generally effective in most jurisdictions since January 1, 2024 and potential changes to existing tax laws, tariffs, or changes to other laws, regulations or policies in the U.S., including by the U.S. Presidential administration and Congress, as well as in other countries;
+
+Risks Related to Intellectual Property, Technology and Cybersecurity:
+
+•the risk that our currently pending or future patent applications may not be granted on a timely basis or at all, or any patent-term extensions that we seek may not be granted on a timely basis, if at all;
+
+•risks to our products, patents and other intellectual property, such as: (i) claims of invalidity that could result in loss of patent coverage; (ii) claims of patent infringement, including asserted and/or unasserted intellectual property claims; (iii) claims we may assert against intellectual property rights held by third parties; (iv) challenges faced by our collaboration or licensing partners to the validity of their patent rights; or (v) any pressure from, or legal or regulatory action by, various stakeholders or governments that could potentially result in us not seeking intellectual property protection or agreeing not to enforce or being restricted from enforcing intellectual property rights related to our products, including Comirnaty and Paxlovid;
+
+•any significant breakdown or interruption of our IT systems and infrastructure (including cloud services);
+
+•any business disruption, theft of confidential or proprietary information, security threats on facilities or infrastructure, extortion or integrity compromise resulting from a cyber-attack, which may include those using adversarial AI techniques, or other malfeasance by, but not limited to, nation states, employees, business partners or others; and
+
+•risks and challenges related to the use of software and services that include AI-based functionality and other emerging technologies.
+
+PART I"
+PFE-016,78003-0000078003-25-000054-item1a-0022,PFE,10-K,2025-02-27,item1a,keyword,59d6e60b92939dd99bcc146e0792305f1eee1df6d65cbf34bfbe38d0bbd5056a,https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/pfe-20241231.htm,"Requirements or industry standards in the U.S. and certain jurisdictions abroad require pharmaceutical manufacturers to track and disclose financial interactions with healthcare professionals and healthcare providers and can increase government and public scrutiny of such financial interactions. If an interaction is found to be improper, government enforcement actions and penalties could result. Like many companies in our industry, we have from time to time received, and may receive in the future, inquiries and subpoenas and other types of information demands from government authorities. In addition, we have been and may in the future be subject to claims and other actions related to our business activities, brought by governmental authorities, as well as consumers and private payors. In some instances, we have incurred significant expense, civil payments, fines and other adverse consequences as a result of these claims, actions and inquiries. Such claims, actions and inquiries may relate to alleged non-compliance with laws and regulations associated with the dissemination of product (approved and unapproved) information, potentially resulting in government enforcement action and reputational damage. These risks may be heightened by the use of AI in our operations as well as in our digital marketing, including social media, mobile applications and blogger outreach, as well as direct-to-consumer marketing and digital platform offerings.
+
+In connection with the resolution of a U.S. government investigation concerning independent copay assistance organizations that provide financial assistance to Medicare patients, in 2018, we entered into a Corporate Integrity Agreement with the Office of the Inspector General of the HHS (OIG), which expired in May 2023. Pfizer submitted its final annual report in October 2023 and the OIG officially closed the matter in January 2025.
+
+We and certain of our subsidiaries are also subject to numerous contingencies arising in the ordinary course of business relating to legal claims and proceedings, including environmental contingencies. Amounts recorded for legal and environmental contingencies can result from a complex series of judgments about future events and uncertainties and can rely heavily on estimates and assumptions. While we have accrued for worldwide legal liabilities, no guarantee exists that additional costs will not be incurred or additional payments will not be required beyond the amounts accrued.
+
+For additional information, including information regarding certain legal proceedings in which we are involved in, see Note 16A.
+
+Pfizer Inc. | 2024 Form 10-K | 20
+
+RISKS RELATED TO INTELLECTUAL PROPERTY, TECHNOLOGY AND SECURITY:
+
+INTELLECTUAL PROPERTY PROTECTION"
+PFE-017,78003-0000078003-25-000054-item1a-0028,PFE,10-K,2025-02-27,item1a,keyword,33cc7b4888171c6c8c4c215f2db2f48bddea433f9938cee21fb3292c2cdf41ce,https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/pfe-20241231.htm,"While we have invested in the protection of data and IT and develop and maintain systems and controls, our efforts, like those of other similar companies, have not always and may not in the future prevent service interruptions, extortion, theft of confidential, personal or proprietary information, compromise of data integrity or unauthorized information disclosure. Any technology service interruption or breach of our systems could adversely affect our business operations and/or result in potential legal liability, the loss of personal data, confidential information or intellectual property. Such incidents could require disclosure to government authorities and/or regulators and could require notification to impacted individuals and any incident could result in financial, legal, business and reputational harm to us. We maintain cyber liability insurance; however, this insurance may not be sufficient to cover the financial, legal, business or reputational losses that may result from an interruption or breach of our systems.
+
+AI is increasingly being used in the biopharmaceutical and global healthcare industries. As with many developing technologies, AI presents risks and challenges. For example, algorithms may be flawed or trained on content without the necessary intellectual property rights or other legal rights or permissions; data sets may not be appropriate for the intended use, of poor quality, contain biased information, or become corrupted during a cyber-attack; and inappropriate or controversial data practices by data scientists, engineers, and end-users could impair results. If the outputs that AI produces or assists in producing are deficient or inaccurate, we could be subjected to competitive harm, potential legal liability and brand or reputational harm. Furthermore, use of AI may lead to the release of confidential information which may impact our ability to realize the benefits of our data, including intellectual property.
+
+GENERAL RISKS
+
+BUSINESS DEVELOPMENT ACTIVITIES AND STRATEGIC GOALS"
+PFE-018,78003-0000078003-25-000054-item7-0002,PFE,10-K,2025-02-27,item7,keyword,109f0e0c9fbddc65c2143f43dc9a6c6e4302ed152b099f1ae2d6fccbea753270,https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/pfe-20241231.htm,"Our Business and Strategy––Pfizer Inc. is a research-based, global biopharmaceutical company. We apply science and our global resources to bring therapies to people that extend and significantly improve their lives. See the Item 1. Business––About Pfizer section. As a science-driven global biopharmaceutical company, we remain focused on advancing our pipeline, supporting our marketed brands and deploying capital responsibly, with a focus on initiatives that can help contribute to our long-term revenue and future growth. Most of our revenues come from the manufacture and sale of biopharmaceutical products. We believe that our medicines and vaccines provide significant value for healthcare providers and patients, and we continuously evaluate how we can best collaborate with patients, physicians and payors to support and expand patient access to reliable, affordable healthcare around the world. In addition, we continually seek to expand and broaden our product portfolio offerings through prioritized development of our pipeline and business development opportunities targeted at critical unmet patient needs. As a result, our commercial organizational structure and R&D operations are critical to the successful execution of our business strategy. Our ability to fulfill our purpose, Breakthroughs that change patients’ lives, remains a core focus and underscores our commitment to addressing the needs of society to help sustain long-term value creation for all stakeholders.
+
+Our 2025 key priorities are:
+
+1.Improve R&D productivity with sharpened focus
+
+2.Expand margins and maximize operational efficiency
+
+3.Achieve commercial excellence in our key categories
+
+4.Optimize capital allocation.
+
+Pfizer Inc. | 2024 Form 10-K | 28
+
+One way we believe we will be more efficient, effective and able to execute on these strategic priorities is through technology, including AI.
+
+In 2024, we managed our commercial operations through a global structure consisting of three operating segments: Biopharma, PC1 and Pfizer Ignite. Biopharma was the only reportable segment. See Note 17A and the Item 1. Business––Commercial Operations section. At the beginning of 2025, we made the following changes within our Biopharma reportable segment that went into effect on January 1, 2025 to support our continued focus on commercial execution and to further strengthen Pfizer’s capabilities and leadership in discovering and developing breakthrough medicines and vaccines:"
+PFE-019,78003-0000078003-25-000054-item7-0018,PFE,10-K,2025-02-27,item7,non_keyword,83c4ed7534bbd7654ff4f26f4574a6c376c2918bf3d9236e131daafe06be2079,https://www.sec.gov/Archives/edgar/data/78003/000007800325000054/pfe-20241231.htm,"When we are required to determine the fair value of a reporting unit, we typically use the income approach. The income approach is a forward-looking approach to estimating fair value and relies primarily on internal forecasts. Within the income approach, we use the discounted cash flow method. We start with a forecast of all the expected net cash flows for the reporting unit, which includes the application of a terminal value, and then we apply a reporting unit-specific discount rate to arrive at a net present value amount. Some of the more significant estimates and assumptions inherent in this approach include: the amount and timing of the projected net cash flows, which includes the expected impact of technological risk and competitive, legal and/or regulatory forces on the projections, as well as the selection of a long-term growth rate; the discount rate, which seeks to reflect the various risks inherent in the projected cash flows; and the tax rate, which seeks to incorporate the geographic diversity of the projected cash flows.
+
+For all of our reporting units, there are a number of future events and factors that may impact future results and that could potentially have an impact on the outcome of subsequent goodwill impairment testing. For a list of these factors, see the Forward-Looking Information and Factors That May Affect Future Results and the Item 1A. Risk Factors sections.
+
+Benefit Plans
+
+For a description of our different benefit plans, see Note 11.
+
+Our assumptions reflect our historical experiences and our judgment regarding future expectations that have been deemed reasonable by management. The judgments made in determining the costs of our benefit plans can materially impact our results of operations."
+PFE-020,78003-0000078003-25-000111-ex99-0009,PFE,8-K,2025-04-29,ex99,keyword,e3c08f2509af3c82592c563cd6328bfa8bfea3f25e26cca6b8e489f08ff6ba46,https://www.sec.gov/Archives/edgar/data/78003/000007800325000111/pfe-03302025xex99.htm,"Topic | Recent Development | Link
+Cost Realignment Program(4) | Announced at Q1-2025 Earnings. Pfizer announced approximately $1.2 billion of additional anticipated savings associated with its ongoing cost realignment program(4), expected to be achieved by the end of 2027, designed to further reduce costs primarily in SI&A driven in large part by enhanced digital enablement, including automation and AI, and simplification of business processes. We expect one-time costs to achieve the additional savings to be incurred through 2027 and to total approximately $1.6 billion, primarily representing cash expenditures for severance, digital enablement and implementation. We remain on track to deliver net cost savings of approximately $4.5 billion by the end of 2025, and, with the additional targeted savings, we now expect total net cost savings of approximately $5.7 billion from this program through 2027. | N/A
+Announced at Q1-2025 Earnings. In connection with our efforts to simplify the structure and sharpen the focus of our R&D organization, in the first quarter of 2025 we expanded this program after having identified additional opportunities to drive improvements in productivity and operational efficiencies through enhanced digital enablement, including automation and AI, and simplification of business processes. Savings associated with the simplification of our R&D organization are anticipated to be realized by the end of 2026 and are expected to total approximately $500 million and be reinvested in R&D programs. We expect one-time costs to implement these initiatives to be incurred through 2026 and to total approximately $600 million, primarily representing cash expenditures for severance, digital enablement and implementation. | N/A
+Haleon Stock Sale | March 2025. Pfizer sold 618 million ordinary shares of its investment in Haleon to institutional investors and separately Haleon purchased 44 million ordinary shares from Pfizer for a combined total net proceeds of approximately $3.3 billion. This follows the previously announced sale of 700 million Haleon shares in January 2025 which resulted in approximately $3.0 billion in net cash proceeds. Pfizer has fully exited its position in Haleon. | N/A"
+PFE-021,78003-0000078003-25-000111-ex99-0029,PFE,8-K,2025-04-29,ex99,keyword,1d818b7f5ef6655f37ac33cb29bb18f157107718600d09bf5d9460062a11b5b0,https://www.sec.gov/Archives/edgar/data/78003/000007800325000111/pfe-03302025xex99.htm,"•the risk and impact of tax related litigation and investigations;
+
+•governmental laws, regulations and policies affecting our operations, including, without limitation, the IRA, as well as changes in such laws, regulations or policies or their interpretation, including, among others, changes in tariffs, tax laws and regulations internationally and in the U.S., the adoption of global minimum taxation requirements outside the U.S. generally effective in most jurisdictions since January 1, 2024, government cost-cutting measures and related impacts on, among other matters, government staffing, resources and ability to timely review and process regulatory or other submissions, and potential changes to existing tax laws, tariffs, or changes to other laws, regulations or policies in the U.S., including by the U.S. Presidential administration and Congress, as well as in other countries;
+
+Risks Related to Intellectual Property, Technology and Cybersecurity:
+
+•the risk that our currently pending or future patent applications may not be granted on a timely basis or at all, or any patent-term extensions that we seek may not be granted on a timely basis, if at all;
+
+•risks to our products, patents and other intellectual property, such as: (i) claims of invalidity that could result in loss of patent coverage; (ii) claims of patent infringement, including asserted and/or unasserted intellectual property claims; (iii) claims we may assert against intellectual property rights held by third parties; (iv) challenges faced by our collaboration or licensing partners to the validity of their patent rights; or (v) any pressure from, or legal or regulatory action by, various stakeholders or governments that could potentially result in us not seeking intellectual property protection or agreeing not to enforce or being restricted from enforcing intellectual property rights related to our products, including Comirnaty and Paxlovid;
+
+•any significant breakdown or interruption of our information technology systems and infrastructure (including cloud services);
+
+•any business disruption, theft of confidential or proprietary information, security threats on facilities or infrastructure, extortion or integrity compromise resulting from a cyber-attack, which may include those using adversarial artificial intelligence techniques, or other malfeasance by, but not limited to, nation states, employees, business partners or others; and
+
+•risks and challenges related to the use of software and services that include artificial intelligence-based functionality and other emerging technologies."
+PFE-022,78003-0000078003-25-000114-cover-0003,PFE,10-Q,2025-05-05,cover,keyword,9a32c7db245d6a5ec2291e87e02653d1d21782aaec58406ac52dfe4b2f20d74f,https://www.sec.gov/Archives/edgar/data/78003/000007800325000114/pfe-20250330.htm,"Indicates calculation not meaningful or results are greater than 100%
+2024 Form 10-K | Annual Report on Form 10-K for the fiscal year ended December 31, 2024
+AbbVie | AbbVie Inc.
+AI | artificial intelligence
+ALK | anaplastic lymphoma kinase
+Alliance revenues | Revenues from alliance agreements under which we co-promote products discovered or developed by other companies or us
+Astellas | Astellas Pharma Inc., Astellas US LLC and Astellas Pharma US, Inc.
+ATTR-CM | transthyretin amyloid cardiomyopathy
+BioNTech | BioNTech SE
+Biopharma | Global Biopharmaceuticals Business
+Blackstone | Blackstone Life Sciences
+BMS | Bristol-Myers Squibb Company
+BOD | Board of Directors
+CDC | U.S. Centers for Disease Control and Prevention
+CMS | Centers for Medicare & Medicaid Services
+CODM | Chief Operating Decision Maker
+Comirnaty(a) | Unless otherwise noted, refers to, as applicable, and as authorized or approved, the Pfizer-BioNTech COVID-19 Vaccine; Comirnaty (COVID-19 Vaccine, mRNA) original monovalent formula; the Pfizer-BioNTech COVID-19 Vaccine, Bivalent (Original and Omicron BA.4/BA.5); the Pfizer-BioNTech COVID-19 Vaccine (2023-2024 Formula); Comirnaty (COVID-19 Vaccine, mRNA) 2023-2024 Formula; Pfizer-BioNTech COVID-19 Vaccine (2024-2025 Formula); Comirnaty (COVID-19 Vaccine, mRNA) 2024-2025 Formula; Comirnaty Original/Omicron BA.1; Comirnaty Original/Omicron BA.4/BA.5; Comirnaty Omicron XBB.1.5; Comirnaty JN.1 and Comirnaty KP.2.
+COVID-19 | novel coronavirus disease of 2019
+Developed Markets | Includes, but is not limited to, the following markets: Western Europe, Japan, Central Europe, Canada, Australia, Eastern Europe, Scandinavian countries, South Korea, New Zealand and Finland
+EMA | European Medicines Agency
+Emerging Markets | Includes, but is not limited to, the following markets: Asia (excluding Japan and South Korea), Latin America, Eastern Europe (excluding the Balkans), Africa, the Middle East and Turkey
+EPS | earnings per share
+EU | European Union
+EUA | emergency use authorization
+Exchange Act | Securities Exchange Act of 1934, as amended
+FASB | Financial Accounting Standards Board
+FDA | U.S. Food and Drug Administration
+Form 10-Q | This Quarterly Report on Form 10-Q for the quarterly period ended March 30, 2025
+GAAP | U.S. Generally Accepted Accounting Principles
+GSK | GSK plc
+Haleon | Haleon plc
+HIPAA | Health Insurance Portability and Accountability Act of 1996
+Hospira | Hospira, Inc.
+HRR | homologous recombination repair
+IPR&D | in-process research and development
+IRA | Inflation Reduction Act of 2022
+IRS | U.S. Internal Revenue Service
+JV | joint venture
+King | King Pharmaceuticals LLC (formerly King Pharmaceuticals, Inc.)
+mCRC | metastatic colorectal cancer
+mCRPC | metastatic castration-resistant prostate cancer"
+PFE-023,78003-0000078003-25-000114-p1item1-0009,PFE,10-Q,2025-05-05,p1item1,keyword,e1023bf6e847101e26e28a5b27db5f386b700b8095dc278ca63a5971bb10f75a,https://www.sec.gov/Archives/edgar/data/78003/000007800325000114/pfe-20250330.htm,"•In the second quarter of 2025, we identified additional productivity opportunities to further reduce costs primarily in SI&A, driven in large part by enhanced digital enablement, including automation and AI, and simplification of business processes. We expect costs associated with the additional productivity opportunities to be incurred through 2027 and to total approximately $1.6 billion, primarily representing cash expenditures for severance, digital enablement and implementation, of which $700 million is associated with our Biopharma segment.
+
+•In connection with our efforts to simplify the structure and sharpen the focus of our R&D organization, in the first quarter of 2025 we expanded this program after having identified additional opportunities to drive improvements in productivity and operational efficiencies through enhanced digital enablement, including automation and AI, and simplification of business processes. We expect costs to implement these initiatives to be incurred through 2026 and to total approximately $600 million, primarily representing cash expenditures for severance, digital enablement and implementation, all of which is associated with our Biopharma segment. The majority of these costs were recorded in the first quarter of 2025, with cash outlays expected primarily in 2025 and 2026.
+
+We now expect costs associated with all three components of this program to total approximately $5.3 billion of which $3.7 billion is associated with the Biopharma segment.
+
+From the start of this program through March 30, 2025, we incurred total costs under this program of $3.2 billion, of which $2.7 billion is associated with our Biopharma segment (including $2.5 billion of restructuring charges).
+
+B. Manufacturing Optimization Program
+
+In the second quarter of 2024, we announced that we launched a multi-year, multi-phased program to reduce our costs of goods sold, which is expected to include operational efficiencies, network structure changes, and product portfolio enhancements. The first phase of this program is focused on operational efficiencies and we expect costs for this first phase to total approximately $1.6 billion, primarily representing cash expenditures for severance and implementation costs, all of which is associated with our Biopharma segment. From the start of this program through March 30, 2025, we incurred costs under this program of $1.2 billion, substantially all of which is restructuring costs for our Biopharma segment. These costs were recorded primarily in 2024, with cash outlays expected primarily in 2025 and 2026.
+
+C. Key Activities"
+PFE-024,78003-0000078003-25-000114-p1item2-0001,PFE,10-Q,2025-05-05,p1item2,keyword,998c366d900a47b81663b13dd2626a438b93fc0c3aca0662b68c85407c749189,https://www.sec.gov/Archives/edgar/data/78003/000007800325000114/pfe-20250330.htm,"ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF
+
+OPERATIONS
+
+GENERAL
+
+The following MD&A is intended to assist the reader in understanding our financial condition and results of operations, including an evaluation of the amounts and certainty of cash flows from operations and from outside sources, and is provided as a supplement to and should be read in conjunction with the condensed consolidated financial statements and related notes in Item 1. Financial Statements in this Form 10-Q.
+
+References to operational variances pertain to period-over-period changes that exclude the impact of foreign exchange rates. Although foreign exchange rate changes are part of our business, they are not within our control and because they can mask positive or negative trends in the business, we believe presenting operational variances excluding these foreign exchange changes provides useful information to evaluate our results.
+
+OVERVIEW OF OUR PERFORMANCE, OPERATING ENVIRONMENT, STRATEGY AND OUTLOOK
+
+Our Business and Strategy––Pfizer Inc. is a research-based, global biopharmaceutical company. We apply science and our global resources to bring therapies to people that extend and significantly improve their lives. Our 2025 key priorities are to:
+
+1. Improve R&D productivity with sharpened focus
+
+2. Expand margins and maximize operational efficiency
+
+3, Achieve commercial excellence in our key categories
+
+4. Optimize capital allocation.
+
+One way we believe we will be more efficient, effective and able to execute on these strategic priorities is through digital enablement, including automation and AI.
+
+Segments––We manage our commercial operations through a global structure consisting of three operating segments: Biopharma, PC1 and Pfizer Ignite. Biopharma is the only reportable segment. See Note 13A.
+
+Restructuring Programs
+
+Realigning Our Cost Base Program
+
+•In the fourth quarter of 2023, we announced that we launched a multi-year, enterprise-wide cost realignment program that aims to realign our costs with our longer-term revenue expectations.
+
+•In the second quarter of 2025, we announced additional anticipated productivity opportunities, designed to further reduce costs primarily in SI&A, driven in large part by enhanced digital enablement, including automation and AI, and simplification of business processes.
+
+•In connection with our efforts to simplify the structure and sharpen the focus of our R&D organization, in the first quarter of 2025 we expanded this program after having identified additional opportunities to drive improvements in productivity and operational efficiencies through enhanced digital enablement, including automation and AI, and simplification of business processes."
+PFE-025,78003-0000078003-25-000114-p1item2-0037,PFE,10-Q,2025-05-05,p1item2,keyword,ecfc98a14eff580a6e3ed57b07f99a85b8d2da87ecbaa6fa1029d3b90ca2cbf3,https://www.sec.gov/Archives/edgar/data/78003/000007800325000114/pfe-20250330.htm,"•risks to our products, patents and other intellectual property, such as: (i) claims of invalidity that could result in loss of patent coverage; (ii) claims of patent infringement, including asserted and/or unasserted intellectual property claims; (iii) claims we may assert against intellectual property rights held by third parties; (iv) challenges faced by our collaboration or licensing partners to the validity of their patent rights; or (v) any pressure from, or legal or regulatory action by, various stakeholders or governments that could potentially result in us not seeking intellectual property protection or agreeing not to enforce or being restricted from enforcing intellectual property rights related to our products, including Comirnaty and Paxlovid;
+
+•any significant breakdown or interruption of our information technology systems and infrastructure (including cloud services);
+
+•any business disruption, theft of confidential or proprietary information, security threats on facilities or infrastructure, extortion or integrity compromise resulting from a cyber-attack, which may include those using adversarial AI techniques, or other malfeasance by, but not limited to, nation states, employees, business partners or others; and
+
+•risks and challenges related to the use of software and services that include AI-based functionality and other emerging technologies."
+PFE-026,78003-0000078003-25-000136-ex99-0037,PFE,8-K,2025-08-05,ex99,keyword,f3e20a1c66666c5f5ff9806a778e4df28bd6ea7ac3ecbeb97e14845599a2a28c,https://www.sec.gov/Archives/edgar/data/78003/000007800325000136/pfe-06292025xex99.htm,"•any business disruption, theft of confidential or proprietary information, security threats on facilities or infrastructure, extortion or integrity compromise resulting from a cyber-attack, which may include those using adversarial artificial intelligence techniques, or other malfeasance by, but not limited to, nation states, employees, business partners or others; and
+
+•risks and challenges related to the use of software and services that include artificial intelligence-based functionality and other emerging technologies.
+
+Should known or unknown risks or uncertainties materialize or should underlying assumptions prove inaccurate, actual results could vary materially from past results and those anticipated, estimated or projected. Investors are cautioned not to put undue reliance on forward-looking statements. A further list and description of risks, uncertainties and other matters can be found in our Annual Report on Form 10-K for the fiscal year ended December 31, 2024 and in our subsequent reports on Form 10-Q, in each case including in the sections thereof captioned “Forward-Looking Information and Factors That May Affect Future Results” and “Item 1A. Risk Factors,” and in our subsequent reports on Form 8-K.
+
+This earnings release may include discussion of certain clinical studies relating to various in-line products and/or product candidates. These studies typically are part of a larger body of clinical data relating to such products or product candidates, and the discussion herein should be considered in the context of the larger body of data. In addition, clinical trial data are subject to differing interpretations, and, even when we view data as sufficient to support the safety and/or effectiveness of a product candidate or a new indication for an in-line product, regulatory authorities may not share our views and may require additional data or may deny approval altogether.
+
+The information contained on our website or any third-party website is not incorporated by reference into this earnings release. All trademarks mentioned are the property of their owners.
+
+Certain of the products and product candidates discussed in this earnings release are being co-researched, co-developed and/or co-promoted in collaboration with other companies for which Pfizer’s rights vary by market or are the subject of agreements pursuant to which Pfizer has commercialization rights in certain markets."
+PFE-027,78003-0000078003-25-000138-cover-0003,PFE,10-Q,2025-08-05,cover,keyword,bb950cd270de55f5bb8ebab2ae5414d70fd7b3d1ff58a228157011c5f684546b,https://www.sec.gov/Archives/edgar/data/78003/000007800325000138/pfe-20250629.htm,"Indicates calculation not meaningful or results are greater than 100%
+2024 Form 10-K | Annual Report on Form 10-K for the fiscal year ended December 31, 2024
+340B Program | 340B Drug Pricing Program
+3SBio | 3SBio, Inc. and its subsidiaries Shenyang Sunshine Pharmaceutical Co., Ltd. and 3S Guojian Pharmaceutical (Shanghai) Co., Ltd.
+AbbVie | AbbVie Inc.
+AI | artificial intelligence
+ALK | anaplastic lymphoma kinase
+Alliance revenues | Revenues from alliance agreements under which we co-promote products discovered or developed by other companies or us
+Astellas | Astellas Pharma Inc., Astellas US LLC and Astellas Pharma US, Inc.
+ATTR-CM | transthyretin amyloid cardiomyopathy
+BioNTech | BioNTech SE
+Biopharma | Global Biopharmaceuticals Business
+Blackstone | Blackstone Life Sciences
+BMS | Bristol-Myers Squibb Company
+BOD | Board of Directors
+CDC | U.S. Centers for Disease Control and Prevention
+CMS | Centers for Medicare & Medicaid Services
+CODM | Chief Operating Decision Maker
+Comirnaty(a) | Unless otherwise noted, refers to, as applicable, and as authorized or approved, the Pfizer-BioNTech COVID-19 Vaccine; Comirnaty (COVID-19 Vaccine, mRNA) original monovalent formula; the Pfizer-BioNTech COVID-19 Vaccine, Bivalent (Original and Omicron BA.4/BA.5); the Pfizer-BioNTech COVID-19 Vaccine (2023-2024 Formula); Comirnaty (COVID-19 Vaccine, mRNA) 2023-2024 Formula; Pfizer-BioNTech COVID-19 Vaccine (2024-2025 Formula); Comirnaty (COVID-19 Vaccine, mRNA) 2024-2025 Formula; Comirnaty (COVID-19 Vaccine, mRNA) 2025-2026 Formula; Comirnaty Original/Omicron BA.1; Comirnaty Original/Omicron BA.4/BA.5; Comirnaty Omicron XBB.1.5; Comirnaty JN.1 and Comirnaty KP.2.
+COVID-19 | novel coronavirus disease of 2019
+Developed Markets | Includes, but is not limited to, the following markets: Western Europe, Japan, Central Europe, Canada, Australia, Eastern Europe, Scandinavian countries, South Korea, New Zealand and Finland
+EMA | European Medicines Agency
+Emerging Markets | Includes, but is not limited to, the following markets: Asia (excluding Japan and South Korea), Latin America, Eastern Europe (excluding the Balkans), Africa, the Middle East and Turkey
+EPS | earnings per share
+EU | European Union
+EUA | emergency use authorization
+Exchange Act | Securities Exchange Act of 1934, as amended
+FASB | Financial Accounting Standards Board
+FDA | U.S. Food and Drug Administration
+Form 10-Q | This Quarterly Report on Form 10-Q for the quarterly period ended June 29, 2025
+GAAP | U.S. Generally Accepted Accounting Principles
+GSK | GSK plc
+Haleon | Haleon plc
+HIPAA | Health Insurance Portability and Accountability Act of 1996
+Hospira | Hospira, Inc.
+HRR | homologous recombination repair
+IPR&D | in-process research and development"
+PFE-028,78003-0000078003-25-000138-p1item1-0009,PFE,10-Q,2025-08-05,p1item1,keyword,c7a23f9ca716119bb55f9461dca5cf116efc3805c4c242f482a9af1c420f9dc5,https://www.sec.gov/Archives/edgar/data/78003/000007800325000138/pfe-20250629.htm,"total based on achievement of certain levels of cumulative applicable net sales and payable to Blackstone over a period of five to seven years. The net present value of the approval-based milestone payments and sales-based milestone payments will be recorded as intangible assets and amortized to Amortization of intangible assets over the shorter of the term of the agreement or estimated commercial life of the product. Accretion of interest on the liabilities to pay Blackstone will be recognized as interest expense in Other (income)/deductions––net.
+
+Note 3. Restructuring Charges and Other Costs Associated with Acquisitions and Cost-Reduction/Productivity Initiatives
+
+A. Realigning Our Cost Base Program
+
+•In the fourth quarter of 2023, we announced that we launched a multi-year, enterprise-wide cost realignment program that aims to realign our costs with our longer-term revenue expectations. We expect costs associated with this initial part of the program to continue primarily through 2025 and to total approximately $3.1 billion, primarily representing cash expenditures for severance, exit and implementation costs as well as non-cash asset write downs of which $2.4 billion is associated with our Biopharma segment.
+
+•In the second quarter of 2025, we identified additional productivity opportunities to further reduce costs primarily in SI&A, driven in large part by enhanced digital enablement, including automation and AI, and simplification of business processes. We expect costs associated with the additional productivity opportunities to be incurred through 2027 and to total approximately $1.6 billion, primarily representing cash expenditures for severance, digital enablement and implementation, of which $700 million is associated with our Biopharma segment.
+
+•In connection with our efforts to simplify the structure and sharpen the focus of our R&D organization, in the first quarter of 2025, we expanded this program after having identified additional opportunities to drive improvements in productivity and operational efficiencies through enhanced digital enablement, including automation and AI, and simplification of business processes. We expect costs to implement these initiatives to be incurred through 2026 and to total approximately $600 million, primarily representing cash expenditures for severance, digital enablement and implementation, all of which is associated with our Biopharma segment. The majority of these costs were recorded in the first quarter of 2025, with cash outlays expected primarily in 2025 and 2026.
+
+We expect costs associated with all three components of this program to total approximately $5.3 billion of which $3.7 billion is associated with the Biopharma segment."
+PFE-029,78003-0000078003-25-000149-ex99-0037,PFE,8-K,2025-11-04,ex99,keyword,f2ebbaaedf8b98896868ddbedeee838e1b055221e34b9398af04610bced800c2,https://www.sec.gov/Archives/edgar/data/78003/000007800325000149/pfe-09282025xex99.htm,"•governmental laws, regulations and policies affecting our operations, including, without limitation, the IRA, as well as changes in such laws, regulations or policies or their interpretation, including, among others, new or changes in tariffs, tax laws and regulations internationally and in the U.S., including the One Big Beautiful Bill
+
+Act, which was enacted on July 4, 2025, and is still subject to further guidance; the adoption of global minimum taxation requirements outside the U.S. generally effective in most jurisdictions since January 1, 2024, government cost-cutting measures and related impacts on, among other matters, government staffing, resources and ability to timely review and process regulatory or other submissions; restrictions related to certain data transfers and transactions involving certain countries; and potential changes to existing tax laws, tariffs, or changes to other laws, regulations or policies in the U.S., including by the U.S. Presidential administration and Congress, as well as in other countries;
+
+Risks Related to Intellectual Property, Technology and Cybersecurity:
+
+•the risk that our currently pending or future patent applications may not be granted on a timely basis or at all, or any patent-term extensions that we seek may not be granted on a timely basis, if at all;
+
+•risks to our products, patents and other intellectual property, such as: (i) claims of invalidity that could result in loss of patent coverage; (ii) claims of patent infringement, including asserted and/or unasserted intellectual property claims; (iii) claims we may assert against intellectual property rights held by third parties; (iv) challenges faced by our collaboration or licensing partners to the validity of their patent rights; or (v) any pressure from, or legal or regulatory action by, various stakeholders or governments that could potentially result in us not seeking intellectual property protection or agreeing not to enforce or being restricted from enforcing intellectual property rights related to our products;
+
+•any significant breakdown or interruption of our information technology systems and infrastructure (including cloud services);
+
+•any business disruption, theft of confidential or proprietary information, security threats on facilities or infrastructure, extortion or integrity compromise resulting from a cyber-attack, which may include those using adversarial artificial intelligence techniques, or other malfeasance by, but not limited to, nation states, employees, business partners or others; and
+
+•risks and challenges related to the use of software and services that include artificial intelligence-based functionality and other emerging technologies."
+PFE-030,78003-0000078003-25-000150-cover-0003,PFE,10-Q,2025-11-04,cover,keyword,d2b4d1ebafa1a2ea07a8bdeced66f8d17feb491a545d4d380db70b7dcf386e23,https://www.sec.gov/Archives/edgar/data/78003/000007800325000150/pfe-20250928.htm,"Indicates calculation not meaningful or results are greater than 100%
+2024 Form 10-K | Annual Report on Form 10-K for the fiscal year ended December 31, 2024
+340B Program | 340B Drug Pricing Program
+3SBio | 3SBio, Inc. and its subsidiaries Shenyang Sunshine Pharmaceutical Co., Ltd. and 3S Guojian Pharmaceutical (Shanghai) Co., Ltd.
+AbbVie | AbbVie Inc.
+Abingworth | Abingworth LLP
+ACIP | Advisory Committee on Immunization Practices
+AI | artificial intelligence
+ALK | anaplastic lymphoma kinase
+Alliance revenues | Revenues from alliance agreements under which we co-promote products discovered or developed by other companies or us
+Astellas | Astellas Pharma Inc., Astellas US LLC and Astellas Pharma US, Inc.
+ATTR-CM | transthyretin amyloid cardiomyopathy
+BioNTech | BioNTech SE
+Biopharma | Global Biopharmaceuticals Business
+Blackstone | Blackstone Life Sciences
+BMS | Bristol-Myers Squibb Company
+BOD | Board of Directors
+CDC | U.S. Centers for Disease Control and Prevention
+CMS | Centers for Medicare & Medicaid Services
+CODM | Chief Operating Decision Maker
+Comirnaty | Unless otherwise noted, refers to, as applicable, the current formulation of Comirnaty (COVID-19 Vaccine, mRNA) 2025-2026 Formula as well as all prior authorized or approved formulations of the vaccine, which was first authorized in the U.S. during December 2020 pursuant to an EUA.
+COVID-19 | novel coronavirus disease of 2019
+Developed Markets | Includes, but is not limited to, the following markets: Western Europe, Japan, Central Europe, Canada, Australia, Eastern Europe, Scandinavian countries, South Korea, Finland and New Zealand
+DMD | Duchenne muscular dystrophy
+EMA | European Medicines Agency
+Emerging Markets | Includes, but is not limited to, the following markets: Asia (excluding Japan and South Korea), Latin America, Eastern Europe (excluding the Balkans), Africa, the Middle East and Turkey
+EPS | earnings per share
+EU | European Union
+EUA | emergency use authorization
+Exchange Act | Securities Exchange Act of 1934, as amended
+FASB | Financial Accounting Standards Board
+FDA | U.S. Food and Drug Administration
+Form 10-Q | This Quarterly Report on Form 10-Q for the quarterly period ended September 28, 2025
+GAAP | U.S. Generally Accepted Accounting Principles
+Haleon | Haleon plc
+HIPAA | Health Insurance Portability and Accountability Act of 1996
+Hospira | Hospira, Inc.
+HRR | homologous recombination repair
+IPR&D | in-process research and development
+IRA | Inflation Reduction Act of 2022
+IRS | U.S. Internal Revenue Service
+JV | joint venture
+King | King Pharmaceuticals LLC (formerly King Pharmaceuticals, Inc.)"
+PFE-031,78003-0000078003-25-000150-p1item1-0010,PFE,10-Q,2025-11-04,p1item1,keyword,82c165bfd0036bc19c7e454f849530584e9f1b5861ef0fd15d4d82bcab2b1e32,https://www.sec.gov/Archives/edgar/data/78003/000007800325000150/pfe-20250928.htm,"For both of the above arrangements, the net present value of the approval-based milestone payments and sales-based milestone payments will be recorded as intangible assets and amortized to Amortization of intangible assets over the shorter of the term of the agreement or estimated commercial life of the product. Accretion of interest on the liabilities will be recognized as interest expense in Other (income)/deductions––net.
+
+B. In-Licensing Arrangement
+
+In-Licensing Arrangement with 3SBio––In July 2025, we completed an exclusive global, ex-China, in-licensing agreement with 3SBio, a leading Chinese biopharmaceutical company, for the development, manufacturing and commercialization of SSGJ-707, a bispecific antibody targeting PD-1 and vascular endothelial growth factor, currently undergoing several clinical trials in China for NSCLC, mCRC, and gynecological tumors. Under the terms of the agreement, 3SBio received an upfront payment of $1.25 billion and is eligible to receive milestone payments associated with certain development, regulatory and commercial milestones up to $4.8 billion as well as tiered double-digit royalties on sales of SSGJ-707, if approved. Additionally, the agreement provides Pfizer the option to extend the license to include exclusive development and commercialization rights to SSGJ-707 in China. In exchange for the option to the exclusive rights in China, we made an upfront payment to 3SBio of $100 million and, in the event the option is exercised, we would pay an option exercise fee of up to $50 million depending on future events. In connection with this transaction, we recorded a $1.35 billion charge in the third quarter of 2025 in Acquired in-process research and development expenses and presented it as a cash outflow from operating activities. We also made a $100 million equity investment in 3SBio.
+
+Note 3. Restructuring Charges and Other Costs Associated with Acquisitions and Cost-Reduction/Productivity Initiatives
+
+A. Realigning Our Cost Base Program
+
+In the fourth quarter of 2023, we announced that we launched a multi-year, enterprise-wide cost realignment program that aims to realign our costs with our longer-term revenue expectations. In the second quarter of 2025, we identified additional productivity opportunities to further reduce costs primarily in SI&A, driven in large part by enhanced digital enablement, including automation and AI, and simplification of business processes."
+PFE-032,78003-0000078003-25-000150-p1item1-0011,PFE,10-Q,2025-11-04,p1item1,keyword,d23ca311c869ba00fcfee27d09ae87da097888ea848d1111947531f11cd8aa45,https://www.sec.gov/Archives/edgar/data/78003/000007800325000150/pfe-20250928.htm,"We expect costs associated with these components of the program to be incurred through 2027 and to total approximately $4.7 billion, representing primarily cash expenditures for severance, implementation, exit, and digital enablement costs, as well as non-cash asset write downs of which $3.1 billion is associated with our Biopharma segment.
+
+Additionally, in connection with our efforts to simplify the structure and sharpen the focus of our R&D organization, in the first quarter of 2025, we expanded this program after having identified additional opportunities to drive improvements in productivity and operational efficiencies through enhanced digital enablement, including automation and AI, and simplification of business processes. We expect costs to implement these initiatives to be incurred through 2026 and to total approximately $600 million, primarily representing cash expenditures for severance, digital enablement and implementation, all of which is associated with our Biopharma segment. The majority of these costs were recorded in the first quarter of 2025, with cash outlays expected primarily in 2025 and 2026.
+
+We expect costs associated with all the components of this program to total approximately $5.3 billion of which $3.7 billion is associated with the Biopharma segment.
+
+From the start of this program through September 28, 2025, we incurred total costs of $3.7 billion, of which $2.9 billion is associated with our Biopharma segment (including $2.6 billion of restructuring charges).
+
+B. Manufacturing Optimization Program
+
+In the second quarter of 2024, we announced that we launched a multi-year, multi-phased program to reduce our costs of goods sold, which is expected to include operational efficiencies, network structure changes, and product portfolio enhancements. The first phase of this program is primarily focused on operational efficiencies, and we expect costs for this first phase to total approximately $1.4 billion, primarily representing cash expenditures for severance and implementation costs, all of which is associated with our Biopharma segment. From the start of this program through September 28, 2025, we incurred costs of $1.0 billion, substantially all of which is restructuring costs for our Biopharma segment. These costs were recorded primarily in 2024, with cash outlays expected primarily in 2025 and 2026.
+
+C. Key Activities"

@@ -5,17 +5,23 @@
 # Tags are tried in order; the first one a company reports is used (companies tag the
 # same idea differently: JPM reports NoninterestExpense, not SG&A).
 
-version: em1-draft
+version: em2-draft
 
+# em2 (2026-11-11): last-resort tags added for Nick's final pilot, which reports these
+# measures under different names. Each comes after the existing tags, so no company that
+# reports an earlier tag changes. Nick to confirm in his evidence-map review (D40).
+#   operating_expenses += CostsAndExpenses (AMZN, FDX, META: total costs, incl. cost of sales)
+#   capex += PaymentsToAcquireProductiveAssets (AMZN, FDX, NVDA, PEP)
+#   rnd += ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost (PFE)
 measures:
   revenue: [Revenues, RevenueFromContractWithCustomerExcludingAssessedTax]
-  operating_expenses: [OperatingExpenses, SellingGeneralAndAdministrativeExpense, NoninterestExpense]
+  operating_expenses: [OperatingExpenses, SellingGeneralAndAdministrativeExpense, NoninterestExpense, CostsAndExpenses]
   restructuring: [RestructuringCharges, SeveranceCosts1]
   gross_profit: [GrossProfit]
   cost_of_revenue: [CostOfRevenue, CostOfGoodsAndServicesSold]
   operating_income: [OperatingIncomeLoss]
-  capex: [PaymentsToAcquirePropertyPlantAndEquipment]
-  rnd: [ResearchAndDevelopmentExpense]
+  capex: [PaymentsToAcquirePropertyPlantAndEquipment, PaymentsToAcquireProductiveAssets]
+  rnd: [ResearchAndDevelopmentExpense, ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost]
 
 # Ratios computed in code from the measures above (numerator / denominator).
 ratios:

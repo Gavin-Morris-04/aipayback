@@ -38,9 +38,9 @@ For the S&P 100, ingest pulled 2,407 SEC documents for $0: 179,348 passages and 
 - verification: about $0.001 per promise
 - the agent: capped at $0.50
 
-That worst case assumes every response uses its full token limit. The pilot's 129 filter requests are reused from cache, so the S&P 100 run only sends 784 new ones.
+That worst case assumes every response uses its full token limit. The pilot's 165 filter requests are reused from cache, so the S&P 100 run only sends 748 new ones.
 
-**"What did Phase 1 cost?"** $0.00 of API credit. 236 filings, 18,381 passages and about 100,000 XBRL facts were processed with plain code: rate-limited downloads, parsing, full-text search and keyword filters. The LLM only starts in Phase 2, and only on the 688 unique AI-keyword passages from 2024–2025 filings: under 4% of the corpus. Later filings are searched as evidence, not classified.
+**"What did Phase 1 cost?"** $0.00 of API credit. 236 filings, 18,381 passages and about 100,000 XBRL facts were processed with plain code: rate-limited downloads, parsing, full-text search and keyword filters. The LLM only starts in Phase 2, and only on the 688 unique AI-keyword passages from 2024–2025 filings: under 4% of the corpus. Later filings are searched as evidence, not classified. (Those were the placeholder pilot's numbers. The finance lead's final list talks more about AI: 868 of 17,834 passages, under 5%.)
 
 ## Forward Deployed Engineer
 *(Phase 1–4: discovery calls, what partners actually asked for, integrations built into their workflows.)*

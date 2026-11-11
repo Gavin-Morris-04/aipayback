@@ -1,16 +1,16 @@
 {
-  "created": "2026-11-10T23:23:08+00:00",
+  "created": "2026-11-11T19:58:23+00:00",
   "keyword_rows": {
-    "ACN": 93,
+    "AMZN": 61,
+    "BLK": 29,
     "CAT": 6,
-    "CRM": 93,
-    "IBM": 93,
-    "JPM": 12,
-    "MSFT": 93,
-    "UNH": 10,
-    "VZ": 16,
-    "WMT": 12,
-    "XOM": 0
+    "FDX": 39,
+    "META": 63,
+    "MSFT": 63,
+    "NVDA": 62,
+    "PEP": 12,
+    "PFE": 30,
+    "TSLA": 63
   },
   "keyword_version": "kw1",
   "non_keyword_share": 0.05,
@@ -21,16 +21,16 @@
     "2025-12-31"
   ],
   "rows": {
-    "ACN": 95,
+    "AMZN": 63,
+    "BLK": 31,
     "CAT": 8,
-    "CRM": 95,
-    "IBM": 95,
-    "JPM": 14,
-    "MSFT": 96,
-    "UNH": 13,
-    "VZ": 18,
-    "WMT": 14,
-    "XOM": 2
+    "FDX": 41,
+    "META": 65,
+    "MSFT": 66,
+    "NVDA": 65,
+    "PEP": 14,
+    "PFE": 32,
+    "TSLA": 65
   },
   "seed": 20261110,
   "target_rows": 450

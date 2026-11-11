@@ -1,0 +1,986 @@
+row_id,passage_id,ticker,form,filing_date,section,sampled_as,text_sha256,url,text
+AMZN-001,1018724-0001018724-24-000006-ex99-0006,AMZN,8-K,2024-02-01,ex99,keyword,b4ee0c12857596088e6ea81e4d20202e74e005945902eb2f5644dd9ccb51cbf0,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000006/amzn-20231231xex991.htm,"•Expanded AWS’s infrastructure footprint by launching the AWS Canada West (Calgary) Region, the second infrastructure Region in Canada. AWS is the first major cloud services provider to have an infrastructure Region in Western Canada. As of the end of 2023, AWS had 105 Availability Zones within 33 geographic Regions globally, with announced plans for 12 more Availability Zones and four more Regions.
+
+•Announced new commitments, partnerships, and expansions to support AWS customers.
+
+•Amgen expanded its work with AWS to create generative artificial intelligence (generative AI)–based solutions, using Amazon SageMaker to help discover, develop, and accelerate the manufacturing of medicines for patients suffering from serious illnesses. Amgen will also use AWS’s global infrastructure and advanced services to power a new digital data and analytics platform.
+
+•Salesforce, which runs the vast majority of its cloud computing workloads on AWS, significantly expanded its global partnership with AWS. For the first time, Salesforce products are now available in the AWS
+
+Marketplace, giving customers streamlined purchasing options. This expansive partnership makes it easier for customers to bring AWS data into Salesforce products and deepens data and AI integrations between AWS’s and Salesforce’s products. Salesforce will support Amazon Bedrock as part of Salesforce’s open model ecosystem strategy and will expand its use of AWS, including compute, storage, data, and AI technologies.
+
+•Hospitality company Accor S.A. expanded its relationship with AWS to launch a generative AI Travel Assistant using Amazon Bedrock and Amazon SageMaker. The Travel Assistant aims to reinvent the guest experience by enhancing travel planning and booking, while reducing call volumes at Accor’s contact center.
+
+•Financial services provider Mitsubishi UFJ Financial Group (MUFG) signed a multiyear global agreement with AWS as its preferred cloud provider to innovate personalized financial services and use Amazon Bedrock to experiment with more than 100 potential generative AI use cases. By moving from on-premises data centers to AWS, MUFG reduced the cost of operating its standard IT infrastructure by 20%. Using Amazon QuickSight, MUFG lowered operational costs by approximately 70% compared to legacy technology.
+
+•Merck will work with AWS and Accenture to move a substantial portion of Merck’s IT infrastructure to AWS as its preferred cloud services provider. Merck is using services, including high-performance computing on AWS and AWS HealthOmics to speed drug discovery and accelerate therapeutic discovery and Amazon SageMaker for generative AI and machine learning (ML) to improve product manufacturing and availability."
+AMZN-002,1018724-0001018724-24-000006-ex99-0007,AMZN,8-K,2024-02-01,ex99,keyword,1df3a097086876753270069e0997c728d54d0e1ce50d2088a9b1b4bc94dfcb6a,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000006/amzn-20231231xex991.htm,"•Ecommerce retailer The Very Group expanded its collaboration with AWS, which included the launch of a Gen AI Innovation Lab. The lab will trial new generative AI retail solutions built on Amazon Bedrock to deliver interactive and personalized digital shopping experiences.
+
+•Automaker SAIC MOTOR selected AWS as its strategic cloud provider for its i-SMART connected vehicle platform. SAIC MOTOR is using AWS’s global infrastructure services to enhance the driving experience and build an elastic and agile connected vehicle architecture that can scale globally. SAIC MOTOR will use Amazon Bedrock to personalize the in-vehicle experience and to automatically diagnose vehicle issues.
+
+•Multinational telecom Axiata Group Berhad selected AWS as its primary cloud provider to accelerate its digital transformation across its operating companies by using AWS’s generative AI and ML capabilities, including Amazon Bedrock and Amazon SageMaker. By the end of 2024, Axiata will migrate more than 650 services spanning customer service, enterprise resource planning, and human resources, along with 80 ML applications.
+
+•Energy company HD Hyundai Oilbank will transform its refining and petrochemical business into a platform for eco-friendly energy by going all-in on AWS, forecasting to reduce IT cost by 20%. The company will launch an electric vehicle charging business on AWS, optimize the refinery process using ML and generative AI with Amazon Bedrock, deliver data-driven insights such as energy-demand forecasting, and improve operations like inventory management.
+
+•LG AI Research, the research hub of LG Group, launched an AI image-to-text captioning solution on AWS at 66% lower cost and with 83% faster data processing than on-premises infrastructure. The new captioning solution uses a multimodal foundation model (FM) built using Amazon Elastic Compute Cloud (Amazon EC2) and Amazon SageMaker that creates more accurate content than previous solutions.
+
+•Travel lifestyle brand Cathay selected AWS as its cloud provider and migrated more than 50% of its legacy and critical enterprise workloads to AWS, reducing IT infrastructure costs by 40%. The new Cathay Machine Learning Innovation Hub will help automate operations, train employees on ML, and enhance air travel experiences. Cathay’s cargo business is using Amazon SageMaker, Amazon OpenSearch Service, and Amazon Redshift to build a revenue management model to increase profitability and customer loyalty.
+
+•BYD, a manufacturer of new energy vehicles, selected AWS as its preferred cloud provider to support the automaker’s global business, innovate new services to enhance the driving experience, and lower vehicle development costs.
+
+Inventing on behalf of customers"
+AMZN-003,1018724-0001018724-24-000006-ex99-0008,AMZN,8-K,2024-02-01,ex99,keyword,57011784940f15076adf4a632f3a8f66b8b80482d98f359d5f646b768c3c254b,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000006/amzn-20231231xex991.htm,"Amazon is driven by a passion for invention across all of its business areas. The company builds new products and services that customers ask for, and also invents new ones that customers didn’t know they wanted but make their lives or businesses better in some meaningful way. For example, Amazon:
+
+•Launched several new AI-powered innovations to help customers shop for fashion with more confidence in Amazon’s store, including personalized size recommendations using AI and ML to help customers find what size fits them best,
+
+Fit Review Highlights with personalized feedback from customers who wear the same size, and improved size charts that make it easier for customers to find relevant information in a more visually engaging way. Amazon also developed a Fit Insights Tool to help brands and selling partners better understand customer fit issues and incorporate feedback into future designs and manufacturing.
+
+•Announced Rufus, a new generative AI-powered conversational shopping experience. Rufus is an expert shopping assistant trained on Amazon’s product catalog and information from across the web to answer customer questions on shopping needs, products, and comparisons, make recommendations based on this context, and facilitate product discovery. Customers can simply start typing or speaking their questions into the search bar in the Amazon Shopping app, or choose from a set of pre-populated questions, and Amazon will provide answers via a chat dialog box to help customers make more informed purchase decisions. Rufus launched in beta to a small subset of customers and will progressively roll out to the rest of Amazon’s U.S. customers in the coming weeks.
+
+•Introduced new advertising tools to help brands connect with customers and grow their businesses, including:
+
+•A generative AI solution to help brands produce lifestyle imagery that can improve the performance of their ads while also making them more engaging.
+
+•A sponsored TV offering to enable brands that sell in Amazon’s U.S. store to run streaming TV ad campaigns with no minimum spend on Amazon Freevee, Twitch, and third-party streaming services through Fire TV apps.
+
+•More than 15 new advertising capabilities, including enhanced audience insights and advanced campaign planning, activation, and optimization controls that help advertisers more efficiently reach relevant audiences and drive meaningful business outcomes."
+AMZN-004,1018724-0001018724-24-000006-ex99-0009,AMZN,8-K,2024-02-01,ex99,keyword,e9b5d9e5595a2048dc92c0288075f3b69c88262c14ab2681831f65ab8fedb1f8,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000006/amzn-20231231xex991.htm,"•Amazon Publisher Cloud, a tool built on AWS Clean Rooms’ secure data collaboration environment, that enables publishers to analyze first-party data together with Amazon Ads insights and offer custom media buys for advertisers that improve campaign performance.
+
+•Achieved a 100% success rate for Project Kuiper’s Protoflight mission. The mission validated key technologies that underpin the satellite broadband network, allowing Project Kuiper to scale satellite production ahead of full-scale deployment beginning this year. Project Kuiper also announced a private connectivity service with AWS, which will allow customers to send data from remote locations directly to the cloud without relying on public internet, as well as a collaboration with Japan’s leading mobile network provider, Nippon Telegraph and Telephone Corporation, and Asia’s largest satellite operator, SKY Perfect JSAT Corporation.
+
+•Held the 12th AWS re:Invent conference, which welcomed over 50,000 in-person attendees and more than 300,000 virtually, where AWS announced new technologies and capabilities that help customers of all sizes take advantage of generative AI, improve productivity, and enhance their security posture. These include:
+
+•Amazon Q, the coding companion from AWS. Q is an expert on AWS—it writes code, debugs code, tests code, and does translations, such as moving from an old version of Java to a new one. It can also query AWS customers’ various data repositories (e.g. intranets, wikis, and from over 40 different popular connectors to data stored using Salesforce, Amazon S3, ServiceNow, Slack, Atlassian, or Zendesk) to answer questions, summarize data, carry on a conversation, and take action. Like all AWS services, Q was designed with security and privacy in mind from the start, making it easier for organizations to use generative AI safely. Q is the most capable work assistant available and keeps getting better."
+AMZN-005,1018724-0001018724-24-000006-ex99-0010,AMZN,8-K,2024-02-01,ex99,keyword,7812c0f10941e92316cec892982f6932ac5cdb8ae9fc0c6bdea014db3e9a2157,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000006/amzn-20231231xex991.htm,"•Expanded model choice and added new capabilities for Amazon Bedrock, AWS’s fully-managed service for leveraging existing large language models (LLMs) and customizing them with their own data—all without sacrificing the leading security, reliability, and operational performance that is synonymous with AWS. AWS is continuing to rapidly iterate on Bedrock, recently delivering capabilities including Guardrails to safeguard what questions applications will answer, Knowledge Bases to expand models’ knowledge base with Retrieval Augmented Generation, Agents to complete multi-step tasks, and Fine-Tuning to keep teaching and refining models, all to help customers’ applications be higher quality and offer better customer experiences. With Bedrock, AWS offers a choice of high-performing FMs from leading AI companies and added the latest new models from Anthropic, Cohere, Meta, Stability AI, and its own Amazon Titan family of FMs, expanding customers’ choice of industry-leading models to support a variety of use cases. Customers want a service that makes this experimenting and iterating simple, and this is what Bedrock does, which is why customers are so excited about it.
+
+•New capabilities in Amazon SageMaker to accelerate building, training, and deploying LLMs and other FMs. Amazon SageMaker HyperPod reduces time to train FMs by up to 40% by providing purpose-built
+
+infrastructure for distributed training at scale. Amazon SageMaker Inference reduces FM deployment costs by 50% on average and latency by 20% on average by optimizing the use of accelerators.
+
+•The next generation of AWS chips optimized for the cloud, which deliver advancements in price performance with each successive generation. AWS Graviton4 chips provide up to 30% better compute performance, 50% more cores, and 75% more memory bandwidth than current generation AWS Graviton3 processors for a broad range of customer workloads running in Amazon EC2.
+
+•AWS Trainium2 chips, which are designed to deliver up to four times faster ML training for generative AI applications and three times more memory capacity compared to first generation AWS Trainium chips.
+
+•An expanded collaboration between AWS and NVIDIA to deliver the most advanced infrastructure, software, and services to power customers’ generative AI innovations. AWS will be the first cloud provider to bring NVIDIA GH200 Grace Hopper Superchips with multi-node NVLink technology to the cloud. NVIDIA and AWS are also collaborating on Project Ceiba to design the world’s fastest GPU-powered AI supercomputer, hosted by AWS for NVIDIA’s own research and development team."
+AMZN-006,1018724-0001018724-24-000006-ex99-0011,AMZN,8-K,2024-02-01,ex99,keyword,ea3c6f610308599419ddeced8e5605c81f79cf466f818a7bd2dc8b34a6869450,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000006/amzn-20231231xex991.htm,"•The general availability of Amazon EC2 Capacity Blocks for ML, a first-of-its-kind consumption model that enables customers to reserve the amount of GPU capacity they need for short durations to run their ML workloads, eliminating the need to hold onto GPUs when not in use.
+
+•The general availability of Amazon S3 Express One Zone, a high-performance, single-zone Amazon S3 storage class and the lowest latency cloud object storage available, delivering single-digit millisecond data access for customers’ most latency-sensitive applications, such as ML training and inference, and media content creation.
+
+•Four integrations that enable customers to make data access and analysis faster, without building and managing complex extract, transform, and load (ETL) data pipelines. Amazon Aurora PostgreSQL, Amazon DynamoDB, and Amazon Relational Database Service (Amazon RDS) for MySQL zero-ETL integrations with Amazon Redshift enable customers to analyze data from multiple sources without building and maintaining custom data pipelines. Amazon DynamoDB zero-ETL integration with Amazon OpenSearch Service enables full-text and vector search on operational data in near real time.
+
+•Amazon Aurora Limitless Database, Amazon ElastiCache Serverless, and AI-driven scaling and optimizations for Amazon Redshift Serverless, which make it faster and easier for customers to scale their data infrastructure to support their most demanding use cases. These innovations build on AWS’s serverless technologies to help customers manage data at any scale and simplify their operations, so they can focus on innovating for their end users without spending time and effort provisioning, managing, and scaling their data infrastructure.
+
+•Generative AI capabilities in Amazon Connect, AWS’s cloud contact center that enables organizations to boost productivity, save costs, and improve customer service experiences, such as Amazon Q in Connect to assist agents with real-time responses and recommended actions to help improve customer satisfaction, and Amazon Connect Contact Lens to add AI-generated summaries from customer conversations.
+
+Empowering employees and delivery service partners
+
+In addition to its focus on customers, Amazon strives to make every day better for its employees and delivery service partners. For example, the company:"
+AMZN-007,1018724-0001018724-24-000006-ex99-0012,AMZN,8-K,2024-02-01,ex99,keyword,83b32df94d757141de84d33cfd09239a47428e1d8affe36dfea7843055b2089b,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000006/amzn-20231231xex991.htm,"•Launched Sequoia, a new robotics system that allows Amazon to identify and store inventory up to 75% faster and, when integrated with other technologies, will reduce order process time by up to 25%. Sequoia supports employee safety by collecting inventory into totes and bringing the totes to newly designed ergonomic workstations. From there, employees can lift the totes using their power zone—mid-thigh to mid-chest—reducing how often they have to reach or squat down to pick customer orders.
+
+•Introduced Automated Vehicle Inspection (AVI), an AI-powered technology that performs a full-vehicle inspection in seconds. The system runs on AWS and can spot anomalies in Amazon delivery vans—from tire deformities and undercarriage wear to bent or warped body pieces—before they become on-road problems. AVI is available in Canada, Germany, the UK, and the U.S.
+
+•Announced a £170 million investment in UK hourly employees—increasing the minimum starting pay by £1 per hour and bringing the minimum starting hourly wage for frontline operations employees in the UK to between £12.30 and £13.00 by April 2024. The increase means Amazon’s minimum starting pay in the UK will have increased 20% over two years, and 50% since 2018.
+
+•Gave Amazon customers a way to show appreciation for delivery drivers during the holiday season with the “Alexa, Thank My Driver” promotion. Over a two-day period, customers thanked their drivers 2 million times, with drivers receiving $5 per thank you at no cost to the customer.
+
+Supporting communities and protecting the environment
+
+Amazon believes that success and scale bring broad responsibility to help the planet, future generations, and communities. Amazon employees have passion for investing in these areas, and a sampling of the efforts from this past quarter are that Amazon:
+
+•Released the company’s U.S. Community Impact Report, which shows Amazon has delivered more than 33 million meals directly to underserved families from 2020 to 2023; donated over 88 million pounds of food from 2020 to 2023; provided STEM education, literacy, and career exploration courses to 6,000 schools and 560,000 students during the 2022-2023 academic year; and provided free training in cloud computing and technology to more than 13 million adults in the last year."
+AMZN-008,1018724-0001018724-24-000006-ex99-0013,AMZN,8-K,2024-02-01,ex99,keyword,4b0795b6c004a9e666d01a7924675f42875962c33998c89d3051a123e7e26f58,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000006/amzn-20231231xex991.htm,"•Provided more than 75,000 relief items to communities impacted by Hurricane Otis near Acapulco, Mexico, using Amazon’s global logistics capabilities. AWS also supported nonprofit Help.NGO to build an emergency connectivity network in Mexico to allow first responders to map the impacted area, and offered cloud computing resources to process mapping data collected on-site to assess storm damage.
+
+•Announced new renewable energy projects, including Amazon’s first brownfield solar project, which will repurpose a previously polluted Maryland coal mine site into a solar farm; 11 renewable energy projects across Texas; Amazon’s first renewable energy project in South Korea; and a 198-megawatt wind farm in India. In 2023, Amazon added 100 new solar and wind projects.
+
+•Announced Amazon’s first U.S. fulfillment center to eliminate plastic delivery packaging and replace it with paper packaging that is curbside recyclable, part of a multi-year plan to convert U.S. fulfillment centers to paper packaging. In addition, Amazon announced that delivery packaging is now fully recyclable in Europe.
+
+•Announced that AWS more than doubled the amount of lower-carbon concrete and steel used to build its data centers in 2023 compared to 2022. AWS collaborates with local suppliers to increase the availability of these materials across the construction industry. Emissions released during building materials’ life cycle accounts for around 11% of global carbon emissions.
+
+•Published the AWS Economic Impact Study, which highlights that AWS invested more than $108 billion in U.S. cloud infrastructure from 2011 through 2022, contributed nearly $38 billion in estimated gross domestic product to the U.S. economy, and supported an estimated annual average of nearly 30,000 jobs in local communities where AWS operates.
+
+•Launched AI Ready to provide free AI skills training to 2 million people globally by 2025. The program includes eight free AWS-designed AI courses and a new generative AI scholarship program to help more than 50,000 high school and university students from underserved and underrepresented communities gain AI skills.
+
+Financial Guidance"
+AMZN-009,1018724-0001018724-24-000008-item1-0002,AMZN,10-K,2024-02-02,item1,keyword,38b8901d63b6d4c78eb71b0bfd64d08dbb34840e8cbd89b5aebbf0509f722a94,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm,"We offer programs that enable sellers to grow their businesses, sell their products in our stores, and fulfill orders using our services. We are not the seller of record in these transactions. We earn fixed fees, a percentage of sales, per-unit activity fees, interest, or some combination thereof, for our seller programs.
+
+Developers and Enterprises
+
+We serve developers and enterprises of all sizes, including start-ups, government agencies, and academic institutions, through AWS, which offers a broad set of on-demand technology services, including compute, storage, database, analytics, and machine learning, and other services.
+
+Content Creators
+
+We offer programs that allow authors, independent publishers, musicians, filmmakers, Twitch streamers, skill and app developers, and others to publish and sell content.
+
+Advertisers
+
+We provide advertising services to sellers, vendors, publishers, authors, and others, through programs such as sponsored ads, display, and video advertising.
+
+Competition"
+AMZN-010,1018724-0001018724-24-000008-item15-0002,AMZN,10-K,2024-02-02,item15,non_keyword,a6c6c092690b5e258a883ed41708f1246bd323d1c7ba851c5022334ed3441213,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm,"4.4 Officers’ Certificate of Amazon.com, Inc., dated as of August 22, 2017, containing Form of 1.900% Note due 2020, Form of 2.400% Note due 2023, Form of 2.800% Note due 2024, Form of 3.150% Note due 2027, Form of 3.875% Note due 2037, Form of 4.050% Note due 2047, and Form of 4.250% Note due 2057 (incorporated by reference to the Company’s Current Report on Form 8-K, filed August 22, 2017).
+
+4.5 Officers’ Certificate of Amazon.com, Inc., dated as of December 20, 2017, containing Form of 5.200% Note due 2025 (incorporated by reference to the Company’s Current Report on Form 8-K, filed December 20, 2017).
+
+4.6 Officers’ Certificate of Amazon.com, Inc., dated as of June 3, 2020, containing Form of 0.400% Note due 2023, Form of 0.800% Note due 2025, Form of 1.200% Note due 2027, Form of 1.500% Note due 2030, Form of 2.500% Note due 2050, and Form of 2.700% Note due 2060 (incorporated by reference to the Company’s Current Report on Form 8-K, filed June 3, 2020).
+
+4.7 Officers’ Certificate of Amazon.com, Inc., dated as of May 12, 2021, containing Form of 0.250% Note due 2023, Form of 0.450% Note due 2024, Form of 1.000% Note due 2026, Form of 1.650% Note due 2028, Form of 2.100% Note due 2031, Form of 2.875% Note due 2041, Form of 3.100% Note due 2051, and Form of 3.250% Note due 2061 (incorporated by reference to the Company’s Current Report on Form 8-K, filed May 12, 2021).
+
+4.8 Officers’ Certificate of Amazon.com, Inc., dated as of December 1, 2022, containing Form of 4.700% Note due 2024, Form of 4.600% Note due 2025, Form of 4.550% Note due 2027, Form of 4.650% Note due 2029, and Form of 4.700% Note due 2032 (incorporated by reference to the Company’s Current Report on Form 8-K, filed December 1, 2022).
+
+4.9 Description of Securities (incorporated by reference to the Company’s Annual Report on Form 10-K for the Year ended December 31, 2019).
+
+10.1† 1997 Stock Incentive Plan (amended and restated) (incorporated by reference to the Company’s Quarterly Report on Form 10-Q for the Quarter ended June 30, 2022).
+
+10.2† 1999 Nonofficer Employee Stock Option Plan (amended and restated) (incorporated by reference to the Company’s Quarterly Report on Form 10-Q for the Quarter ended June 30, 2022)."
+AMZN-011,1018724-0001018724-24-000008-item1a-0002,AMZN,10-K,2024-02-02,item1a,keyword,3d0cb093e9f42368111b4d47f6a94785c6501a41c018ad883a5d57ca5547aa52,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm,"Competition continues to intensify, including with the development of new business models and the entry of new and well-funded competitors, and as our competitors enter into business combinations or alliances and established companies in other market segments expand to become competitive with our business. In addition, new and enhanced technologies, including search, web and infrastructure computing services, practical applications of artificial intelligence and machine learning, digital content, and electronic devices continue to increase our competition. The internet facilitates competitive entry and comparison shopping, which enhances the ability of new, smaller, or lesser known businesses to compete against us. As a result of competition, our product and service offerings may not be successful, we may fail to gain or may lose business, and we may be required to increase our spending or lower prices, any of which could materially reduce our sales and profits.
+
+Our Expansion into New Products, Services, Technologies, and Geographic Regions Subjects Us to Additional Risks
+
+We may have limited or no experience in our newer market segments, and our customers may not adopt our product or service offerings. These offerings, which can present new and difficult technology challenges, may subject us to claims if customers of these offerings experience, or are otherwise impacted by, service disruptions, delays, setbacks, or failures or quality issues. In addition, profitability or other intended benefits, if any, in our newer activities may not meet our expectations, and we may not be successful enough in these newer activities to recoup our investments in them, which investments are often significant. Failure to realize the benefits of amounts we invest in new technologies, products, or services could result in the
+
+value of those investments being written down or written off. In addition, our sustainability initiatives may be unsuccessful for a variety of reasons, including if we are unable to realize the expected benefits of new technologies or if we do not successfully plan or execute new strategies, which could harm our business or damage our reputation.
+
+Our International Operations Expose Us to a Number of Risks"
+AMZN-012,1018724-0001018724-24-000008-item1a-0007,AMZN,10-K,2024-02-02,item1a,keyword,76f95005835dcb240d526ac486d9529996d1d598581efdb1398853e958111f68,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm,"We regard our trademarks, service marks, copyrights, patents, trade dress, trade secrets, proprietary technology, and similar intellectual property as critical to our success, and we rely on trademark, copyright, and patent law, trade secret protection, and confidentiality and/or license agreements with our employees, customers, and others to protect our proprietary rights. Effective intellectual property protection is not available in every country in which our products and services are made available. We also may not be able to acquire or maintain appropriate domain names in all countries in which we do business. Furthermore, regulations governing domain names may not protect our trademarks and similar proprietary rights. We may be
+
+unable to prevent third parties from acquiring domain names that are similar to, infringe upon, or diminish the value of our trademarks and other proprietary rights.
+
+We are not always able to discover or determine the extent of any unauthorized use of our proprietary rights. Actions taken by third parties that license our proprietary rights may materially diminish the value of our proprietary rights or reputation. The protection of our intellectual property requires the expenditure of significant financial and managerial resources. Moreover, the steps we take to protect our intellectual property do not always adequately protect our rights or prevent third parties from infringing or misappropriating our proprietary rights. We also cannot be certain that others will not independently develop or otherwise acquire equivalent or superior technology or other intellectual property rights.
+
+We have been subject to, and expect to continue to be subject to, claims and legal proceedings regarding alleged infringement by us of the intellectual property rights of third parties. Such claims, whether or not meritorious, have in the past, and may in the future, result in the expenditure of significant financial and managerial resources, injunctions against us, or significant payments for damages, including to satisfy indemnification obligations or to obtain licenses from third parties who allege that we have infringed their rights. Such licenses may not be available on terms acceptable to us or at all. These risks have been amplified by the increase in third parties whose sole or primary business is to assert such claims. In addition, our and our customers’ use of artificial intelligence may result in increased claims of infringement or other claims, including those based on unauthorized use of third-party technology or content."
+AMZN-013,1018724-0001018724-24-000008-item1a-0009,AMZN,10-K,2024-02-02,item1a,keyword,ab1027e2764f3a59b900b050bd0854d3b8a39b5b8e7a7bbe73b4ae2c7d3f82e9,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm,"Our revenue growth may not be sustainable, and our percentage growth rates may decrease. Our revenue and operating profit growth depends on the continued growth of demand for the products and services offered by us or our sellers, and our business is affected by, among other things, general economic, business, and geopolitical conditions worldwide. A softening of demand, whether caused by changes in customer preferences or a weakening of the U.S. or global economies, may result in decreased revenue or growth.
+
+Our sales and operating results will also fluctuate for many other reasons, including due to factors described elsewhere in this section and the following:
+
+•our ability to retain and increase sales to existing customers, attract new customers, and satisfy our customers’ demands;
+
+•our ability to retain and expand our network of sellers;
+
+•our ability to offer products on favorable terms, manage inventory, and fulfill orders;
+
+•the introduction of competitive stores, websites, products, services, price decreases, or improvements;
+
+•changes in usage or adoption rates of the internet, e-commerce, electronic devices, and web services, including outside the U.S.;
+
+•timing, effectiveness, and costs of expansion and upgrades of our systems and infrastructure;
+
+•the success of our geographic, service, and product line expansions;
+
+•the extent to which we finance, and the terms of any such financing for, our current operations and future growth;
+
+•the outcomes of legal proceedings and claims, which may include significant monetary damages or injunctive relief and could have a material adverse impact on our operating results;
+
+•variations in the mix of products and services we sell;
+
+•variations in our level of merchandise and vendor returns;
+
+•the extent to which we offer fast and free delivery, continue to reduce prices worldwide, and provide additional benefits to our customers;
+
+•factors affecting our reputation or brand image (including any actual or perceived inability to achieve our goals or commitments, whether related to sustainability, customers, employees, or other topics), and public perceptions regarding social or ethical issues related to our development and use of artificial intelligence and machine learning technologies, products, and services;
+
+•the extent to which we invest in technology and infrastructure, fulfillment, and other expense categories;
+
+•availability of and increases in the prices of transportation (including fuel), resources such as land, water, and energy, commodities like paper and packing supplies and hardware products, and technology infrastructure products, including as a result of inflationary pressures;"
+AMZN-014,1018724-0001018724-24-000008-item1a-0015,AMZN,10-K,2024-02-02,item1a,keyword,2c2bee6a7a52e61d0e3eded5981f2265eca824a23ce8b0d416991f6daea1790f,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm,"We have significant suppliers, including content and technology licensors, and in some cases, limited or single-sources of supply, that are important to our sourcing, services, manufacturing, and any related ongoing servicing of merchandise and content. We do not have long-term arrangements with most of our suppliers to guarantee availability of merchandise, content, components, or services, particular payment terms, or the extension of credit limits. Decisions by our current suppliers to limit or stop selling or licensing merchandise, content, components, or services to us on acceptable terms, or delay delivery, including as a result of one or more supplier bankruptcies due to poor economic conditions, as a result of natural or human-caused disasters (including public health crises) or geopolitical events, or for other reasons, may result in our being unable to procure alternatives from other suppliers in a timely and efficient manner and on acceptable terms, or at all. For example, we rely on a limited group of suppliers for semiconductor products, including products related to artificial intelligence infrastructure such as graphics processing units. Constraints on the availability of these products could adversely affect our ability to develop and operate artificial intelligence technologies, products, or services. In addition, violations by our suppliers or other vendors of applicable laws, regulations, contractual terms, intellectual property rights of others, or our Supply Chain Standards, as well as products or practices regarded as unethical, unsafe, or hazardous, could expose us to claims, damage our reputation, limit our growth, and negatively affect our operating results.
+
+Our Commercial Agreements, Strategic Alliances, and Other Business Relationships Expose Us to Risks"
+AMZN-015,1018724-0001018724-24-000008-item1a-0021,AMZN,10-K,2024-02-02,item1a,keyword,40f4a4717812c5cdaa23e0401f725d8ec30d2ec7b51a88360e01857127b5449b,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm,"We are subject to general business regulations and laws, as well as regulations and laws specifically governing the internet, physical, e-commerce, and omnichannel retail, digital content, web services, electronic devices, advertising, artificial intelligence technologies and services, and other products and services that we offer or sell. These regulations and laws cover taxation, privacy, data use, data protection, data security, data localization, network security, consumer protection, pricing, content, copyrights, distribution, transportation, mobile communications, electronic device certification, electronic waste, energy consumption, environmental and climate-related regulation, electronic contracts and other communications, competition, employment, trade and protectionist measures, web services, the provision of online payment services, registration, licensing, and information reporting requirements, unencumbered internet access to our services or access to our facilities, the design and operation of websites, health, safety, and sanitation standards, the characteristics, legality, and quality of products and services, product labeling, the commercial operation of unmanned aircraft systems, healthcare, and other matters. It is not clear how"
+AMZN-016,1018724-0001018724-24-000008-item1a-0022,AMZN,10-K,2024-02-02,item1a,keyword,cbf01c60f7a2617fd81f3d0800c2cc6fb9d4bda66848b4e7b0d90fd7f9d26c97,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm,"existing laws governing issues such as property ownership, libel, privacy, data use, data protection, data security, data localization, network security, and consumer protection apply to aspects of our operations such as the internet, e-commerce, digital content, web services, electronic devices, advertising, and artificial intelligence technologies and services. A large number of jurisdictions regulate our operations, and the extent, nature, and scope of such regulations is evolving and expanding as the scope of our businesses expand. We are regularly subject to formal and informal reviews, investigations, and other proceedings by governments and regulatory authorities under existing laws, regulations, or interpretations or pursuing new and novel approaches to regulate our operations. For example, we face a number of open investigations based on claims that aspects of our operations infringe competition rules, including aspects of Amazon’s operation of its stores including its fulfillment network, Amazon’s acquisitions, and certain aspects of AWS’s offering of cloud services. We strongly dispute these claims and intend to defend ourselves vigorously in these investigations. Similarly, we face investigations under a growing patchwork of laws and regulations governing the collection, use, and disclosure of data, the interpretation of which continues to evolve, leading to uncertainty about how regulators will view our privacy practices. In addition, regulators and lawmakers are increasingly focused on controlling additional aspects of the operations of technology companies and companies they have characterized to be online “gatekeepers” through the application of existing regulations and laws and the adoption of new regulations and laws, which increases our compliance costs and limits the operation of our business. Unfavorable regulations, laws, decisions, or interpretations by government or regulatory authorities applying those laws and regulations, or inquiries, investigations, or enforcement actions threatened or initiated by them, could cause us to incur substantial costs, expose us to unanticipated civil and criminal liability or penalties (including substantial monetary fines), diminish the demand for, or availability of, our products and services, increase our cost of doing business, require us to change our business practices in a manner materially adverse to our business, damage our reputation, impede our growth, or otherwise have a material effect on our operations. The media, political, and regulatory scrutiny we face, which may continue to increase, amplifies these risks.
+
+Claims, Litigation, Government Investigations, and Other Proceedings May Adversely Affect Our Business and Results of Operations"
+AMZN-017,1018724-0001018724-24-000008-item1a-0023,AMZN,10-K,2024-02-02,item1a,keyword,23e5f875c87078e8397b42358b39202eea5a65f579f2a22d229d56b0d6bdacf4,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm,"As an innovative company offering a wide range of consumer and business products and services around the world, we are regularly subject to actual and threatened claims, litigation, reviews, investigations, and other proceedings, including proceedings by governments and regulatory authorities, involving a wide range of issues, including patent and other intellectual property matters, taxes, labor and employment (including the characterization of delivery drivers), competition and antitrust, privacy, data use, data protection, data security, data localization, network security, consumer protection, commercial disputes, goods and services offered by us and by third parties (including artificial intelligence technologies and services), and other matters. The number and scale of these proceedings have increased over time as our businesses have expanded in scope and geographic reach, as our products, services, and operations have become more complex and available to, and used by, more people, and as governments and regulatory authorities seek to regulate us on a pre-emptive basis. For example, we are litigating a number of matters alleging price fixing, monopolization, and consumer protection claims, including those brought by state attorneys general and the Federal Trade Commission. Any of these types of proceedings can have an adverse effect on us because of legal costs, disruption of our operations, diversion of management resources, negative publicity, and other factors. The outcomes of these matters are inherently unpredictable and subject to significant uncertainties. Determining legal reserves or possible losses from such matters involves judgment and may not reflect the full range of uncertainties and unpredictable outcomes. Until the final resolution of such matters, we may be exposed to losses in excess of the amount recorded, and such amounts could be material. Should any of our estimates and assumptions change or prove to have been incorrect, it could have a material effect on our business, consolidated financial position, results of operations, or cash flows. In addition, it is possible that a resolution of one or more such proceedings, including as a result of a settlement, could involve licenses, sanctions, consent decrees, or orders requiring us to make substantial future payments, preventing us from offering certain products or services, requiring us to change our business practices in a manner materially adverse to our business, requiring development of non-infringing or otherwise altered products or technologies, damaging our reputation, or otherwise having a material effect on our operations."
+AMZN-018,1018724-0001018724-24-000008-item7-0004,AMZN,10-K,2024-02-02,item7,keyword,d13b132d85de458f748b5e2720d269b2c03b734c30388b282bf95d73b9d91df8,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm,"We expect spending in technology and infrastructure will increase over time as we add computer scientists, designers, software and hardware engineers, and merchandising employees. Our technology and infrastructure investment and capital spending projects often support a variety of product and service offerings due to geographic expansion and the cross-functionality of our systems and operations. We seek to invest efficiently in several areas of technology and infrastructure, including AWS, and expansion of new and existing product categories and service offerings, as well as in infrastructure to enhance the customer experience and improve our process efficiencies. We believe that advances in technology, specifically the speed and reduced cost of processing power, data storage and analytics, improved wireless connectivity, and the practical applications of artificial intelligence and machine learning, will continue to improve users’ experience on the internet and increase its ubiquity in people’s lives. To best take advantage of these continued advances in technology, we are investing in AWS, which offers a broad set of on-demand technology services, including compute, storage, database, analytics, and machine learning, and other services to developers and enterprises of all sizes. We are also investing in initiatives to build and deploy innovative and efficient software and electronic devices as well as other initiatives including the development of a satellite network for global broadband service and autonomous vehicles for ride-hailing services.
+
+We seek to efficiently manage shareholder dilution while maintaining the flexibility to issue shares for strategic purposes, such as financings, acquisitions, and aligning employee compensation with shareholders’ interests. We utilize restricted stock units as our primary vehicle for equity compensation because we believe this compensation model aligns the long-term interests of our shareholders and employees. In measuring shareholder dilution, we include all vested and unvested stock awards outstanding, without regard to estimated forfeitures. Total shares outstanding plus outstanding stock awards were 10.6 billion and 10.8 billion as of December 31, 2022 and 2023."
+AMZN-019,1018724-0001018724-24-000008-item8-0008,AMZN,10-K,2024-02-02,item8,keyword,891737bb886d21a4111099cf193a817fda238791cb49173c85b75043642b5367,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/amzn-20231231.htm,"Common Stock
+Shares | Amount | Treasury Stock | Additional Paid-In Capital | Accumulated Other Comprehensive Income (Loss) | Retained Earnings | Total Stockholders’ Equity
+Balance as of January 1, 2021 | 10,066 | $105 | $(1,837) | $42,765 | $(180) | $52,551 | $93,404
+Net income | 33,364 | 33,364
+Other comprehensive income (loss) | (1,196) | (1,196)
+Stock-based compensation and issuance of employee benefit plan stock | 109 | 1 | 12,672 | 12,673
+Balance as of December 31, 2021 | 10,175 | 106 | (1,837) | 55,437 | (1,376) | 85,915 | 138,245
+Net loss | (2,722) | (2,722)
+Other comprehensive income (loss) | (3,111) | (3,111)
+Stock-based compensation and issuance of employee benefit plan stock | 113 | 2 | 19,629 | 19,631
+Common stock repurchased | (46) | (6,000) | (6,000)
+Balance as of December 31, 2022 | 10,242 | 108 | (7,837) | 75,066 | (4,487) | 83,193 | 146,043
+Net income | 30,425 | 30,425
+Other comprehensive income (loss) | 1,447 | 1,447
+Stock-based compensation and issuance of employee benefit plan stock | 141 | 1 | 23,959 | 23,960
+Balance as of December 31, 2023 | 10,383 | $109 | $(7,837) | $99,025 | $(3,040) | $113,618 | $201,875
+
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS
+
+Note 1 — DESCRIPTION OF BUSINESS, ACCOUNTING POLICIES, AND SUPPLEMENTAL DISCLOSURES
+
+Description of Business
+
+We seek to be Earth’s most customer-centric company. In each of our segments, we serve our primary customer sets, consisting of consumers, sellers, developers, enterprises, content creators, advertisers, and employees. We serve consumers through our online and physical stores and focus on selection, price, and convenience. We offer programs that enable sellers to grow their businesses, sell their products in our stores, and fulfill orders using our services, and programs that allow authors, independent publishers, musicians, filmmakers, Twitch streamers, skill and app developers, and others to publish and sell content. We serve developers and enterprises of all sizes through AWS, which offers a broad set of on-demand technology services, including compute, storage, database, analytics, and machine learning, and other services. We also manufacture and sell electronic devices. In addition, we provide advertising services to sellers, vendors, publishers, authors, and others, through programs such as sponsored ads, display, and video advertising.
+
+We have organized our operations into three segments: North America, International, and AWS. See “Note 10 — Segment Information.”
+
+Common Stock Split"
+AMZN-020,1018724-0001018724-24-000081-ex99-0002,AMZN,8-K,2024-04-30,ex99,keyword,14462a32067ce1dbac089a9498bae9cf127443ce25d60e28cc6d5340c20f79eb,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000081/amzn-20240331xex991.htm,"“It was a good start to the year across the business, and you can see that in both our customer experience improvements and financial results,” said Andy Jassy, Amazon President and CEO. “The combination of companies renewing their infrastructure modernization efforts and the appeal of AWS’s AI capabilities is reaccelerating AWS’s growth rate (now at a $100 billion annual revenue run rate); our Stores business continues to expand selection, provide everyday low prices, and accelerate delivery speed (setting another record on speed for Prime customers in Q1) while lowering our cost to serve; and, our Advertising efforts continue to benefit from the growth of our Stores and Prime Video businesses. It’s very early days in all of our businesses and we remain excited by how much more we can make customers’ lives better and easier moving forward.”
+
+Highlights
+
+Obsessing over the customer experience
+
+Amazon obsesses over how to make customers’ lives better and easier every day with new and improved products and services. This is true for consumers, sellers, brands, developers, enterprises, and creators. For example, Amazon:
+
+•Continued to delight customers with fast and convenient delivery. With more than 2 billion global units arriving the same or next day in Q1, Amazon delivered to Prime members at its fastest speeds ever. In March, across the top 60 largest U.S. metro areas, nearly 60% of Prime member orders arrived the same or next day, and in London, Tokyo, and Toronto, 3 out of 4 items were delivered the same or next day.
+
+•Expanded selection across the company’s stores with the launch of popular brands. In the U.S., this included Gen Z favorite Parade; luxury fashion and accessories from AREA and HBX Archives by Hypebeast; beauty brands Clinique, Keys Soulcare by Alicia Keys, and LOVED01 by John Legend; tech brands Oura Ring and Sonos speakers; and officially-licensed products from the National Women’s Soccer League. In Europe, Luxury Stores at Amazon announced a collaboration with Hardly Ever Worn It to offer customers pre-owned items from luxury brands."
+AMZN-021,1018724-0001018724-24-000081-ex99-0004,AMZN,8-K,2024-04-30,ex99,keyword,3f339002a8280c8cf880cc29dc2c54011ee412213e84845793fe43ab25551c80,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000081/amzn-20240331xex991.htm,"•Grew Prime Video’s international slate of content with more than 30 local Amazon Originals, including Operación Triunfo (Spain), Prime Video’s first weekly live entertainment show, which was watched by more than 3.5 million unique viewers in Spain; Indian Police Force (India), which had the most viewers complete the entire first season for any Amazon India Original in its launch week; and Last One Laughing (Mexico) Season Six, which is the longest running edition of the hit global franchise.
+
+•Shared how customers and partners are using AWS generative artificial intelligence (generative AI) services to deliver new customer experiences, accelerate employee productivity, and transform operations.
+
+•Siemens is integrating Amazon Bedrock into its low-code development platform Mendix to allow thousands of companies across multiple industries to create and upgrade applications with the power of generative AI.
+
+•Philips is using AWS HealthImaging and Amazon Bedrock to scale digital pathology, helping labs and healthcare organizations improve diagnostics, increase productivity, accelerate research, and address complex medical cases, like cancer care.
+
+•Accenture and Anthropic are collaborating with AWS to help organizations—especially those in highly-regulated industries like healthcare, public sector, banking, and insurance—responsibly adopt and scale generative AI technology with Amazon Bedrock. This collaboration will help organizations like the District of Columbia Department of Health speed innovation, improve customer service, and improve productivity, while keeping data private and secure.
+
+•BT Group, a multinational communications company, provided Amazon Q Developer to 1,200 of its engineers, generating more than 100,000 lines of code in its first four months and automating approximately 12% of the repetitive and time-consuming work done by software engineers using the platform.
+
+•The Deutsche Fußball Liga (DFL) named AWS the Official Generative AI Provider of the DFL, and is using AI on AWS to generate metadata that allows the league, clubs, and media partners to more efficiently search for content in more than 210,000 hours of video footage.
+
+•Audi used Amazon SageMaker and Amazon OpenSearch Service to build a generative AI chatbot to improve its enterprise search experience and help employees find and navigate internal documentation, reducing search time from hours to a few seconds and improving productivity.
+
+•Konica Minolta Healthcare, a medical diagnostic imaging and healthcare information technology company, announced an enterprise imaging cloud platform using AWS HealthImaging to reduce image storage costs, enable access from almost anywhere, and accelerate data retrieval."
+AMZN-022,1018724-0001018724-24-000081-ex99-0005,AMZN,8-K,2024-04-30,ex99,keyword,a1918e1638d44c14d8bbc3ff1b37dc5b8824ad8b5732d58184079389b5795233,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000081/amzn-20240331xex991.htm,"•Dana-Farber Cancer Institute built a new research solution on Amazon Bedrock to help clinicians interpret complex lab results to help diagnose medical conditions, assess treatment efficacy, and determine next steps in clinical care.
+
+•Enterprise healthcare software provider symplr announced a generative AI solution that uses Amazon Bedrock and Amazon Q to connect and optimize hospital operations so clinicians and administrators can quickly access relevant data, simplifying staff scheduling and other administrative processes.
+
+•Choice Hotels became the first hotel company to migrate its entire system infrastructure to the cloud. The move to AWS is part of Choice Hotels’ long-term technology roadmap and adoption of AI, and involves decommissioning more than 3,700 servers, retiring over 300 applications, and migrating more than 250 applications.
+
+•Mobile network operator Tele2 launched an Internet of Things customer support solution, powered by Amazon Bedrock, to help agents provide faster and more detailed conversational responses to customers across multiple channels.
+
+•Vonage, a cloud communications provider, announced a new anti-fraud solution with AWS generative AI capabilities to enable businesses to better protect themselves from mobile fraud while improving customer experiences.
+
+•Genomics England, a human genome research organization, is using Amazon Bedrock to help researchers identify associations between genetic variants and medical conditions by quickly processing millions of pages of scientific literature, with the goal of informing future genetic tests and improving human health.
+
+•AI biotechnology company Owkin selected AWS as its primary cloud provider to develop generative AI applications and accelerate drug discovery and development, empowering scientists and researchers to access, analyze, and manage vast amounts of data efficiently and securely in the cloud.
+
+•Parsyl, a data-powered insurer, is using Amazon Bedrock to turn unwieldy customer information, like email attachments in different formats, into usable data to help identify patterns of risk for businesses transporting goods.
+
+•Continued to expand AWS’s infrastructure footprint to support customers by announcing:
+
+•Plans to launch new infrastructure Regions in the Kingdom of Saudi Arabia and in Mexico, which will give developers, startups, entrepreneurs, and enterprises greater choice for running their applications and serving end users. As part of AWS’s long-term commitment, it is planning to invest more than $5.3 billion in the Kingdom of Saudi Arabia and more than $5 billion in Mexico over the next several years."
+AMZN-023,1018724-0001018724-24-000081-ex99-0006,AMZN,8-K,2024-04-30,ex99,keyword,30651ec557b8af5bbf385574e53c8855983c6058f38074ac15b45b792977b88c,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000081/amzn-20240331xex991.htm,"•A planned investment of $10 billion to build two data center complexes in Mississippi. This investment, which is the single largest capital investment in the state’s history, will create at least 1,000 jobs and support new educational trainings in the state.
+
+•The general availability of new AWS Local Zones in Atlanta, Chicago, and Houston. In Atlanta, AWS Local Zones support EC2 P5 instances, which deliver the highest performance for deep learning and high-performance computing applications.
+
+•Announced that AWS began waiving charges for data transfer out to the internet (DTO) to give customers choice if they want to migrate their data outside of AWS. The waiver on DTO charges is available to all AWS customers around the world and from any AWS Region.
+
+Inventing on behalf of customers
+
+Amazon is driven by a passion for invention across all of its business areas. The company builds new products and services that customers ask for, and also invents new ones that customers didn’t know they wanted but make their lives or businesses better in some meaningful way. For example, Amazon:
+
+•Announced the general availability of Amazon Q, the most capable generative AI-powered assistant for accelerating software development and leveraging companies’ internal data.
+
+•On the software development side, Amazon Q not only generates highly accurate code, but also tests code, debugs coding conflicts, and transforms code from one form to another (today, developers can save months using Q to move from older versions of Java to newer, more secure and capable ones; in the near future, Q will help developers transform their .net code as well). Q Developer Agents does multi-step planning and reasoning to allow developers to string together multiple requests and have Q implement them."
+AMZN-024,1018724-0001018724-24-000081-ex99-0007,AMZN,8-K,2024-04-30,ex99,keyword,b5ecc705fa041bdb16fc7637ea6caed60cc36dd407086132748338a0364a68f4,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000081/amzn-20240331xex991.htm,"•On the internal data side, most companies have large troves of data that reside in wikis, intranet pages, Salesforce, storage repositories like Amazon S3, and many other data stores and SaaS apps that are hard to access. It makes answering straightforward questions about company policies, products, business results, code, people, and many other topics hard and frustrating. Q makes this much simpler. Customers can point Q at all of its enterprise data repositories, and it’ll search this data, summarize logically, analyze trends, and engage in dialog with customers about this data. With the launch of a powerful new capability called Q Apps, employees can now describe, in natural language, what apps they want to build on top of this internal data, and Q Apps will quickly generate that app. This will make it much easier for internal teams to build useful apps from their own data.
+
+•Delivered a number of innovations in Amazon Bedrock (AWS’s generative AI service that enables customers to leverage an existing large language model, customize it with their own data, and have the easiest and best features available to deploy secure, high quality, low latency, cost-effective production generative AI apps). Tens of thousands of organizations worldwide are using Amazon Bedrock. These new Bedrock capabilities include:
+
+•The general availability of Anthropic’s Claude 3 family of vision-enabled foundation models (FMs)—Opus, Sonnet, and Haiku—which are the best performing models in the world right now and provide industry-leading accuracy, performance, speed, and cost. Claude 3 Opus has set a new standard, outperforming other models available today in the areas of reasoning, math, and coding. Amazon Bedrock became the first managed service to add Claude 3 models, and continues to provide customers with the widest choice of high-performing, fully-managed large language models (LLMs) and FMs.
+
+•The general availability of Meta Llama 3 models, a collection of pretrained and instruction fine-tuned LLMs that come in two sizes—8B and 70B. The new models demonstrate significant improvements over previous versions due to vastly increased training data and scale. This collection of models supports a broad range of use cases, like text summarization and classification, sentiment analysis, language translation, and code generation."
+AMZN-025,1018724-0001018724-24-000081-ex99-0008,AMZN,8-K,2024-04-30,ex99,keyword,19a8b1606e33a78ae9f9949c455cc14d63962fafbe9fffca6952a85a4d9b37d0,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000081/amzn-20240331xex991.htm,"•The addition of FMs from leading AI startup Mistral AI. Mistral Large, the latest and most advanced LLM from Mistral AI, provides top-tier reasoning capabilities for complex multilingual reasoning tasks. Mistral AI’s Mixtral 8x7B and Mistral 7B models can summarize, answer questions, and help organize information with their deep understanding of text structure and architecture.
+
+•The availability of new Cohere models (Command R and Command R+) on Bedrock.
+
+•New first party Amazon Titan LLMs, including Amazon Titan Text Embeddings V2 and the general availability of Amazon Titan Image Generator.
+
+•The general availability of Model Evaluation, which is the fastest way for organizations to analyze, compare, and select models on Amazon Bedrock, reducing time from weeks to hours spent evaluating models so customers can bring new applications and experiences to market faster.
+
+•The general availability of Guardrails, which provides customers with best-in-class technology to easily implement safeguards to remove personal and sensitive information, profanity, specific words, and harmful content. Guardrails offers industry-leading safety protection on top of the native capabilities of FMs, helping customers block up to 85% of harmful content. Guardrails is the only solution offered by a broad cloud provider that allows customers to have built-in and custom safeguards in a single offering, and it works with all LLMs in Amazon Bedrock, as well as fine-tuned models.
+
+•The new Custom Model Import capability that makes it simple for customers to import models from SageMaker (or elsewhere) into Bedrock before deploying their application—enabling customers to take advantage of all the Bedrock features that make it so much easier to build high quality production-grade generative AI apps.
+
+•Announced the extension of AWS and NVIDIA’s strategic collaboration to make AWS the best place to run NVIDIA GPUs, helping customers unlock new generative AI capabilities. AWS will bring together NVIDIA’s next-generation Blackwell platform with AWS Nitro System and AWS Key Management Service advanced security, Elastic Fabric Adapter petabit-scale networking, and Amazon EC2 UltraCluster hyper-scale clustering, enabling customers to securely build and run multi-trillion parameter LLMs faster, at massive scale, and at a lower cost than previous-generation NVIDIA GPUs on Amazon EC2. In addition, Project Ceiba, an AI supercomputer being jointly developed by AWS and NVIDIA exclusively on AWS for NVIDIA’s own AI research and development, will be built on the Blackwell platform."
+AMZN-026,1018724-0001018724-24-000081-ex99-0009,AMZN,8-K,2024-04-30,ex99,keyword,f5b8ba197ec69fb3c59d812d9bff090656a87c1394daafd2813f9624ccb32481,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000081/amzn-20240331xex991.htm,"•Continued to meet growing demand for AWS Trainium and Inferentia chips, which help customers maximize performance and control costs for their machine learning (ML) workloads. Customers using these purpose-built AWS ML AI chips include Anthropic, Databricks, Leonardo.ai, Qualtrics, Ricoh, Stockmark, Watashiha, and Vyond. In addition, Meta's recently-launched Llama 3 model is running on Trainium and Inferentia2—delivering the lowest cost to train, fine tune, and deploy Llama 3 on AWS.
+
+•Updated AWS Neuron (software that lets customers use popular frameworks like PyTorch to train and deploy models with minimal code changes on Amazon EC2 instances, powered by Trainium and Inferentia chips) to include features that further reduce costs for LLM inference for both external customers and internal teams at Amazon, such as Amazon Rufus.
+
+•Continued to rollout Rufus in the Amazon Shopping app to millions of customers in the U.S. Rufus, in beta, is a new generative AI-powered shopping assistant that can help customers save time and make more informed purchase decisions by answering a variety of shopping-related questions, providing product comparisons, making recommendations, and more. Amazon improved Rufus’ answer accuracy and response speed, and added new features, including “My Orders,” which answers questions such as “when did I last order coffee?” and “what dog treats did I last order?”
+
+•Added more generative AI features for independent sellers in the U.S. to create product listings, including a new tool that allows sellers to leverage product listings on their own websites, simply by providing Amazon with a URL. Amazon’s generative AI-based features automatically parse the information to seamlessly create high-quality, engaging listings for Amazon’s store. This feature further enhances and streamlines the process of creating product listings, saving sellers time and effort, while also developing product listings that appeal to customers and help drive sales."
+AMZN-027,1018724-0001018724-24-000081-ex99-0010,AMZN,8-K,2024-04-30,ex99,keyword,279f565b3bbd1a752d44f642d2ceb1d65404b34598c804aeee8881bd0cff6671,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000081/amzn-20240331xex991.htm,"•Released 20 films and series from Amazon MGM Studios, including the debut season of Fallout, which attracted more than 65 million viewers worldwide and has become the second most watched title ever on Prime Video through its first 16 days; Road House, which attracted more than 50 million viewers worldwide in its first two weekends streaming on Prime Video, the biggest debut ever for an Amazon MGM Studios-produced film; Hazbin Hotel, which had the most total global viewers on its opening weekend for a new animated series on Prime Video; and The Beekeeper, which ranked in the top-10 of theatrical releases by revenue globally in the first quarter.
+
+•Announced plans to create a new series from MrBeast, the world’s most-subscribed YouTube creator. Beast Games is set to have 1,000 contestants competing for $5 million—the biggest single prize in the history of television and streaming. The series will premiere on Prime Video in more than 240 countries and territories and is based on MrBeast’s popular show.
+
+•Announced a global collaboration that will bring Fire TV to Panasonic’s new smart TVs. Customers will get the benefits of Fire TV’s personalized streaming and access to Alexa, combined with Panasonic’s smart TVs. Amazon
+
+also announced Matter Casting on Fire TV and Echo Show 15—an industry-first implementation of this practice. Matter Casting lets customers stream and control content on their television or streaming stick from their mobile app. Customers can begin watching a movie from Prime Video on their phone, and cast it to a compatible Fire TV or Echo Show 15 to continue watching on a bigger screen.
+
+•Launched Ring Battery Doorbell Pro, Ring’s most advanced battery-powered doorbell. It features 3D Motion Detection to make motion alerts more precise; HD+ Head-to-Toe Video to improve image quality; and Audio Toggle to turn audio recording on and off.
+
+•Introduced Blink Mini 2, a compact plug-in camera that works both indoors and outdoors. Blink Mini 2 features enhanced image quality, a built-in LED spotlight for night view in color, and on-device computer vision to support smart notifications, including person detection so customers can receive alerts only when a person is detected (versus an animal or object)."
+AMZN-028,1018724-0001018724-24-000081-ex99-0013,AMZN,8-K,2024-04-30,ex99,keyword,60adf9e6bbffa0dfa2f0967ad3a24ec2fa44c6bae0c98ed29611a4bc34eb5419,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000081/amzn-20240331xex991.htm,"•Announced that nearly half of all customer orders fulfilled in India are delivered in reduced or original packaging—meaning less packaging is needed to ensure the deliveries arrive safely, which is better for customers and the environment. Deliveries with reduced or no additional packaging are reaching customers in more than 300 cities across India, up from nine cities in 2019.
+
+•Invested in Glacier, a women-led AI and robotics company that helps the recycling industry reduce waste by automating, sorting, and collecting real-time data on recycling streams. The investment is part of Amazon’s Climate Pledge Fund, and is the second woman CEO-led company that The Fund has invested in as part of its $53 million Female Founder Initiative, which launched in 2022 to close the funding gap for women in climate tech.
+
+Financial Guidance
+
+The following forward-looking statements reflect Amazon.com’s expectations as of April 30, 2024, and are subject to substantial uncertainty. Our results are inherently unpredictable and may be materially affected by many factors, such as fluctuations in foreign exchange rates, changes in global economic and geopolitical conditions and customer demand and spending (including the impact of recessionary fears), inflation, interest rates, regional labor market constraints, world events, the rate of growth of the internet, online commerce, cloud services, and new and emerging technologies, and the various factors detailed below.
+
+Second Quarter 2024 Guidance
+
+•Net sales are expected to be between $144.0 billion and $149.0 billion, or to grow between 7% and 11% compared with second quarter 2023. This guidance anticipates an unfavorable impact of approximately 60 basis points from foreign exchange rates. In first quarter 2024 the impact from Leap Year added approximately 120 basis points to the year-over-year net sales growth rate.
+
+•Operating income is expected to be between $10.0 billion and $14.0 billion, compared with $7.7 billion in second quarter 2023.
+
+•This guidance assumes, among other things, that no additional business acquisitions, restructurings, or legal settlements are concluded.
+
+A conference call will be webcast live today at 2:30 p.m. PT/5:30 p.m. ET, and will be available for at least three months at amazon.com/ir. This call will contain forward-looking statements and other material information regarding the Company’s financial and operating results."
+AMZN-029,1018724-0001018724-24-000083-p1item1-0022,AMZN,10-Q,2024-05-01,p1item1,non_keyword,8aa25eafdff7999adb21d1c43e028dc9ff2012311e9958a66fbe0f08baf0630a,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000083/amzn-20240331.htm,"In September 2022, the Luxembourg tax authority (“LTA”) denied the tax basis of certain intangible assets that we distributed from Luxembourg to the U.S. in 2021. When we are assessed by the LTA, we will need to remit taxes related to this matter. We believe the LTA’s position is without merit, we intend to defend ourselves vigorously in this matter, and we expect to recoup taxes paid.
+
+The Indian tax authority (“ITA”) has asserted that tax applies to cloud services fees paid to Amazon in the U.S. We will need to remit taxes related to this matter until it is resolved, which payments could be significant in the aggregate. We believe the ITA’s position is without merit, we are defending our position vigorously, and we expect to recoup taxes paid. If this matter is adversely resolved, we could recognize significant additional tax expense, including for taxes previously paid.
+
+Note 8 — SEGMENT INFORMATION
+
+We have organized our operations into three segments: North America, International, and AWS. We allocate to segment results the operating expenses “Fulfillment,” “Technology and infrastructure,” “Sales and marketing,” and “General and administrative” based on usage, which is generally reflected in the segment in which the costs are incurred. The majority of technology costs recorded in “Technology and infrastructure” are incurred in the U.S. and are included in our North America and AWS segments. The majority of infrastructure costs recorded in “Technology and infrastructure” are allocated to the AWS segment based on usage. There are no internal revenue transactions between our reportable segments. Our chief operating decision maker (“CODM”) regularly reviews consolidated net sales, consolidated operating expenses, and consolidated operating income (loss) by segment. Amounts included in consolidated operating expenses include “Cost of sales,” “Fulfillment,” “Technology and infrastructure,” “Sales and marketing,” “General and administrative,” and “Other operating expense (income), net.” Our CODM manages our business by reviewing annual forecasts and consolidated results by segment on a quarterly basis.
+
+North America
+
+The North America segment primarily consists of amounts earned from retail sales of consumer products (including from sellers) and advertising and subscription services through North America-focused online and physical stores. This segment includes export sales from these online stores.
+
+International"
+AMZN-030,1018724-0001018724-24-000083-p2item1a-0021,AMZN,10-Q,2024-05-01,p2item1a,keyword,d3f7d4b815890ef61db334a704ad80bf7398b9f31b72c9728c1674fe3acebab7,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000083/amzn-20240331.htm,"We are subject to general business regulations and laws, as well as regulations and laws specifically governing the internet, physical, e-commerce, and omnichannel retail, digital content, web services, electronic devices, advertising, artificial intelligence technologies and services, and other products and services that we offer or sell. These regulations and laws cover taxation, privacy, data use, data protection, data security, data localization, network security, consumer protection, pricing, content, copyrights, distribution, transportation, mobile communications, electronic device certification, electronic waste, energy consumption, environmental and climate-related regulation, electronic contracts and other communications, competition, employment, trade and protectionist measures, web services, the provision of online payment services, registration, licensing, and information reporting requirements, unencumbered internet access to our services or access to our facilities, the design and operation of websites, health, safety, and sanitation standards, the characteristics, legality, and quality of products and services, product labeling, the commercial operation of unmanned aircraft systems, healthcare, and other matters. It is not clear how existing laws governing issues such as property ownership, libel, privacy, data use, data protection, data security, data localization, network security, and consumer protection apply to aspects of our operations such as the internet, e-commerce, digital content, web services, electronic devices, advertising, and artificial intelligence technologies and services. A large number of jurisdictions regulate our operations, and the extent, nature, and scope of such regulations is evolving and expanding as the scope of our businesses expand. We are regularly subject to formal and informal reviews, investigations, and other proceedings by governments and regulatory authorities under existing laws, regulations, or interpretations or pursuing new and novel approaches to regulate our operations. For example, we face a number of open investigations based on claims that aspects of our operations infringe competition or consumer protection rules, including aspects of Amazon’s operation of its stores including its fulfillment network and Prime, Amazon’s acquisitions, and certain aspects of AWS’s offering of cloud services."
+AMZN-031,1018724-0001018724-24-000128-ex99-0002,AMZN,8-K,2024-08-01,ex99,keyword,19350d6683dfac6ad919be462c50f52638690d588ea8940e5bedd637f88727b8,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000128/amzn-20240630xex991.htm,"“We’re continuing to make progress on a number of dimensions, but perhaps none more so than the continued reacceleration in AWS growth,” said Andy Jassy, Amazon President & CEO. “As companies continue to modernize their infrastructure and move to the cloud, while also leveraging new Generative AI opportunities, AWS continues to be customers’ top choice as we have much broader functionality, superior security and operational performance, a larger partner ecosystem, and AI capabilities like SageMaker for model builders, Bedrock for those leveraging frontier models, Trainium for those where the cost of compute for training and inference matters, and Q for those wanting the most capable GenAI assistant for not just coding, but also software development and business integration.”
+
+Some other highlights since the company’s last earnings announcement include that Amazon:
+
+•Held its 10th Prime Day, the biggest Prime Day shopping event yet.
+
+•Delivered to Prime members at its fastest speeds ever in the first half of the year.
+
+•Expanded selection, including brands like Aéropostale, Bumble and bumble, and Kiehl’s.
+
+•Announced that U.S. Prime members can enjoy a Grubhub+ membership worth $120 a year.
+
+•Launched multiple AI-powered features for consumers, including shopping assistant Rufus for all U.S. mobile customers, playlist generator Maestro for Amazon Music, and a new search experience for Fire TV.
+
+•Launched Amazon’s Stores business in South Africa with same and next-day delivery.
+
+•Expanded Amazon Pharmacy’s RxPass program, which now offers Prime members on Medicare unlimited consumption of 60 broadly-used prescription medications for just $5 a month.
+
+•Released 19 films and series from Amazon MGM Studios, including:
+
+•Fallout, the second most watched Original title worldwide ever on Prime Video during its launch.
+
+•Season 4 of The Boys, reaching No. 1 on Prime Video in over 165 countries in its first two weeks.
+
+•The Idea of You, attracting ~50 million viewers in its first two weeks on Prime Video.
+
+•Earned 62 Primetime Emmy Award nominations, including 17 for Fallout and 16 for Mr. and Mrs. Smith.
+
+•Secured expansive streaming rights for the NBA for 11 seasons, starting in 2025-26.
+
+•Became the exclusive home of Monday Night National Hockey League games in Canada.
+
+•Launched Anthropic Claude 3.5 Sonnet, Meta Llama 3.1, and Mistral Large 2 models in Amazon Bedrock.
+
+•Shared that companies like AXA, DoorDash, Nasdaq, Rocket Insurance, SAP, Thomson Reuters, Workday, WPP, and Zendesk announced new applications built on Bedrock."
+AMZN-032,1018724-0001018724-24-000128-ex99-0003,AMZN,8-K,2024-08-01,ex99,keyword,262dba82e7a3a29a9d6f57bec6fd32be84d77e3dd5f6a6782c26b47487ff6bde,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000128/amzn-20240630xex991.htm,"•Delivered new AWS Graviton4-based compute instances, providing up to 30% better price-performance than the industry-leading AWS Graviton3 instances.
+
+•Signed new AWS agreements with Commonwealth Bank of Australia, Databricks, Discover Financial Services, Eli Lilly and Company, Experian, GE HealthCare, NetApp, Scopely, ServiceNow, Shutterfly, and many others—as well as AI startups Perplexity, H Company, and Observea.
+
+•Announced an AUD $2 billion strategic partnership with the Australian Government to provide a “Top Secret” AWS Cloud to enhance the nation’s defense and intelligence capabilities.
+
+•Added Austin and Miami to where self-driving robotaxi Zoox is deploying its test fleet on public roads.
+
+•Ranked No. 2 on LinkedIn’s Top Companies list and No. 1 in the technology sector.
+
+•Announced that all electricity consumed by Amazon’s operations, including its data centers, was matched with 100% renewable energy in 2023.
+
+•Replaced 95% of plastic air pillows in Amazon’s delivery packaging in North America with paper filler.
+
+•Announced an additional $1.4 billion commitment to Amazon’s Housing Equity Fund for affordable homes.
+
+For additional highlights from the quarter, visit aboutamazon.com/q2-2024-earnings.
+
+Financial Guidance
+
+The following forward-looking statements reflect Amazon.com’s expectations as of August 1, 2024, and are subject to substantial uncertainty. Our results are inherently unpredictable and may be materially affected by many factors, such as fluctuations in foreign exchange rates, changes in global economic and geopolitical conditions and customer demand and spending (including the impact of recessionary fears), inflation, interest rates, regional labor market constraints, world events, the rate of growth of the internet, online commerce, cloud services, and new and emerging technologies, and the various factors detailed below.
+
+Third Quarter 2024 Guidance
+
+•Net sales are expected to be between $154.0 billion and $158.5 billion, or to grow between 8% and 11% compared with third quarter 2023. This guidance anticipates an unfavorable impact of approximately 90 basis points from foreign exchange rates.
+
+•Operating income is expected to be between $11.5 billion and $15.0 billion, compared with $11.2 billion in third quarter 2023.
+
+•This guidance assumes, among other things, that no additional business acquisitions, restructurings, or legal settlements are concluded.
+
+Conference Call Information
+
+A conference call will be webcast live today at 2:30 p.m. PT/5:30 p.m. ET, and will be available for at least three months at amazon.com/ir. This call will contain forward-looking statements and other material information regarding the Company’s financial and operating results.
+
+Forward-Looking Statements"
+AMZN-033,1018724-0001018724-24-000158-ex99-0002,AMZN,8-K,2024-10-31,ex99,keyword,5d5be9a0f1f89c0eb8c3bcf37a3f5b58da905cd7af4b961cea8189f9df8fd9ba,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000158/amzn-20240930xex991.htm,"“As we get into the holiday season, we’re excited about what we have in store for customers,” said Andy Jassy, Amazon President & CEO. “We kicked off the holiday season with our biggest-ever Prime Big Deal Days and the launch of an all-new Kindle lineup that is significantly outperforming our expectations; and there’s so much more coming, from tens of millions of deals, to our NFL Black Friday game and Election Day coverage with Brian Williams on Prime Video, to over 100 new cloud infrastructure and AI capabilities that we’ll share at AWS re:Invent the week after Thanksgiving.”
+
+Some other highlights since the company’s last earnings announcement include that Amazon:
+
+•Held its annual Prime Big Deal Days shopping event, with record sales, number of items sold, and Prime member participation, saving Prime members more than $1 billion with deals across its Store.
+
+•Announced its first-ever fuel savings offer for Prime, saving U.S. members 10 cents a gallon on fuel at approximately 7,000 bp, Amoco, and ampm locations.
+
+•Expanded its selection of brands with AllSaints, Beats x Kim, Estée Lauder, kate spade new york, and more.
+
+•Announced plans to expand Amazon Pharmacy Same-Day Delivery of medications to nearly half the U.S. in 2025 by accelerating the roll out of new pharmacies in 20 more U.S. cities by the end of next year.
+
+•Launched new generative AI-powered features, including:
+
+•Rufus, a generative AI expert shopping assistant, becoming available in Canada, France, Germany, India, Italy, Spain, and the UK.
+
+•AI Shopping Guides, which simplifies product research by using generative AI to pair information about a product category with Amazon’s wide selection, making it easier for customers to find the right product for their needs.
+
+•Project Amelia, an AI assistant for sellers that offers tailored business insights to boost productivity and drive seller growth.
+
+•Video generation and live image capabilities for advertisers that makes it fast and easy for brands to deliver compelling creative for customers through short, animated campaign images.
+
+•Launched new foundation models in Amazon Bedrock and Amazon SageMaker, including AI21 Labs’ Jamba 1.5 family, Anthropic’s upgraded Claude 3.5 Sonnet, Meta’s Llama 3.2, Mistral Large 2, and multiple Stability AI models.
+
+•Launched new memory-optimized, compute-optimized, and general purpose Amazon EC2 instances based on AWS’s latest generation Graviton4 processor, which delivers 75% more memory bandwidth and 30% better compute performance than the previous generation Graviton chips."
+AMZN-034,1018724-0001018724-24-000158-ex99-0003,AMZN,8-K,2024-10-31,ex99,keyword,5600b02efce4cc46a0068c6cbbd5ac5d55f8af1a5b914da262c8dc0611018470,https://www.sec.gov/Archives/edgar/data/1018724/000101872424000158/amzn-20240930xex991.htm,"•Launched Oracle Database@AWS for customers to easily and quickly migrate Oracle workloads to dedicated infrastructure on AWS with minimal to no database or application changes.
+
+•Entered a strategic collaboration with Databricks to accelerate the development of custom models built with Databricks Mosaic AI on AWS, and for Databricks to leverage AWS Trainium chips as the preferred AI chip to help customers improve price-performance when building generative AI applications.
+
+•Signed AWS agreements with several large enterprise companies such as The Australia and New Zealand Banking Group Limited, Booking.com, Capital One, Datadog, Epic Games, Fast Retailing, Itaú Unibanco, Luma AI, National Australia Bank, Sony, T-Mobile, Toyota, and Veeva.
+
+•Launched Season 2 of The Lord of the Rings: The Rings of Power to positive reviews from customers and critics alike, ranking as Prime Video’s most watched returning season ever by hours watched.
+
+•Drew more than 17 million viewers to the Cowboys-Giants Thursday Night Football game, the most-streamed NFL regular season game ever.
+
+•Added Apple TV+ to Prime Video’s collection of over 100 add-on subscription channels in the U.S.
+
+•Announced a new Kindle lineup, including a reimagined Kindle Scribe with generative AI, the Kindle Colorsoft with a color display, and the fastest Kindle Paperwhite ever.
+
+•Announced investments in the Delivery Service Partner program of $2.1 billion in North America to support safety programs, training, incentives, and more, as well as 25 billion yen in Japan to support last mile delivery innovation, and safety and technology for drivers.
+
+•Announced plans to hire 250,000 people across its U.S. operations ahead of the holiday season. All seasonal employees earn at least $18 per hour and have access to comprehensive benefits like health care.
+
+•Announced plans for AWS to invest £8 billion over five years in the UK, supporting 14,000 jobs annually.
+
+•Removed plastic air pillows from all delivery packaging at fulfillment centers globally, including expanding its use of paper filler made from 100% recycled content across North America to replace plastic air pillows.
+
+•Mobilized Disaster Relief by Amazon to support communities around the world impacted by natural disasters. In the U.S., Amazon leveraged its Disaster Relief Hub in Atlanta to support communities impacted by Hurricanes Helene and Milton with donated goods, logistics support, and technology. In Europe, Amazon mobilized its global logistics infrastructure, inventory, teams, and technology to provide rapid assistance for flooding across the region.
+
+For additional highlights from the quarter, visit aboutamazon.com/news/company-news/amazon-earnings-q3-2024-highlights.
+
+Financial Guidance"
+AMZN-035,1018724-0001018724-25-000002-ex99-0002,AMZN,8-K,2025-02-06,ex99,keyword,fca9e9ef6f1549e921941d358adc2799c1f0af8c52b99163f4a25682d80944af,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000002/amzn-20241231xex991.htm,"•Operating cash flow increased 36% to $115.9 billion for the trailing twelve months, compared with $84.9 billion for the trailing twelve months ended December 31, 2023.
+
+•Free cash flow increased to $38.2 billion for the trailing twelve months, compared with $36.8 billion for the trailing twelve months ended December 31, 2023.
+
+•Free cash flow less principal repayments of finance leases and financing obligations increased to $35.5 billion for the trailing twelve months, compared with $32.2 billion for the trailing twelve months ended December 31, 2023.
+
+•Free cash flow less equipment finance leases and principal repayments of all other finance leases and financing obligations increased to $36.2 billion for the trailing twelve months, compared with $35.5 billion for the trailing twelve months ended December 31, 2023.
+
+“The holiday shopping season was the most successful yet for Amazon and we appreciate the support of our customers, selling partners, and employees who helped make it so,” said Andy Jassy, President and CEO, Amazon. “When we look back on this quarter several years from now, I suspect what we’ll most remember is the remarkable innovation delivered across all of our businesses, none more so than in AWS where we introduced our new Trainium2 AI chip, our own foundation models in Amazon Nova, a plethora of new models and features in Amazon Bedrock that give customers flexibility and cost savings, liberating transformations in Amazon Q to migrate from old platforms, and the next edition of Amazon SageMaker to pull data, analytics, and AI together more concertedly. These benefits are often realized by customers (and the business) several months down the road, but these are substantial enablers in this emerging technology environment and we’re excited to see what customers build.”
+
+Some other highlights since the company’s last earnings announcement include that Amazon:
+
+•Delivered at its fastest speeds ever for Prime members in 2024.
+
+•Delivered over 65% more items to U.S. Prime members the same day or overnight than in Q4 2023.
+
+•Held a record-breaking Black Friday Week and Cyber Monday deal event that was also the largest ever for independent sellers in Amazon’s store.
+
+•Was named lowest-priced U.S. retailer by Profitero for the eighth year in a row. The study found Amazon’s online prices were an average of 14% less than other major U.S. retailers.
+
+•Launched Amazon Haul, a new shopping experience in Amazon’s U.S. shopping app and mobile site, with ultra-low prices."
+AMZN-036,1018724-0001018724-25-000002-ex99-0003,AMZN,8-K,2025-02-06,ex99,keyword,93fcfc3476b00cc7194305267e7c2166a4bac39f72da566a30aa892f4fb75796,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000002/amzn-20241231xex991.htm,"•Drew 50 million worldwide viewers to Red One in its first four days, making it Amazon MGM Studios’ most-watched film debut ever on Prime Video.
+
+•Finished third season of Thursday Night Football on Prime Video with a full-season average of 13.2 million viewers according to Nielsen—an 11% increase over 2023—and a peak of 24.7 million during the Wild Card playoff game between the Steelers and Ravens.
+
+•Had the biggest Q4 for Kindle device sales in over a decade, with a new lineup of Kindles driving a 30% year-over-year increase in devices sold.
+
+•Held 13th AWS re:Invent, with 55,000+ in-person attendees and 1.8 million livestream viewers.
+
+•Announced a plethora of new AWS capabilities, including:
+
+•Amazon Nova: Amazon’s own family of foundation models that compare favorably in intelligence against the leading models in the world, but offer lower latency, lower price, and integration with key Bedrock features like fine-tuning, model distillation, knowledge bases, and agentic capabilities. Thousands of customers are already using Nova, including Deloitte, SAP, Robinhood, Palantir Technologies, Dentsu Digital, AppFolio, Fortinet, Trellix, 123RF, Envato, Pattern, and Ativion.
+
+•General Availability of Trainium2: EC2 Trn2 instances, powered by Trainium2 AI chips, offer 30-40% better price-performance than current generations of GPU-based instances.
+
+•Trainium2 UltraServers: A new type of EC2 Trn2 offering using ultra-fast networking to connect four Trn2 servers into an extra large server, enabling even faster training and inference on AWS.
+
+•Project Rainier: A collaboration with Anthropic using hundreds of thousands of Trainium2 chips to build the world’s largest AI compute cluster.
+
+•New leading foundation models in Amazon Bedrock from DeepSeek, Luma AI, and poolside.
+
+•Amazon Bedrock Marketplace, where customers can choose from over 100 popular models.
+
+•New features for Amazon Bedrock, including Prompt Caching, Intelligent Prompt Routing, and Model Distillation, all of which help customers achieve lower cost and latency in their inference.
+
+•New Amazon SageMaker AI features, including the ability to manage costs and prioritize which workloads should receive capacity when budgets are reached.
+
+•New Amazon Q Transformations that make it easy to move from Windows .NET applications to Linux, VMware to EC2, and accelerates mainframe migrations from multi-year to multi-quarter efforts.
+
+•Amazon Aurora DSQL: The fastest distributed database with 99.999% multi-Region availability, virtually unlimited scalability, strong consistency, zero infrastructure management, PostgreSQL compatibility, and 4x faster reads and writes vs. other popular distributed SQL databases.
+
+•S3 Tables, making S3 the first cloud object store with fully-managed support for Apache Iceberg."
+AMZN-037,1018724-0001018724-25-000002-ex99-0004,AMZN,8-K,2025-02-06,ex99,keyword,be390ed534cc78337ed8717fec993566d627dfa16bab02543bfa44ca0a5fc8e3,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000002/amzn-20241231xex991.htm,"•S3 Metadata, automatically generating queryable metadata, simplifying data discovery, business analytics, and real-time inference to help customers unlock the value of their data in S3.
+
+•The next generation of Amazon SageMaker, which brings together all of the data, analytics services and AI services into one interface to do analytics and AI more easily at scale.
+
+•Signed new AWS agreements with the U.S. Army, Intuit, PayPal, Norwegian Cruise Line Holdings Ltd., Northrop Grumman, Medtronic, The Guardian Life Insurance Company of America, Reddit, Japan Airlines, Baker Hughes, The Hertz Corporation, Redfin, Chime, and Asana.
+
+•Announced GROW with SAP on AWS to help customers rapidly deploy SAP’s enterprise resource planning.
+
+•Launched AWS Asia Pacific (Thailand) and AWS Mexico (Central) Regions.
+
+•Supported California wildfire relief efforts with over 500,000 essential items delivered through Disaster Relief by Amazon, AWS cloud technology to help emergency responders, and $10 million in donations.
+
+•Supported communities hit by flooding in southern Spain by donating and delivering more than 265,000 essential items.
+
+•Ranked No. 3 on Fortune magazine’s World’s Most Admired Companies list.
+
+•Won awards for advancement in workplace health and safety from Brandon Hall Group, the Network of Employers for Traffic Safety, and Verdantix.
+
+•Was named the world’s largest corporate purchaser of renewable energy by Bloomberg NEF for the fifth straight year, with more than 600 wind and solar projects globally.
+
+Visit aboutamazon.com/news/company-news/amazon-earnings-q4-2024-report.
+
+Financial Guidance
+
+The following forward-looking statements reflect Amazon.com’s expectations as of February 6, 2025, and are subject to substantial uncertainty. Our results are inherently unpredictable and may be materially affected by many factors, such as fluctuations in foreign exchange rates, changes in global economic and geopolitical conditions and customer demand and spending (including the impact of recessionary fears), inflation, interest rates, regional labor market constraints, world events, the rate of growth of the internet, online commerce, cloud services, and new and emerging technologies, and the various factors detailed below.
+
+First Quarter 2025 Guidance
+
+•Net sales are expected to be between $151.0 billion and $155.5 billion, or to grow between 5% and 9% compared with first quarter 2024. This guidance anticipates an unusually large, unfavorable impact of approximately $2.1 billion, or 150 basis points, from foreign exchange rates. Also, as a reminder, in first quarter 2024 the impact from Leap Year added approximately $1.5 billion in net sales."
+AMZN-038,1018724-0001018724-25-000004-item1-0003,AMZN,10-K,2025-02-07,item1,keyword,4ec2faa0f4c4883c3279aeb50c032c2fa0269b11fce07d3a729385a83b8e23b0,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm,"Our businesses encompass a large variety of product types, service offerings, and delivery channels. The worldwide marketplace in which we compete is evolving rapidly and intensely competitive, and we face a broad array of competitors from many different industry sectors around the world. Our current and potential competitors include: (1) physical, e-commerce, and omnichannel retailers, publishers, vendors, distributors, manufacturers, and producers of the products we offer and sell to consumers and businesses; (2) publishers, producers, and distributors of physical, digital, and interactive media of all types and all distribution channels; (3) web search engines, comparison shopping websites, social networks, web portals, virtual assistants, and other online and app-based means of discovering, using, or acquiring goods and services, either directly or in collaboration with other retailers; (4) companies that provide e-commerce services, including website development and hosting, omnichannel sales, inventory and supply chain management, advertising, fulfillment, customer service, and payment processing; (5) companies that provide fulfillment and logistics services for themselves or for third parties, whether online or offline; (6) companies that provide information technology services or products, including on-premises or cloud-based infrastructure, tools and services relating to artificial intelligence, and other services; (7) companies that design, manufacture, market, or sell consumer electronics, communications, and other electronic devices and services; (8) companies that sell grocery products online and in physical stores; (9) companies that provide advertising services, whether in digital or other formats; and (10) providers of virtual or in-person healthcare services. We believe that the principal competitive factors in our retail businesses include selection, price, and convenience, including fast and reliable fulfillment. Additional competitive factors for our seller and enterprise services include the quality, speed, and reliability of our services and tools, as well as customers’ ability and willingness to change business practices. Some of our current and potential competitors have greater resources, longer histories, more customers, greater brand recognition, and greater control over inputs critical to our various businesses. They may secure better terms from suppliers, adopt more aggressive pricing, pursue restrictive distribution agreements that restrict our access to supply, direct consumers to their own offerings instead of ours, lock-in potential customers with restrictive terms, and devote more resources to technology, infrastructure, fulfillment, and marketing. The internet facilitates competitive entry and comparison shopping, which enhances the ability of new, smaller, or lesser-known businesses to compete against us."
+AMZN-039,1018724-0001018724-25-000004-item1-0006,AMZN,10-K,2025-02-07,item1,keyword,f26e34fa2a74b98f8e9f46d09d1d61d94c5145792df104c84ebec2ae54ac6f73,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm,"Brian T. Olsavsky. Mr. Olsavsky has served as Senior Vice President and Chief Financial Officer since June 2015, Vice President, Finance for the Global Consumer Business from December 2011 to June 2015, and numerous financial leadership roles across Amazon with global responsibility since April 2002.
+
+Shelley L. Reynolds. Ms. Reynolds has served as Vice President, Worldwide Controller, and Principal Accounting Officer since April 2007.
+
+David A. Zapolsky. Mr. Zapolsky has served as Senior Vice President, Global Public Policy and General Counsel since May 2023. He served as our Secretary from September 2012 to January 2024, Senior Vice President and General Counsel from May 2014 to May 2023, Vice President and General Counsel from September 2012 to May 2014, and as Vice President and Associate General Counsel for Litigation and Regulatory matters from April 2002 until September 2012.
+
+Board of Directors
+
+Name | Age | Position
+Jeffrey P. Bezos | 61 | Executive Chair
+Andrew R. Jassy | 57 | President and Chief Executive Officer
+Keith B. Alexander | 73 | Former Chair and CEO of IronNet, Inc.
+Edith W. Cooper | 63 | Former Executive Vice President, Goldman Sachs Group, Inc.
+Jamie S. Gorelick | 74 | Partner, Wilmer Cutler Pickering Hale and Dorr LLP
+Daniel P. Huttenlocher | 66 | Dean, MIT Schwarzman College of Computing
+Andrew Y. Ng | 48 | Managing General Partner, AI Fund, L.P.
+Indra K. Nooyi | 69 | Former Chair and CEO, PepsiCo, Inc.
+Jonathan J. Rubinstein | 68 | Former co-CEO, Bridgewater Associates, LP
+Brad D. Smith | 60 | President, Marshall University
+Patricia Q. Stonesifer | 68 | Former President and Chief Executive Officer, Martha’s Table
+Wendell P. Weeks | 65 | Chairman and CEO, Corning Incorporated"
+AMZN-040,1018724-0001018724-25-000004-item1a-0009,AMZN,10-K,2025-02-07,item1a,keyword,392edff76387dd57f608753f632c5ef2c359dcce61228c47b4b7cea363940c27,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm,"Our revenue growth may not be sustainable, and our percentage growth rates may decrease. Our revenue and operating profit growth depends on the continued growth of demand for the products and services offered by us or our sellers, and our business is affected by, among other things, general economic, business, and geopolitical conditions worldwide. A softening of demand, whether caused by changes in customer preferences or a weakening of the U.S. or global economies, may result in decreased revenue or growth.
+
+Our sales and operating results will also fluctuate for many other reasons, including due to factors described elsewhere in this section and the following:
+
+•our ability to retain and increase sales to existing customers, attract new customers, and satisfy our customers’ demands;
+
+•our ability to retain and expand our network of sellers;
+
+•our ability to offer products on favorable terms, manage inventory, and fulfill orders;
+
+•the introduction of competitive stores, websites, products, services, price decreases, or improvements;
+
+•changes in usage or adoption rates of the internet, e-commerce, electronic devices, web services, satellite communications services, and artificial intelligence and machine learning technologies, products, and services, including outside the U.S.;
+
+•timing, effectiveness, and costs of expansion and upgrades of our systems and infrastructure;
+
+•the success of our geographic, service, and product line expansions;
+
+•the extent to which we finance, and the terms of any such financing for, our current operations and future growth;
+
+•the outcomes of legal proceedings and claims, which may include significant monetary damages or injunctive relief and could have a material adverse impact on our operating results;
+
+•variations in the mix of products and services we sell;
+
+•variations in our level of merchandise and vendor returns;
+
+•the extent to which we offer fast and free delivery, continue to reduce prices worldwide, and provide additional benefits to our customers;
+
+•factors affecting our reputation or brand image (including any actual or perceived inability to achieve our goals or commitments, whether related to sustainability, customers, employees, or other topics), and public perceptions regarding our positions on social or ethical issues and our development and use of artificial intelligence, machine learning, and automation technologies, products, and services;
+
+•the extent to which we invest in technology and infrastructure, fulfillment, and other expense categories;"
+AMZN-041,1018724-0001018724-25-000004-item1a-0021,AMZN,10-K,2025-02-07,item1a,keyword,39cb5ee18d6bdfd4a2ef164226049d694814c57305d81f5ab8eb74c5a96e08a4,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm,"We are subject to general business regulations and laws, as well as regulations and laws specifically governing the internet, physical, e-commerce, and omnichannel retail, digital content, web services, electronic devices, advertising, artificial intelligence technologies and services, satellite communications services, healthcare, and other products and services that we offer or sell. These regulations and laws cover taxation, privacy, data use, data protection, data security, data localization, network security, consumer protection, pricing, content, copyrights, distribution, transportation, communications, electronic device certification, electronic waste, energy consumption, environmental and climate-related regulation, electronic contracts"
+AMZN-042,1018724-0001018724-25-000004-item1a-0022,AMZN,10-K,2025-02-07,item1a,keyword,aa0d4cdc7c4eb8ebd312e9267c90cdfd9f769603dfb9528101593e2cf9bf434e,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm,"and other communications, competition, employment, trade and protectionist measures, web services, the provision of online payment services, registration, licensing, and information reporting requirements, unencumbered internet access to our services or access to our facilities, the design and operation of websites, health, safety, and sanitation standards, the characteristics, legality, and quality of products and services, product labeling, the commercial operation of unmanned aircraft systems, healthcare, and other matters. It is not clear how existing laws governing issues such as property ownership, libel, privacy, data use, data protection, data security, data localization, network security, and consumer protection apply to aspects of our operations such as the internet, e-commerce, digital content, web services, electronic devices, advertising, artificial intelligence technologies and services, satellite communications services, and healthcare. A large number of jurisdictions regulate our operations, and the extent, nature, and scope of such regulations is evolving and expanding as the scope of our businesses expand. We are regularly subject to formal and informal reviews, investigations, and other proceedings by governments and regulatory authorities under existing laws, regulations, or interpretations or pursuing new and novel approaches to regulate our operations. For example, we face a number of open investigations based on claims that aspects of our operations infringe competition or consumer protection rules, including aspects of Amazon’s operation of its stores, including its fulfillment network and Prime, and certain aspects of AWS’s offering of cloud services. We strongly dispute these claims and intend to defend ourselves vigorously in these investigations. Similarly, we face investigations under a growing patchwork of laws and regulations governing the collection, use, and disclosure of data, the interpretation of which continues to evolve, leading to uncertainty about how regulators will view our privacy practices. In addition, regulators and lawmakers are increasingly focused on controlling additional aspects of the operations of technology companies and companies they have characterized to be online “gatekeepers” through the application of existing regulations and laws and the adoption of new regulations and laws, which increases our compliance costs and limits the operation of our business."
+AMZN-043,1018724-0001018724-25-000004-item7-0004,AMZN,10-K,2025-02-07,item7,keyword,7d58e57ae82c44e494a7231d8aba12ad2862003ed415f694261744a784b3ef6d,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm,"We expect spending in technology and infrastructure will increase over time as we add computer scientists, designers, software and hardware engineers, and merchandising employees. Our technology and infrastructure investment and capital spending projects often support a variety of product and service offerings due to geographic expansion and the cross-functionality of our systems and operations. We seek to invest efficiently in several areas of technology and infrastructure, including AWS, and expansion of new and existing product categories and service offerings, as well as in infrastructure to enhance the customer experience and improve our process efficiencies. We believe that advances in technology, specifically the speed and reduced cost of processing power, data storage and analytics, improved wireless connectivity, and the practical applications of artificial intelligence and machine learning, will continue to improve users’ experience on the internet and increase its ubiquity in people’s lives. To best take advantage of these continued advances in technology, we are investing in AWS, which offers a broad set of on-demand technology services, including compute, storage, database, analytics, and machine learning, and other services to developers and enterprises of all sizes. We are also investing in initiatives to build and deploy innovative and efficient software and electronic devices as well as other initiatives including the development of a satellite network for global broadband service and autonomous vehicles for ride-hailing services.
+
+We seek to efficiently manage shareholder dilution while maintaining the flexibility to issue shares for strategic purposes, such as financings, acquisitions, and aligning employee compensation with shareholders’ interests. We utilize restricted stock units as our primary vehicle for equity compensation because we believe this compensation model aligns the long-term interests of our shareholders and employees. In measuring shareholder dilution, we include all vested and unvested stock awards outstanding, without regard to estimated forfeitures. Total shares outstanding plus outstanding stock awards were 10.8 billion and 10.9 billion as of December 31, 2023 and 2024."
+AMZN-044,1018724-0001018724-25-000004-item7-0011,AMZN,10-K,2025-02-07,item7,keyword,0a434769376f216dec09df10da8386e4426ed6c343a993473ac7053dcf90ab8c,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm,"The sale of additional equity or convertible debt securities would be dilutive to our shareholders. In addition, we will, from time to time, consider the acquisition of, or investment in, complementary businesses, products, services, capital infrastructure, and technologies, which might affect our liquidity requirements or cause us to secure additional financing, or issue additional equity or debt securities. There can be no assurance that additional credit lines or financing instruments will be available in amounts or on terms acceptable to us, if at all. In addition, economic conditions and actions by policymaking bodies are contributing to changing interest rates and significant capital market volatility, which, along with any increases in our borrowing levels, could increase our future borrowing costs.
+
+Results of Operations
+
+We have organized our operations into three segments: North America, International, and AWS. These segments reflect the way the Company evaluates its business performance and manages its operations. See Item 8 of Part II, “Financial Statements and Supplementary Data — Note 10 — Segment Information.”
+
+Overview
+
+Macroeconomic factors, including changes in inflation and interest rates, global economic and geopolitical developments, and the development and adoption of technologies and services, including artificial intelligence, have direct and indirect impacts on our results of operations that are difficult to isolate and quantify. These could affect customer demand for our products and services, our ability to predict growth needs, expenses, and the benefits we gain from new technologies. We expect some or all of them to continue to impact our operations into Q1 2025.
+
+Net Sales
+
+Net sales include product and service sales. Product sales represent revenue from the sale of products and related shipping fees and digital media content where we record revenue gross. Service sales primarily represent third-party seller fees, which includes commissions and any related fulfillment and shipping fees, AWS sales, advertising services, Amazon Prime membership fees, and certain digital media content subscriptions. Net sales information is as follows (in millions):"
+AMZN-045,1018724-0001018724-25-000004-item8-0008,AMZN,10-K,2025-02-07,item8,keyword,15f394c8c38cad95c13685e2b6426f28162a84cf2e67554875fa8df11a3cf34d,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm,"Common Stock
+Shares | Amount | Treasury Stock | Additional Paid-In Capital | Accumulated Other Comprehensive Income (Loss) | Retained Earnings | Total Stockholders’ Equity
+Balance as of January 1, 2022 | 10,175 | $106 | $(1,837) | $55,437 | $(1,376) | $85,915 | $138,245
+Net loss | (2,722) | (2,722)
+Other comprehensive income (loss) | (3,111) | (3,111)
+Stock-based compensation and issuance of employee benefit plan stock | 113 | 2 | 19,629 | 19,631
+Common stock repurchased | (46) | (6,000) | (6,000)
+Balance as of December 31, 2022 | 10,242 | 108 | (7,837) | 75,066 | (4,487) | 83,193 | 146,043
+Net income | 30,425 | 30,425
+Other comprehensive income (loss) | 1,447 | 1,447
+Stock-based compensation and issuance of employee benefit plan stock | 141 | 1 | 23,959 | 23,960
+Balance as of December 31, 2023 | 10,383 | 109 | (7,837) | 99,025 | (3,040) | 113,618 | 201,875
+Net income | 59,248 | 59,248
+Other comprehensive income (loss) | 3,006 | 3,006
+Stock-based compensation and issuance of employee benefit plan stock | 210 | 2 | 21,839 | 21,841
+Balance as of December 31, 2024 | 10,593 | $111 | $(7,837) | $120,864 | $(34) | $172,866 | $285,970
+
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS
+
+Note 1 — DESCRIPTION OF BUSINESS, ACCOUNTING POLICIES, AND SUPPLEMENTAL DISCLOSURES
+
+Description of Business
+
+We seek to be Earth’s most customer-centric company. In each of our segments, we serve our primary customer sets, consisting of consumers, sellers, developers, enterprises, content creators, advertisers, and employees. We serve consumers through our online and physical stores and focus on selection, price, and convenience. We offer programs that enable sellers to grow their businesses, sell their products in our stores, and fulfill orders using our services, and programs that allow authors, independent publishers, musicians, filmmakers, Twitch streamers, skill and app developers, and others to publish and sell content. We serve developers and enterprises of all sizes through AWS, which offers a broad set of on-demand technology services, including compute, storage, database, analytics, and machine learning, and other services. We also manufacture and sell electronic devices. In addition, we provide advertising services to sellers, vendors, publishers, authors, and others, through programs such as sponsored ads, display, and video advertising.
+
+We have organized our operations into three segments: North America, International, and AWS. See “Note 10 — Segment Information.”
+
+Common Stock Split"
+AMZN-046,1018724-0001018724-25-000004-item8-0010,AMZN,10-K,2025-02-07,item8,keyword,e2067ae282ef31ce5b7a73ec8af15aa4d0fdbcff6044fc9833380693e401fc4b,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm,"We completed our most recent servers and networking equipment useful life study in Q4 2024, and are changing the useful lives of a subset of our servers and networking equipment, effective January 1, 2025, from six years to five years. For those assets included in “Property and equipment, net” as of December 31, 2024, whose useful life will change from six years to five years, we anticipate a decrease in 2025 operating income of approximately $0.7 billion. We expect to continue to acquire more of these server and networking assets in 2025. In 2024, we also determined, primarily in the fourth quarter, to retire early certain of our servers and networking equipment. We recorded approximately $920 million of accelerated depreciation and related charges for the quarter ended December 31, 2024 related to these decisions. The accelerated depreciation will continue into 2025 and decrease operating income by approximately $0.6 billion in 2025. These two changes above are due to an increased pace of technology development, particularly in the area of artificial intelligence and machine learning.
+
+We had previously increased the useful life of our servers from five years to six years effective January 1, 2024. The effect of this change for the year ended December 31, 2024, based on servers that were included in “Property and equipment,
+
+net” as of December 31, 2023 and those acquired during the year ended December 31, 2024, was a reduction in depreciation and amortization expense of $3.2 billion and a benefit to net income of $2.5 billion, or $0.23 per basic share and $0.23 per diluted share.
+
+These server and networking equipment useful life changes primarily impact our AWS segment.
+
+For the year ended December 31, 2022, we recorded approximately $1.1 billion, of which $720 million was recorded in the fourth quarter, of impairments of property and equipment and operating leases primarily related to physical stores. These charges were recorded in “Other operating expense (income), net” and primarily impacted our North America segment. For the year ended December 31, 2022, we also recorded expenses of approximately $480 million, primarily in “Fulfillment,” primarily relating to terminating contracts for certain leases not yet commenced as well as other purchase commitments, which primarily impacted our North America segment."
+AMZN-047,1018724-0001018724-25-000034-ex99-0002,AMZN,8-K,2025-05-01,ex99,keyword,16e7534817703fda4d89718981f3c1e9c0eb79355a5ec154198e1c12ef5b38f3,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000034/amzn-20250331xex991.htm,"•Introduced Alexa+, our next-generation Alexa personal assistant who’s meaningfully smarter and more capable than her prior self, can both answer virtually any question and take actions, and is free with Prime.
+
+•Held deal events worldwide to help customers save over $500 million across Big Spring Sale in the U.S. and Canada, Spring Deal Days in Europe, and Ramadan/Eid Sale events in Egypt, Saudi Arabia, Türkiye, and UAE.
+
+•Announced Amazon’s 11th Prime Day will be in July, when customers can expect millions of deals globally on vast selection.
+
+•Announced $4 billion investment through 2026 to expand Amazon’s rural delivery network to bring even faster delivery to customers in less densely populated areas across the U.S.
+
+•Launched Amazon.ie in Ireland, offering over 200 million products with low prices, fast delivery, and local Prime membership.
+
+•Expanded selection with Michael Kors, GAME 7, The Ordinary, Laura Mercier, and tarte.
+
+•Introduced Saks on Amazon, where customers can shop a refined luxury assortment of fashion and beauty items from brands like Dolce&Gabbana, Balmain, Giambattista Valli, Erdem, and Fear of God.
+
+•Launched ‘Interests’ to find products for customers’ passions and hobbies using generative AI.
+
+•Introduced new ways to shop in the Amazon Shopping app to help customers discover and buy products from other brands’ websites even when Amazon doesn’t carry the items directly. Amazon now shows customers select products from other brands in search results and either links to their websites so customers can purchase the items there or enables customers to seamlessly purchase the products using Amazon’s new ‘Buy for Me’ feature.
+
+•Began full-scale deployment of Project Kuiper’s satellite internet network with launch and activation of first satellites.
+
+•Began testing Zoox in Los Angeles, the sixth location for Amazon’s self-driving technology.
+
+•Announced a joint venture to create the next generation of the esteemed James Bond film franchise, including naming producers Amy Pascal and David Heyman to produce the next film.
+
+•Drew 54.6 million viewers for Reacher’s Season 3 debut in first 19 days, Amazon’s biggest returning season ever.
+
+•Premiered Season 2 of LeBron James’s Mind the Game podcast, co-hosted by NBA Hall-of-Famer Steve Nash and distributed by Wondery."
+AMZN-048,1018724-0001018724-25-000034-ex99-0003,AMZN,8-K,2025-05-01,ex99,keyword,23a4662c29e028ff79f1e908e63f5c8dcddb12b75ffaaeba7a5893f7e3b04963,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000034/amzn-20250331xex991.htm,"•Continued to grow Amazon Nova rapidly with customers such as Slack, Siemens, Coinbase, Sumo Logic, FanDuel, Blue Origin, Glean, Domo, Stats Perform, Bynder, PDI Technologies, Gradial, ASAPP, ezCater, NinjaTech AI, Jobcase, Rubbrband, Data Kinetic, Avahi, GuardianGamer, and Lennar, all starting to use Nova. Also introduced new Nova capabilities, including:
+
+•Amazon Nova Sonic: Speech-to-speech foundation model for developers to build human-like voice-based AI applications, such as customer service call automation, AI agents, and more (available in Amazon Bedrock).
+
+•Amazon Nova Act SDK: New AI model trained to perform actions within a web browser, enabling developers to build action-oriented agents by breaking down complex workflows into reliable atomic commands (like “search,” or “checkout”).
+
+•Amazon Nova Premier: Most capable of Amazon’s multimodal models for complex tasks like coding, building multi-step agents, and long-form document and video understanding.
+
+•General availability of Amazon Nova models in Europe and Asia Pacific.
+
+•Signed new AWS agreements with Adobe, Uber, Nasdaq, Ericsson, Fujitsu, Cisco, Cargill, Mitsubishi Electric Corporation, General Dynamics Information Technology, GE Vernova, Booz Allen Hamilton, NextEra Energy, Publicis Sapient, Elastic, KPN, and Netsmart.
+
+•Announced new AWS offerings, including:
+
+•AWS Outposts racks (for high throughput, network-intensive workloads) and servers (for Cloud Radio Access Network workloads) to help telecom customers build future-proof cloud infrastructure that supports 5G and beyond.
+
+•New foundation models in Amazon Bedrock, including Anthropic’s Claude 3.7 Sonnet, DeepSeek’s R1, Meta’s Llama 4 family of models, and Mistral AI’s Pixtral Large.
+
+•General availability of Amazon SageMaker Unified Studio for data engineers to easily find and access data to collaborate and build faster.
+
+•General availability of the scenarios capability of Amazon Q in QuickSight, with an advanced AI agent to help customers leverage natural language to perform expert-level data analysis.
+
+•Announced Ocelot, Amazon’s first quantum computing chip prototype that reduces resources needed for quantum error correction by up to 90%.
+
+•Ranked No. 2 on LinkedIn’s U.S. Top Companies list of the best workplaces for career growth.
+
+•Continued making significant progress on safety—improving Amazon’s recordable incident rate by 34% and lost-time incident rate by 65% across operations over past five years.
+
+Visit aboutamazon.com/news/company-news/amazon-earnings-q1-2025-report.
+
+Financial Guidance"
+AMZN-049,1018724-0001018724-25-000036-p1item1-0005,AMZN,10-Q,2025-05-02,p1item1,keyword,9b3018ae4c3f7a74048f34ec204f50eb0365d997b839bd577dd1dff8d15acc8f,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000036/amzn-20250331.htm,"Principles of Consolidation
+
+The consolidated financial statements include the accounts of Amazon.com, Inc. and its consolidated entities (collectively, the “Company”), consisting of its wholly-owned subsidiaries and those entities in which we have a variable interest and of which we are the primary beneficiary, including certain entities in India and certain entities that support our healthcare services and production and distribution of video content. Intercompany balances and transactions between consolidated entities are eliminated.
+
+Use of Estimates
+
+The preparation of financial statements in conformity with GAAP requires estimates and assumptions that affect the reported amounts of assets and liabilities, revenues and expenses, and related disclosures of contingent liabilities in the consolidated financial statements and accompanying notes. Estimates are used for, but not limited to, income taxes, useful lives of equipment, commitments and contingencies, valuation of acquired intangibles and goodwill, stock-based compensation forfeiture rates, vendor funding, inventory valuation, collectability of receivables, impairment of property and equipment and operating leases, valuation and impairment of investments, self-insurance liabilities, viewing patterns of capitalized video content, and the determination of when to capitalize certain costs relating to new products or service offerings. Actual results could differ materially from these estimates. We review the useful lives of equipment on an ongoing basis.
+
+Effective January 1, 2025 we changed our estimate of the useful lives of a subset of our servers and networking equipment from six years to five years. The shorter useful lives are due to the increased pace of technology development, particularly in the area of artificial intelligence and machine learning. The effect of this change in estimate for Q1 2025, based on servers and networking equipment that were included in “Property and equipment, net” as of December 31, 2024 and those acquired during the three months ended March 31, 2025, was an increase in depreciation and amortization expense of $217 million and a reduction in net income of $162 million, or $0.02 per basic share and $0.02 per diluted share, which primarily impacted our AWS segment.
+
+Supplemental Cash Flow Information
+
+The following table shows supplemental cash flow information (in millions):"
+AMZN-050,1018724-0001018724-25-000036-p1item2-0007,AMZN,10-Q,2025-05-02,p1item2,keyword,7b7b6e76074a19512ffc0ea2846ac81362dc45c3a1f578a9fb661ee5b58b52c4,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000036/amzn-20250331.htm,"The sale of additional equity or convertible debt securities would be dilutive to our shareholders. In addition, we will, from time to time, consider the acquisition of, or investment in, complementary businesses, products, services, capital infrastructure, and technologies, which might affect our liquidity requirements or cause us to secure additional financing, or issue additional equity or debt securities. There can be no assurance that additional credit lines or financing instruments will be available in amounts or on terms acceptable to us, if at all. In addition, economic conditions and actions by policymaking bodies are contributing to changing interest rates and significant capital market volatility, which, along with any increases in our borrowing levels, could increase our future borrowing costs.
+
+Results of Operations
+
+We have organized our operations into three segments: North America, International, and AWS. These segments reflect the way the Company evaluates its business performance and manages its operations. See Item 1 of Part I, “Financial Statements — Note 8 — Segment Information.”
+
+Overview
+
+Macroeconomic factors, including changes in inflation and interest rates, global economic and geopolitical developments, including unpredictable shifts in global tariff and trade policies, and the development and adoption of technologies and services, including artificial intelligence, have direct and indirect impacts on our results of operations that are difficult to predict, isolate, and quantify. These could affect customer demand for our products and services, our ability to forecast growth needs, expenses, and benefits from new technologies. We expect some or all of them to continue to impact our operations into Q2 2025.
+
+Net Sales
+
+Net sales include product and service sales. Product sales represent revenue from the sale of products and related shipping fees and digital media content where we record revenue gross. Service sales primarily represent third-party seller fees, which includes commissions and any related fulfillment and shipping fees, AWS sales, advertising services, Amazon Prime membership fees, and certain digital media content subscriptions. Net sales information is as follows (in millions):"
+AMZN-051,1018724-0001018724-25-000036-p2item1a-0015,AMZN,10-Q,2025-05-02,p2item1a,keyword,d056cb8d3877efac56b0537c63a17ea87905ba8448aa9da5df3aa00f00395e9d,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000036/amzn-20250331.htm,"We have significant suppliers, including content and technology licensors, and in some cases, limited or single-sources of supply, that are important to our sourcing, services, manufacturing, and any related ongoing servicing of merchandise and content. We do not have long-term arrangements with most of our suppliers to guarantee availability of merchandise, content, components, or services, particular payment terms, or the extension of credit limits. Decisions by our current suppliers to limit or stop selling or licensing merchandise, content, components, or services to us on acceptable terms, or delay delivery, including as a result of one or more supplier bankruptcies due to poor economic conditions, natural or human-caused disasters (including public health crises), geopolitical events, labor and trade disputes, or for other reasons, may result in our being unable to procure alternatives from other suppliers in a timely and efficient manner and on acceptable terms, or at all. For example, we rely on a limited group of suppliers for semiconductor products, including products related to artificial intelligence infrastructure such as graphics processing units. Constraints on the availability of these products could adversely affect our ability to develop and operate artificial intelligence technologies, products, or services. In addition, violations by our suppliers or other vendors of applicable laws, regulations, contractual terms, intellectual property rights of others, or our Supply Chain Standards, as well as products or practices regarded as unethical, unsafe, or hazardous, could expose us to claims, damage our reputation, limit our growth, and negatively affect our operating results.
+
+Our Commercial Agreements, Strategic Alliances, and Other Business Relationships Expose Us to Risks"
+AMZN-052,1018724-0001018724-25-000036-p2item1a-0020,AMZN,10-Q,2025-05-02,p2item1a,keyword,db5d7261c3245fbeaa39d261e4cd5a7c6d4dfa83b4336dc07500a6be6c56e3ea,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000036/amzn-20250331.htm,"We have a rapidly evolving business model. The trading price of our common stock fluctuates significantly in response to, among other risks, the risks described elsewhere in this Item 1A, as well as:
+
+•changes in interest rates;
+
+•conditions or trends in the internet and the industry segments we operate in;
+
+•quarterly variations in operating results;
+
+•fluctuations in the stock market in general and market prices for internet-related companies in particular;
+
+•changes in financial estimates by us or decisions to increase or decrease future spending or investment levels;
+
+•changes in financial estimates and recommendations by securities analysts;
+
+•changes in our capital structure, including issuance of additional debt or equity to the public;
+
+•changes in the valuation methodology of, or performance by, other e-commerce or technology companies; and
+
+•transactions in our common stock by major investors and certain analyst reports, news, social media activity, and speculation.
+
+Volatility in our stock price could adversely affect our business and financing opportunities and force us to increase our cash compensation to employees or grant larger stock awards than we have historically, which could hurt our operating results or reduce the percentage ownership of our existing stockholders, or both.
+
+Legal and Regulatory Risks
+
+Government Regulation Is Evolving and Unfavorable Changes Could Harm Our Business
+
+We are subject to general business regulations and laws, as well as regulations and laws specifically governing the internet, physical, e-commerce, and omnichannel retail, digital content, web services, electronic devices, advertising, artificial intelligence technologies and services, satellite communications services, healthcare, and other products and services that we offer or sell. These regulations and laws cover taxation, privacy, data use, data protection, data security, data localization, network security, consumer protection, pricing, content, copyrights, distribution, transportation, communications, electronic device certification, electronic waste, energy consumption, environmental and climate-related regulation, electronic contracts and other communications, competition, employment, trade and protectionist measures, web services, the provision of online payment services, registration, licensing, and information reporting requirements, unencumbered internet access to our services or access to our facilities, the design and operation of websites, health, safety, and sanitation standards, the characteristics, legality, and quality of products and services, product labeling, the commercial operation of unmanned aircraft systems, healthcare, and other matters. It is not clear how existing laws governing issues such as property ownership, libel, privacy, data use, data protection, data security, data localization, network security, and consumer protection apply to aspects of our"
+AMZN-053,1018724-0001018724-25-000036-p2item1a-0021,AMZN,10-Q,2025-05-02,p2item1a,keyword,c9d94153ac2aeb55ce16547e57ea66357051b17dd92ace710dab7fe5fd06e0f2,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000036/amzn-20250331.htm,"operations such as the internet, e-commerce, digital content, web services, electronic devices, advertising, artificial intelligence technologies and services, satellite communications services, and healthcare. A large number of jurisdictions regulate our operations, and the extent, nature, and scope of such regulations is evolving and expanding as the scope of our businesses expand. We are regularly subject to formal and informal reviews, investigations, and other proceedings by governments and regulatory authorities under existing laws, regulations, or interpretations or pursuing new and novel approaches to regulate our operations. For example, we face a number of open investigations based on claims that aspects of our operations infringe competition or consumer protection rules, including aspects of Amazon’s operation of its stores, including its fulfillment network and Prime, and certain aspects of AWS’s offering of cloud services. We strongly dispute these claims and intend to defend ourselves vigorously in these investigations. Similarly, we face investigations under a growing patchwork of laws and regulations governing the collection, use, and disclosure of data, the interpretation of which continues to evolve, leading to uncertainty about how regulators will view our privacy practices. In addition, regulators and lawmakers are increasingly focused on controlling additional aspects of the operations of technology companies and companies they have characterized to be online “gatekeepers” through the application of existing regulations and laws and the adoption of new regulations and laws, which increases our compliance costs and limits the operation of our business. Unfavorable regulations, laws, decisions, or interpretations by government or regulatory authorities applying those laws and regulations, or inquiries, investigations, or enforcement actions threatened or initiated by them, could cause us to incur substantial costs, expose us to unanticipated civil and criminal liability or penalties (including substantial monetary fines), diminish the demand for, or availability of, our products and services, increase our cost of doing business, require us to change our business practices in a manner materially adverse to our business, damage our reputation, impede our growth, or otherwise have a material effect on our operations. The media, political, and regulatory scrutiny we face, which may continue to increase, amplifies these risks.
+
+Claims, Litigation, Government Investigations, and Other Proceedings May Adversely Affect Our Business and Results of Operations"
+AMZN-054,1018724-0001018724-25-000084-ex99-0001,AMZN,8-K,2025-07-31,ex99,keyword,527be3dca18faf01abbeba35d534e92ad41910500f730a52337592de9a098bf0,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000084/amzn-20250630xex991.htm,"Exhibit 99.1
+
+AMAZON.COM ANNOUNCES SECOND QUARTER RESULTS
+
+SEATTLE—(BUSINESS WIRE) July 31, 2025—Amazon.com, Inc. (NASDAQ: AMZN) today announced financial results for its second quarter ended June 30, 2025.
+
+•Net sales increased 13% to $167.7 billion in the second quarter, compared with $148.0 billion in second quarter 2024. Excluding the $1.5 billion favorable impact from year-over-year changes in foreign exchange rates throughout the quarter, net sales increased 12% compared with second quarter 2024.
+
+•North America segment sales increased 11% year-over-year to $100.1 billion.
+
+•International segment sales increased 16% year-over-year to $36.8 billion, or increased 11% excluding changes in foreign exchange rates.
+
+•AWS segment sales increased 17.5% year-over-year to $30.9 billion.
+
+•Operating income increased to $19.2 billion in the second quarter, compared with $14.7 billion in second quarter 2024.
+
+•North America segment operating income was $7.5 billion, compared with $5.1 billion in second quarter 2024.
+
+•International segment operating income was $1.5 billion, compared with $0.3 billion in second quarter 2024.
+
+•AWS segment operating income was $10.2 billion, compared with $9.3 billion in second quarter 2024.
+
+•Net income increased to $18.2 billion in the second quarter, or $1.68 per diluted share, compared with $13.5 billion, or $1.26 per diluted share, in second quarter 2024.
+
+•Operating cash flow increased 12% to $121.1 billion for the trailing twelve months, compared with $108.0 billion for the trailing twelve months ended June 30, 2024.
+
+•Free cash flow decreased to $18.2 billion for the trailing twelve months, compared with $53.0 billion for the trailing twelve months ended June 30, 2024.
+
+“Our conviction that AI will change every customer experience is starting to play out as we’ve expanded Alexa+ to millions of customers, continue to see our shopping agent used by many millions of customers, launched AI models like DeepFleet that optimize productivity paths for our 1M+ robots, made it much easier for software developers to write code with Kiro (our new agentic IDE), launched Strands to make it easier to build AI agents, and released Bedrock AgentCore to enable agents to be operated securely and scalably,” said Andy Jassy, President and CEO, Amazon. “Our AI progress across the board continues to improve our customer experiences, speed of innovation, operational efficiency, and business growth, and I’m excited for what lies ahead.”
+
+Some other highlights since the company’s last earnings announcement include that Amazon:"
+AMZN-055,1018724-0001018724-25-000084-ex99-0002,AMZN,8-K,2025-07-31,ex99,keyword,ed76f97b352724e8c6e5a3c33e421d9bf8b57da24b63a323a4abaa08c7e44596,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000084/amzn-20250630xex991.htm,"•Held its biggest Prime Day event ever, with customers saving billions of dollars and independent sellers achieving record sales.
+
+•Announced expansion of Same-Day and Next-Day Delivery to tens of millions of U.S. customers in 4,000+ smaller cities, towns, and rural communities by end of 2025.
+
+•Expanded selection with brands like Away, Aveda, Marc Jacobs Fragrances, Milk Makeup, and Origins.
+
+•Announced a Nike storefront on Amazon.com where U.S. customers will be able to shop a range of footwear, apparel, and accessories.
+
+•Launched generative AI tools to enhance shopping experience, including “Hear the highlights” to turn product summaries and reviews into audio clips, and “Enhance My Listing” to keep listings current and compelling.
+
+•Expanded Alexa+ Early Access to millions of customers.
+
+•Increased Project Kuiper’s satellite internet fleet in low earth orbit with two successful launches.
+
+•Announced Prime Video’s NBA broadcast team, including Stan Van Gundy, Kevin Harlan, Dwyane Wade, Taylor Rooks, Blake Griffin, Dirk Nowitzki, Steve Nash, and Candace Parker.
+
+•Drew approximately 2 million viewers per race and youngest audience among NASCAR broadcasters in more than a decade to Prime Video’s NASCAR Cup Series coverage.
+
+•Announced Denis Villeneuve as director of next James Bond film.
+
+•Announced integration with Roku that gives advertisers access to largest authenticated Connected TV footprint in the U.S., reaching an estimated 80 million households.
+
+•Innovated across Amazon Nova, including:
+
+•The most comprehensive suite of model customization capabilities.
+
+•Launched Nova Act, which makes it much easier for customers to build agents that can take automated actions across websites.
+
+•Expanded languages for Nova Sonic voice AI to include Spanish, French, Italian, and German.
+
+•Signed new AWS agreements with PepsiCo, Airbnb, Peloton, London Stock Exchange, Nissan Motor Co., GitLab Inc., SAP, Warner Bros. Discovery Sports, TwelveLabs, FICO, Iberia Airlines, SK Telecom, and NatWest Group.
+
+•Announced “AI Zones” in the Kingdom of Saudi Arabia (with HUMAIN) and Korea (with SK Group).
+
+•Announced multi-billion dollar investments to expand cloud infrastructure and advance AI innovation in North Carolina, Pennsylvania, and Australia.
+
+•Announced new AWS offerings, including:
+
+•Kiro, an agentic integrated development environment that transforms software development through innovations like spec-driven development, intelligent agent hooks, and a purpose-built interface for developer workflows.
+
+•Bedrock AgentCore for deploying and operating highly capable agents securely at enterprise scale."
+AMZN-056,1018724-0001018724-25-000084-ex99-0003,AMZN,8-K,2025-07-31,ex99,keyword,3a5a4f897256fb784e2b2720fb400a85fa72bf7bc0360bb0bdd1413361f86816,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000084/amzn-20250630xex991.htm,"•General availability of AWS Transform, an AWS agent that cuts mainframe modernization timelines from years to months, completes VMware network conversions up to 80x faster, and reduces operating costs for .NET applications by up to 40%.
+
+•Strands Agents, an open source tool that enables developers to more easily build new agents, offering support for popular open source frameworks like A2A and MCP.
+
+•AI agents and tools in AWS Marketplace, with listings from leading providers including Anthropic, Accenture, PwC, Salesforce, and IBM, so customers can easily discover and deploy agents.
+
+•New foundation models in Amazon Bedrock, including Anthropic’s Claude 4 and TwelveLabs’ Marengo and Pegasus.
+
+•General availability of Amazon EC2 instances powered by NVIDIA Grace Blackwell Superchips, AWS’s most powerful GPU-accelerated instance for training and deploying the largest, most sophisticated AI models.
+
+•General availability of Oracle Database@AWS for seamless migration of Oracle Exadata and RAC workloads, zero-ETL integration with Amazon Redshift, and ability to build powerful ML and AI applications.
+
+•Amazon S3 Vectors, which delivers vector storage for AI agents, AI inference, and semantic search, reducing the cost of uploading, storing, and querying vectors by up to 90%.
+
+•Introduced DeepFleet, an AI model that makes Amazon’s one million+ robots work smarter by coordinating movements to find optimal paths and reduce bottlenecks, improving robot travel efficiency by 10%.
+
+•Enhanced inventory management with AI-powered demand forecasting, improving regional accuracy by 20%, and optimizing inventory placement and delivery speeds for millions of popular items.
+
+•Introduced Vulcan, Amazon’s first robot to combine sight and touch to navigate cluttered spaces like humans do, making jobs safer and easier.
+
+•Announced 700,000+ employees participated in upskilling programs to date.
+
+•Launched new robotics and engineering apprenticeships for U.S. employees.
+
+•Announced 134,000+ employees in 55 countries participated in Amazon’s Global Month of Volunteering, supporting 2,500+ organizations and communities.
+
+•Announced expansion of water recycling to 120+ AWS U.S. data centers by 2030, expected to preserve over 530 million gallons of drinking water annually.
+
+•Supported communities impacted by flooding in central Texas by donating 68,000+ relief items.
+
+Financial Guidance"
+AMZN-057,1018724-0001018724-25-000086-p1item1-0007,AMZN,10-Q,2025-08-01,p1item1,keyword,dd94e30fa466da58fde84dd7902987277077d2c71290d4e777979721e53eefd0,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000086/amzn-20250630.htm,"Effective January 1, 2025 we changed our estimate of the useful lives of a subset of our servers and networking equipment from six years to five years. The shorter useful lives are due to the increased pace of technology development, particularly in the area of artificial intelligence and machine learning. The effect of this change in estimate for Q2 2025, based on servers and networking equipment that were included in “Property and equipment, net” as of March 31, 2025 and those acquired during the three months ended June 30, 2025, was an increase in depreciation and amortization expense of $280 million and a reduction in net income of $217 million, or $0.02 per basic share and $0.02 per diluted share, which primarily impacted our AWS segment. The effect of this change in estimate for the six months ended June 30, 2025, based on servers and networking equipment that were included in “Property and equipment, net” as of December 31, 2024 and those acquired during the six months ended June 30, 2025, was an increase in depreciation and amortization expense of $497 million and a reduction in net income of $379 million, or $0.04 per basic share and $0.04 per diluted share, which primarily impacted our AWS segment.
+
+Supplemental Cash Flow Information
+
+The following table shows supplemental cash flow information (in millions):"
+AMZN-058,1018724-0001018724-25-000086-p1item2-0008,AMZN,10-Q,2025-08-01,p1item2,keyword,d784a17de6efacfa967fb6d6829f5db94c081e92f21db4d7d2314f306db7ef25,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000086/amzn-20250630.htm,"The sale of additional equity or convertible debt securities would be dilutive to our shareholders. In addition, we will, from time to time, consider the acquisition of, or investment in, complementary businesses, products, services, capital infrastructure, and technologies, which might affect our liquidity requirements or cause us to secure additional financing, or issue additional equity or debt securities. There can be no assurance that additional credit lines or financing instruments will be available in amounts or on terms acceptable to us, if at all. In addition, economic conditions and actions by policymaking bodies are contributing to changing interest rates and significant capital market volatility, which, along with any increases in our borrowing levels, could increase our future borrowing costs.
+
+Results of Operations
+
+We have organized our operations into three segments: North America, International, and AWS. These segments reflect the way the Company evaluates its business performance and manages its operations. See Item 1 of Part I, “Financial Statements — Note 8 — Segment Information.”
+
+Overview
+
+Macroeconomic factors, including changes in inflation and interest rates, global economic and geopolitical developments, including unpredictable shifts in global tariff and trade policies, and the development and adoption of technologies and services, including artificial intelligence, have direct and indirect impacts on our results of operations that are difficult to predict, isolate, and quantify. These could affect customer demand for our products and services, our ability to forecast growth needs, expenses, and benefits from new technologies. We expect some or all of them to continue to impact our operations into Q3 2025.
+
+Net Sales
+
+Net sales include product and service sales. Product sales represent revenue from the sale of products and related shipping fees and digital media content where we record revenue gross. Service sales primarily represent third-party seller fees, which includes commissions and any related fulfillment and shipping fees, AWS sales, advertising services, Amazon Prime membership fees, and certain digital media content subscriptions. Net sales information is as follows (in millions):"
+AMZN-059,1018724-0001018724-25-000121-ex99-0002,AMZN,8-K,2025-10-30,ex99,keyword,44eb74855d7b18286a2b2e861aa9732eca6921d450ca016c383bdebea3180625,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000121/amzn-20250930xex991.htm,"•Free cash flow decreased to $14.8 billion for the trailing twelve months, driven primarily by a year-over-year increase of $50.9 billion in purchases of property and equipment, net of proceeds from sales and incentives. This compares to free cash flow of $47.7 billion for the trailing twelve months ended September 30, 2024.
+
+“We continue to see strong momentum and growth across Amazon as AI drives meaningful improvements in every corner of our business,” said Andy Jassy, President and CEO, Amazon. “AWS is growing at a pace we haven’t seen since 2022, re-accelerating to 20.2% YoY. We continue to see strong demand in AI and core infrastructure, and we’ve been focused on accelerating capacity – adding more than 3.8 gigawatts in the past 12 months. In Stores, we continue to realize the benefits of innovating in our fulfillment network, and we’re on track to deliver to Prime members at the fastest speeds ever again this year, expand same-day delivery of perishable groceries to over 2,300 communities by end of year, and double the number of rural communities with access to Amazon’s Same-Day and Next-Day Delivery.”
+
+Some other highlights since the company’s last earnings announcement include that Amazon:
+
+•Saw continued strong adoption of Trainium2, its custom AI chip, which is fully subscribed and a multi-billion-dollar business that grew 150% quarter over quarter.
+
+•Launched Project Rainier, a massive AI compute cluster containing nearly 500,000 Trainium2 chips, to build and deploy Anthropic’s leading Claude AI models.
+
+•Announced new Amazon EC2 P6e-GB200 UltraServers using NVIDIA Grace Blackwell Superchips, designed for training and deploying the largest, most sophisticated AI models.
+
+•Added 3.8 gigawatts of power capacity in the past 12 months – more than any other cloud provider.
+
+•Added new foundation models in Amazon Bedrock, including open weight models from OpenAI, DeepSeek-V3.1, and Qwen3, as well as Anthropic’s Claude Sonnet 4.5, Claude Opus 4.1, and Claude Haiku 4.5.
+
+•Announced a number of new Amazon EC2 instances for general purpose computing, including AWS Graviton4 chips for fast networking and custom Intel Xeon 6 processors for heavy computing tasks–both only available on AWS, as well as AMD EPYC processors for a wide range of applications, and Apple M4 chips for building iPhone and Mac apps."
+AMZN-060,1018724-0001018724-25-000121-ex99-0003,AMZN,8-K,2025-10-30,ex99,keyword,ee53cc753e0e68eeb61535bbf2ce2a38c9e0b36b1f5bf6c2263490e1ce19a681,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000121/amzn-20250930xex991.htm,"•Expanded access to Kiro, an agentic coding integrated development environment that brings clarity through spec-driven development, with more than 100,000+ developers jumping in during the first days of preview and more than doubling since.
+
+•Launched Quick Suite agentic AI app that acts as an AI teammate – connecting to business data and apps, and letting employees interact with AI agents that can find insights, conduct research, and take actions across systems. Quick Suite helps turn month-long projects into days, get 80%+ time savings on complex tasks, and realize 90%+ cost savings.
+
+•Saw strong adoption of Transform, an AI agent that makes it easy for customers to migrate to AWS. Transform has saved 700,000 hours of manual migration effort—equivalent of 335 developer years of work—year to date.
+
+•Grew Connect—an AI solution that enables contact centers to provide consistent, personalized customer experiences—to a $1 billion annualized revenue run rate business in recent weeks, with 12 billion minutes of customer interactions being handled by AI in the last year.
+
+•Announced general availability of AgentCore, a set of infrastructure building blocks for developers and companies to build secure, scalable agents.
+
+•Released Nova Multimodal Embeddings, the first unified model that enables search results with leading accuracy across text, documents, images, video, and audio. In addition, Web Grounding is a new built-in tool for Nova models to retrieve and incorporate publicly available information in responses.
+
+•Announced general availability of Elastic VMware Service, the fastest and easiest path for customers to run VMware workloads on AWS.
+
+•Added AWS Region in New Zealand, with plans for 10 more Availability Zones and three more Regions.
+
+•Signed new AWS agreements with Delta Air Lines, Volkswagen Group, Fox Corporation, ServiceNow, Qantas Airways Limited, U.S. General Services Administration, SAP, lululemon athletica inc., Live Nation, AXA, BT Group, Vonage, Upstage, Arm, Fundamental, Periodic Labs, Cursor, Perplexity, and Lila Sciences.
+
+•Increased number of rural communities with access to Amazon’s Same-Day and Next-Day Delivery by 60% in past four months.
+
+•Expanded Same-Day Delivery of perishable groceries to 1,000+ cities and towns in the U.S., with plans to reach 2,300+ locations by end of 2025.
+
+•Saw strong usage of Rufus (AI-powered assistant in Amazon’s store), with 250 million customers using it this year. Shoppers using Rufus are 60% more likely to complete a purchase."
+AMZN-061,1018724-0001018724-25-000121-ex99-0004,AMZN,8-K,2025-10-30,ex99,keyword,fbfa0900501b1295bce6379026edc09339bb5db81b18db8e234f602e83d08550,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000121/amzn-20250930xex991.htm,"•Launched Help Me Decide, an AI feature to help customers zero in on the right product using browsing activity, searches, shopping history, and preferences.
+
+•Empowered sellers with genAI tools, with over 1.3 million independent sellers using these tools to easily create high quality, engaging product listings and bring even more selection to customers.
+
+•Expanded Multi-Channel Fulfillment to sellers using Walmart, Shopify, and SHEIN, so brands can reach customers wherever they shop while leveraging Amazon’s fast, reliable fulfillment network.
+
+•Announced partnerships that allow advertisers to buy ad space on Netflix, Spotify, and SiriusXM Media through Amazon Ads.
+
+•Drew 70 million+ viewers globally for The Summer I Turned Pretty Season 3 (through 7 days post finale), delivered global viewership growth for second consecutive season (exceeding Season 2 by 65%), and announced feature film.
+
+•Kicked off fourth season of Thursday Night Football on Prime Video, averaging 15.3 million viewers (the best for TNF on any network in a decade) according to Nielsen, which is a 16% increase over last season’s seven-game average.
+
+•Debuted NBA on Prime in more than 200 countries, delivering average audience of 1.25 million viewers in the U.S. during season-opening double header, according to Nielsen.
+
+•Added Peacock Premium Plus and Fox One to Prime Video add-on subscription offering of 100+ channels in the U.S.
+
+•Launched the reimagined Luna cloud gaming service, including GameNight, a new collection of living room games, at no additional cost to Prime members.
+
+•Continued rolling out Alexa+, which customers engage with two times more than the original Alexa, have longer conversations, cover a broader range of topics, and complete more tasks. Customers are using Alexa+ on Fire TV 2.5 times more than the original, using natural conversation to discover audio content 4 times more, engaging with photos 4 times more, and completing 4 times more shopping conversations that end in a purchase.
+
+•Launched four AI-powered Echo devices built for Alexa+, expanded Alexa+ to new Fire TV device lineup for fast content discovery, and launched Alexa+ features for Ring devices that act as an intelligent doorbell attendant.
+
+•Expanded Project Kuiper fleet to 150+ satellites, demonstrated industry-leading downlink speeds of 1+ Gbps, and announced commercial agreements with JetBlue, Australia’s National Broadband Network, and Kazakhtelecom (leading telecommunications provider in Kazakhstan).
+
+•Began offering Zoox’s robotaxi service to customers in Las Vegas—becoming first fully autonomous ride-hailing service in a purpose-built robotaxi—and announced Washington D.C. as eighth testing location."
+AMZN-062,1018724-0001018724-25-000123-p1item1-0007,AMZN,10-Q,2025-10-31,p1item1,keyword,62bce15bc67bf990c26b9ae369d929a21eeca283076a68395fb4f6f26bbec293,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000123/amzn-20250930.htm,"Effective January 1, 2025 we changed our estimate of the useful lives of a subset of our servers and networking equipment from six years to five years. The shorter useful lives are due to the increased pace of technology development, particularly in the area of artificial intelligence and machine learning. The effect of this change in estimate for Q3 2025, based on servers and networking equipment that were included in “Property and equipment, net” as of June 30, 2025 and those acquired during the three months ended September 30, 2025, was an increase in depreciation and amortization expense of $392 million and a reduction in net income of $298 million, or $0.03 per basic share and $0.03 per diluted share, which primarily impacted our AWS segment. The effect of this change in estimate for the nine months ended September 30, 2025, based on servers and networking equipment that were included in “Property and equipment, net” as of December 31, 2024 and those acquired during the nine months ended September 30, 2025, was an increase in depreciation and amortization expense of $889 million and a reduction in net income of $677 million, or $0.06 per basic share and $0.06 per diluted share, which primarily impacted our AWS segment.
+
+During Q3 2025, we recorded $2.5 billion of expense related to the settlement of a lawsuit with the Federal Trade Commission (FTC). This charge was recorded in “Other operating expense (income), net” and impacted our North America segment.
+
+For the three and nine months ended September 30, 2025, we recorded approximately $1.8 billion and $2.0 billion of estimated severance costs primarily related to planned role eliminations. These charges increased our payroll and related expenses and were recorded primarily in “Technology and infrastructure,” “Sales and marketing,” and “General and administrative” and impacted all of our segments.
+
+Supplemental Cash Flow Information
+
+The following table shows supplemental cash flow information (in millions):"
+AMZN-063,1018724-0001018724-25-000123-p1item2-0008,AMZN,10-Q,2025-10-31,p1item2,keyword,9c16061e6af56aa2ade0e6595e55557c654a4e4b1b4fbfd460e9f068b5ef6542,https://www.sec.gov/Archives/edgar/data/1018724/000101872425000123/amzn-20250930.htm,"The sale of additional equity or convertible debt securities would be dilutive to our shareholders. In addition, we will, from time to time, consider the acquisition of, or investment in, complementary businesses, products, services, capital infrastructure, and technologies, which might affect our liquidity requirements or cause us to secure additional financing, or issue additional equity or debt securities. There can be no assurance that additional credit lines or financing instruments will be available in amounts or on terms acceptable to us, if at all. In addition, economic conditions and actions by policymaking bodies are contributing to changing interest rates and significant capital market volatility, which, along with any increases in our borrowing levels, could increase our future borrowing costs.
+
+Results of Operations
+
+We have organized our operations into three segments: North America, International, and AWS. These segments reflect the way the Company evaluates its business performance and manages its operations. See Item 1 of Part I, “Financial Statements — Note 8 — Segment Information.”
+
+Overview
+
+Macroeconomic factors, including changes in inflation and interest rates, global economic and geopolitical developments, including unpredictable shifts in global tariff and trade policies, and the development and adoption of technologies and services, including artificial intelligence, have direct and indirect impacts on our results of operations that are difficult to predict, isolate, and quantify. These could affect customer demand for our products and services, our ability to forecast growth needs, expenses, and benefits from new technologies. We expect some or all of them to continue to impact our operations into Q4 2025.
+
+Net Sales
+
+Net sales include product and service sales. Product sales represent revenue from the sale of products and related shipping fees and digital media content where we record revenue gross. Service sales primarily represent third-party seller fees, which includes commissions and any related fulfillment and shipping fees, AWS sales, advertising services, Amazon Prime membership fees, and certain digital media content subscriptions. Net sales information is as follows (in millions):"

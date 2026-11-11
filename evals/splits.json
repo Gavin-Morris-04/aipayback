@@ -1,32 +1,32 @@
 {
-  "created": "2026-11-11T00:16:15+00:00",
+  "created": "2026-11-11T19:58:24+00:00",
   "dev": [
-    "ACN",
+    "BLK",
     "CAT",
-    "IBM",
-    "UNH",
-    "VZ",
-    "XOM"
+    "META",
+    "NVDA",
+    "PFE",
+    "TSLA"
   ],
   "dev_share": 0.6,
-  "replaced_previous": false,
+  "replaced_previous": true,
   "sectors": {
-    "ACN": "Information Technology",
+    "AMZN": "Consumer Discretionary",
+    "BLK": "Financials",
     "CAT": "Industrials",
-    "CRM": "Information Technology",
-    "IBM": "Information Technology",
-    "JPM": "Financials",
+    "FDX": "Industrials",
+    "META": "Communication Services",
     "MSFT": "Information Technology",
-    "UNH": "Health Care",
-    "VZ": "Communication Services",
-    "WMT": "Consumer Staples",
-    "XOM": "Energy"
+    "NVDA": "Information Technology",
+    "PEP": "Consumer Staples",
+    "PFE": "Health Care",
+    "TSLA": "Consumer Discretionary"
   },
   "seed": 20261110,
   "test": [
-    "CRM",
-    "JPM",
+    "AMZN",
+    "FDX",
     "MSFT",
-    "WMT"
+    "PEP"
   ]
 }

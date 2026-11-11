@@ -1,0 +1,916 @@
+row_id,passage_id,ticker,form,filing_date,section,sampled_as,text_sha256,url,text
+NVDA-001,1045810-0001045810-24-000029-item1-0012,NVDA,10-K,2024-02-21,item1,keyword,da0386f4095dee476998f6922749137b2d400f092db5b119c0070094b5d5793e,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm,"We have expanded our supplier relationships to build redundancy and resilience in our operations to provide long-term manufacturing capacity aligned with growing customer demand. Our supply chain is concentrated in the Asia-Pacific region. We utilize foundries, such as Taiwan Semiconductor Manufacturing Company Limited, or TSMC, and Samsung Electronics Co., Ltd., or Samsung, to produce our semiconductor wafers. We purchase memory from Micron Technology, Inc., SK Hynix Inc., and Samsung. We utilize CoWoS technology for semiconductor packaging. We engage with independent subcontractors and contract manufacturers such as Hon Hai Precision Industry Co., Ltd., Wistron Corporation, and Fabrinet to perform assembly, testing and packaging of our final products.
+
+Competition
+
+The market for our products is intensely competitive and is characterized by rapid technological change and evolving industry standards. We believe that the principal competitive factors in this market are performance, breadth of product offerings, access to customers and partners and distribution channels, software support, conformity to industry standard APIs, manufacturing capabilities, processor pricing, and total system costs. We believe that our ability to remain competitive will depend on how well we are able to anticipate the features and functions that customers and partners will demand and whether we are able to deliver consistent volumes of our products at acceptable levels of quality and at competitive prices. We expect competition to increase from both existing competitors and new market entrants with products that may be lower priced than ours or may provide better performance or additional features not provided by our products. In addition, it is possible that new competitors or alliances among competitors could emerge and acquire significant market share.
+
+A significant source of competition comes from companies that provide or intend to provide GPUs, CPUs, DPUs, embedded SoCs, and other accelerated, AI computing processor products, and providers of semiconductor-based high-performance interconnect products based on InfiniBand, Ethernet, Fibre Channel, and proprietary technologies. Some of our competitors may have greater marketing, financial, distribution and manufacturing resources than we do and may be more able to adapt to customers or technological changes. We expect an increasingly competitive environment in the future.
+
+Our current competitors include:
+
+•suppliers and licensors of hardware and software for discrete and integrated GPUs, custom chips and other accelerated computing solutions, including solutions offered for AI, such as Advanced Micro Devices, Inc., or AMD, Huawei Technologies Co. Ltd., or Huawei, and Intel Corporation, or Intel;"
+NVDA-002,1045810-0001045810-24-000029-item1-0014,NVDA,10-K,2024-02-21,item1,keyword,2a00a601516d2821eadee63d82f0d34e2fe7432bdb3de21e507609f7968ef7cc,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm,"We have licensed technology from third parties and expect to continue entering such license agreements.
+
+Government Regulations
+
+Our worldwide business activities are subject to various laws, rules, and regulations of the United States as well as of foreign governments.
+
+During the third quarter of fiscal year 2023, the U.S. government, or the USG, announced licensing requirements that, with certain exceptions, impact exports to China (including Hong Kong and Macau) and Russia of our A100 and H100 integrated circuits, DGX or any other systems or boards which incorporate A100 or H100 integrated circuits.
+
+In July 2023, the USG informed us of an additional licensing requirement for a subset of A100 and H100 products destined to certain customers and other regions, including some countries in the Middle East.
+
+In October 2023, the USG announced new and updated licensing requirements that became effective in our fourth quarter of fiscal year 2024 for exports to China and Country Groups D1, D4, and D5 (including but not limited to Saudi Arabia, the United Arab Emirates, and Vietnam, but excluding Israel) of our products exceeding certain performance thresholds, including A100, A800, H100, H800, L4, L40, L40S and RTX 4090. The licensing requirements also apply to the export of products exceeding certain performance thresholds to a party headquartered in, or with an ultimate parent headquartered in, Country Group D5, including China. On October 23, 2023, the USG informed us the licensing requirements were effective immediately for shipments of our A100, A800, H100, H800, and L40S products.
+
+Our competitive position has been harmed, and our competitive position and future results may be further harmed in the long term, if there are further changes in the USG’s export controls. Given the increasing strategic importance of AI and rising geopolitical tensions, the USG has changed and may again change the export control rules at any time and further subject a wider range of our products to export restrictions and licensing requirements, negatively impacting our business and financial results. In the event of such change, we may be unable to sell our inventory of such products and may be unable to develop replacement products not subject to the licensing requirements, effectively excluding us from all or part of the China market, as well as other impacted markets, including the Middle East."
+NVDA-003,1045810-0001045810-24-000029-item1-0016,NVDA,10-K,2024-02-21,item1,keyword,0b5e5ed8628e709570d5c2113689d068aec7e2bb566f3cbbf5e35a3e17c5ad6a,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm,"In the area of environmental sustainability, we address our climate impacts across our product lifecycle and assess risks, including current and emerging regulations and market impacts.
+
+In May 2023, we published metrics related to our environmental impact for fiscal year 2023. Fiscal year 2024 metrics are expected to be published in the first half of fiscal year 2025. There has been no material impact to our capital expenditures, results of operations or competitive position associated with global environmental sustainability regulations, compliance, or costs from sourcing renewable energy. By the end of fiscal year 2025, our goal is to purchase
+
+or generate enough renewable energy to match 100% of our global electricity usage for our offices and data centers. In fiscal year 2023, we increased the percentage of our total electricity use matched by renewable energy purchases to 44%. By fiscal year 2026, we aim to engage manufacturing suppliers comprising at least 67% of NVIDIA’s scope 3 category 1 GHG emissions with goal of effecting supplier adoption of science-based targets.
+
+Whether it is creation of technology to power next-generation laptops or designs to support high-performance supercomputers, improving energy efficiency is important in our research, development, and design processes. GPU-accelerated computing is inherently more energy efficient than traditional computing for many workloads because it is optimized for throughput, performance per watt, and certain AI workloads. The energy efficiency of our products is evidenced by our continued strong presence on the Green500 list of the most energy-efficient systems. We powered 24 of the top 30 most energy efficient systems, including the top supercomputer, on the Green500 list.
+
+We plan to build Earth-2, a digital twin of the Earth on NVIDIA AI and NVIDIA Omniverse platforms. Earth-2 will enable scientists, companies, and policy makers to do ultra-high-resolution predictions of the impact of climate change and explore mitigation and adaptation strategies.
+
+Human Capital Management
+
+We believe that our employees are our greatest assets, and they play a key role in creating long-term value for our stakeholders. As of the end of fiscal year 2024, we had approximately 29,600 employees in 36 countries, 22,200 were engaged in research and development and 7,400 were engaged in sales, marketing, operations, and administrative positions. The Compensation Committee of our Board of Directors assists in the oversight of policies and strategies relating to human capital management."
+NVDA-004,1045810-0001045810-24-000029-item15-0046,NVDA,10-K,2024-02-21,item15,non_keyword,6c1df7efc258315bc199d4ec11428cdaa79df264db7543e957c2a309cfe87322,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm,"Incorporated by Reference
+Exhibit No. | Exhibit Description | Schedule/Form | Exhibit | Filing Date
+2.1 | Agreement and Plan of Merger, dated March 10, 2019, by and among NVIDIA Corporation, NVIDIA International Holdings Inc., Mellanox Technologies Ltd. and Teal Barvaz Ltd. | 8-K | 2.1 | 3/11/2019
+2.2^ | Share Purchase Agreement, dated September 13, 2020, by and among NVIDIA, NVIDIA Holdings, Arm, SoftBank, and Vision Fund | 8-K | 2.1 | 9/14/2020
+3.1 | Restated Certificate of Incorporation | 10-K | 3.1 | 3/18/2022
+3.2 | Amendment to Restated Certificate of Incorporation of NVIDIA Corporation | 8-K | 3.1 | 6/6/2022
+3.3 | Bylaws of NVIDIA Corporation, Amended and Restated as of March 2, 2023 | 8-K | 3.1 | 3/8/2023
+4.1 | Reference is made to Exhibits 3.1, 3.2 and 3.3
+4.2 | Specimen Stock Certificate | S-1/A | 4.2 | 4/24/1998
+4.3 | Indenture, dated as of September 16, 2016, by and between the Company and Computershare Trust Company, N.A., as successor to Wells Fargo Bank, National Association, as Trustee | 8-K | 4.1 | 9/16/2016
+4.4 | Officers’ Certificate, dated as of September 16, 2016 | 8-K | 4.2 | 9/16/2016
+4.5 | Form of 2026 Note | 8-K | Annex B-1 to Exhibit 4.2 | 9/16/2016
+4.6 | Description of Securities | 10-K | 4.6 | 2/24/2023
+4.7 | Officers’ Certificate, dated as of March 31, 2020 | 8-K | 4.2 | 3/31/2020
+4.8 | Form of 2030 Note | 8-K | Annex A-1 to Exhibit 4.2 | 3/31/2020
+4.9 | Form of 2040 Note | 8-K | Annex B-1 to Exhibit 4.2 | 3/31/2020
+4.10 | Form of 2050 Note | 8-K | Annex C-1 to Exhibit 4.2 | 3/31/2020
+4.11 | Form of 2060 Note | 8-K | Annex D-1 to Exhibit 4.2 | 3/31/2020
+4.12 | Officers' Certificate, dated as of June 16, 2021 | 8-K | 4.2 | 6/16/2021
+4.13 | Form of 2023 Note | 8-K | Annex A-1 to Exhibit 4.2 | 6/16/2021
+4.14 | Form of 2024 Note | 8-K | Annex B-1 to Exhibit 4.2 | 6/16/2021
+4.15 | Form of 2028 Note | 8-K | Annex C-1 to Exhibit 4.2 | 6/16/2021
+4.16 | Form of 2031 Note | 8-K | Annex D-1 to Exhibit 4.2 | 6/16/2021"
+NVDA-005,1045810-0001045810-24-000029-item1a-0002,NVDA,10-K,2024-02-21,item1a,keyword,6d093d48584b605a3f0fbe0bf6c4da81de9857881a7ef4b4cbf6a8cc9a894cea,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm,"Risks Related to Regulatory, Legal, Our Stock and Other Matters
+
+•We are subject to complex laws, rules and regulations, and political and other actions, which may adversely impact our business.
+
+•Increased scrutiny from shareholders, regulators, and others regarding our corporate sustainability practices could result in financial, reputational, or operational harm and liability.
+
+•Issues relating to the responsible use of our technologies, including AI, may result in reputational or financial harm and liability.
+
+•Adequately protecting our IP rights could be costly, and our ability to compete could be harmed if we are unsuccessful or if we are prohibited from making or selling our products.
+
+•We are subject to stringent and changing data privacy and security laws, rules, regulations, and other obligations. These areas could damage our reputation, deter customers, affect product design, or result in legal or regulatory proceedings and liability.
+
+•Our operating results may be adversely impacted by additional tax liabilities, higher than expected tax rates, changes in tax laws, and other tax-related factors.
+
+•Our business is exposed to the risks associated with litigation, investigations, and regulatory proceedings.
+
+•Our indebtedness could adversely affect our financial position and cash flows from operations and prevent us from implementing our strategy or fulfilling our contractual obligations.
+
+•Delaware law, provisions in our governing documents and our agreement with Microsoft could delay or prevent a change in control.
+
+Risk Factors
+
+Risks Related to Our Industry and Markets
+
+Failure to meet the evolving needs of our industry and markets may adversely impact our financial results.
+
+Our accelerated computing platforms experience rapid changes in technology, customer requirements, competitive products, and industry standards.
+
+Our success depends on our ability to:
+
+•timely identify industry changes, adapt our strategies, and develop new or enhance and maintain existing products and technologies that meet the evolving needs of these markets, including due to unexpected changes in industry standards or disruptive technological innovation that could render our products incompatible with products developed by other companies;
+
+•develop or acquire new products and technologies through investments in research and development;
+
+•launch new offerings with new business models including software, services, and cloud solutions, as well as software-, infrastructure-, or platform-as-a-service solutions;
+
+•expand the ecosystem for our products and technologies;
+
+•meet evolving and prevailing customer and industry safety, security, reliability expectations, and compliance standards;
+
+•manage product and software lifecycles to maintain customer and end-user satisfaction;"
+NVDA-006,1045810-0001045810-24-000029-item1a-0011,NVDA,10-K,2024-02-21,item1a,keyword,352cf8a6cd9ed8a36d7221cb0451fe1dbe3cae80e9401f663111fbd11cef8398,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm,"•suppliers or their suppliers failing to supply high quality products and/or making changes to their products without our qualification;
+
+•delays in product shipments, shortages, a decrease in product quality and/or higher expenses in the event our subcontractors or foundries prioritize our competitors’ or other customers’ orders over ours;
+
+•requirements to place orders that are not cancellable upon changes in demand or requirements to prepay for supply in advance;
+
+•low manufacturing yields resulting from a failure in our product design or a foundry’s proprietary process technology; and
+
+•disruptions in manufacturing, assembly and other processes due to closures related to heat waves, earthquakes, fires, or other natural disasters and electricity conservation efforts.
+
+Defects in our products have caused and could cause us to incur significant expenses to remediate, which can damage our reputation and cause us to lose market share.
+
+Our hardware and software product and service offerings are complex. They have in the past and may in the future contain defects or security vulnerabilities or experience failures or unsatisfactory performance due to any number of issues in design, fabrication, packaging, materials, bugs and/or use within a system. These risks may increase as our products are introduced into new devices, markets, technologies and applications or as new versions are released. These risks further increase when we rely on partners to supply and manufacture components that are used in our products, as these arrangements reduce our direct control over production. AI software products we or our partners offer rely on"
+NVDA-007,1045810-0001045810-24-000029-item1a-0016,NVDA,10-K,2024-02-21,item1a,keyword,e967da72bcc2b3dc0cd8c89ebcac8b8855808fbd842dc0adf6193af94c03586c,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm,"Individuals, groups of hackers and sophisticated organizations, including nation-states and nation-state-supported actors, and other threat actors have engaged and are expected to continue to engage in cyber-attacks. Additionally, some actors are using AI technology to launch more automated, targeted and coordinated attacks. Due to geopolitical conflicts and during times of war or other major conflicts, we and the third parties we rely upon may be vulnerable to a heightened risk of cyber-attacks that could materially disrupt our ability to provide services and products. We may also face cybersecurity threats due to error or intentional misconduct by employees, contractors or other third-party service providers. Certain aspects of effective cybersecurity are dependent upon our employees, contractors and/or other third-party service providers safeguarding our sensitive information and adhering to our security policies and access control mechanisms. We have in the past experienced, and may in the future experience, security incidents arising from a failure to properly handle sensitive information or adhere to our security policies and access control mechanisms and, although no such events have had a material adverse effect on our business, there can be no assurance that an insider threat will not result in an incident that is material to us. Furthermore, we rely on products and services provided by third-party suppliers to operate certain critical business systems, including without limitation, cloud-based infrastructure, encryption and authentication technology, employee email and other functions, which exposes us to supply-chain attacks or other business disruptions. We cannot guarantee that third parties and infrastructure in our supply chain or our partners’ supply chains have not been compromised or that they do not contain exploitable vulnerabilities, defects or bugs that could result in a breach of or disruption to our information technology systems, including our products and services, or the third-party information technology systems that support our services. We may also incorporate third-party data into our AI algorithms or use open-source datasets to train our algorithms. These datasets may be flawed, insufficient, or contain certain biased information, and may otherwise be vulnerable to security incidents. We may have limited insight into the data privacy or security practices of third-party suppliers, including for our AI algorithms. Our ability to monitor these third parties’ information security practices is limited, and they may not have adequate information security measures in place. In addition, if one of our third-party suppliers suffers a security incident (which has happened in the"
+NVDA-008,1045810-0001045810-24-000029-item1a-0029,NVDA,10-K,2024-02-21,item1a,keyword,d35b62005111bc4b5a70da5f2cbdccbbac4b32a5ed71a84611dfdcf09771241a,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm,"We are subject to laws and regulations domestically and worldwide, affecting our operations in areas including, but not limited to, IP ownership and infringement; taxes; import and export requirements and tariffs; anti-corruption, including the Foreign Corrupt Practices Act; business acquisitions; foreign exchange controls and cash repatriation restrictions; data privacy requirements; competition and antitrust; advertising; employment; product regulations; cybersecurity; environmental, health, and safety requirements; the responsible use of AI; sustainability; cryptocurrency; and consumer laws. Compliance with such requirements can be onerous and expensive, could impact our competitive position, and may negatively impact our business operations and ability to manufacture and ship our products. There can be no assurance that our employees, contractors, suppliers, customers or agents will not violate applicable laws or the policies, controls, and procedures that we have designed to help ensure compliance with such laws, and violations could result in fines, criminal sanctions against us, our officers, or our employees, prohibitions on the conduct of our business, and damage to our reputation. Changes to the laws, rules and regulations to which we are subject, or changes to their interpretation and enforcement, could lead to materially greater compliance and other costs and/or further restrictions on our ability to manufacture and supply our products and operate our business. For example, we may face increased compliance costs as a result of changes or increases in antitrust legislation, regulation, administrative rule making, increased focus from regulators on cybersecurity vulnerabilities and risks. Our position in markets relating to AI has led to increased interest in our business from regulators worldwide, including the European Union, the United States, the United Kingdom and China. For example, the French Competition Authority collected information from us regarding our business and competition in the graphics card and cloud service provider market as part of an ongoing inquiry into competition in those markets. We have also received requests for information from regulators in the European Union, the United Kingdom, and China regarding our sales of GPUs, our efforts to allocate supply, foundation models and our investments, partnerships and other agreements with companies developing foundation models, and we expect to receive additional requests for information in the future. Governments and regulators are considering imposing restrictions on the hardware, software, and systems used to develop frontier foundation models and generative AI."
+NVDA-009,1045810-0001045810-24-000029-item1a-0032,NVDA,10-K,2024-02-21,item1a,keyword,ec83e3ef7f7ba830a888b9a7eaa4ec5f3470b34f96e63ecb2fc7c5f9df7852a4,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm,"products, and it is likely that additional unilateral or multilateral controls will be adopted. Such controls have been and may again be very broad in scope and application, prohibit us from exporting our products to any or all customers in one or more markets, including but not limited to China, and could negatively impact our manufacturing, testing and warehousing locations and options, or could impose other conditions that limit our ability to serve demand abroad and could negatively and materially impact our business, revenue and financial results. Export controls targeting GPUs and semiconductors associated with AI, which have been imposed and are increasingly likely to be further tightened, would further restrict our ability to export our technology, products, or services even though competitors may not be subject to similar restrictions, creating a competitive disadvantage for us and negatively impacting our business and financial results. Export controls targeting GPUs and semiconductors associated with AI have subjected and may in the future subject downstream users of our products to additional restrictions on the use, resale, repair, or transfer of our products, negatively impacting our business and financial results. Controls could negatively impact our cost and/or ability to provide services such as NVIDIA AI cloud services and could impact the cost and/or ability for our cloud service providers and customers to provide services to their end customers, even outside China.
+
+Export controls could disrupt our supply chain and distribution channels, negatively impacting our ability to serve demand, including in markets outside China and for our gaming products. The possibility of additional export controls has negatively impacted and may in the future negatively impact demand for our products, benefiting competitors that offer alternatives less likely to be restricted by further controls. Repeated changes in the export control rules are likely to impose compliance burdens on our business and our customers, negatively and materially impacting our business."
+NVDA-010,1045810-0001045810-24-000029-item1a-0041,NVDA,10-K,2024-02-21,item1a,keyword,c7f802c87c72c240a9af25830ddfd3146552040d91122a9ce3e24d511c3288b9,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm,"We rely on patents, trademarks, trade secrets, employee and third-party nondisclosure agreements, licensing arrangements and the laws of the countries in which we operate to protect our IP. Foreign laws may not protect our products or IP rights to the same extent as United States law. This makes the possibility of piracy of our technology and products more likely. The theft or unauthorized use or publication of our trade secrets and other confidential information could harm our competitive position and reduce acceptance of our products; as a result, the value of our investment in research and development, product development and marketing could be reduced. We also may face risks to our IP if our employees are hired by competitors. We continuously assess whether and where to seek formal protection for existing and new innovations and technologies but cannot be certain whether our applications for such protections will be approved, and, if approved, whether they will be enforceable.
+
+We are subject to stringent and changing data privacy and security laws, rules, regulations and other obligations. These areas could damage our reputation, deter current and potential customers, affect our product design, or result in legal or regulatory proceedings and liability.
+
+We process sensitive, confidential or personal data or information that is subject to privacy and security laws, regulations, industry standards, external and internal policies, contracts and other obligations that govern the processing of such data by us and on our behalf. Concerns about our practices or the ultimate use of our products and services with regard
+
+to the collection, use, retention, security or disclosure of personal information or other privacy-related matters, including for use in AI, even if unfounded, could damage our reputation and adversely affect our operating results. The theft, loss or misuse of personal data in our possession or by one of our partners could result in damage to our reputation, regulatory proceedings, disruption of our business activities or increased security costs and costs related to defending legal claims."
+NVDA-011,1045810-0001045810-24-000029-item1a-0042,NVDA,10-K,2024-02-21,item1a,keyword,48dfa2b1005ac73cc552a2d4cc6c3948b3c992ffc5ec195a0c0ac893ff458d5b,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm,"In the United States, federal, state and local authorities have enacted numerous data privacy and security laws, including for data breach notification, personal data privacy and consumer protection. In the past few years, numerous U.S. states have enacted comprehensive privacy laws that impose certain obligations on covered businesses, including providing specific disclosures in privacy notices and affording residents with certain rights concerning their personal data. As applicable, such rights may include the right to access, correct, or delete certain personal data, and to opt-out of certain data processing activities, such as targeted advertising, profiling and automated decision-making. The exercise of these rights may impact our business and ability to provide our products and services. Certain states also impose stricter requirements for processing certain personal data, including sensitive information, such as conducting data privacy impact assessments. These state laws allow for statutory fines for noncompliance. For example, the California Consumer Privacy Act of 2018, as amended by the California Privacy Rights Act of 2020, or CPRA, or collectively the CCPA, gives California residents the right to access, delete and opt-out of certain sharing of their personal information, and to receive detailed information about how it is used and shared. The CCPA provides for fines of up to $7,500 per intentional violation and the law created a private right of action for certain data breaches. Similar laws are being considered in several other states, as well as at the federal and local levels. Additionally, several states and localities have enacted measures related to the use of artificial intelligence and machine learning in products and services. If we become subject to additional data privacy laws, the risk of enforcement action against us could increase."
+NVDA-012,1045810-0001045810-24-000029-item1a-0043,NVDA,10-K,2024-02-21,item1a,keyword,de1821445964232b26f9fe0295a0cae4664ab8eeada8b448a19f61e93eedb74f,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm,"Worldwide regulatory authorities are also considering and have approved various legislative proposals concerning data protection. The European Union adopted the General Data Protection Regulation, or GDPR, and the United Kingdom similarly adopted the U.K. GDPR, governing the strict handling of personal data of persons within the European Economic Area, or EEA, and the United Kingdom, respectively, including its use and protection and the ability of persons whose data is stored to access, correct, and delete such data about themselves. If we are found not to comply, we could be subject to penalties of up to €20 million or 4% of worldwide revenue, whichever is greater, and classes of individuals or consumer protection organizations may initiate litigation related to our processing of their personal data. Furthermore, the EU AI Act could impose onerous obligations that may disproportionately impact and disadvantage us and require us to change our business practices."
+NVDA-013,1045810-0001045810-24-000029-item7-0007,NVDA,10-K,2024-02-21,item7,keyword,036f3e87edcfd6549dc39a4d1f45a5b408593abae285aac1bf0244e66227c2f8,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm,"Gaming revenue for fiscal year 2024 was $10.4 billion, up 15% from fiscal year 2023. In Gaming, we launched the GeForce RTX 4060 and 4070 GPUs based on the NVIDIA Ada Lovelace architecture. We announced NVIDIA Avatar Cloud Engine for Games, a custom AI model foundry service using AI-powered natural language interactions to transform games and launched DLSS 3.5 Ray Reconstruction. Additionally, we released TensorRT-LLM for Windows and launched GeForce RTX 40-Series SUPER GPUs. Gaming reached a milestone of 500 AI-powered RTX games and applications utilizing NVIDIA DLSS, ray tracing and other NVIDIA RTX technologies.
+
+Professional Visualization revenue for fiscal year 2024 was $1.6 billion, up 1% from fiscal year 2023. In Professional Visualization, we announced new GPUs based on the NVIDIA RTX Ada Lovelace architecture, and announced NVIDIA Omniverse Cloud, a fully managed service running in Microsoft Azure, for the development and deployment of industrial metaverse applications.
+
+Automotive revenue for fiscal year 2024 was $1.1 billion, up 21% from fiscal year 2023. In Automotive, we announced a partnership with MediaTek, which will develop mainstream automotive systems on chips for global OEMs integrating a new NVIDIA GPU chiplet IP for AI and graphics. We furthered our collaboration with Foxconn to develop next-generation
+
+electric vehicles, and announced further adoption of NVIDIA DRIVE platform with BYD, XPENG, GWM, Li Auto, ZEEKR and Xiaomi.
+
+Critical Accounting Estimates
+
+Our consolidated financial statements are prepared in accordance with accounting principles generally accepted in the United States, or U.S. GAAP. The preparation of these financial statements requires us to make estimates and judgments that affect the reported amounts of assets, liabilities, revenue, cost of revenue, expenses and related disclosure of contingencies. Critical accounting estimates are those estimates that involve a significant level of estimation uncertainty and could have a material impact on our financial condition or results of operations. We have critical accounting estimates in the areas of inventories, revenue recognition, and income taxes. Refer to Note 1 of the Notes to the Consolidated Financial Statements in Part IV, Item 15 of this Annual Report on Form 10-K for a summary of significant accounting policies.
+
+Inventories"
+NVDA-014,1045810-0001045810-24-000113-ex99-0005,NVDA,8-K,2024-05-22,ex99,keyword,611e4534c2f820ee3a5fef885a4091791732614ad13805ec69efbf72914d50b6,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000113/q1fy25pr.htm,"To supplement NVIDIA’s condensed consolidated financial statements presented in accordance with GAAP, the company uses non-GAAP measures of certain components of financial performance. These non-GAAP measures include non-GAAP gross profit, non-GAAP gross margin, non-GAAP operating expenses, non-GAAP income from operations, non-GAAP other income (expense), net, non-GAAP net income, non-GAAP net income, or earnings, per diluted share, and free cash flow. For NVIDIA’s investors to be better able to compare its current results with those of previous periods, the company has shown a reconciliation of GAAP to non-GAAP financial measures. These reconciliations adjust the related GAAP financial measures to exclude stock-based compensation expense, acquisition-related and other costs, other, gains and losses from non-affiliated investments, interest expense related to amortization of debt discount, and the associated tax impact of these items where applicable. Free cash flow is calculated as GAAP net cash provided by operating activities less both purchases related to property and equipment and intangible assets and principal payments on property and equipment and intangible assets. NVIDIA believes the presentation of its non-GAAP financial measures enhances the user’s overall understanding of the company’s historical financial performance. The presentation of the company’s non-GAAP financial measures is not meant to be considered in isolation or as a substitute for the company’s financial results prepared in accordance with GAAP, and the company’s non-GAAP measures may be different from non-GAAP measures used by other companies.
+
+About NVIDIA
+
+NVIDIA (NASDAQ: NVDA) is the world leader in accelerated computing.
+
+###
+
+For further information, contact:
+
+Simona Jankowski | Mylene Mangalindan
+Investor Relations | Corporate Communications
+NVIDIA Corporation | NVIDIA Corporation
+sjankowski@nvidia.com | mmangalindan@nvidia.com"
+NVDA-015,1045810-0001045810-24-000124-p1item2-0003,NVDA,10-Q,2024-05-29,p1item2,keyword,08d8138f80d455329ec6fdf52661163901d53e137366c313f615bb82641d48dd,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000124/nvda-20240428.htm,"Product transitions are complex as we often ship both new and prior architecture products simultaneously and we and our channel partners prepare to ship and support new products. Due to our product introduction cycles, we are almost always in various stages of transitioning the architectures of our Data Center, Gaming, and Professional Visualization products. We have begun a broader and faster Data Center product launch cadence to meet a growing and diverse set of
+
+AI opportunities. The increased frequency of these transitions may magnify the challenges associated with managing our supply and demand due to manufacturing lead times. Qualification time for new products, customers anticipating product transitions and channel partners reducing channel inventory of prior architectures ahead of new product introductions can reduce or create volatility in our revenue. The increasing frequency and complexity of newly introduced products could result in quality or production issues that could increase inventory provisions, warranty, or other costs or result in product delays. Deployment of new products to customers creates additional challenges due to the complexity of our technologies, which has impacted and may in the future impact the timing of customer purchases or otherwise impact our demand. While we have managed prior product transitions and have sold multiple product architectures at the same time, these transitions are difficult, may impair our ability to predict demand and impact our supply mix, and may cause us to incur additional costs.
+
+We build technology and introduce products for new and innovative use cases and applications such as our NVIDIA DGX Cloud services, our Omniverse platform, LLMs, and generative AI models. Our demand estimates for new use cases, applications, and services can be incorrect and create volatility in our revenue or supply levels, and we may not be able to generate significant revenue from these use cases, applications, and services. Recent technologies, such as generative AI models, have emerged, and while they have driven increased demand for Data Center, the long-term trajectory is unknown.
+
+Global Trade
+
+In August 2022, the U.S. government, or the USG, announced licensing requirements that, with certain exceptions, impact exports to China (including Hong Kong and Macau) and Russia of our A100 and H100 integrated circuits, DGX or any other systems or boards which incorporate A100 or H100 integrated circuits."
+NVDA-016,1045810-0001045810-24-000124-p1item2-0007,NVDA,10-Q,2024-05-29,p1item2,keyword,086967988669a4161d31c48d4d8d1108a7cda33857dfc69444afaf0613e49b4a,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000124/nvda-20240428.htm,"Data Center revenue was up 427% from a year ago and up 23% sequentially. Data Center compute revenue was $19.4 billion, up 478% from a year ago and up 29% sequentially. These increases reflect higher shipments of the NVIDIA Hopper GPU computing platform used for training and inferencing with large language models, recommendation engines, and generative AI applications. Networking revenue was $3.2 billion, up 242% from a year ago on strong growth of InfiniBand end-to-end solutions, and down 5% sequentially due to the timing of supply. Strong sequential Data Center growth was driven by all customer types, led by Enterprise and Consumer Internet companies. Large cloud providers continued to drive strong growth as they deploy and ramp NVIDIA AI infrastructure at scale, representing mid-40% of our Data Center revenue.
+
+Gaming revenue was up 18% from a year ago and down 8% sequentially. The year-on-year increase primarily reflects higher demand. The sequential decrease reflects seasonally lower GPU sales for laptops.
+
+Professional Visualization revenue was up 45% from a year ago and down 8% sequentially. The year-on-year increase primarily reflects higher sell-in to partners following the normalization of channel inventory levels. The sequential decrease was primarily due to desktop workstation GPUs.
+
+Automotive revenue was up 11% from a year ago and up 17% sequentially. The year-on-year increase was driven primarily by self-driving platforms. The sequential increase was driven by AI Cockpit solutions and self-driving platforms.
+
+Gross margin for the first quarter increased significantly from a year ago on strong Data Center revenue growth primarily driven by our Hopper GPU computing platform. Sequentially, gross margin benefited from lower inventory charges.
+
+Operating expenses were up 39% from a year ago and up 10% sequentially. The increases were primarily driven by compensation and benefits, reflecting growth in employees and compensation.
+
+Market Platform Highlights"
+NVDA-017,1045810-0001045810-24-000262-ex99-0003,NVDA,8-K,2024-08-28,ex99,keyword,f6d348e40de877b2b88f60a374fbed72864023d7d5d1b8d2c04149c3ac5d8989,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000262/q2fy25pr.htm,"•Announced that the combination of NVIDIA H200 Tensor Core and NVIDIA Blackwell architecture B200 Tensor Core processors swept the latest industry-standard MLPerf benchmark results for inference.
+
+•Revealed that H200 GPU-powered systems are now available on CoreWeave, the first cloud service provider to announce general availability.
+
+•Unveiled an array of Blackwell systems featuring NVIDIA Grace™ CPUs, networking and infrastructure from top manufacturers such as GIGABYTE, QCT and Wiwynn.
+
+•Reported broad adoption of the NVIDIA Spectrum-X™ Ethernet networking platform by cloud service providers, GPU cloud providers and enterprises, as well as partners incorporating it into their offerings.
+
+•Released NVIDIA NIM™ for broad availability to developers globally and announced more than 150 companies are integrating microservices into their platforms to speed generative AI application development.
+
+•Unveiled an inference service with Hugging Face powered by NIM microservices on NVIDIA DGX™ Cloud to enable developers to deploy popular large language models.
+
+•Introduced an NVIDIA AI Foundry service and NIM inference microservices to accelerate generative AI for the world’s enterprises with the Llama 3.1 collection of models.
+
+•Announced Japan advanced its sovereign AI capabilities with its ABCI 3.0 supercomputer, integrating H200 GPUs and NVIDIA Quantum-2 InfiniBand networking.
+
+•Accelerated quantum computing efforts at national supercomputing centers around the world with the open-source NVIDIA CUDA-Q™ platform.
+
+Gaming and AI PC
+
+•Second-quarter Gaming revenue was $2.9 billion, up 9% from the previous quarter and up 16% from a year ago.
+
+•Announced NVIDIA ACE, a suite of generative AI technologies that bring digital humans to life, now includes NVIDIA Nemotron-4 4B, a small language model for on-device inference, and is available in early access for RTX AI PCs.
+
+•Introduced Project G-Assist, a technology preview demonstrating the power of AI agents to assist gamers and creators in real time.
+
+•Announced new NVIDIA GeForce RTX and DLSS titles, including Indiana Jones and the Great Circle, Dune: Awakening and Dragon Age: The Veilguard, bringing the total number of RTX games and apps to over 600.
+
+•Surpassed 2,000 games on GeForce NOW, expanded the service into Japan and announced launches of Black Myth: Wukong and Star Wars Outlaws.
+
+Professional Visualization
+
+•Second-quarter revenue was $454 million, up 6% from the previous quarter and up 20% from a year ago.
+
+•Introduced generative AI models and NIM microservices for OpenUSD to accelerate workflows and the development of industrial digital twins and robotics."
+NVDA-018,1045810-0001045810-24-000262-ex99-0005,NVDA,8-K,2024-08-28,ex99,keyword,a81a2c07f9e6e05eb296cd7004f787309b49af0a6b375b7bdf29c7bc7e7f2781,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000262/q2fy25pr.htm,"To supplement NVIDIA’s condensed consolidated financial statements presented in accordance with GAAP, the company uses non-GAAP measures of certain components of financial performance. These non-GAAP measures include non-GAAP gross profit, non-GAAP gross margin, non-GAAP operating expenses, non-GAAP income from operations, non-GAAP other income (expense), net, non-GAAP net income, non-GAAP net income, or earnings, per diluted share, and free cash flow. For NVIDIA’s investors to be better able to compare its current results with those of previous periods, the company has shown a reconciliation of GAAP to non-GAAP financial measures. These reconciliations adjust the related GAAP financial measures to exclude stock-based compensation expense, acquisition-related and other costs, other, gains from non-affiliated investments and publicly-held equity securities, net, interest expense related to amortization of debt discount, and the associated tax impact of these items where applicable. Free cash flow is calculated as GAAP net cash provided by operating activities less both purchases related to property and equipment and intangible assets and principal payments on property and equipment and intangible assets. NVIDIA believes the presentation of its non-GAAP financial measures enhances the user’s overall understanding of the company’s historical financial performance. The presentation of the company’s non-GAAP financial measures is not meant to be considered in isolation or as a substitute for the company’s financial results prepared in accordance with GAAP, and the company’s non-GAAP measures may be different from non-GAAP measures used by other companies.
+
+About NVIDIA
+
+NVIDIA (NASDAQ: NVDA) is the world leader in accelerated computing.
+
+###
+
+For further information, contact:
+
+Stewart Stecker | Mylene Mangalindan
+Investor Relations | Corporate Communications
+NVIDIA Corporation | NVIDIA Corporation
+sstecker@nvidia.com | mmangalindan@nvidia.com"
+NVDA-019,1045810-0001045810-24-000264-p1item1-0022,NVDA,10-Q,2024-08-28,p1item1,keyword,35eb5b4947e6f4086d5661a99998ec483d491f316d302a04a21ee58a2471212c,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000264/nvda-20240728.htm,"From July 29, 2024 through August 26, 2024, we repurchased 31.5 million shares for $3.6 billion pursuant to a Rule 10b5-1 trading plan.
+
+On June 7, 2024, we increased our quarterly cash dividend to $0.01 per share on a post-Stock Split basis to all shareholders of record on June 11, 2024. Our quarterly cash dividend was paid on June 28, 2024.
+
+During the second quarter and first half of fiscal year 2025, we paid $246 million and $344 million in cash dividends, respectively. During the second quarter and first half of fiscal year 2024, we paid $99 million and $199 million in cash dividends to our shareholders, respectively. Our cash dividend program and the payment of future cash dividends under that program are subject to our Board of Directors' continuing determination that the dividend program and the declaration of dividends thereunder are in the best interests of our shareholders.
+
+Note 14 - Segment Information
+
+Our Chief Executive Officer is our chief operating decision maker, or CODM, and reviews financial information presented on an operating segment basis for purposes of making decisions and assessing financial performance.
+
+The Compute & Networking segment includes our Data Center accelerated computing platforms and artificial intelligence, or AI, solutions and software; networking; automotive platforms and autonomous and electric vehicle solutions; Jetson for robotics and other embedded platforms; and DGX Cloud computing services.
+
+The Graphics segment includes GeForce GPUs for gaming and PCs, the GeForce NOW game streaming service and related infrastructure, and solutions for gaming platforms; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics; virtual GPU software for cloud-based visual and virtual computing; automotive platforms for infotainment systems; and Omniverse Enterprise software for building and operating 3D internet applications.
+
+Operating results by segment include costs or expenses directly attributable to each segment, and costs or expenses that are leveraged across our unified architecture and therefore allocated between our two segments.
+
+The “All Other” category includes the expenses that our CODM does not assign to either Compute & Networking or Graphics for purposes of making operating decisions or assessing financial performance. The expenses include stock-based compensation expense, corporate infrastructure and support costs, acquisition-related and other costs, and other non-recurring charges and benefits that our CODM deems to be enterprise in nature."
+NVDA-020,1045810-0001045810-24-000264-p1item2-0002,NVDA,10-Q,2024-08-28,p1item2,keyword,bc253075b1e2529fdb29844c08eec9a04d2d801d7ae5d1b31aad178afe8db1d8,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000264/nvda-20240728.htm,"NVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and 3D internet applications. Our two operating segments are ""Compute & Networking"" and ""Graphics,"" as described in Note 14 of the Notes to Condensed Consolidated Financial Statements in Part I, Item 1 of this Quarterly Report on Form 10-Q.
+
+Headquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.
+
+Recent Developments, Future Objectives and Challenges
+
+Demand and Supply
+
+Revenue growth in the second quarter of fiscal year 2025 was driven by data center compute platforms and networking for accelerated computing and AI solutions. Hopper architecture demand is strong, and shipments are expected to increase in the second half of fiscal 2025. We shipped customer samples of our Blackwell architecture in the second quarter. We executed a change to the Blackwell GPU mask to improve production yield. Blackwell production ramp is scheduled to begin in the fourth quarter and continue into fiscal year 2026. In the fourth quarter of fiscal year 2025, we expect to ship several billion dollars in Blackwell revenue.
+
+Demand estimates for our new products, applications, and services can be incorrect and create volatility in our revenue or supply levels. We may not be able to generate significant revenue from them. Recent technologies, such as generative AI models, have emerged, and while they have driven increased demand for Data Center, the long-term trajectory is unknown.
+
+We continue to increase our supply and capacity purchases with existing and new suppliers to support our demand projections. With these additions, we have also entered and may continue to enter into prepaid manufacturing and capacity agreements to supply both current and future products. The increased purchase volumes and integration of new suppliers and contract manufacturers into our supply chain may create more complexity in managing multiple suppliers with variations in production planning, execution and logistics. Our expanding product portfolio and varying component compatibility and quality may lead to increased inventory levels. We have incurred and may in the future incur inventory"
+NVDA-021,1045810-0001045810-24-000264-p1item2-0009,NVDA,10-Q,2024-08-28,p1item2,keyword,b343f883f269b4bf59f6b7590cd6dd31c0dbb4e7b30a0b714d4ad88a6cde2cf6,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000264/nvda-20240728.htm,"Automotive revenue for the second quarter of fiscal year 2025 was $346 million, up 5% from the previous quarter and up 37% from a year ago. At the Computer Vision and Pattern Recognition conference, NVIDIA won the Autonomous Grand Challenge in the ‘End-to-End Driving at Scale’ category, highlighting the importance of generative AI in building applications for physical AI deployments in autonomous vehicle development.
+
+Financial Information by Business Segment and Geographic Data
+
+Refer to Note 14 of the Notes to the Condensed Consolidated Financial Statements for disclosure regarding segment information.
+
+Critical Accounting Policies and Estimates
+
+Refer to Part II, Item 7, ""Critical Accounting Policies and Estimates"" of our Annual Report on Form 10-K for the fiscal year ended January 28, 2024. There have been no material changes to our Critical Accounting Policies and Estimates.
+
+Results of Operations
+
+The following table sets forth, for the periods indicated, certain items in our Condensed Consolidated Statements of Income expressed as a percentage of revenue.
+
+Three Months Ended | Six Months Ended
+Jul 28, 2024 | Jul 30, 2023 | Jul 28, 2024 | Jul 30, 2023
+Revenue | 100.0% | 100.0% | 100.0% | 100.0%
+Cost of revenue | 24.9 | 29.9 | 23.4 | 31.8
+Gross profit | 75.1 | 70.1 | 76.6 | 68.2
+Operating expenses
+Research and development | 10.3 | 15.1 | 10.4 | 18.9
+Sales, general and administrative | 2.8 | 4.7 | 2.9 | 6.1
+Total operating expenses | 13.1 | 19.8 | 13.3 | 25.0
+Operating income | 62.0 | 50.3 | 63.3 | 43.2
+Interest income | 1.5 | 1.4 | 1.4 | 1.6
+Interest expense | (0.2) | (0.5) | (0.2) | (0.6)
+Other, net | 0.6 | 0.4 | 0.5 | 0.2
+Other income (expense), net | 1.9 | 1.3 | 1.7 | 1.2
+Income before income tax | 63.9 | 51.6 | 65.0 | 44.4
+Income tax expense | 8.7 | 5.9 | 8.9 | 4.6
+Net income | 55.2% | 45.7% | 56.1% | 39.8%
+
+Revenue
+
+Revenue by Reportable Segments"
+NVDA-022,1045810-0001045810-24-000264-p2item1a-0004,NVDA,10-Q,2024-08-28,p2item1a,keyword,051e1f4b3c0aca420f30ada8606d6bcddcf9aa44ac3192509d48fdbce6e6a670,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000264/nvda-20240728.htm,"Product transitions are complex and we often ship both new and prior architecture products simultaneously as our channel partners prepare to ship and support new products. We may be in various stages of transitioning the architectures of our Data Center, Gaming, Professional Visualization and Automotive products. The computing industry is experiencing a broader and faster launch cadence of accelerated computing platforms to meet a growing and diverse set of AI opportunities. We have introduced a new cadence of our Data Center architectures where we seek to complete a new GPU computing architecture each year and we are providing a greater variety of Data Center offerings. The increased frequency of these transitions and the larger number of products and product configurations may magnify the challenges associated with managing our supply and demand. Qualification time for new products, customers anticipating product transitions and channel partners reducing channel inventory of prior architectures ahead of new product introductions can reduce or create volatility in our revenue. We have experienced and may in the future experience reduced demand for current generation architectures when customers anticipate transitions, and we may be unable to sell multiple product architectures at the same time for current and future architecture transitions. If we are unable to execute our architectural transitions as planned for any reason, our financial results may be negatively impacted. The increased frequency and complexity of newly introduced products could result in unanticipated quality or production issues that could increase the magnitude of inventory provisions, warranty, or other costs or result in product delays. For example, we executed a change to the Blackwell GPU mask to improve production yield. Our gross margins in the second quarter of fiscal year 2025 were negatively impacted by inventory provisions for low-yielding Blackwell material and they may continue to be impacted in the future."
+NVDA-023,1045810-0001045810-24-000315-ex99-0003,NVDA,8-K,2024-11-20,ex99,keyword,a395af2204dd715471f0c56199a625e3a23b03405a279cf450938f44da95e6b2,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000315/q3fy25pr.htm,"•Revealed that cloud leaders in India, Japan and Indonesia are building AI infrastructure with NVIDIA accelerated computing, while consulting leaders are helping speed AI adoption across industries with NVIDIA AI Enterprise software.
+
+•Accelerated xAI’s Colossus supercomputer cluster, using 100,000 NVIDIA Hopper GPUs, with the NVIDIA Spectrum-X™ Ethernet networking platform.
+
+•Unveiled a partnership with Foxconn to build Taiwan’s fastest AI supercomputer with NVIDIA Blackwell.
+
+•Announced that Blackwell debuted on MLPerf Training, completed all tests and delivered up to 2.2x performance gains on large language model benchmarks.
+
+•Contributed foundational elements of the NVIDIA Blackwell design to the Open Compute Project and broadened NVIDIA Spectrum-X support for OCP standards.
+
+•Revealed that U.S. technology companies including Accenture, Deloitte and Google Cloud are tapping NVIDIA AI software to create custom AI applications, transforming industries worldwide.
+
+•Announced the expansion of a partnership with Lenovo to launch new hybrid AI solutions and systems optimized to run NVIDIA AI Enterprise software.
+
+Gaming and AI PC
+
+•Third-quarter Gaming revenue was $3.3 billion, up 14% from the previous quarter and up 15% from a year ago.
+
+•Celebrated the 25th anniversary of GeForce® 256, the world’s first GPU, which marked a breakthrough for gaming and laid the foundation for an AI-driven future.
+
+•Demonstrated NVIDIA ACE and digital human technologies in Mecha BREAK, featuring the Minitron 4B model for better in-game character responses, at Gamescom.
+
+•Introduced 20 GeForce RTX and DLSS titles, including Indiana Jones and the Great Circle and Dragon Age: The Veilguard.
+
+•Began shipping new RTX AI PCs with 321 AI trillion operations per second of performance from ASUS and MSI, with Microsoft Copilot+ capabilities anticipated next quarter.
+
+Professional Visualization
+
+•Third-quarter revenue was $486 million, up 7% from the previous quarter and up 17% from a year ago.
+
+•Announced that Foxconn is using digital twins and industrial AI built on NVIDIA Omniverse™ to bring online faster three factories used to manufacture NVIDIA GB200 Grace Blackwell Superchips.
+
+•Revealed that leading industrial manufacturers in India, including Reliance and Ola Motors, and Japan, including Toyota, Yaskawa, and Seven and I Holdings, are using NVIDIA AI and Omniverse to automate workflows and drive more efficient operations.
+
+•Unveiled NVIDIA Holoscan for Media, an AI-enabled, software-defined platform that allows live media and video pipelines to run on the same infrastructure as AI, enhancing production delivery.
+
+Automotive and Robotics"
+NVDA-024,1045810-0001045810-24-000315-ex99-0004,NVDA,8-K,2024-11-20,ex99,keyword,8300e475f1c608c54357d94360e442699fa8831104072b3eba2a3acc37c3acdf,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000315/q3fy25pr.htm,"•Third-quarter Automotive revenue was $449 million, up 30% from the previous quarter and up 72% from a year ago.
+
+•Revealed that Volvo is releasing a new electric SUV built on NVIDIA accelerated computing.
+
+•Introduced Project GR00T AI and simulation tools for robot learning and humanoid development, and new generative AI tools and perception workflows for robotics developers.
+
+•Announced that Japanese and Indian companies including Toyota and Ola Motors are using NVIDIA Isaac™ and Omniverse to build the next wave of physical AI.
+
+CFO Commentary
+
+Commentary on the quarter by Colette Kress, NVIDIA’s executive vice president and chief financial officer, is available at https://investor.nvidia.com.
+
+Conference Call and Webcast Information
+
+NVIDIA will conduct a conference call with analysts and investors to discuss its third quarter fiscal 2025 financial results and current financial prospects today at 2 p.m. Pacific time (5 p.m. Eastern time). A live webcast (listen-only mode) of the conference call will be accessible at NVIDIA’s investor relations website, https://investor.nvidia.com. The webcast will be recorded and available for replay until NVIDIA’s conference call to discuss its financial results for its fourth quarter and fiscal 2025.
+
+Non-GAAP Measures"
+NVDA-025,1045810-0001045810-24-000316-p1item1-0023,NVDA,10-Q,2024-11-20,p1item1,keyword,3056f9de2b308af0cb441f3a2971f32e57e98f2de57e9ca5a77c3caab03c14c5,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm,"We paid cash dividends to our shareholders of $245 million and $99 million during the third quarter, and $589 million and $296 million during the first nine months, of fiscal years 2025 and 2024, respectively. Our cash dividend program and the payment of future cash dividends under that program are subject to our Board of Directors' continuing determination that the dividend program and the declaration of dividends thereunder are in the best interests of our shareholders.
+
+Note 14 - Segment Information
+
+Our Chief Executive Officer is our chief operating decision maker, or CODM, and reviews financial information presented on an operating segment basis for purposes of making decisions and assessing financial performance.
+
+The Compute & Networking segment includes our Data Center accelerated computing platforms and artificial intelligence, or AI, solutions and software; networking; automotive platforms and autonomous and electric vehicle solutions; Jetson for robotics and other embedded platforms; and DGX Cloud computing services.
+
+The Graphics segment includes GeForce GPUs for gaming and PCs, the GeForce NOW game streaming service and related infrastructure, and solutions for gaming platforms; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics; virtual GPU software for cloud-based visual and virtual computing; automotive platforms for infotainment systems; and Omniverse Enterprise software for building and operating 3D internet applications.
+
+Operating results by segment include costs or expenses directly attributable to each segment, and costs or expenses that are leveraged across our unified architecture and therefore allocated between our two segments.
+
+The “All Other” category includes the expenses that our CODM does not assign to either Compute & Networking or Graphics for purposes of making operating decisions or assessing financial performance. The expenses include stock-based compensation expense, corporate infrastructure and support costs, acquisition-related and other costs, and other non-recurring charges and benefits that our CODM deems to be enterprise in nature.
+
+Our CODM does not review any information regarding total assets on a reportable segment basis. Depreciation and amortization expenses directly attributable to each reportable segment are included in operating results for each segment. However, our CODM does not review depreciation and amortization expense by operating segment and, therefore, it is not separately presented. The accounting policies for segment reporting are the same as for our consolidated financial statements. The table below presents details of our reportable segments and the “All Other” category."
+NVDA-026,1045810-0001045810-24-000316-p1item2-0002,NVDA,10-Q,2024-11-20,p1item2,keyword,001a6004fa324e48c21e2583b8137a7bd010c25893890ebca8487108a2d907de,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm,"NVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and 3D internet applications. Our two operating segments are ""Compute & Networking"" and ""Graphics,"" as described in Note 14 of the Notes to Condensed Consolidated Financial Statements in Part I, Item 1 of this Quarterly Report on Form 10-Q.
+
+Headquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.
+
+Recent Developments, Future Objectives and Challenges
+
+Demand and Supply
+
+Revenue growth in the third quarter of fiscal year 2025 was driven by data center compute and networking platforms for accelerated computing and AI solutions. Demand for the Hopper architecture is strong and our H200 offering grew significantly in the quarter. We completed a successful mask change for Blackwell, our next Data Center architecture, that improved production yields. Blackwell production shipments are scheduled to begin in the fourth quarter of fiscal year 2025 and will continue to ramp into fiscal year 2026. We will be shipping both Hopper and Blackwell systems in the fourth quarter of fiscal year 2025 and beyond. Both Hopper and Blackwell systems have certain supply constraints, and the demand for Blackwell is expected to exceed supply for several quarters in fiscal year 2026.
+
+Demand estimates for our products, applications, and services can be incorrect and create volatility in our revenue or supply levels. We may not be able to generate significant revenue from them. Advancements in accelerated computing and generative AI models, along with the growth in model complexity and scale, have driven increased demand for our Data Center systems."
+NVDA-027,1045810-0001045810-24-000316-p1item2-0004,NVDA,10-Q,2024-11-20,p1item2,keyword,85ae5881f84996e1de9e8c05d56c34948da5cb258728ab0cb73dfa9b84bde5fa,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm,"Product transitions are complex and we often ship both new and prior architecture products simultaneously as our channel partners prepare to ship and support new products. We may be in various stages of transitioning the architectures of our Data Center, Gaming, Professional Visualization and Automotive products. The computing industry is experiencing a broader and faster launch cadence of accelerated computing platforms to meet a growing and diverse set of AI opportunities. We have introduced a new architecture cadence of our Data Center solutions where we seek to complete a new computing architecture each year and we are providing a greater variety of Data Center offerings. The increased frequency of these transitions and the larger number of products and product configurations may magnify the challenges associated with managing our supply and demand which may create volatility in our revenue. The increased frequency and complexity of newly introduced products could result in quality or production issues that could increase inventory provisions, warranty, or other costs or result in product delays. We incur significant engineering development resources for new products, and changes to our product roadmap may impact our ability to develop other products or adequately manage our supply chain cost. Customers may delay purchasing existing products as we increase the frequency of new products or may not be able to adopt our new products as fast as forecasted, both impacting the timing of our revenue and supply chain cost. While we have managed prior product transitions and have sold multiple product architectures at the same time, these transitions are difficult, may impair our ability to predict demand and impact our supply mix, and may cause us to incur additional costs.
+
+Global Trade
+
+In August 2022, the U.S. government, or the USG, announced licensing requirements that, with certain exceptions, impact exports to China (including Hong Kong and Macau) and Russia of our A100 and H100 integrated circuits, DGX or any other systems or boards which incorporate A100 or H100 integrated circuits.
+
+In July 2023, the USG informed us of an additional licensing requirement for a subset of A100 and H100 products destined to certain customers and other regions, including some countries in the Middle East."
+NVDA-028,1045810-0001045810-24-000316-p1item2-0008,NVDA,10-Q,2024-11-20,p1item2,keyword,f83697b8854576cbdd549e94fdcc24e990ea58d0d746f13258c6fb7ce2efe615,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm,"Data Center revenue was up 112% from a year ago and up 17% sequentially. The strong year-on-year and sequential growth was driven by demand for our Hopper computing platform for training and inferencing of large language models, recommendation engines, and generative AI applications. Cloud service providers represented approximately 50% of our Data Center revenue, and the remainder was represented by consumer internet and enterprise companies. Strong year-on-year growth was driven by all customer types from both compute and networking. Demand for the Hopper architecture is strong and our H200 offering grew significantly in the quarter. Data Center compute revenue was $27.6 billion, up 132% from a year ago and up 22% sequentially. Networking revenue was $3.1 billion, up 20% from a year ago driven by Ethernet for AI, which includes Spectrum-X end-to-end ethernet platform. Areas of sequential revenue growth include InfiniBand and Ethernet switches, SmartNICs, and BlueField DPUs. Though networking revenue was sequentially down 15%, networking demand is strong and growing.
+
+Gaming revenue was up 15% from a year ago and up 14% sequentially. These increases were driven by sales of our GeForce RTX 40 Series GPUs and game console SoCs.
+
+Professional Visualization revenue was up 17% from a year ago and up 7% sequentially. These increases were driven by the continued ramp of RTX GPU workstations based on our Ada architecture.
+
+Automotive revenue was up 72% from a year ago and up 30% sequentially. These increases were driven by our self-driving platforms.
+
+Gross margin increased from a year ago due to a higher mix of Data Center revenue. Sequentially, gross margin decreased primarily driven by a mix shift from H100 systems to more complex and higher cost systems within Data Center.
+
+Operating expenses were up 44% from a year ago and up 9% sequentially, driven by higher compensation and benefits expenses due to employee growth and compensation increases.
+
+Financial Information by Business Segment and Geographic Data
+
+Refer to Note 14 of the Notes to the Condensed Consolidated Financial Statements for disclosure regarding segment information.
+
+Critical Accounting Policies and Estimates
+
+Refer to Part II, Item 7, ""Critical Accounting Policies and Estimates"" of our Annual Report on Form 10-K for the fiscal year ended January 28, 2024. There have been no material changes to our Critical Accounting Policies and Estimates.
+
+Results of Operations"
+NVDA-029,1045810-0001045810-24-000316-p2item1a-0004,NVDA,10-Q,2024-11-20,p2item1a,keyword,96dfafb549cb1ff0fdbd860f3d7166715508723807e1b22b09f503d9c1951af2,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm,"Product transitions are complex and we often ship both new and prior architecture products simultaneously as our channel partners prepare to ship and support new products. We may be in various stages of transitioning the architectures of our Data Center, Gaming, Professional Visualization and Automotive products. The computing industry is experiencing a broader and faster launch cadence of accelerated computing platforms to meet a growing and diverse set of AI opportunities. We have introduced a new architecture cadence of our Data Center solutions where we seek to complete a new computing architecture each year and we are providing a greater variety of Data Center offerings. The increased frequency of these transitions and the larger number of products and product configurations may magnify the challenges associated with managing our supply and demand. Qualification time for new products, customers anticipating product transitions and channel partners reducing channel inventory of prior architectures ahead of new product introductions can reduce or create volatility in our revenue. We have experienced and may in the future experience reduced demand for current generation architectures when customers anticipate transitions, and we may be unable to sell multiple product architectures at the same time for current and future architecture transitions. If we are unable to execute our architectural transitions as planned for any reason, our financial results may be negatively impacted. The increased frequency and complexity of newly introduced products could result in unanticipated quality or production issues that could increase the magnitude of inventory provisions, warranty, or other costs or result in product delays. For example, our gross margins in the second quarter of fiscal year 2025 were negatively impacted by inventory provisions for low-yielding Blackwell material."
+NVDA-030,1045810-0001045810-24-000316-p2item1a-0014,NVDA,10-Q,2024-11-20,p2item1a,non_keyword,d5b25cf109b9556b4c437f439549de19d8e54dfd3468672a7fa0beeb39f5392f,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm,"In October 2023, the USG announced new and updated licensing requirements that became effective in our fourth quarter of fiscal year 2024 for exports to China and Country Groups D1, D4, and D5 (including but not limited to, Saudi Arabia, the United Arab Emirates, and Vietnam, but excluding Israel) of our products exceeding certain performance thresholds, including, but not limited to, the A100, A800, H100, H800, L4, L40, L40S and RTX 4090. The licensing requirements also apply to the export of products exceeding certain performance thresholds to a party headquartered in, or with an ultimate parent headquartered in, Country Group D5, including China. On October 23, 2023, the USG informed us that the licensing requirements were effective immediately for shipments of our A100, A800, H100, H800, and L40S products (removing the grace period granted by the official rule). Our upcoming Blackwell systems, such as GB200 NVL 72 and NVL 36 as well as B200 will also be subject to these requirements and therefore require a license for any shipment to certain entities and to China and Country Groups D1, D4, and D5, excluding Israel. To date, we have not received licenses to ship these restricted products to China."
+NVDA-031,1045810-0001045810-24-000316-p2item1a-0016,NVDA,10-Q,2024-11-20,p2item1a,keyword,455159d7b4089fa82b979cb1d908b571615187b0c562f66cbdce26952f3213a8,https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm,"Management of these new licenses and other requirements is complicated and time consuming. Our competitive position has been harmed, and our competitive position and future results may be further harmed, over the long-term, if there are further changes in the USG’s export controls, including further expansion of the geographic, customer, or product scope of the controls, if customers purchase product from competitors, if customers develop their own internal solution, if we are unable to provide contractual warranty or other extended service obligations, if the USG does not grant licenses in a timely manner or denies licenses to significant customers or if we incur significant transition costs. Even if the USG grants any requested licenses, the licenses may be temporary or impose burdensome conditions that we or our customers or end users cannot or choose not to fulfill. The licensing requirements may benefit certain of our competitors, as the licensing process will make our pre-sale and post-sale technical support efforts more cumbersome and less certain and encourage customers in China to pursue alternatives to our products, including semiconductor suppliers based in China, Europe, and Israel.
+
+Given the increasing strategic importance of AI and rising geopolitical tensions, the USG has changed and may again change the export control rules at any time and further subject a wider range of our products to export restrictions and licensing requirements, negatively impacting our business and financial results. In the event of such change, we may be unable to sell our inventory of such products and may be unable to develop replacement products not subject to the licensing requirements, effectively excluding us from all or part of the China market, as well as other impacted markets,"
+NVDA-032,1045810-0001045810-25-000021-ex99-0004,NVDA,8-K,2025-02-26,ex99,keyword,e502b029195bb64fa17c935ead8203bbe293f9416a04f9e59e10a3be2b62f56f,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000021/q4fy25pr.htm,"•Fourth-quarter revenue was $511 million, up 5% from the previous quarter and up 10% from a year ago. Full-year revenue rose 21% to $1.9 billion.
+
+•Unveiled NVIDIA Project DIGITS, a personal AI supercomputer that provides AI researchers, data scientists and students worldwide with access to the power of the NVIDIA Grace™ Blackwell platform.
+
+•Announced generative AI models and blueprints that expand NVIDIA Omniverse™ integration further into physical AI applications, including robotics, autonomous vehicles and vision AI.
+
+•Introduced NVIDIA Media2, an AI-powered initiative transforming content creation, streaming and live media experiences, built on NIM and AI Blueprints.
+
+Automotive and Robotics
+
+•Fourth-quarter Automotive revenue was $570 million, up 27% from the previous quarter and up 103% from a year ago. Full-year revenue rose 55% to $1.7 billion.
+
+•Announced that Toyota, the world’s largest automaker, will build its next-generation vehicles on NVIDIA DRIVE AGX Orin™ running the safety-certified NVIDIA DriveOS operating system.
+
+•Partnered with Hyundai Motor Group to create safer, smarter vehicles, supercharge manufacturing and deploy cutting-edge robotics with NVIDIA AI and NVIDIA Omniverse.
+
+•Announced that the NVIDIA DriveOS safe autonomous driving operating system received ASIL-D functional safety certification and launched the NVIDIA DRIVE™ AI Systems Inspection Lab.
+
+•Launched NVIDIA Cosmos™, a platform comprising state-of-the-art generative world foundation models, to accelerate physical AI development, with adoption by leading robotics and automotive companies 1X, Agile Robots, Waabi, Uber and others.
+
+•Unveiled the NVIDIA Jetson Orin Nano™ Super, which delivers up to a 1.7x gain in generative AI performance.
+
+CFO Commentary
+
+Commentary on the quarter by Colette Kress, NVIDIA’s executive vice president and chief financial officer, is available at https://investor.nvidia.com.
+
+Conference Call and Webcast Information
+
+NVIDIA will conduct a conference call with analysts and investors to discuss its fourth quarter and fiscal 2025 financial results and current financial prospects today at 2 p.m. Pacific time (5 p.m.
+
+Eastern time). A live webcast (listen-only mode) of the conference call will be accessible at NVIDIA’s investor relations website, https://investor.nvidia.com. The webcast will be recorded and available for replay until NVIDIA’s conference call to discuss its financial results for its first quarter of fiscal 2026.
+
+Non-GAAP Measures"
+NVDA-033,1045810-0001045810-25-000021-ex99-0006,NVDA,8-K,2025-02-26,ex99,keyword,51082088a20f105f012c9fbd81f66d4bec217a9d10f4624c605b7e3d9936a7e5,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000021/q4fy25pr.htm,"Certain statements in this press release including, but not limited to, statements as to: AI advancing at light speed as agentic AI and physical AI set the stage for the next wave of AI to revolutionize the largest industries; expectations with respect to growth, performance and benefits of NVIDIA’s products, services and technologies, including Blackwell, and related trends and drivers; expectations with respect to supply and demand for NVIDIA’s products, services and technologies, including Blackwell, and related matters including inventory, production and distribution; expectations with respect to NVIDIA’s third party arrangements, including with its collaborators and partners; expectations with respect to technology developments and related trends and drivers; future NVIDIA cash dividends or other returns to stockholders; NVIDIA’s financial and business outlook for the first quarter of fiscal 2026 and beyond; projected market growth and trends; expectations with respect to AI and related industries; and other statements that are not historical facts are risks and uncertainties that could cause results to be materially different than expectations. Important factors that could cause actual results to differ materially include: global economic and political conditions; NVIDIA’s reliance on third parties to manufacture, assemble, package and test NVIDIA’s products; the impact of technological development and competition; development of new products and technologies or enhancements to NVIDIA’s existing product and technologies; market acceptance of NVIDIA’s products or NVIDIA’s partners’ products; design, manufacturing or software defects; changes in consumer preferences or demands; changes in industry standards and interfaces; unexpected loss of performance of NVIDIA’s products or technologies when integrated into systems; and changes in applicable laws and regulations, as well as other factors detailed from time to time in the most recent reports NVIDIA files with the Securities and Exchange Commission, or SEC, including, but not limited to, its annual report on Form 10-K and quarterly reports on Form 10-Q. Copies of reports filed with the SEC are posted on the company’s website and are available from NVIDIA without charge. These forward-looking statements are not guarantees of future performance and speak only as of the date hereof, and,
+
+except as required by law, NVIDIA disclaims any obligation to update these forward-looking statements to reflect future events or circumstances."
+NVDA-034,1045810-0001045810-25-000023-item1-0004,NVDA,10-K,2025-02-26,item1,keyword,e6d60e7ad57e55634f74df05c4f065f6a90a7d27f589f78c0fb40f2058822e79,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm,"The Compute & Networking segment includes our Data Center accelerated computing platforms and AI solutions and software; networking; automotive platforms and autonomous and electric vehicle solutions; Jetson for robotics and other embedded platforms; and DGX Cloud computing services.
+
+The Graphics segment includes GeForce GPUs for gaming and PCs, the GeForce NOW game streaming service and related infrastructure, and solutions for gaming platforms; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics; virtual GPU, or vGPU, software for cloud-based visual and virtual computing; automotive platforms for infotainment systems; and Omniverse Enterprise software for building and operating industrial AI and digital twin applications.
+
+Our Markets
+
+We specialize in markets where our computing platforms can provide tremendous acceleration for applications. These platforms incorporate processors, interconnects, software, algorithms, systems, and services to deliver unique value. Our platforms address four large markets where our expertise is critical: Data Center, Gaming, Professional Visualization, and Automotive.
+
+Data Center
+
+The NVIDIA Data Center platform is focused on accelerating the most compute-intensive workloads, such as AI, data analytics, graphics, and scientific computing, delivering significantly better performance and power efficiency relative to conventional CPU-only approaches. It is deployed in cloud, hyperscale, on-premises and edge data centers. The platform consists of compute and networking offerings typically delivered to customers as systems, subsystems, or modules, along with software and services.
+
+Our compute offerings include supercomputing platforms and servers, bringing together our energy efficient GPUs, CPUs, interconnects, and fully optimized AI and HPC software stacks. In addition, they include NVIDIA AI Enterprise software; our DGX Cloud service; and a growing body of acceleration libraries, APIs, SDKs, and domain-specific application frameworks.
+
+Our networking offerings include end-to-end platforms for InfiniBand and Ethernet, consisting of network adapters, cables, DPUs, switch chips and systems, as well as a full software stack. This has enabled us to architect data center-scale computing platforms that can interconnect thousands of compute nodes with high-performance networking. While historically the server was the unit of computing, as AI and HPC workloads have become extremely large spanning thousands of compute nodes, the data center has become the new unit of computing, with networking as an integral part."
+NVDA-035,1045810-0001045810-25-000023-item1-0006,NVDA,10-K,2025-02-26,item1,keyword,290bdba01c891f0dfc46aca16942ac08c53d3924f5b9148af5739f1d24eb3162,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm,"Gaming is the largest entertainment industry, with PC gaming as the predominant platform. Many factors propel its growth, including new high production value games and franchises, the continued rise of competitive gaming, or eSports, social connectivity and the increasing popularity of game streamers, modders, or gamers who remaster games, and creators.
+
+Our gaming platforms leverage our GPUs and sophisticated software to enhance the gaming experience with smoother, higher quality graphics. We developed NVIDIA RTX to bring next generation graphics and AI to games. NVIDIA RTX features ray tracing technology for real-time, cinematic-quality rendering. Ray tracing, which has long been used for special effects in the movie industry, is a computationally intensive technique that simulates the physical behavior of light to achieve greater realism in computer-generated scenes. NVIDIA RTX also features deep learning super sampling, or NVIDIA DLSS, our AI technology that boosts frame rates while generating beautiful, sharp images for games. RTX GPUs will also accelerate a new generation of AI applications. With an installed base of over 100 million AI capable PCs, more than 700 RTX AI-enabled applications and games, and a robust suite of development tools, RTX is already the AI PC leader.
+
+Our products for the gaming market include GeForce RTX and GeForce GTX GPUs for gaming desktop and laptop PCs, GeForce NOW cloud gaming for playing PC games on underpowered devices, as well as SoCs and development services for game consoles.
+
+In fiscal year 2025, we launched the NVIDIA Blackwell GeForce RTX 50 Series family of desktop and laptop GPUs. The Blackwell architecture introduced neural graphics which combines AI models with traditional rendering to unlock a new era of graphics innovation. The RTX 50 Series also features the next generation of our DLSS technology powered for the first time by a transformer model architecture. Together these technologies help deliver up to a 2x leap in performance and stunning visual realism for PC gamers, developers, and creatives.
+
+Professional Visualization"
+NVDA-036,1045810-0001045810-25-000023-item1-0009,NVDA,10-K,2025-02-26,item1,keyword,1f3d08e1047991bf587487e4d90f7cea9ea6ad98e475059a7eb94d7da1daf7d3,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm,"Extending our technology and platform leadership in AI. We provide a complete, end-to-end accelerated computing platform for AI, addressing both training and inferencing. This includes full-stack data center-scale compute and networking solutions across processing units, interconnects, systems, and software. Our compute solutions include all three major processing units in AI servers – GPUs, CPUs, and DPUs. GPUs are uniquely suited to AI, and we will continue to add AI-specific features to our GPU architecture to further extend our leadership position.
+
+In addition, we offer DGX Cloud, a fully managed AI-training-as-a-service platform, along with NVIDIA AI Enterprise—a comprehensive software suite designed to simplify the development and deployment of production-grade, end-to-end generative AI applications. NVIDIA AI Enterprise includes: NVIDIA NIM, which delivers a 2.5x increase in token throughput using industry-leading open and proprietary models; NVIDIA NeMo, a complete solution for curating, fine-tuning, evaluating, and safeguarding domain-adapted models; and AI Blueprints, pre-built, runnable templates that help enterprises build, optimize, and deploy AI agents while preserving privacy. These tools enable organizations to securely develop and run AI applications on NVIDIA-accelerated infrastructure anywhere.
+
+Our AI technology leadership is reinforced by our large and expanding ecosystem in a virtuous cycle. Our computing platforms are available from virtually every major server maker and CSP, as well as on our own AI supercomputers. There are over 5.9 million developers worldwide using CUDA and our other software tools to help deploy our technology in our target markets. We evangelize AI through partnerships with hundreds of universities and thousands of startups through our Inception program. Additionally, our Deep Learning Institute provides instruction on the latest techniques on how to design, train, and deploy neural networks in applications using our accelerated computing platform.
+
+Extending our technology and platform leadership in computer graphics. We believe that computer graphics infused with AI is fundamental to the continued expansion and evolution of computing. We apply our research and development resources to enhance the user experience for consumer entertainment and professional visualization applications and create new virtual world and simulation capabilities. Our technologies are instrumental in driving the gaming, design, and creative industries forward, as developers leverage our libraries and algorithms to deliver an optimized experience on our GeForce and NVIDIA RTX platforms. Our computer graphics platforms leverage AI end-to-end, from the developer tools and cloud services to the Tensor Cores included in all RTX-class GPUs. For example, NVIDIA Avatar Cloud Engine, or ACE, is"
+NVDA-037,1045810-0001045810-25-000023-item1-0013,NVDA,10-K,2025-02-26,item1,keyword,64d3ea1b16c4c1d3e501c567c9e66d4dde0ea66ba00f0def764e5afe2e9f3110,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm,"The market for our products is intensely competitive and is characterized by rapid technological change and evolving industry standards. We believe that the principal competitive factors in this market are performance, breadth of product offerings, access to customers and partners and distribution channels, software support, conformity to industry standard APIs, manufacturing capabilities, processor pricing, and total system costs. We believe that our ability to remain competitive will depend on how well we are able to anticipate the features and functions that customers and partners will demand and whether we are able to deliver consistent volumes of our products at acceptable levels of quality and at competitive prices. We expect competition to increase from both existing competitors and new market entrants with products that may be lower priced than ours or may provide better performance or additional features not provided by our products. In addition, it is possible that new competitors or alliances among competitors could emerge and acquire significant market share.
+
+A significant source of competition comes from companies that provide or intend to provide GPUs, CPUs, DPUs, embedded SoCs, and other accelerated, AI computing processor products, and providers of semiconductor-based high-performance interconnect products based on InfiniBand, Ethernet, Fibre Channel, and proprietary technologies. Some of our competitors may have greater marketing, financial, distribution and manufacturing resources than we do and may be more able to adapt to customers or technological changes. We expect an increasingly competitive environment in the future.
+
+Our current competitors include:
+
+•suppliers and licensors of hardware and software for discrete and integrated GPUs, custom chips and other accelerated computing solutions, including solutions offered for AI, such as Advanced Micro Devices, Inc., or AMD, Huawei Technologies Co. Ltd., or Huawei, and Intel Corporation, or Intel;
+
+•large cloud services companies with internal teams designing hardware and software that incorporate accelerated or AI computing functionality as part of their internal solutions or platforms, such as Alibaba Group, Alphabet Inc., Amazon, Inc., or Amazon, Baidu, Inc., Huawei, and Microsoft Corporation, or Microsoft;
+
+•suppliers of Arm-based CPUs and companies that incorporate hardware and software for CPUs as part of their internal solutions or platforms, such as Amazon, Huawei, and Microsoft;"
+NVDA-038,1045810-0001045810-25-000023-item15-0042,NVDA,10-K,2025-02-26,item15,keyword,84569ba21d44e5bcadf5cf3fbdc435c657e8360f3b4dcc92001549d1bfcee61d,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm,"We provide tax-qualified defined contribution plans to eligible employees in the U.S. and certain other countries. Our contribution expense for fiscal years 2025, 2024, and 2023 was $314 million, $255 million, and $227 million, respectively.
+
+Note 16 - Segment Information
+
+Our Chief Executive Officer is our chief operating decision maker, or CODM, and reviews financial information presented on an operating segment basis for purposes of making decisions and assessing financial performance. Our CODM assesses operating performance of each segment based on regularly provided segment revenue and segment operating income. Operating results by segment include costs or expenses directly attributable to each segment, and costs or expenses that are leveraged across our unified architecture and therefore allocated between our two segments. Our CODM reviews expenses on a consolidated basis, and expenses attributable to each segment are not regularly provided to our CODM.
+
+The Compute & Networking segment includes our Data Center accelerated computing platforms and AI solutions and software; networking; automotive platforms and autonomous and electric vehicle solutions; Jetson for robotics and other embedded platforms; and DGX Cloud computing services.
+
+The Graphics segment includes GeForce GPUs for gaming and PCs, the GeForce NOW game streaming service and related infrastructure, and solutions for gaming platforms; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics; vGPU software for cloud-based visual and virtual computing; automotive platforms for infotainment systems; and Omniverse Enterprise software for building and operating industrial AI and digital twin applications.
+
+The “All Other” category includes the expenses that are not allocated to either Compute & Networking or Graphics for purposes of making operating decisions or assessing financial performance. The expenses include stock-based compensation expense, corporate infrastructure and support costs, acquisition-related and other costs, and other non-recurring charges and benefits that our CODM deems to be enterprise in nature.
+
+Our CODM does not review any information regarding total assets on a reportable segment basis. There are no intersegment transactions. The accounting policies for segment reporting are the same as for our consolidated financial statements. The table below presents details of our reportable segments and the “All Other” category."
+NVDA-039,1045810-0001045810-25-000023-item1a-0002,NVDA,10-K,2025-02-26,item1a,keyword,bd1a8ec4b4bf8c3742734297b9eea084d2e6c64ce0ecf17ec88663c3478593b8,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm,"•Our operating results have in the past fluctuated and may in the future fluctuate, and if our operating results are below the expectations of securities analysts or investors, our stock price could decline.
+
+Risks Related to Regulatory, Legal, Our Stock, and Other Matters
+
+•We are subject to complex laws, rules, regulations, and political and other actions, including restrictions on the export of our products, which may adversely impact our business.
+
+•Increased scrutiny regarding our corporate sustainability practices could result in financial, reputational, or operational harm and liability.
+
+•Issues relating to the responsible use of our technologies, including AI, may result in reputational or financial harm and liability.
+
+•Adequately protecting our IP rights could be costly, and our ability to compete could be harmed if we are unsuccessful or if we are prohibited from making or selling our products.
+
+•We are subject to stringent and changing data privacy and security laws, rules, regulations, and other obligations. These areas could damage our reputation, deter customers, affect product design, or result in legal or regulatory proceedings and liability.
+
+•Our operating results may be adversely impacted by additional tax liabilities, higher than expected tax rates, changes in tax laws, and other tax-related factors.
+
+•Our business is exposed to the burden and risks associated with litigation, investigations, and regulatory proceedings.
+
+•Delaware law, provisions in our governing documents and our agreement with Microsoft could delay or prevent a change in control.
+
+Risk Factors
+
+Risks Related to Our Industry and Markets
+
+Failure to meet the evolving needs of our industry and markets may adversely impact our financial results.
+
+Our accelerated computing platforms experience rapid changes in technology, customer requirements, competitive products, and industry standards.
+
+Our success depends on our ability to:
+
+•timely identify industry changes, adapt our strategies, and develop new or enhance and maintain existing products and technologies that meet the evolving needs of our markets, including addressing unexpected shifts in industry standards or disruptive technological innovations that could render our products incompatible with those developed by other companies;
+
+•develop or acquire new products and technologies through investments in research and development;
+
+•launch new offerings with new business models including software, services, and cloud solutions, as well as software-, infrastructure-, or platform-as-a-service solutions;
+
+•expand the ecosystem for our products and technologies;
+
+•meet evolving and prevailing customer and industry safety, security, reliability expectations, and compliance standards;
+
+•manage product and software lifecycles to maintain customer and end-user satisfaction;"
+NVDA-040,1045810-0001045810-25-000023-item1a-0003,NVDA,10-K,2025-02-26,item1a,keyword,5d22eb4189939e8085a9252fbe6697900f19c70f7dbcbfb1ac0318e064f7a5df,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm,"•develop, acquire, maintain, and secure access to the internal and external infrastructure needed to scale our business, including sufficient energy for powering data centers using our products, acquisition integrations, customer support, e-commerce, IP licensing capabilities, and cloud service capacity; and
+
+•complete technical, financial, operational, compliance, sales and marketing investments for the above activities.
+
+We have invested in research and development in markets where we have a limited operating history, which may not produce meaningful revenue for several years, if at all. If we fail to develop or monetize new products and technologies, or if they do not become widely adopted, our financial results could be adversely affected. Obtaining design wins may involve a lengthy process and depends on our ability to anticipate and provide features and functionality that customers will demand. They also do not guarantee revenue. Failure to obtain a design win may prevent us from obtaining future design wins in subsequent generations. We cannot ensure that our products and technologies will provide value to our customers and partners. If we fail any of these key success criteria, our financial results may be harmed.
+
+We offer enterprise customers NVIDIA DGX Cloud services, which include cloud-based infrastructure, software and services for training and deploying AI models. We have partnered with CSPs to host such software and services in their data centers, and we entered and may continue to enter into multi-year cloud service agreements to support these offerings and our research and development activities. The timing and availability of these cloud services have changed and may continue to shift, impacting our revenue, expenses, and development timelines. NVIDIA DGX Cloud services may not be successful and will take time, resources, and investment. We also offer or plan to offer standalone software solutions, including NVIDIA AI Enterprise, NVIDIA Omniverse, NVIDIA DRIVE, and other software products. These new business models or strategies may not be successful, and we may fail to sell any meaningful standalone software or services. We may incur significant costs and may not achieve any significant revenue from these offerings.
+
+Competition could adversely impact our market share and financial results."
+NVDA-041,1045810-0001045810-25-000023-item1a-0034,NVDA,10-K,2025-02-26,item1a,keyword,176cd346d9da3499f9f82c3cf8105d6e2b6c25b00d3ada68adaea0f22bdab1a8,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm,"the activities of U.S. persons, trade and economic sanctions, decrees, quotas or other trade barriers and restrictions could affect our ability to ship products, provide services to our customers and employees, do business without an export license with entities on the U.S. Department of Commerce’s U.S. Entity List or other USG restricted parties lists (which is expected to change from time to time), and generally fulfill our contractual obligations and have a material adverse effect on our business. If we were ever found to have violated export control laws or sanctions of the U.S. or similar applicable non-U.S. laws, even if the violation occurred without our knowledge, we may be subject to various penalties available under the laws, any of which could have a material and adverse impact on our business, operating results and financial condition.
+
+For example, in response to the war in Ukraine, the United States and other jurisdictions imposed economic sanctions and export control measures which blocked the passage of our products, services and support into Russia, Belarus, and certain regions of Ukraine. In fiscal year 2023, we stopped direct sales to Russia and closed business operations in Russia. Concurrently, the war in Ukraine has impacted sales in EMEA and may continue to do so in the future.
+
+The increasing focus on the risks and strategic importance of AI technologies has resulted in regulatory restrictions that target products and services capable of enabling or facilitating AI and may in the future result in additional restrictions impacting some or all of our product and service offerings.
+
+Concerns regarding third-party use of AI for purposes contrary to local governmental interests, including concerns relating to the misuse of AI applications, models, and solutions, has resulted in and could in the future result in unilateral or multilateral restrictions on products that can be used for training, modifying, tuning, and deploying LLMs and other AI applications. Such restrictions have limited and could in the future limit the ability of downstream customers and users worldwide to acquire, deploy and use systems that include our products, software, and services, and negatively impact our business and financial results."
+NVDA-042,1045810-0001045810-25-000023-item1a-0039,NVDA,10-K,2025-02-26,item1a,keyword,fc085b783dd88fca476bdf60f26b2512a2a4dc143cda724cc4839e6fed0ad9c6,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm,"The AI Diffusion IFR would increase our and our customers’ costs of doing business, creating compliance challenges and risks, and impact our supply and distribution chains, which will be subject to new compliance burdens and related extraterritorial regulatory obligations.
+
+The AI Diffusion IFR would expose U.S. providers and the U.S. industry to an enhanced risk of retaliation from other countries, in the form of tariffs, import/export controls, or other regulatory actions.
+
+The AI Diffusion IFR’s licensing requirement could impact our ability to complete development of products in a timely manner, support existing customers using covered products, or supply customers with covered products outside the impacted regions, and may require us to transition certain operations out of one or more of the identified countries."
+NVDA-043,1045810-0001045810-25-000023-item1a-0040,NVDA,10-K,2025-02-26,item1a,keyword,7e756ce3b10cb1170a28366ba8f9914948009d582f0a376e9cd9a016128fe525,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm,"Following these 2022 export controls, we transitioned some operations, including certain testing, validation, and supply and distribution operations out of China and Hong Kong. Any future transitions could be costly and time consuming, and adversely affect our research and development and supply and distribution operations, as well as our revenue, during any such transition period. We expanded our Data Center product portfolio to offer new solutions, including those for which the USG does not require a license or advance notice before each shipment. To the extent that a customer requires products covered by the licensing requirements, we may seek a license for the customer. However, the licensing process is time-consuming. We have no assurance that the USG will grant such a license or that the USG will act on the license application in a timely manner or at all. Even if a license is approved, it may impose burdensome conditions that we or our customer or end users cannot or decide not to accept. The USG evaluates license requests in a closed process that does not have clear standards or an opportunity for review. For example, the Notified Advanced Computing, or “NAC,” process has not resulted in approvals for exports of products to customers in China. The license process for exports to D1 and D4 countries has been time-consuming and resulted in license conditions that are onerous, even for small-sized systems that are not able to train frontier AI models. The requirements have a disproportionate impact on NVIDIA and already have disadvantaged and may in the future disadvantage NVIDIA against certain of our competitors who sell products that are not subject to the new restrictions or may be able to acquire licenses for their products."
+NVDA-044,1045810-0001045810-25-000023-item1a-0049,NVDA,10-K,2025-02-26,item1a,keyword,225badd8b26f159cc72afb5b6f97d9ccf0532a55fe5cfa21747df9e4859ad7f9,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm,"In the United States, federal, state and local authorities have enacted numerous data privacy and security laws, including for data breach notification, personal data privacy and consumer protection. Numerous U.S. states have enacted comprehensive privacy laws that impose certain obligations on covered businesses, including providing specific disclosures in privacy notices and affording residents with certain rights concerning their personal data. As applicable, such rights may include the right to access, correct, or delete certain personal data, and to opt-out of certain data processing activities, such as targeted advertising, profiling and automated decision-making. The exercise of these rights may impact our business and ability to provide our products and services. Certain states also impose stricter requirements for processing certain personal data, including sensitive information, such as conducting data privacy impact assessments. These state laws allow for statutory fines for noncompliance. For example, the California Consumer Privacy Act of 2018, as amended by the California Privacy Rights Act of 2020, or CPRA, or collectively the CCPA, gives California residents the right to access, delete and opt-out of certain sharing of their personal information, and to receive detailed information about how it is used and shared. The CCPA provides for substantial fines for intentional violation and the law created a private right of action for certain data breaches. Similar laws are being considered in several other states, as well as at the federal and local levels. Additionally, several states and localities have enacted measures related to the use of AI and machine learning in products and services. If we become subject to additional data privacy laws, the risk of enforcement action against us could increase."
+NVDA-045,1045810-0001045810-25-000023-item1a-0050,NVDA,10-K,2025-02-26,item1a,keyword,fb61ecdbe35177675035c1766fb1cba861d8d339d08e7aa312c524afda10567f,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm,"Worldwide regulatory authorities are also considering and have approved various legislative proposals concerning data protection. The European Union adopted the General Data Protection Regulation, or GDPR, and the United Kingdom similarly adopted the U.K. GDPR, governing the strict handling of personal data of persons within the European Economic Area, or EEA, and the United Kingdom, respectively, including its use and protection and the ability of persons whose data is stored to access, correct, and delete such data about themselves. If we are found not to comply, we could be subject to penalties of up to €20 million or 4% of worldwide revenue, whichever is greater, and classes of individuals or consumer protection organizations may initiate litigation related to our processing of their personal data. Furthermore, the EU AI Act and similar legislation could impose onerous obligations that may disproportionately impact and disadvantage us and require us to change our business practices. Additionally, Europe’s Network and Information Security Directive, or NIS2, regulates resilience and incident response capabilities of entities operating in a number of sectors, including the digital infrastructure sector. Non-compliance with NIS2 may lead to administrative fines of a maximum of 10 million Euros or up to 2% of the total worldwide revenue of the preceding fiscal year.
+
+In the ordinary course of business, we transfer personal data from Europe, China, and other jurisdictions to the United States or other countries. Certain jurisdictions have enacted data localization laws and cross-border personal data"
+NVDA-046,1045810-0001045810-25-000023-item7-0003,NVDA,10-K,2025-02-26,item7,keyword,200157ababf71f038644b2d6434f785459622c28cfa741073b118ec51bfa0d5f,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm,"Product transitions are complex and we often ship both new and prior architecture products simultaneously as our channel partners prepare to ship and support new products. We are generally in various stages of transitioning the architectures of our Data Center, Gaming, Professional Visualization, and Automotive products. The computing industry is experiencing a broader and faster launch cadence of accelerated computing platforms to meet a growing and diverse set of AI opportunities. We have introduced a new product and architecture cadence of our Data Center solutions where we seek to complete new computing solutions each year and provide a greater variety of Data Center offerings. The increased frequency of these transitions and the larger number of products and product configurations may magnify the challenges associated with managing our supply and demand which may further create volatility in our revenue. The increased frequency and complexity of newly introduced products could result in quality or production issues that could increase inventory provisions, warranty, or other costs or result in product delays. We incur significant engineering development resources for new products, and changes to our product roadmap may impact our ability to develop other products or adequately manage our supply chain cost. Customers may delay purchasing existing products as we increase the frequency of new products or may not be able to adopt our new products as fast as forecasted, both impacting the timing of our revenue and supply chain cost. While we have managed prior product transitions and have sold multiple product architectures at the same time, these transitions are difficult, may impair our ability to predict demand and impact our supply mix, and may cause us to incur additional costs.
+
+Global Trade
+
+In August 2022, the USG announced licensing requirements that, with certain exceptions, impact exports to China (including Hong Kong and Macau) and Russia of our A100 and H100 integrated circuits, DGX or any other systems or boards which incorporate A100 or H100 integrated circuits.
+
+In July 2023, the USG informed us of an additional licensing requirement for a subset of A100 and H100 products destined to certain customers and other regions, including some countries in the Middle East."
+NVDA-047,1045810-0001045810-25-000023-item7-0011,NVDA,10-K,2025-02-26,item7,keyword,f61ca64c6dde3ba3eddd406fb03d5dd14376f95d660832094adba427c39c686a,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm,"A discussion regarding our financial condition and results of operations for fiscal year 2025 compared to fiscal year 2024 is presented below. A discussion regarding our financial condition and results of operations for fiscal year 2024 compared to fiscal year 2023 can be found under Item 7 in our Annual Report on Form 10-K for the fiscal year ended January 28, 2024, filed with the SEC on February 21, 2024, which is available free of charge on the SEC’s website at http://www.sec.gov and at our investor relations website, http://investor.nvidia.com.
+
+The following table sets forth, for the periods indicated, certain items in our Consolidated Statements of Income expressed as a percentage of revenue.
+
+Year Ended
+Jan 26, 2025 | Jan 28, 2024
+Revenue | 100.0% | 100.0%
+Cost of revenue | 25.0 | 27.3
+Gross profit | 75.0 | 72.7
+Operating expenses
+Research and development | 9.9 | 14.2
+Sales, general and administrative | 2.7 | 4.4
+Total operating expenses | 12.6 | 18.6
+Operating income | 62.4 | 54.1
+Interest income | 1.4 | 1.4
+Interest expense | (0.2) | (0.4)
+Other, net | 0.8 | 0.4
+Other income (expense), net | 2.0 | 1.4
+Income before income tax | 64.4 | 55.5
+Income tax expense | 8.6 | 6.6
+Net income | 55.8% | 48.9%
+
+Reportable Segments
+
+Revenue by Reportable Segments
+
+Year Ended
+Jan 26, 2025 | Jan 28, 2024 | $ Change | % Change
+($ in millions)
+Compute & Networking | $116,193 | $47,405 | $68,788 | 145%
+Graphics | 14,304 | 13,517 | 787 | 6%
+Total | $130,497 | $60,922 | $69,575 | 114%
+
+Operating Income by Reportable Segments
+
+Year Ended
+Jan 26, 2025 | Jan 28, 2024 | $ Change | % Change
+($ in millions)
+Compute & Networking | $82,875 | $32,016 | $50,859 | 159%
+Graphics | 5,085 | 5,846 | (761) | (13)%
+All Other | (6,507) | (4,890) | (1,617) | 33%
+Total | $81,453 | $32,972 | $48,481 | 147%
+
+Compute & Networking revenue – The year over year increase was due to strong demand for our accelerated computing and AI solutions. Revenue from Data Center computing grew 162% driven primarily by demand for our Hopper computing platform used for large language models, recommendation engines, and generative AI applications. Revenue from Data Center networking grew 51% driven by Ethernet for AI revenue, which includes Spectrum-X end-to-end ethernet platform."
+NVDA-048,1045810-0001045810-25-000115-ex99-0001,NVDA,8-K,2025-05-28,ex99,keyword,f8bad04c96ca8c9a301f1e0af0c59dfed608140e9e093b747924278f74097c30,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000115/q1fy26pr.htm,"NVIDIA Announces Financial Results for First Quarter Fiscal 2026
+
+•Revenue of $44.1 billion, up 12% from Q4 and up 69% from a year ago
+
+•Data Center revenue of $39.1 billion, up 10% from Q4 and up 73% from a year ago
+
+SANTA CLARA, Calif.—May 28, 2025―NVIDIA (NASDAQ: NVDA) today reported revenue for the first quarter ended April 27, 2025, of $44.1 billion, up 12% from the previous quarter and up 69% from a year ago.
+
+On April 9, 2025, NVIDIA was informed by the U.S. government that a license is required for exports of its H20 products into the China market. As a result of these new requirements, NVIDIA incurred a $4.5 billion charge in the first quarter of fiscal 2026 associated with H20 excess inventory and purchase obligations as the demand for H20 diminished. Sales of H20 products were $4.6 billion for the first quarter of fiscal 2026 prior to the new export licensing requirements. NVIDIA was unable to ship an additional $2.5 billion of H20 revenue in the first quarter.
+
+For the quarter, GAAP and non-GAAP gross margins were 60.5% and 61.0%, respectively. Excluding the $4.5 billion charge, first quarter non-GAAP gross margin would have been 71.3%.
+
+For the quarter, GAAP and non-GAAP earnings per diluted share were $0.76 and $0.81, respectively. Excluding the $4.5 billion charge and related tax impact, first quarter non-GAAP diluted earnings per share would have been $0.96.
+
+“Our breakthrough Blackwell NVL72 AI supercomputer — a ‘thinking machine’ designed for reasoning— is now in full-scale production across system makers and cloud service providers,” said Jensen Huang, founder and CEO of NVIDIA. “Global demand for NVIDIA’s AI infrastructure is incredibly strong. AI inference token generation has surged tenfold in just one year, and as AI agents become mainstream, the demand for AI computing will accelerate. Countries around the world are recognizing AI as essential infrastructure — just like electricity and the internet — and NVIDIA stands at the center of this profound transformation.”
+
+NVIDIA will pay its next quarterly cash dividend of $0.01 per share on July 3, 2025, to all shareholders of record on June 11, 2025.
+
+Q1 Fiscal 2026 Summary"
+NVDA-049,1045810-0001045810-25-000115-ex99-0003,NVDA,8-K,2025-05-28,ex99,keyword,c18dee05b03aa0f2671830ef634f0305079f6659c21fb8b8a636ce780270d1bd,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000115/q1fy26pr.htm,"NVIDIA achieved progress since its previous earnings announcement in these areas:
+
+Data Center
+
+•First-quarter revenue was $39.1 billion, up 10% from the previous quarter and up 73% from a year ago.
+
+•Announced that NVIDIA is building factories in the U.S. and working with its partners to produce NVIDIA AI supercomputers in the U.S.
+
+•Introduced NVIDIA Blackwell Ultra and NVIDIA Dynamo for accelerating and scaling AI reasoning models.
+
+•Announced partnership with HUMAIN to build AI factories in the Kingdom of Saudi Arabia to drive the next wave of artificial intelligence development.
+
+•Unveiled Stargate UAE, a next-generation AI infrastructure cluster in Abu Dhabi, United Arab Emirates, alongside strategic partners G42, OpenAI, Oracle, SoftBank Group and Cisco.
+
+•Revealed plans to work with Foxconn and the Taiwan government to build an AI factory supercomputer.
+
+•Announced NVIDIA is speeding the IT infrastructure transition to enterprise AI factories with NVIDIA RTX PRO™ Servers.
+
+•Unveiled NVLink Fusion™ for industry to build semi-custom AI infrastructure with NVIDIA’s partner ecosystem.
+
+•Announced NVIDIA Spectrum-X™ and NVIDIA Quantum-X silicon photonics networking switches to scale AI factories to millions of GPUs.
+
+•Introduced the NVIDIA DGX SuperPOD™ built with NVIDIA Blackwell Ultra GPUs to provide AI factory supercomputing for agentic AI reasoning.
+
+•Announced joint initiatives with Alphabet and Google to advance agentic AI solutions, robotics and drug discovery.
+
+•Announced integration between NVIDIA accelerated computing and inference software with Oracle’s AI infrastructure.
+
+•Revealed that NVIDIA Blackwell cloud instances are now available on AWS, Google Cloud, Microsoft Azure and Oracle Cloud Infrastructure.
+
+•Announced that the NVIDIA Blackwell platform set records in the latest MLPerf inference results, delivering up to 30x higher throughput.
+
+•Announced NVIDIA DGX Cloud Lepton™ to connect developers to NVIDIA’s global compute ecosystem.
+
+•Launched the open Llama Nemotron family of models with reasoning capabilities, providing a foundation for creating advanced AI agents.
+
+•Introduced the NVIDIA AI Data Platform, a customizable reference design for AI inference workloads.
+
+•Announced the opening of a research center in Japan that hosts the world’s largest quantum research supercomputer.
+
+Gaming and AI PC
+
+•First-quarter Gaming revenue was a record $3.8 billion, up 48% from the previous quarter and up 42% from a year ago.
+
+•Announced the NVIDIA GeForce RTX™ 5070 and RTX 5060, bringing Blackwell graphics to gamers at prices starting from $299 for desktops and $1,099 for laptops."
+NVDA-050,1045810-0001045810-25-000116-p1item2-0005,NVDA,10-Q,2025-05-28,p1item2,keyword,39eae2686c6ddbd7f65c307c7e1fba7efff9ed6a42c7468587f0f47716b7df52,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm,"Changes in global trade policies, including the new export controls and tariffs, have increased the complexity and cost of our supply chain and may continue to do so. Ongoing uncertainty regarding the scope and application of such measures may adversely affect investment decisions by us and our partners, disrupt supply chain operations, and impact the timing and volume of customer purchases due to challenges in forecasting future costs and demand.
+
+We plan to increase our U.S.-based manufacturing and invest in specialized equipment and processes to support domestic production. This move is expected to strengthen our supply chain, boost resiliency and redundancy, and meet the growing demand for AI infrastructure. Our ability to increase manufacturing capabilities will depend on the domestic manufacturing ecosystem's capacity to ramp production supply to the required volume and on a timely basis.
+
+Macroeconomic factors, including tariffs, inflation, interest rate changes, capital market volatility, global supply chain constraints, and global economic and geopolitical developments, have direct and indirect impacts on our results of operations, particularly demand for our products. While difficult to isolate and quantify, these macroeconomic factors impact our supply chain and manufacturing costs, employee wages, costs for capital equipment and value of our investments. Our product and solution pricing generally does not fluctuate with short-term changes in our costs. Within our supply chain, we continuously manage product availability and costs with our vendors.
+
+Refer to “Item 1A. Risk Factors” for a discussion of these factors and other risks.
+
+First Quarter of Fiscal Year 2026 Summary
+
+Three Months Ended | Quarter-over-Quarter Change | Year-over-Year Change
+Apr 27, 2025 | Jan 26, 2025 | Apr 28, 2024
+($ in millions, except per share data)
+Revenue | $44,062 | $39,331 | $26,044 | 12% | 69%
+Gross margin | 60.5% | 73.0% | 78.4% | (12.5) | pts | (17.9) | pts
+Operating expenses | $5,030 | $4,689 | $3,497 | 7% | 44%
+Operating income | $21,638 | $24,034 | $16,909 | (10)% | 28%
+Net income | $18,775 | $22,091 | $14,881 | (15)% | 26%
+Net income per diluted share | $0.76 | $0.89 | $0.60 | (15)% | 27%"
+NVDA-051,1045810-0001045810-25-000116-p2item1a-0008,NVDA,10-Q,2025-05-28,p2item1a,keyword,054796e43f9d00b51b912c4eccda99bdcf4c1bbbd427987b93ece5b12b664194,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm,"Governments and regulators are also considering, and in certain cases, have imposed restrictions on the hardware, software, and systems used to develop frontier foundation models and generative AI. For example, the EU AI Act became effective on August 1, 2024 and will be fully applicable after a two-year transitional period. The EU AI Act may impact our ability to train, deploy, or release AI models in the EU. Several states are considering enacting or have already enacted regulations concerning AI technologies, which may impact our ability to train, deploy, or release AI models, and increase our compliance costs. Restrictions under these and any other regulations, if implemented, could increase the costs and burdens to us and our customers, delay or halt deployment of new systems using our products, and reduce the number of new entrants and customers, negatively impacting our business and financial results. Revisions to laws or regulations or their interpretation and enforcement could also result in increased taxation, trade sanctions, the imposition of or increase to import duties or tariffs, restrictions and controls on imports or exports, or other retaliatory actions, which could have an adverse effect on our business plans or impact the timing of our shipments. Additionally, changes in the public perception of governments in the regions where we operate or plan to operate could negatively impact our business and results of operations.
+
+Government actions, including trade protection and national and economic security policies of U.S. and foreign government bodies, such as tariffs, import or export regulations, including deemed export restrictions and restrictions on the activities of U.S. persons, trade and economic sanctions, decrees, quotas or other trade barriers and restrictions could affect our ability to ship products, provide services to our customers and employees, do business without an export license with entities on the U.S. Department of Commerce’s U.S. Entity List or other USG restricted parties lists (which is expected to change from time to time), and generally fulfill our contractual obligations and have a material adverse effect on our business. If we were ever found to have violated export control laws or sanctions of the U.S. or similar applicable non-U.S. laws, even if the violation occurred without our knowledge, we may be subject to various penalties available under the laws, any of which could have a material and adverse impact on our business, operating results and financial condition."
+NVDA-052,1045810-0001045810-25-000207-ex99-0003,NVDA,8-K,2025-08-27,ex99,keyword,6262b064cd4d188a33aa03210e82bd45dc8df51a4e3d37e2269b6df1859d2a2c,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000207/q2fy26pr.htm,"•Second-quarter revenue was $41.1 billion, up 5% from the previous quarter and up 56% from a year ago.
+
+•Announced that the NVIDIA RTX PRO™ 6000 Blackwell Server Edition GPU is coming to the world’s most popular enterprise servers; Disney, Foxconn, Hitachi Ltd., Hyundai Motor Group, Lilly, SAP and TSMC are among the first to adopt the servers.
+
+•Introduced NVIDIA® Spectrum-XGS Ethernet to connect distributed data centers for giga-scale AI.
+
+•Revealed that NVIDIA is working with European nations, including France, Germany, Italy, Spain and the U.K., as well as technology industry leaders to build NVIDIA Blackwell AI infrastructure, including the world’s first industrial AI cloud for European manufacturers, to fuel region’s next industrial transformation.
+
+•Announced the expansion of NVIDIA DGX Cloud Lepton™ to connect Europe’s developers to NVIDIA’s global compute ecosystem.
+
+•Collaborated with partners globally to build and accelerate advanced AI supercomputers, including Doudna (U.S.), JUPITER (Germany), Blue Lion (Germany), Isambard (U.K.) and FugakuNEXT (Japan).
+
+•Revealed that model builders across Europe and the Middle East are optimizing their sovereign large language models with NVIDIA Nemotron™, which will be available on Perplexity.
+
+•Supported the launch of OpenAI’s open gpt-oss models, delivering industry-leading gpt-oss-120b performance of 1.5 million tokens per second on a single NVIDIA Blackwell GB200 NVL72 rack-scale system.
+
+•Announced a collaboration with Novo Nordisk and DCAI to advance drug discovery.
+
+•Revealed that the NVIDIA Blackwell platform delivered the highest performance at scale on every MLPerf Training benchmark.
+
+•Teamed with Ansys and DCAI to advance quantum algorithms for fluid dynamics using the NVIDIA CUDA-Q™ platform on Denmark’s Gefion supercomputer.
+
+•Introduced NVFP4, a 4-bit format purpose-built to deliver exceptional inference latency, for pretraining next-generation large language models.
+
+Gaming and AI PC
+
+•Second-quarter Gaming revenue was $4.3 billion, up 14% from the previous quarter and up 49% from a year ago.
+
+•Launched the Blackwell-powered NVIDIA GeForce RTX™ 5060, which quickly became NVIDIA’s fastest-ramping x60-class GPU ever.
+
+•Made industry-leading NVIDIA DLSS 4 technology available in over 175 games and apps, and coming next to top games such as Borderlands 4, Resident Evil Requiem and Phantom Blade Zero.
+
+•Announced Blackwell coming to GeForce NOW™ with the new Install-to-Play feature, doubling the game library to over 4,500 titles.
+
+•Partnered with OpenAI on the launch of its newest open-weight models optimized for RTX GPUs for fast, local inference in popular tools like Ollama, llama.cpp and Microsoft AI Foundry Local.
+
+Professional Visualization"
+NVDA-053,1045810-0001045810-25-000207-ex99-0004,NVDA,8-K,2025-08-27,ex99,keyword,f4eb67db3009597cfb39bb3c31b75789d981fed7a1943f3e9df415c1de774687,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000207/q2fy26pr.htm,"•Second-quarter revenue was $601 million, up 18% from the previous quarter and up 32% from a year ago.
+
+•Announced NVIDIA RTX PRO 4000 SFF Edition and RTX PRO 2000 Blackwell GPUs.
+
+•Expanded partnership with Siemens to digitalize and enable the manufacturing factory of the future.
+
+•Announced new NVIDIA Omniverse™ libraries and software development kits to accelerate physical AI development.
+
+Automotive and Robotics
+
+•Second-quarter Automotive revenue was $586 million, up 3% from the previous quarter and up 69% from a year ago.
+
+•Announced that the full-stack NVIDIA DRIVE™ AV software platform is now in full production to accelerate the large-scale deployment of safe, intelligent transportation.
+
+•Achieved second consecutive win in the End-to-End Driving at Scale category of the Autonomous Grand Challenge at the Computer Vision and Pattern Recognition conference.
+
+•Commenced initial shipments of the NVIDIA DRIVE AGX Thor™ system-on-a-chip.
+
+•Announced the general availability of NVIDIA Jetson AGX Thor™ developer kit and production modules, powerful new AI supercomputers designed to power millions of robots across industries.
+
+•Released the NVIDIA Halos full-stack safety platform for robotic development.
+
+•Announced new NVIDIA Cosmos™ world foundation models that accelerate the development and deployment of robotics solutions.
+
+CFO Commentary
+
+Commentary on the quarter by Colette Kress, NVIDIA’s executive vice president and chief financial officer, is available at https://investor.nvidia.com.
+
+Conference Call and Webcast Information
+
+NVIDIA will conduct a conference call with analysts and investors to discuss its second quarter fiscal 2026 financial results and current financial prospects today at 2 p.m. Pacific time (5 p.m. Eastern time). A live webcast (listen-only mode) of the conference call will be accessible at NVIDIA’s investor relations website, https://investor.nvidia.com. The webcast will be recorded and available for replay until NVIDIA’s conference call to discuss its financial results for its third quarter of fiscal 2026.
+
+Non-GAAP Measures"
+NVDA-054,1045810-0001045810-25-000207-ex99-0005,NVDA,8-K,2025-08-27,ex99,keyword,80bb67bf34d4aa6ceccb92ca782412475b2fa9ef21a822ab08fbde6c3e83fb78,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000207/q2fy26pr.htm,"To supplement NVIDIA’s condensed consolidated financial statements presented in accordance with GAAP, the company uses non-GAAP measures of certain components of financial performance. These non-GAAP measures include non-GAAP gross profit, non-GAAP gross margin, non-GAAP operating expenses, non-GAAP operating income, non-GAAP other income (expense), net, non-GAAP net income, non-GAAP net income, or earnings, per diluted share, and free cash flow. For NVIDIA’s investors to be better able to compare its current results with those of previous periods, the company has shown a reconciliation of GAAP to non-GAAP financial measures. These reconciliations adjust the related GAAP financial measures to exclude stock-based compensation expense, acquisition-related and other costs, other, gains/losses from non-marketable and publicly-held equity securities, net, interest expense related to amortization of debt discount, H20 related charges/releases, net and the associated tax impact of these items where applicable. The inclusion of H20
+
+related charges/releases, net in the reconciliations to adjust the related GAAP financial measures was a result of the U.S. government informing NVIDIA in April 2025 that it requires a license for export to China of H20 product. The H20 product was designed primarily for the China market. Free cash flow is calculated as GAAP net cash provided by operating activities less both purchases related to property and equipment and intangible assets and principal payments on property and equipment and intangible assets. NVIDIA believes the presentation of its non-GAAP financial measures enhances the user’s overall understanding of the company’s historical financial performance. The presentation of the company’s non-GAAP financial measures is not meant to be considered in isolation or as a substitute for the company’s financial results prepared in accordance with GAAP, and the company’s non-GAAP measures may be different from non-GAAP measures used by other companies.
+
+About NVIDIA
+
+NVIDIA (NASDAQ: NVDA) is the world leader in accelerated computing.
+
+###
+
+For further information, contact:
+
+Toshiya Hari | Mylene Mangalindan
+Investor Relations | Corporate Communications
+NVIDIA Corporation | NVIDIA Corporation
+toshiyah@nvidia.com | mmangalindan@nvidia.com"
+NVDA-055,1045810-0001045810-25-000209-p1item2-0003,NVDA,10-Q,2025-08-27,p1item2,keyword,843fe3341dae0c9927243d5118fc9934e925690f917548a7d386bbb4e25bf69d,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm,"In April 2025, the U.S. government, or USG, informed us that a license is required for exports of our H20 product into the China market. As a result of these new requirements, we incurred a $4.5 billion charge in the first quarter of fiscal year 2026 associated with H20 for excess inventory and purchase obligations, as the demand for H20 diminished. In August 2025, the USG granted licenses that would allow us to ship certain H20 products to certain China-based customers, but to date, we have not generated any revenue or shipped any H20 products under those licenses. USG officials have expressed an expectation that the USG will receive 15% of the revenue generated from licensed H20 sales, but to date, the USG has not published a regulation codifying such requirement. In the second quarter, we recognized approximately $650 million of H20 revenue from sales to an unrestricted customer outside of China, resulting in a $180 million release of previously reserved H20 inventory. There were no H20 sales to China-based customers in the second quarter.
+
+We continue to execute Data Center compute product introductions, bringing new advanced architectures on a one-year product cadence. We began shipping production units of our new Blackwell Ultra platforms including GB300 in the second quarter of fiscal year 2026. Our product transitions and sophisticated system configurations may create challenges in managing supply and demand. This could result in revenue volatility, quality or production issues, increased
+
+inventory provisions, warranty costs, or product delays. Customers may postpone purchasing existing products due to frequent new releases or may adopt new technologies more gradually than anticipated, affecting our revenue timing and supply chain expenses. The recent rise of high-quality open-source foundation models is making advanced AI capabilities broadly accessible. Open-source AI is becoming increasingly important across the ecosystem and it is dependent on developer adoption. If the most widely adopted open-source models are developed or deployed on our competitors’ platforms, it could significantly weaken the influence of our platform, reduce developer engagement, and limit demand for our products and services. Future demand for our platform will depend on our ability to support, scale, and optimize the next generation of AI models—including open-source large language models—across our full stack of software and hardware offerings."
+NVDA-056,1045810-0001045810-25-000209-p2item1a-0005,NVDA,10-Q,2025-08-27,p2item1a,keyword,d3bd45ce45b8df5df0af4e233119974f77e2193f09f3bf0ea2dcb44107b19652,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm,"We expect to receive additional requests for information in the future. Such requests have been and are likely to be expensive and burdensome and could negatively impact our business and our relationships with customers, suppliers, and partners.
+
+Governments and regulators are also considering, and in certain cases, have imposed restrictions on the hardware, software, and systems used to develop frontier foundation models and generative AI. For example, the EU AI Act became effective on August 1, 2024 and will be fully applicable after a two-year transitional period. The EU AI Act may impact our ability to train, deploy, or release AI models in the EU. Several states are considering enacting or have already enacted regulations concerning AI technologies, which may impact our ability to train, deploy, or release AI models, and increase our compliance costs. Restrictions under these and any other regulations, if implemented, could increase the costs and burdens to us and our customers, delay or halt deployment of new systems using our products, and reduce the number of new entrants and customers, negatively impacting our business and financial results. Revisions to laws or regulations or their interpretation and enforcement could also result in increased taxation, trade sanctions, the imposition of or increase to import duties or tariffs, restrictions and controls on imports or exports, or other retaliatory actions, which could have an adverse effect on our business plans or impact the timing of our shipments. Additionally, changes in the public perception of governments in the regions where we operate or plan to operate could negatively impact our business and results of operations."
+NVDA-057,1045810-0001045810-25-000209-p2item1a-0012,NVDA,10-Q,2025-08-27,p2item1a,keyword,1884786569a401bc6027c30530ff7f3deeb443d4613d1f0a3099bf4798e85ee0,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm,"Open-source foundation models are rapidly growing in popularity with developers worldwide. Any regulatory control or other restriction that limits our ability to provide products and services that support third-party applications and models,
+
+including applications built on foundation models originating in China such as DeepSeek or Qwen, could have a material impact on our business, operating results, and financial condition.
+
+The USG has already imposed export controls restricting certain gaming GPUs, and if the USG expands such controls to restrict additional gaming products, it may disrupt a significant portion of our supply and distribution chain and negatively impact sales of such products to markets outside China, including the U.S. and Europe. In addition, as the performance of the gaming GPUs increases over time, export controls may have a greater impact on our ability to compete in markets subject to those controls. Export controls may disrupt our supply and distribution chain for a substantial portion of our products, which are warehoused in and distributed from Hong Kong.
+
+Export controls restricting our ability to sell data center GPUs may also negatively impact demand for our networking products used in servers containing our GPUs. The USG may also impose export controls on our networking products, such as high-speed network interconnects, to limit the ability of downstream parties to create large clusters for frontier model training.
+
+Any new control that impacts a wider range of our products would likely have a disproportionate impact on NVIDIA and may disadvantage us against certain of our competitors that sell chips that are outside the scope of such control. Export controls have already and may in the future encourage customers outside China and other impacted regions to “design-out” certain U.S. semiconductors from their products to reduce the compliance burden and risk, and to ensure that they are able to serve markets worldwide. Export controls have already encouraged and may in the future encourage overseas governments to request that our customers purchase from our competitors rather than NVIDIA or other U.S. firms, harming our business, market position, and financial results."
+NVDA-058,1045810-0001045810-25-000228-ex99-0004,NVDA,8-K,2025-11-19,ex99,keyword,124e9612a1c8d600e179fe061758730472c1c3d946281b337c1aebe83c67484f,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000228/q3fy26pr.htm,"•Unveiled an NVIDIA RTX™ Remix update, adding an advanced path-traced particle system that enables modders to enhance traditional effects.
+
+•Released an NVIDIA Blueprint for 3D object generation, RTX-optimized NVIDIA TensorRT™ for Windows ML and performance boosts for leading AI tools on RTX AI PCs.
+
+Professional Visualization
+
+•Third-quarter revenue was $760 million, up 26% from the previous quarter and up 56% from a year ago.
+
+•Began shipping NVIDIA DGX Spark™, the world’s smallest AI supercomputer, delivering NVIDIA’s AI stack in a compact form factor.
+
+Automotive and Robotics
+
+•Third-quarter Automotive revenue was $592 million, up 1% from the previous quarter and up 32% from a year ago.
+
+•Introduced the NVIDIA DRIVE AGX Hyperion™ 10 autonomous vehicle development platform, a reference compute and sensor architecture designed to enable automakers and developers to build safe, scalable level 4 fleets.
+
+•Partnered with Uber to scale the world’s largest level 4-ready mobility network starting in 2027, targeting 100,000 vehicles.
+
+•Revealed that NVIDIA and U.S. manufacturing and robotics leaders, including Agility Robotics, Amazon Robotics, Belden, Caterpillar, Foxconn, Figure, Lucid Motors, Skild AI, Toyota, TSMC and Wistron, are driving America’s reindustrialization with physical AI.
+
+•Announced that leading industrial solutions providers, including PTC and Siemens, introduced new services that bring NVIDIA Omniverse™-powered digital twin workflows to their extensive installed base of customers.
+
+•Unveiled NVIDIA IGX Thor™, a powerful, industrial-grade platform built to bring real-time physical AI directly to the edge.
+
+CFO Commentary
+
+Commentary on the quarter by Colette Kress, NVIDIA’s executive vice president and chief financial officer, is available at https://investor.nvidia.com.
+
+Conference Call and Webcast Information
+
+NVIDIA will conduct a conference call with analysts and investors to discuss its third quarter fiscal 2026 financial results and current financial prospects today at 2 p.m. Pacific time (5 p.m. Eastern time). A live webcast (listen-only mode) of the conference call will be accessible at NVIDIA’s investor relations website, https://investor.nvidia.com. The webcast will be recorded and available for replay until NVIDIA’s conference call to discuss its financial results for its fourth quarter and fiscal 2026.
+
+Non-GAAP Measures"
+NVDA-059,1045810-0001045810-25-000230-p1item1-0022,NVDA,10-Q,2025-11-19,p1item1,keyword,0f429484f24f1b2e634bfb80c9a82d2a2ba8eac76c9989ab05b6d43d6900124d,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm,"We repurchased 70 million and 92 million shares of our common stock for $12.6 billion and $11.1 billion during the third quarter of fiscal years 2026 and 2025, respectively, and 262 million and 254 million shares of our common stock for $36.7 billion and $26.2 billion during the first nine months of fiscal years 2026 and 2025, respectively. On August 26, 2025, our Board of Directors approved an additional $60.0 billion in share repurchase authorization, without expiration. As of October 26, 2025, we were authorized, subject to certain specifications, to repurchase up to $62.2 billion of our common stock.
+
+From October 27, 2025 through November 14, 2025, we repurchased 6 million shares for $1.1 billion pursuant to a pre-established trading plan.
+
+We paid cash dividends to our shareholders of $243 million and $245 million during the third quarter, and $732 million and $589 million during the first nine months, of fiscal years 2026 and 2025, respectively. The payment of future cash dividends is subject to our Board of Directors' continuing determination that the declaration of dividends is in the best interests of our shareholders.
+
+Note 13 - Segment Information
+
+Our Chief Executive Officer is our chief operating decision maker, or CODM, and reviews financial information presented on an operating segment basis for purposes of making decisions and assessing financial performance. Our CODM assesses operating performance of each segment based on regularly provided segment revenue and segment operating income. Operating results by segment include costs or expenses directly attributable to each segment, and costs or expenses that are leveraged across our unified architecture and therefore allocated between our two segments. Our CODM reviews expenses on a consolidated basis, and expenses attributable to each segment are not regularly provided to our CODM.
+
+The Compute & Networking segment includes our Data Center accelerated computing platforms and artificial intelligence, or AI, solutions and software; networking; automotive platforms and autonomous and electric vehicle solutions including software; Jetson for robotics and other embedded platforms; and DGX Cloud computing services.
+
+The Graphics segment includes GeForce GPUs for gaming and PCs, the GeForce NOW game streaming service and related infrastructure, and solutions for gaming platforms; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics; virtual GPU software for cloud-based visual and virtual computing; automotive platforms for infotainment systems; and Omniverse Enterprise software for building and operating industrial AI and digital twin applications."
+NVDA-060,1045810-0001045810-25-000230-p1item2-0002,NVDA,10-Q,2025-11-19,p1item2,keyword,e067cb2adc9282168b06af72a12c389c79167489ee84124962039a7d19f7251d,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm,"The following discussion and analysis of our financial condition and results of operations should be read in conjunction with the risk factors set forth in Item 1A. “Risk Factors” of our Annual Report on Form 10-K for the fiscal year ended January 26, 2025 and Part II, Item 1A. “Risk Factors” of this Quarterly Report on Form 10-Q and our Condensed Consolidated Financial Statements and related Notes thereto, as well as other cautionary statements and risks described elsewhere in this Quarterly Report on Form 10-Q and our other filings with the SEC, before deciding to purchase, hold, or sell shares of our common stock.
+
+Overview
+
+Our Company and Our Businesses
+
+NVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and digital twin applications.
+
+Our two operating segments are ""Compute & Networking"" and ""Graphics,"" as described in Note 13 of the Notes to Condensed Consolidated Financial Statements in Part I, Item 1 of this Quarterly Report on Form 10-Q.
+
+Headquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998.
+
+Recent Developments, Future Objectives and Challenges
+
+Revenue growth in the third quarter was driven by data center compute and networking platforms for accelerated computing and AI solutions. Our Blackwell architectures are the majority of our Data Center revenue.
+
+The availability of data centers, energy, and capital to support the buildout of NVIDIA AI infrastructure by our customers is crucial, and any shortage of these resources could impact our future revenue and financial performance. Expanding energy capacity to meet demand is a complex, multi-year process that involves significant regulatory, technical, and construction challenges. In addition, access to capital can be particularly constrained for less-capitalized companies, which may face difficulties securing financing for large-scale infrastructure projects. These limitations could delay customer deployments or reduce the scale of accelerated computing and AI adoption."
+NVDA-061,1045810-0001045810-25-000230-p1item2-0006,NVDA,10-Q,2025-11-19,p1item2,non_keyword,be959453aa8bd5a85e0279ede08d204432b7d45368864526532f4649e8f5c24e,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm,"Gaming revenue was up 30% from a year ago on the continued demand for Blackwell. Gaming revenue was down 1% sequentially as channel inventories have reached more normalized levels heading into the holiday season.
+
+Professional Visualization revenue was up 56% from a year ago and up 26% sequentially, driven by the launch of our new DGX Spark as well as the growth of Blackwell sales.
+
+Automotive revenue was up 32% from a year ago and up 1% sequentially, driven by continued adoption of our self-driving platforms.
+
+Gross margin decreased from a year ago as our business model transitioned from offering Hopper HGX systems to Blackwell full-scale datacenter solutions. Gross margin increased sequentially as Blackwell ramped with an improved mix and cost structure.
+
+Operating expenses were up 36% from a year ago and up 8% sequentially. The increases were primarily driven by compute and infrastructure costs, higher compensation and benefits due to compensation increases and employee growth and engineering development costs for new product introductions.
+
+Financial Information by Business Segment and Geographic Data
+
+Refer to Note 13 of the Notes to the Condensed Consolidated Financial Statements for disclosure regarding segment information.
+
+Critical Accounting Policies and Estimates
+
+Refer to Part II, Item 7, ""Critical Accounting Policies and Estimates"" of our Annual Report on Form 10-K for the fiscal year ended January 26, 2025. There have been no material changes to our Critical Accounting Policies and Estimates.
+
+Results of Operations
+
+The following table sets forth, for the periods indicated, certain items in our Condensed Consolidated Statements of Income expressed as a percentage of revenue."
+NVDA-062,1045810-0001045810-25-000230-p2item1a-0009,NVDA,10-Q,2025-11-19,p2item1a,keyword,362e50a9994d912d2a159b87c57c57a27fcc87e776048801aa4fd13c4f581c66,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm,"We expect to continue investing in strategic partnerships. In the third quarter of fiscal year 2026, we entered into a letter of intent with an opportunity to invest in OpenAI. In November 2025, we entered into an agreement, subject to certain closing conditions, to invest up to $10 billion in Anthropic. There is no assurance that we will enter into definitive agreements with respect to the OpenAI opportunity or other potential investments, or that any investment will be completed on expected terms, if at all. The timing and magnitude of these and other investments we may make will depend on various factors, including the ability of our partners to successfully develop and deploy AI infrastructure. There can be no certainty as to the timing or amount of capital we may ultimately invest in these or other strategic partnerships, and we may be limited by our available liquidity and capital resources.
+
+We have committed to make an equity investment in Intel Corporation, subject to regulatory approval. This investment involves execution, financing, and operational risks, including dependence on the partner’s ability to scale production and deliver competitive technology on schedule. We may not realize the anticipated strategic benefits.
+
+Our investment portfolio contains industry sector concentration risks, and a decline in any one or multiple industry sectors could increase our impairment losses.
+
+We face additional risks related to acquisitions and strategic investments, including the diversion of capital and other resources, including management’s attention; difficulty in realizing a satisfactory return and uncertainties to realize the benefits of an acquisition or strategic investment, if at all; difficulty or inability in obtaining governmental, regulatory approval or restrictions or other consents and approvals or financing; legal proceedings initiated as a result of an
+
+acquisition or investment; and potential failure of our due diligence processes to identify significant issues with the assets or company in which we are investing or are acquiring.
+
+Additional risks related to acquisitions include, but are not limited to:
+
+•difficulty in integrating the technology, systems, products, policies, processes, or operations and integrating and retaining the employees, including key personnel, of the acquired business;
+
+•assumption of liabilities and incurring amortization expenses, impairment charges to goodwill or write-downs of acquired assets;
+
+•integrating accounting, forecasting and controls, procedures and reporting cycles;
+
+•coordinating and integrating operations, particularly in countries in which we do not currently operate;"
+NVDA-063,1045810-0001045810-25-000230-p2item1a-0011,NVDA,10-Q,2025-11-19,p2item1a,keyword,96c25ee9ec06cc2d1c0b0a4e26f0df43543ad28cf0ce68939c61bf695aefce89,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm,"We are subject to laws and regulations domestically and worldwide, affecting our operations in areas including, but not limited to, IP ownership and infringement; taxes; import and export requirements and tariffs; anti-corruption, including the Foreign Corrupt Practices Act; business acquisitions; foreign exchange controls and cash repatriation restrictions; foreign ownership and investment; data privacy requirements; competition and antitrust; advertising; employment; product regulations; cybersecurity; environmental, health, and safety requirements; the responsible use of AI; sustainability; cryptocurrency; and consumer laws. Compliance with such requirements can be onerous and expensive, could impact our competitive position, and may negatively impact our business operations and ability to manufacture and ship our products. There can be no assurance that our employees, contractors, suppliers, customers or agents will not violate applicable laws or the policies, controls, and procedures that we have designed to help ensure compliance with such laws, and violations could result in fines, criminal sanctions against us, our officers, or our employees, prohibitions on the conduct of our business, and damage to our reputation. Changes to the laws, rules and regulations to which we are subject, or changes to their interpretation and enforcement, could lead to materially greater compliance and other costs, and/or further restrictions on our ability to manufacture and supply our products and operate our business. For example, we may face increased compliance costs as a result of changes or increases in antitrust legislation, regulation, administrative rule making, increased focus from regulators on cybersecurity vulnerabilities and risks. Our position in markets relating to AI has led to increased interest in our business from regulators worldwide, including the European Union, the United States, the United Kingdom, South Korea, Japan, and China. For example, the French Competition Authority collected information from us regarding our business and competition in the graphics card and CSP market as"
+NVDA-064,1045810-0001045810-25-000230-p2item1a-0014,NVDA,10-Q,2025-11-19,p2item1a,keyword,74b32ca7afff66ff2198ad2f0e7b56566eb3b215c40a682cb4de7f89576425aa,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm,"Such restrictions could include additional unilateral or multilateral export controls on certain products or technology, including but not limited to AI technologies. As geopolitical tensions have increased, semiconductors associated with AI, including GPUs and related products, are increasingly the focus of export control restrictions proposed by stakeholders in the U.S. and its allies. The United States has imposed unilateral worldwide controls restricting GPUs and associated products, and it is likely that additional unilateral or multilateral controls will be adopted. Such controls have been and may again be very broad in scope and application, prohibit us from exporting our products to any or all customers in one or more markets, and could negatively impact our manufacturing, testing and warehousing locations and options, or could impose other conditions that limit our ability to serve demand abroad and could negatively and materially impact our business, revenue and financial results. Export controls and other restrictions targeting GPUs and semiconductors associated with AI, which have been imposed and are likely to be more restrictive, would further limit our ability to export our technology, products, or services, creating a competitive disadvantage for us and negatively impacting our business and financial results. Export controls targeting GPUs and semiconductors associated with AI have subjected and may in the future subject downstream users of our products to restrictions on the use, resale, repair, or transfer of our products, negatively impacting our business and financial results. Controls could negatively impact our cost and/or ability to provide services such as NVIDIA AI cloud services and could impact the cost and/or ability for our CSPs and customers to provide services to their end customers, even outside China.
+
+Export controls have and could in the future disrupt our supply chain and distribution channels, negatively impacting our ability to serve demand, including in markets outside China and for our non-data center products. The possibility of additional export controls has negatively impacted and may in the future negatively impact demand for our products, benefiting competitors that offer alternatives less likely to be restricted by further controls. Repeated changes in the export control rules are likely to impose compliance burdens on our business and our customers, negatively and materially impacting our business."
+NVDA-065,1045810-0001045810-25-000230-p2item1a-0019,NVDA,10-Q,2025-11-19,p2item1a,keyword,bd5989fc0ef4181029710b4b72dc5e949b84af4c95c9722c8bddf340c8cdfd1d,https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm,"Given the increasing strategic importance of AI and rising geopolitical tensions, the USG has changed and may again change the export control rules at any time and further subject a wider range of our products to export restrictions and licensing requirements, negatively impacting our business and financial results. In the event of such change, we may be unable to sell our inventory of such products and may be unable to develop replacement products not subject to the licensing requirements.
+
+For example, the USG already imposed license conditions that limit the ability of foreign firms to create and offer as a service large-scale GPU clusters, such as imposing license conditions on the use of products to be exported to certain countries, and may impose additional conditions such as requiring chip tracking and throttling mechanisms that could disable or impair GPUs if certain events, including unauthorized system configuration, use, or location, are detected. Such government mandates in chip designs could introduce system vulnerabilities and expose us to significant risk and potential liability, negatively impact demand for our products, and could have a material impact on our business, operating results, and financial condition. Even if not enacted into binding legislation, draft bills have impacted and may in the future negatively impact our business. For example, following U.S. legislative proposals calling for mandatory features in our chips, China’s government publicly questioned whether our H20 products have built-in vulnerabilities, discouraging customers from purchasing our products. We provided a public response explaining that our GPUs, including H20, do not include such built-in vulnerabilities, and will respond to any follow-up questions we receive.
+
+Open-source foundation models are rapidly growing in popularity with developers worldwide. Any regulatory control or other restriction that limits our ability to provide products and services that support third-party applications and models, including applications built on foundation models originating in China such as DeepSeek, Qwen, or KIMMI, could have a material impact on our business, operating results, and financial condition."

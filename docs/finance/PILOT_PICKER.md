@@ -1,5 +1,7 @@
 # Pick the 10 pilot companies
 
+> **Done on 2026-11-11.** Your picks are the final pilot: AMZN, BLK, CAT, FDX, META, MSFT, NVDA, PEP, PFE and TSLA. Your labeling packets have been rebuilt for these 10 companies (450 rows in total). Start labeling when Gavin tells you the packets are in the Drive **packets** folder. This page is kept as a record of how the list was chosen.
+
 **Who:** the finance student. **Time:** about 1 hour. **Blocks:** the final Phase 1 ingest and your labeling packets. Please do this first.
 
 ## What we need from you

@@ -39,21 +39,21 @@ Statuses: **Delivered**, **On track**, **No evidence yet**, **Walked back** (sil
 - Outputs are cached so nothing is paid for twice.
 
 - Non-interactive stages use the Batch API (50% off); a batch that outlives its process keeps its reservation until it's collected.
-- Every paid command prints its worst case first. Example: classifying the pilot's 688 AI passages is 129 batched requests, **worst case $0.09** (`aipb filter --dry-run`).
+- Every paid command prints its worst case first. Example: classifying the pilot's 868 AI passages is 165 batched requests, **worst case $0.11** (`aipb filter --dry-run`).
 
 Details: [docs/DECISIONS.md](docs/DECISIONS.md) (D1–D5, D20–D22).
 
-## Data so far ($0 of API credit)
+## Data so far (about $0.00001 of API credit: the smoke test)
 
-Filings since 2024-01-01. The pilot is 10 S&P 100 companies across 7 sectors: a **placeholder** list until the finance student picks (see [docs/finance/PILOT_PICKER.md](docs/finance/PILOT_PICKER.md)). The S&P 100 list is in `config/universe/sp100.csv`.
+Filings since 2024-01-01. The pilot is 10 S&P 100 companies across 7 sectors, picked by the finance student on 2026-11-11: AMZN, BLK, CAT, FDX, META, MSFT, NVDA, PEP, PFE and TSLA. Eight talk heavily about AI and two (CAT, PEP) are low-AI comparisons. His reason for each pick is in `config/universe/pilot.csv`. The S&P 100 list is in `config/universe/sp100.csv`.
 
 | | Pilot | S&P 100 |
 |---|---|---|
-| Filings (10-K / 10-Q / earnings 8-K) | 236 (30 / 87 / 119) | 2,395 (293 / 882 / 1,220) |
-| Passages (150–400 words, FTS5-indexed) | 18,381 | 179,348 |
-| Unique AI passages in 2024–2025 filings (the promise window) | 688 | 3,938 |
-| XBRL facts | 99,706 | 905,926 |
-| Worst-case cost of the paid pipeline | ≤ $1.37 | ≤ $4.84 at 1,000 promises (breakdown in [docs/PROGRESS.md](docs/PROGRESS.md)) |
+| Filings (10-K / 10-Q / earnings 8-K) | 252 (30 / 88 / 134) | 2,395 (293 / 882 / 1,220) |
+| Passages (150–400 words, FTS5-indexed) | 17,834 | 179,348 |
+| Unique AI passages in 2024–2025 filings (the promise window) | 868 | 3,938 |
+| XBRL facts | 90,424 | 905,926 |
+| Worst-case cost of the paid pipeline | ≤ $1.53 at 300 promises | ≤ $4.84 at 1,000 promises (breakdown in [docs/PROGRESS.md](docs/PROGRESS.md)) |
 | Labeling rows prepared for the finance student | 450 (428 keyword + 22 random for a recall check) | n/a |
 
 The full SEC download (about 4.8 GB with the S&P 100) isn't committed. A manifest with each document's URL and sha256 is, and `aipb restore` rebuilds an identical database from it (checked on a fresh clone).

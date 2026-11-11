@@ -4,7 +4,7 @@
 
 **Your job:** correct anything wrong, fill in the **DECIDE** cells, and add what an analyst would check that isn't here. About 1–2 hours. Edit the Google Doc copy in the shared Drive, as with the rubric.
 
-**About the "Reported by" column:** these are real checks of the 10 placeholder pilot companies' XBRL data for filings since 2024. Companies use different tags for the same idea, so each row lists tags in the order code should try them.
+**About the "Reported by" column:** these are real checks of your 10 pilot companies' XBRL data for filings since 2024, redone on 2026-11-11 after your picks. Companies use different tags for the same idea, so each row lists tags in the order code should try them. Tags marked **(new)** were added because some of your companies use them instead of the usual tag. Please confirm they measure the right thing.
 
 ---
 
@@ -13,12 +13,13 @@
 - **Where to look:** MD&A (10-K Item 7, 10-Q Item 2); earnings releases ("productivity savings", "run-rate savings"); restructuring notes in the financial statements.
 - **Numbers (XBRL), tried in this order:**
 
-  | Measure | Tags | Reported by (placeholder pilot) |
+  | Measure | Tags | Reported by (your pilot) |
   |---|---|---|
-  | Operating expenses | `OperatingExpenses` | CRM, MSFT |
-  | SG&A | `SellingGeneralAndAdministrativeExpense` | CAT, IBM, UNH, VZ, WMT, XOM |
-  | Bank operating costs | `NoninterestExpense` | JPM |
-  | Restructuring and severance | `RestructuringCharges`, `SeveranceCosts1` | ACN, CAT, CRM, IBM; VZ (severance) |
+  | Operating expenses | `OperatingExpenses` | BLK, MSFT, NVDA, TSLA |
+  | SG&A | `SellingGeneralAndAdministrativeExpense` | CAT, NVDA, PEP, PFE, TSLA |
+  | Bank operating costs | `NoninterestExpense` | none in this pilot (banks such as JPM use it) |
+  | Total costs and expenses **(new)** | `CostsAndExpenses` | AMZN, FDX, META. It's used only when none of the tags above is reported. It **includes cost of sales**, so it's broader than operating expenses. |
+  | Restructuring and severance | `RestructuringCharges`, `SeveranceCosts1` | restructuring: BLK, CAT, FDX, PEP, PFE, TSLA; severance: AMZN, BLK, META, PFE, TSLA; **neither for MSFT or NVDA** |
 
 - **Caveat:** most savings targets are company-defined ("run-rate productivity savings"). XBRL rarely reports them directly, so the evidence is usually the company's own later statement of the achieved amount. A drop in total expenses alone does **not** prove AI savings. **DECIDE:** is a company's own statement of achieved savings enough for "Delivered"? *Proposal:* yes, quoted verbatim, because we report what the filings say.
 
@@ -29,8 +30,8 @@
 
   | Measure | Numerator tags | Revenue tags |
   |---|---|---|
-  | Gross margin | `GrossProfit` (CRM, IBM, MSFT); otherwise revenue minus `CostOfRevenue` (CAT, IBM, WMT) or `CostOfGoodsAndServicesSold` (ACN, CAT, CRM, MSFT, UNH) | `Revenues` (most), `RevenueFromContractWithCustomerExcludingAssessedTax` (CRM, MSFT, WMT) |
-  | Operating margin | `OperatingIncomeLoss` (ACN, CAT, CRM, MSFT, UNH, VZ, WMT); **not reported by IBM, JPM or XOM** | same |
+  | Gross margin | `GrossProfit` (MSFT, NVDA, PEP, TSLA). Proposed fallback: revenue minus `CostOfRevenue` (CAT, META, NVDA, TSLA) or `CostOfGoodsAndServicesSold` (AMZN, CAT, MSFT, PEP, PFE). **The code doesn't compute that fallback yet**, so today gross margin is missing for AMZN, BLK, CAT, FDX, META and PFE, and their gross-margin promises can only be checked from text. | `Revenues` (BLK, CAT, NVDA, PEP, PFE, TSLA), `RevenueFromContractWithCustomerExcludingAssessedTax` (AMZN, BLK, FDX, META, MSFT, PFE, TSLA) |
+  | Operating margin | `OperatingIncomeLoss` (AMZN, BLK, CAT, FDX, META, MSFT, NVDA, PEP, TSLA); **not reported by PFE** | same |
 
 - **Caveat:** companies often promise **non-GAAP** margins, which XBRL doesn't contain. Then the evidence is the earnings release's own non-GAAP figure. **DECIDE:** which margin definition should win when a company reports both?
 
@@ -43,13 +44,15 @@
 ## workforce
 
 - **Where to look:** 10-K Item 1 "Human Capital" (total employees, usually once a year); restructuring notes (positions eliminated); MD&A.
-- **Numbers:** **headcount is not in XBRL** for any placeholder company. Evidence is text: "As of December 31, 2025, we had approximately N employees."
+- **Numbers:** **headcount is not in XBRL** for any of your pilot companies. Evidence is text: "As of December 31, 2025, we had approximately N employees."
 - **Caveat:** headcount changes have many causes. **DECIDE:** should a workforce promise ("reduce support roles by 10%") count as Delivered from total-headcount changes? *Proposal:* no. Only when the filing reports the specific group or program the promise named.
 
 ## capex_investment
 
 - **Where to look:** cash-flow statement; MD&A liquidity section; earnings-release outlook.
-- **Numbers:** `PaymentsToAcquirePropertyPlantAndEquipment` (ACN, CAT, CRM, IBM, MSFT, UNH, WMT, XOM; **not JPM or VZ** under this tag); `ResearchAndDevelopmentExpense` for R&D promises (ACN, CAT, CRM, IBM, MSFT, XOM).
+- **Numbers:**
+  - Capex: `PaymentsToAcquirePropertyPlantAndEquipment` (BLK, CAT, META, MSFT, PFE, TSLA), otherwise **(new)** `PaymentsToAcquireProductiveAssets` (AMZN, FDX, NVDA, PEP). The second tag can also include other long-lived assets, such as software or intangibles; it's the capex figure these four companies report.
+  - R&D promises: `ResearchAndDevelopmentExpense` (CAT, META, MSFT, NVDA, PEP, TSLA), otherwise **(new)** `ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost` (PFE). **No R&D line for AMZN, BLK or FDX.**
 - **Caveat:** total capex includes non-AI spending. If the promise is "capex of about $X, mostly for AI", code checks total capex against $X; the "mostly AI" part needs a text statement.
 
 ## productivity

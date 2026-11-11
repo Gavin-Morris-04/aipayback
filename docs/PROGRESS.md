@@ -1,20 +1,25 @@
 # Progress
 
-_Last updated: 2026-11-11 (Phases 0–5 built; blocked on humans)_
+_Last updated: 2026-11-11 (final pilot list in; smoke test passed; blocked on humans)_
 
 ## Where things stand
 
 On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed without me and Nick's help." So the code for **Phases 0–5 is built, tested (176 offline tests, CI green) and pushed**. Phase 6 is discovery-driven and waits on partner calls.
 
-**API spend so far: $0.00.** No paid run has happened, because there's no API key yet. Every paid stage has been exercised end to end against a fake model.
+**2026-11-11:**
+- Gavin put the API key in `.env` and ran the smoke test (G3, G4). It cost $0.0000102 for 27 input and 15 output tokens on Haiku 5.5.
+- Nick's 10 pilot picks are final (N2, D39). Ingest, parse, prefilter, packets and split were rebuilt for them, all at $0.
+- The evidence map's coverage was redone for his companies, and fallback tags were added (em2-draft, D40).
+
+**API spend so far: $0.0000102** (the smoke test). Every other paid stage has only been exercised against a fake model.
 
 The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-ahead in chat, and the S&P 100 run needs explicit cost approval.
 
 | Phase | Built | Waiting on |
 |---|---|---|
-| 0 Setup, billing safety | ✅ budget guard, ledger, cache, secret hooks, CI | **Gavin:** API key → `aipb smoke --fresh` |
-| 1 Ingest, packets, kits | ✅ pilot ingested (placeholder list), packets, finance docs, outreach kit | **Nick:** pilot picks; **Gavin:** check packets in Excel/Sheets |
-| 2 Filter, extract, evals | ✅ stages, batches, eval harness, A/B, compare | **Gavin:** key (pilot run ≈ cents); **Nick:** labels |
+| 0 Setup, billing safety | ✅ budget guard, ledger, cache, secret hooks, CI; smoke test passed 2026-11-11 | **Gavin:** check the Console Usage page shows about $0.00001 |
+| 1 Ingest, packets, kits | ✅ final pilot (Nick's picks) ingested; packets and split rebuilt; finance docs, outreach kit | **Gavin:** check packets in Excel/Sheets (G2), upload them, tell Nick (G6) |
+| 2 Filter, extract, evals | ✅ stages, batches, eval harness, A/B, compare | **Gavin:** pilot run (G7, ≤ $1.53); **Nick:** labels. A/B needs sizing first (D39) |
 | 3 Verification, citations | ✅ Tier 1 + Tier 2, explain, gate, status packets + eval | key; **Nick:** ~60 status labels |
 | 4 Site, newsletter | ✅ site, publish, newsletter with rails, 3 workflows (all off) | **Gavin:** Buttondown, Pages, secrets/variables; demos |
 | 5 S&P 100, findings, launch kit | ✅ sp100 list, findings, solution brief, demo, pilot, objections, LinkedIn drafts | cost approval; real results; launch |
@@ -24,39 +29,41 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 
 **Step-by-step checklist for Gavin and Nick:** https://claude.ai/artifact/QqmDKJPxRPfprggV99eEJY (private; share it with Nick as an Editor so his ticks sync). It has 17 Gavin steps (G1–G17) and 9 Nick steps (N1–N9), each with exact instructions, plus a pilot company picker that shows AI-mention counts for all 100 companies. Ticks are stored in the page's shared database, so Claude Code can read progress with `ArtifactData list` on collection `steps`.
 
-**Next session:** `git pull`, read this file, then check the checklist's ticks and continue from the first unticked step. Nothing runs until the API key is in `.env` (G3).
+**Next session:** `git pull`, read this file, then check the checklist's ticks and continue from the first unticked step. The key is in `.env`, so the next paid step is the pilot run (G7, worst case ≤ $1.53). Do it after the packets are out to Nick (G6).
 
 | Who | Task | Unblocks |
 |---|---|---|
-| Gavin | Console API key with a workspace spend limit (suggested $5/month) → `.env` as `AIPAYBACK_API_KEY` | every paid stage |
-| Gavin | Open 2–3 `exports/packets/*.xlsx` in Excel **and** Google Sheets (red words, dropdowns, links) | Phase 1 acceptance |
-| Gavin | Drive folder with `packets/` and `returned/`; Google Doc copies of `docs/finance/RUBRIC.md` and `EVIDENCE_MAP.md` | Nick's work |
-| Nick | Pick the 10 pilot companies (`docs/finance/PILOT_PICKER.md`) | final packets and split |
-| Nick | Decide the RUBRIC DECIDE items; correct EVIDENCE_MAP | labels; `config/evidence_map.yaml` |
+| Gavin | Open 2–3 `exports/packets/*.xlsx` (e.g. MSFT and PEP) in Excel **and** Google Sheets (red words, dropdowns, links) (G2) | Phase 1 acceptance |
+| Gavin | Drive folder with `packets/` and `returned/`; Google Doc copies of the four `docs/finance/` guides. **If copies were made before 2026-11-11, re-copy `EVIDENCE_MAP.md`, `PILOT_PICKER.md` and `LABELING_GUIDE.md`.** (G1) | Nick's work |
+| Gavin | Upload the 10 final `exports/packets/*_packet_v1.xlsx` to Drive `packets/`, then tell Nick "the packets are final" (rest of G6) | Nick's labeling |
+| Gavin | Run the pilot (G7). Filter $0.11; extract ≤ $0.63, which is over $0.50, so it may need `--confirm` and a go-ahead in chat | status packet, first real results |
+| Nick | Decide the RUBRIC DECIDE items; correct EVIDENCE_MAP, including confirming the **(new)** tags (D40) | labels; `config/evidence_map.yaml` |
 | Nick | Label the passage packets (~6–8 h), then the status packet (~60 promises) | evals; confidence threshold |
 | Gavin | Outreach (`gtm/outreach/`, ~25 messages) → discovery calls → notes | Phase 6, ROI numbers, demos |
 | Gavin | Buttondown account (free tier) → API key as GitHub secret `BUTTONDOWN_API_KEY`; username into `config/site.yaml` | newsletter, signup box |
 | Gavin | GitHub secrets `FOUNDER_EMAILS`, `AIPAYBACK_API_KEY`, `SEC_CONTACT_EMAIL`; Pages (GitHub Pro via the Student Pack, or a public deploy repo); LinkedIn URLs and Nick's display name in `config/site.yaml` | site, newsletter, monitor |
 | Gavin | Approve the S&P 100 cost (table below) | Phase 5 run |
 
-## When the key arrives: run order (each step prints its worst case first)
+## Pilot run order (each step prints its worst case first)
+
+The key is in `.env`, and the smoke test passed on 2026-11-11 ($0.0000102, ledger committed).
 
 ```bash
 uv run aipb doctor                 # must be all OK
-uv run aipb smoke --fresh          # ~$0.00002; compare the ledger cost with the Console usage page
-uv run aipb calibrate              # free count_tokens check of the estimator
-uv run aipb filter --dry-run       # pilot: 688 passages, 129 requests, worst case $0.08
+uv run aipb calibrate              # free count_tokens check of the estimator (not run yet)
+uv run aipb filter --dry-run       # pilot: 868 passages, 165 requests, worst case $0.11
 uv run aipb filter
-uv run aipb extract --dry-run && uv run aipb extract
+uv run aipb extract --dry-run      # upper bound $0.63 if filter routed everything; over $0.50 needs --confirm + Gavin's go-ahead
+uv run aipb extract
 uv run aipb verify --dry-run && uv run aipb verify
 uv run aipb explain --dry-run && uv run aipb explain
 uv run aipb publish && uv run aipb site && uv run aipb findings
 git add -A && git commit -m "pilot run" && git push   # outputs + ledger: never pay twice
 ```
 
-After Nick's picks: edit `config/universe/pilot.csv`, then `aipb ingest && aipb parse && aipb prefilter && aipb packets --force && aipb split --force` (before any labeling).
+Nick's picks: **done 2026-11-11** (D39). `pilot.csv` is final, and packets and split were rebuilt with `--force`. Never use `--force` on either again once Nick starts labeling; bump the packet version instead.
 
-After labels return: `aipb import-labels` → `aipb eval` → send `exports/disagreements/*.xlsx` to Nick → the Sonnet A/B (`aipb extract --variant sonnet` on dev passages, capped at $1.50) → `aipb eval --variant sonnet` → `aipb compare` → record the Sonnet decision in DECISIONS.
+After labels return: `aipb import-labels` → `aipb eval` → send `exports/disagreements/*.xlsx` to Nick → the Sonnet A/B (`aipb extract --variant sonnet` on dev passages, capped at $1.50; **size it first, see Known issues**) → `aipb eval --variant sonnet` → `aipb compare` → record the Sonnet decision in DECISIONS.
 
 After the status packet: `aipb status-packets` (after verify) → Nick labels → `aipb import-statuses` → `aipb eval-status` → set `gate.confidence_threshold` in `config/stages.yaml` from the precision-coverage curve.
 
@@ -78,12 +85,12 @@ After the status packet: `aipb status-packets` (after verify) → Nick labels �
 | verify Tier 2 (agent) | **≤ $0.50** | hard per-run cap in `config/stages.yaml` |
 | **Total** | **≤ $4.84** at 1,000 promises | inside the $11 available ($15 cap minus the $4 locked reserve) |
 
-- The 10 pilot companies are all in the S&P 100, and filter requests are grouped per filing. Once the pilot has run, the S&P 100 run reuses its cached outputs and sends only 784 new filter requests.
+- The 10 pilot companies are all in the S&P 100, and filter requests are grouped per filing. Once the pilot has run, the S&P 100 run reuses its 165 cached filter requests and sends only 748 new ones ($0.44 worst case). That's checked: all 165 pilot request hashes appear among the S&P 100's 913.
 - Budget plan:
-  - pilot: ≤ $1.37
+  - pilot: ≤ $1.53 (filter $0.11 + extract ≤ $0.63 + verify/explain $0.29 at 300 promises + agent cap $0.50)
   - Sonnet A/B: ≤ $1.50
   - S&P 100: ≤ $4.84
-  - total: ≤ $7.71 of the $11
+  - total: ≤ $7.87 of the $11
 - Before the paid run, cross-check the list against S&P DJI or the iShares OEF holdings (D35), and re-check `config/pricing.yaml` (last verified 2026-11-10: all prices matched, D37).
 
 **Data fixes found while ingesting (D37–D38):**
@@ -105,10 +112,14 @@ git add -A && git commit -m "S&P 100 run" && git push
 ## Budget
 | Spent | Reserved | Remaining under the $15 cap | Locked reserve |
 |---|---|---|---|
-| $0.00 | $0.00 | $15.00 | $4.00 |
+| $0.0000102 (smoke test) | $0.00 | $15.00 | $4.00 |
+
+## Known issues (to fix before the step that needs them)
+- **Sonnet A/B sizing (before G10, D39).** Sonnet 5.5's worst case is about $0.045 per passage (`max_tokens: 8192`), so all 569 dev passages reserve $25.67, and $1.50 covers only about 33. The guard stops the run, so nothing overspends. Fix: an `extract` option that takes a list of passage ids (`run_extract` already accepts `passage_ids`). Then run only on labeled dev passages that filter routed, with Sonnet's `max_tokens` set from the pilot's real Haiku output lengths.
+- **Gross margin fallback (ideally before the pilot's verify, D40).** Gross margin uses only `GrossProfit`, which AMZN, BLK, CAT, FDX, META and PFE don't report. Computing revenue minus cost of revenue is a small change in `src/aipb/verify/numbers.py`, but it's a methodology choice, so ask Nick (EVIDENCE_MAP, N4). Until then, those promises fall back to text evidence or "Status pending review".
 
 ## Latest eval numbers
-None yet: they need the key (outputs) and Nick's labels (gold).
+None yet: they need real outputs (the pilot run) and Nick's labels (gold).
 
 ## Resume on any device
 ```bash
@@ -130,6 +141,7 @@ Then tell Claude Code: **"Read CLAUDE.md and docs/PROGRESS.md, then continue."**
 - **Raw SEC data is big:** about 555 MB for the pilot and 4.8 GB with the S&P 100. It's git-ignored; the manifest is committed.
 - **Re-registered companies:** if `aipb ingest` warns about too few filings or a late first filing, add the predecessor CIK to `extra_ciks` (XOM → 34088, BLK → 1364742). Spin-offs (SNDK, GEV) have no predecessor.
 - **Packets and keys:** `aipb packets` and `aipb status-packets` refuse to overwrite keys without `--force`. After labeling starts, bump the packet version instead.
-- **Placeholder split:** `evals/splits.json` is for the placeholder list. Run `aipb split --force` once, when the final list arrives.
+- **The split is final** (2026-11-11, D39): dev BLK, CAT, META, NVDA, PFE, TSLA; test AMZN, FDX, MSFT, PEP. Never `split --force` again: test companies must stay unseen.
+- **Commit outputs with the ledger:** after any paid call, commit `data/ledger` **and** `data/outputs` (or `git add -A`). The checklist's G4 commands left out `data/outputs` once; the smoke output was committed later with the final pilot list.
 - **Commit after background jobs finish:** a running ingest writes the manifest, and pre-commit's stash can drop its new lines (it lost six Cisco documents once). Ingest now re-checks the file on disk and re-appends anything missing, but don't commit mid-ingest.
 - **Tool escapes (Claude Code on this machine):** in bash heredocs `\\` collapses to `\`, and the Write tool turns `\u` escapes into literal characters. Check with `grep -nP '[^\x00-\x7F]' src/`, and use the Edit tool for strings containing backslashes.

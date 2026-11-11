@@ -22,7 +22,7 @@ Two tabs. **Instructions** is a one-page summary of this guide. **Passages** is 
 
 | Column | What it is | Do you edit it? |
 |---|---|---|
-| Row ID | e.g. IBM-017. Ties your label to the passage. | **Never** |
+| Row ID | e.g. MSFT-017. Ties your label to the passage. | **Never** |
 | Company, Form, Filed, Section | Where the passage comes from | No |
 | SEC link | Opens the full filing, if you need context | No |
 | Passage (AI words in red) | The text to read. AI words are **red and bold** so you can jump to them. | **Never** |
@@ -105,7 +105,7 @@ Label: **Checkable promise** (the new $200 million target), with a note: "raised
 1. **Excel:** File → Save (keep the `.xlsx` format and the file name).
    **Google Sheets:** File → Download → **Microsoft Excel (.xlsx)**.
 2. Put the file in the Drive folder **returned/**. Keep the name, e.g. `IBM_packet_v1.xlsx`.
-3. Tell the CS student. They run a check that prints a plain-English list of anything to fix ("Row 12 (IBM-011): Promise 1's quote is not in the passage text…"). Fix those rows and return the file again. Everything else is already saved.
+3. Tell the CS student. They run a check that prints a plain-English list of anything to fix ("Row 12 (MSFT-011): Promise 1's quote is not in the passage text…"). Fix those rows and return the file again. Everything else is already saved.
 
 You can return partly finished files. Blank rows simply count as "not labeled yet".
 

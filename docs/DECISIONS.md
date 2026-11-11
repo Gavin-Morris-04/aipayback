@@ -266,6 +266,34 @@ Code checks every citation: `document.data[start:end]` must equal `cited_text`. 
 - **Sandisk (SNDK)** triggers both warnings, but it was spun off from Western Digital in 2025 and registered as a new company, so there's no predecessor to add. Western Digital's 2024 filings are a different company's promises. SNDK's window starts with its first 10-Q (filed 2025-03-07).
 - **Lost manifest lines:** pre-commit's stash rewrote `filings.jsonl` while an ingest was appending to it, and six Cisco documents vanished. Ingest now reloads the manifest from disk after writing (`Manifest.missing_on_disk`/`repair`), re-appends anything missing and prints a warning.
 
+## D39. The final pilot list is Nick's picks (2026-11-11)
+**Choice.** `config/universe/pilot.csv` is now the finance lead's list: AMZN, BLK, CAT, FDX, META, MSFT, NVDA, PEP, PFE and TSLA. That's 7 sectors, 8 AI-heavy and 2 low-AI comparisons (CAT, PEP), which meets the PLAN's bar of at least 5 sectors and at least 4 AI-heavy. His reason for each company is in the `notes` column, word for word. BlackRock carries its predecessor CIK 1364742 (D38).
+
+**What was rebuilt ($0, SEC data only; every filing was already downloaded for the S&P 100):** ingest, parse and prefilter; packets with `--force`, which deleted the 8 dropped companies' keys and spreadsheets; and the split with `--force`. The packets still total 450 rows (428 keyword, 22 random), so the labeling estimate is unchanged. Split (seed 20261110, 60% dev): dev BLK, CAT, META, NVDA, PFE, TSLA; test AMZN, FDX, MSFT, PEP.
+
+**Cost effect.** The new list talks more about AI: 868 AI passages in the promise window instead of 688. These figures come from dry runs and from the same estimator used as an upper bound, which reproduces the S&P 100's $2.84:
+- filter: 165 requests, $0.11 (was 129 requests, $0.08)
+- extract upper bound: $0.63 (was $0.50)
+- pilot total: ≤ $1.53 at 300 promises (was $1.37)
+- S&P 100 filter requests left after the pilot: 748 (was 784)
+
+**Known issue: the Sonnet A/B can't fit $1.50 as written.** This was already true of the placeholder list. With `max_tokens: 8192`, Sonnet 5.5's worst case is about $0.045 per passage in a batch, so all 569 dev passages reserve $25.67, and $1.50 covers only about 33. The guard stops the run, so nothing can overspend. Before G10, size the test: only labeled dev passages that filter routed, and a `max_tokens` set from the pilot's real Haiku output lengths. That needs a small `extract` option for a list of passage ids.
+
+## D40. Evidence map em2-draft: fallback tags for the final pilot (2026-11-11)
+**Context.** I re-ran the evidence map's "Reported by" check against Nick's 10 companies (us-gaap facts filed since 2024). Several report a measure under a different tag than the draft listed, so verification would have found no number for them.
+
+**Choice.** Each new tag is the **last** one tried for its measure, so every company that reports an earlier tag keeps it:
+- `operating_expenses` += `CostsAndExpenses` for AMZN, FDX and META. This is total costs, including cost of sales, which the doc flags.
+- `capex` += `PaymentsToAcquireProductiveAssets` for AMZN, FDX, NVDA and PEP.
+- `rnd` += `ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost` for PFE.
+
+Version `em1-draft` becomes `em2-draft`. No verify result used em1. `docs/finance/EVIDENCE_MAP.md` now shows the coverage for the final pilot and marks the new tags for Nick to confirm (N4).
+
+**Gaps that remain (real absences, not missing tags):**
+- **Gross margin** is computed only from `GrossProfit`, which AMZN, BLK, CAT, FDX, META and PFE don't report. The draft doc said "otherwise revenue minus cost of revenue", but the code never did that: `cost_of_revenue` isn't used by any claim type. Until it's built, those companies' gross-margin promises can only be checked from text. The outcome is No evidence yet or Status pending review, never a guessed status.
+- Not reported at all: `OperatingIncomeLoss` (PFE), restructuring tags (MSFT, NVDA), an R&D line (AMZN, BLK, FDX) and headcount (every company).
+
 ## Upcoming decisions (recorded when made)
-- Sonnet use, decided by the capped A/B test (Phase 2, once there's a key and labels).
+- Sonnet use, decided by the capped A/B test (Phase 2, once there's a key and labels). Size it first (D39).
+- Whether to compute gross profit as revenue minus cost of revenue when `GrossProfit` isn't reported (D40). Ideally before the pilot's verify step.
 - The confidence threshold, from the precision-coverage curve (Phase 3, once Nick labels statuses).
