@@ -10,7 +10,8 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
 - Gavin put the API key in `.env` and ran the smoke test (G3, G4). It cost $0.0000102 for 27 input and 15 output tokens on Haiku 5.5.
 - Nick's 10 pilot picks are final (N2, D39). Ingest, parse, prefilter, packets and split were rebuilt for them, all at $0.
 - The evidence map's coverage was redone for his companies, and fallback tags were added (em2-draft, D40).
-- Checklist ticks: Gavin G1–G4; Nick N1–N5. Nick finished the rubric (N3) and the evidence map (N4) in the Google Docs **before** the em2 update, so G8 must merge the two.
+- Checklist ticks: Gavin G1–G4; Nick N1–N5. Nick finished the rubric (N3) and the evidence map (N4) in the Google Docs **before** the em2 update, so G8 had to merge the two.
+- **G8 done:** Nick's final rubric and evidence map are in the repo and in the code (D41): verify/explain prompts v2, `pending_reason` on verdicts, stricter silent walk-backs, the gross-profit fallback, margin changes in points, evidence map em3, and capex reported apart in findings. Gavin answered the two merge questions the same day: total costs stay as context for AMZN, FDX and META, and the rubric is final.
 
 **API spend so far: $0.0000102** (the smoke test). Every other paid stage has only been exercised against a fake model.
 
@@ -35,7 +36,6 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 | Who | Task | Unblocks |
 |---|---|---|
 | Gavin | Upload the 10 final `exports/packets/*_packet_v1.xlsx` to Drive `packets/`, then tell Nick "the packets are final" (rest of G6). G2 was checked on the placeholder packets; the code is the same, so the format carries over | Nick's labeling |
-| Gavin | G8: download Nick's final rubric and evidence-map Docs as `.md` and give them to Claude Code. **Don't re-copy the repo docs over his Docs.** Claude merges his version with em2 (D40), then lists two follow-ups for Nick: the (new) tags and the gross-margin fallback | verify follows Nick's rules |
 | Gavin | Run the pilot (G7), ideally after G8. Filter $0.11; extract ≤ $0.63, which is over $0.50, so it may need `--confirm` and a go-ahead in chat | status packet, first real results |
 | Gavin | Share the checklist page with Nick as Editor: on 2026-11-11 it was still private to Gavin | Nick's own ticks |
 | Nick | Label the passage packets (~6–8 h), then the status packet (~60 promises) | evals; confidence threshold |
@@ -122,7 +122,8 @@ git add -A && git commit -m "S&P 100 run" && git push
 
 ## Known issues (to fix before the step that needs them)
 - **Sonnet A/B sizing (before G10, D39).** Sonnet 5.5's worst case is about $0.045 per passage (`max_tokens: 8192`), so all 569 dev passages reserve $25.67, and $1.50 covers only about 33. The guard stops the run, so nothing overspends. Fix: an `extract` option that takes a list of passage ids (`run_extract` already accepts `passage_ids`). Then run only on labeled dev passages that filter routed, with Sonnet's `max_tokens` set from the pilot's real Haiku output lengths.
-- **Gross margin fallback (ideally before the pilot's verify, D40).** Gross margin uses only `GrossProfit`, which AMZN, BLK, CAT, FDX, META and PFE don't report. Computing revenue minus cost of revenue is a small change in `src/aipb/verify/numbers.py`, but it's a methodology choice, so ask Nick as a follow-up to his evidence map (G8). Until then, those promises fall back to text evidence or "Status pending review".
+- ~~Gross margin fallback~~: **fixed** (D41). Nick's map kept "revenue minus cost of revenue", and code computes it now.
+- **Prompt v3 items (next verify prompt revision, D41):** say explicitly that a margin change against a baseline older than the prior year goes to the second check. Not built yet: showing `CostOfRevenue` only when a promise names it; bank efficiency ratios; segment-note figures.
 
 ## Latest eval numbers
 None yet: they need real outputs (the pilot run) and Nick's labels (gold).

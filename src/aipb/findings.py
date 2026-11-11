@@ -16,6 +16,7 @@ from aipb.budget.ledger import utc_now
 from aipb.verify.gate import PENDING
 
 MIN_N = 5
+SPENDING_TYPES = ("capex_investment",)
 
 
 def _share(k: int, n: int) -> str:
@@ -96,17 +97,36 @@ def render(f: dict) -> str:
         f"{f['published']} of {f['promises']} promises have a published status; the rest are "
         f'"{PENDING}" because the evidence did not pass our checks.',
         "",
+    ]
+    header = [
         "| Claim type | Promises | "
         + " | ".join(["Delivered", "On track", "No evidence yet", "Walked back", PENDING])
         + " |",
         "|---|---|---|---|---|---|---|",
     ]
-    for t, c in sorted(f["status_by_claim_type"].items()):
+
+    def row(t: str, c: dict) -> str:
         n = sum(c.values())
         cells = [str(c.get(s, 0)) for s in ("Delivered", "On track", "No evidence yet")]
         cells.append(str(c.get("Walked back", 0) + c.get("Walked back (silent)", 0)))
         cells.append(str(c.get(PENDING, 0)))
-        lines.append(f"| {t.replace('_', ' ')} | {n} | " + " | ".join(cells) + " |")
+        return f"| {t.replace('_', ' ')} | {n} | " + " | ".join(cells) + " |"
+
+    # Nick's rubric (section 7, question 3): capex promises are reported apart from payoff
+    # promises, because spending money is an input, not a return.
+    by_type = f["status_by_claim_type"]
+    payoff = {t: c for t, c in by_type.items() if t not in SPENDING_TYPES}
+    spending = {t: c for t, c in by_type.items() if t in SPENDING_TYPES}
+    lines += ["**Promises about results** (savings, revenue, margin, products and more):", ""]
+    lines += header + [row(t, c) for t, c in sorted(payoff.items())]
+    if spending:
+        lines += [
+            "",
+            "**Promises about spending on AI** (capex and investment). Spending is an input, "
+            "not a return, so these are counted apart from the results above:",
+            "",
+        ]
+        lines += header + [row(t, c) for t, c in sorted(spending.items())]
     lines += [
         "",
         "## Caveats (read these before quoting any number)",

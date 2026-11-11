@@ -98,8 +98,15 @@ def build(
             (
                 "What to do",
                 "For each promise, read the later-filing excerpts and the reported "
-                "numbers, open the filings if needed, and pick a status using "
-                "docs/finance/RUBRIC.md section 4. Choose Unsure freely.",
+                "numbers, open the filings if needed, and pick a status using your "
+                "rubric (sections 4 and 5) and evidence map. Choose Unsure freely.",
+            ),
+            (
+                "Held as pending",
+                "If your rubric says a promise must be held as 'Status pending review' "
+                "(a vague specificity-1 deliverable, unclear run-rate vs realized, a "
+                "changed GAAP/non-GAAP basis or definition, or a percentage target with "
+                "no stated base), choose Unsure and name the rule in Notes.",
             ),
             (
                 "Evidence you relied on",

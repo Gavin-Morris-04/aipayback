@@ -289,11 +289,34 @@ Code checks every citation: `document.data[start:end]` must equal `cited_text`. 
 
 Version `em1-draft` becomes `em2-draft`. No verify result used em1. `docs/finance/EVIDENCE_MAP.md` now shows the coverage for the final pilot and marks the new tags **(new)**. Nick had already finished his evidence map in the Google Doc (N4, ticked 19:51 UTC), working from the em1 draft. G8 merges his version with these changes, and the new tags and the gross-margin question go to him as follow-ups.
 
-**Gaps that remain (real absences, not missing tags):**
+**Gaps that remain (real absences, not missing tags):** *(Update: D41 settled the gross-margin item. Code now computes revenue minus cost of revenue, as Nick's final map says.)*
 - **Gross margin** is computed only from `GrossProfit`, which AMZN, BLK, CAT, FDX, META and PFE don't report. The draft doc said "otherwise revenue minus cost of revenue", but the code never did that: `cost_of_revenue` isn't used by any claim type. Until it's built, those companies' gross-margin promises can only be checked from text. The outcome is No evidence yet or Status pending review, never a guessed status.
 - Not reported at all: `OperatingIncomeLoss` (PFE), restructuring tags (MSFT, NVDA), an R&D line (AMZN, BLK, FDX) and headcount (every company).
 
+## D41. Nick's final rubric and evidence map are the rules (G8, 2026-11-11)
+**Context.** Nick finished both Google Docs (N3, N4), and Gavin brought them in as PDFs before the pilot's verify step. His evidence map was edited from the em1 draft, so it was merged with the em2 coverage check (D40). The repo's `docs/finance/RUBRIC.md` and `EVIDENCE_MAP.md` now carry his text word for word. Merge notes are in [square brackets].
+
+**His decisions, and where code follows them:**
+- **Tolerances** (rubric section 5): 95% of a numeric target; 100% if the promise says "at least", "more than" or "exceed"; one-sided 90% for "about"; the low end of a range with no extra tolerance; overshooting is always met; run-rate and realized never mixed; fiscal deadlines (halves and quarters too); a grace period for results filed later, but no credit for progress after the deadline period; same accounting basis; organic figures only when the company reports them. Followed in prompts `verify_t1/v2` and `verify_t2/v2`.
+- **Silent walk-backs:** two new conditions. One silent 10-K/10-Q must cover the deadline period, which code checks (`deadline_period_filed`). The program must have been named before, which the judge decides. Specificity-1 promises are never silent (code).
+- **Pending review in specific cases:** a vague specificity-1 deliverable, unclear run-rate vs realized, a changed GAAP/non-GAAP basis or metric definition, and a percentage target with an undefined base. Verdicts now carry a `pending_reason`. The gate publishes these as "Status pending review", and Tier 1 doesn't escalate them, because a second check couldn't change the outcome. "vague_deliverable" is accepted only on specificity-1 promises.
+- **Reaffirmations** never make a promise On track or Delivered. **Raised targets:** the original promise is judged against its own target.
+- **Evidence rules per claim type** (evidence map): total expenses never decide a savings promise; restructuring charges aren't savings; margins change in points; bookings, backlog and run-rate aren't revenue; total headcount can't decide a promise about a group of roles; capex is matched to the guidance's definition; derived ratios count only for promises stated in reported numbers; general availability excludes previews and partial rollouts. All are in the v2 prompts.
+- **Numbers (code):** gross profit falls back to revenue minus cost of revenue, labeled as computed (his map kept this line; it was never built before). Margins get year-over-year changes in percentage points. `CostsAndExpenses` is labeled "total costs and expenses". Capex rows include finance-lease payments, capitalized software and asset-sale proceeds. Evidence map version **em3**.
+- **Explanations** (`explain/v2`): say when a figure is company-reported or computed by code; state results against targets; quote a reaffirmation and name its filing; mention the other GAAP/non-GAAP figure when the company gives both.
+- **Findings:** capex promises are reported in their own table, apart from promises about results (his answer to question 3).
+- **Confirmed by his map:** the em2 fallback tags for capex (`PaymentsToAcquireProductiveAssets`) and R&D (`...ExcludingAcquiredInProcessCost`), and the gross-margin fallback. Both D40 follow-ups are settled.
+
+**Not built yet (no pilot effect, or handled by the second check):**
+- A margin change against a baseline older than the prior year. Tier 1 can't compute it; the second check can. Prompt v3 will say so explicitly.
+- Showing `CostOfRevenue` only when a promise names that line.
+- Bank efficiency ratios and adjusted noninterest expense (no bank in the pilot).
+- Segment figures from the segment note (text evidence only for now).
+
+**Merge questions, answered in chat by Gavin on 2026-11-11:**
+1. Total costs and expenses stay as context for AMZN, FDX and META's cost-savings promises: **yes**. No change to em3.
+2. The rubric is final: **yes**. `RUBRIC.md` is titled final.
+
 ## Upcoming decisions (recorded when made)
 - Sonnet use, decided by the capped A/B test (Phase 2, once there's a key and labels). Size it first (D39).
-- Whether to compute gross profit as revenue minus cost of revenue when `GrossProfit` isn't reported (D40). Ideally before the pilot's verify step.
 - The confidence threshold, from the precision-coverage curve (Phase 3, once Nick labels statuses).
