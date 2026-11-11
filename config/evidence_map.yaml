@@ -1,0 +1,50 @@
+# Machine version of docs/finance/EVIDENCE_MAP.md. DRAFT until Nick approves that doc;
+# change both together. Verification pulls these XBRL measures for each claim type and
+# computes every number in code; the model only reads the computed table.
+#
+# Tags are tried in order; the first one a company reports is used (companies tag the
+# same idea differently: JPM reports NoninterestExpense, not SG&A).
+
+version: em1-draft
+
+measures:
+  revenue: [Revenues, RevenueFromContractWithCustomerExcludingAssessedTax]
+  operating_expenses: [OperatingExpenses, SellingGeneralAndAdministrativeExpense, NoninterestExpense]
+  restructuring: [RestructuringCharges, SeveranceCosts1]
+  gross_profit: [GrossProfit]
+  cost_of_revenue: [CostOfRevenue, CostOfGoodsAndServicesSold]
+  operating_income: [OperatingIncomeLoss]
+  capex: [PaymentsToAcquirePropertyPlantAndEquipment]
+  rnd: [ResearchAndDevelopmentExpense]
+
+# Ratios computed in code from the measures above (numerator / denominator).
+ratios:
+  gross_margin: {numerator: gross_profit, denominator: revenue}
+  operating_margin: {numerator: operating_income, denominator: revenue}
+
+claim_types:
+  cost_savings:
+    measures: [operating_expenses, restructuring]
+    search_terms: [savings, run-rate, productivity, efficiency, cost, expenses, reduction]
+  margin:
+    measures: [gross_profit, operating_income, revenue]
+    ratios: [gross_margin, operating_margin]
+    search_terms: [margin, gross, operating, expansion, points]
+  revenue:
+    measures: [revenue]
+    search_terms: [revenue, bookings, "book of business", sales, growth]
+  workforce:
+    measures: []
+    search_terms: [employees, headcount, workforce, "human capital", positions, roles, attrition]
+  capex_investment:
+    measures: [capex, rnd]
+    search_terms: ["capital expenditures", capex, "data center", infrastructure, investment]
+  productivity:
+    measures: [revenue]
+    search_terms: [productivity, automated, automation, efficiency, hours, time]
+  product_or_timeline:
+    measures: []
+    search_terms: [launch, launched, "generally available", available, released, introduced, delivered]
+  other:
+    measures: []
+    search_terms: []

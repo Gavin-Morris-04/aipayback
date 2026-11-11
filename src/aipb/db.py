@@ -173,6 +173,65 @@ CREATE TABLE IF NOT EXISTS extraction_log (
     detail TEXT,
     PRIMARY KEY (passage_id, variant)
 );
+CREATE TABLE IF NOT EXISTS evidence (
+    cluster_id TEXT NOT NULL,
+    variant TEXT NOT NULL,
+    eid TEXT NOT NULL,
+    passage_id TEXT NOT NULL,
+    form TEXT,
+    filing_date TEXT,
+    source TEXT NOT NULL,           -- retrieval | tier2
+    PRIMARY KEY (cluster_id, variant, eid)
+);
+CREATE TABLE IF NOT EXISTS numbers (
+    cluster_id TEXT NOT NULL,
+    variant TEXT NOT NULL,
+    nid TEXT NOT NULL,
+    label TEXT, value REAL, unit TEXT, kind TEXT, tag TEXT, fiscal_year INTEGER,
+    period_start TEXT, period_end TEXT, accession TEXT, filed TEXT,
+    PRIMARY KEY (cluster_id, variant, nid)
+);
+CREATE TABLE IF NOT EXISTS verdicts (
+    cluster_id TEXT NOT NULL,
+    variant TEXT NOT NULL,
+    tier TEXT NOT NULL,             -- 1 | 2
+    status TEXT,
+    walked_back_kind TEXT,
+    confidence REAL,
+    evidence_ids TEXT,
+    number_ids TEXT,
+    key_finding TEXT,
+    valid INTEGER NOT NULL,
+    problems TEXT,
+    stop TEXT,                      -- tier 2: submitted | turn_cap | token_cap | no_verdict | ...
+    prompt_version TEXT,
+    model TEXT,
+    PRIMARY KEY (cluster_id, variant, tier)
+);
+CREATE TABLE IF NOT EXISTS explanations (
+    cluster_id TEXT NOT NULL,
+    variant TEXT NOT NULL,
+    status TEXT NOT NULL,
+    text TEXT,
+    citations TEXT,
+    citations_valid INTEGER NOT NULL,
+    lint_ok INTEGER NOT NULL,
+    problems TEXT,
+    prompt_version TEXT,
+    model TEXT,
+    PRIMARY KEY (cluster_id, variant)
+);
+CREATE TABLE IF NOT EXISTS final_status (
+    cluster_id TEXT NOT NULL,
+    variant TEXT NOT NULL,
+    status TEXT,                    -- internal code, '' when pending
+    label TEXT NOT NULL,            -- what the site shows
+    publishable INTEGER NOT NULL,
+    silent INTEGER NOT NULL,
+    reason TEXT,
+    source_tier TEXT,
+    PRIMARY KEY (cluster_id, variant)
+);
 CREATE TABLE IF NOT EXISTS promise_clusters (
     cluster_id TEXT PRIMARY KEY,
     variant TEXT NOT NULL,

@@ -141,6 +141,50 @@ The FTS5 index stores the normalized text with Porter stemming.
 **Choice.** `data/manifests/filings.jsonl` records the URL and sha256 of all 239 documents. `aipb restore` re-downloads them, checks the hashes, re-parses, re-indexes and re-filters. The raw SEC cache (about 555 MB for the pilot) and the SQLite database stay out of git.
 **Evidence.** On 2026-11-10, a fresh clone in a temp folder ran `aipb restore` in 2 min 30 s. It rebuilt 18,381 passages whose IDs, text hashes, keyword hits and dedup marks digest to the same value as the original, plus 99,706 XBRL facts, with 0 LLM calls and no ledger entries. The prefilter was sped up from 49 s to 16 s by combining each keyword list into one regex; keep/drop decisions are unchanged.
 
+## D20. Batches by default, with a committed batch log (Phase 2, 2026-11-10)
+**Context.** The Batch API halves the price. But a batch is billed even if the process waiting for it dies (a closed laptop, a killed terminal).
+**Choice.**
+- Every non-interactive stage submits one Message Batch of its uncached requests.
+- The batch id and request map go into `data/ledger/batches.jsonl` (committed) **before** waiting.
+- If waiting is interrupted, the run's reservation stays held (fail closed) until `aipb batch-collect <id>` settles the real cost, caches the outputs and closes the run.
+- `aipb batches` lists anything uncollected.
+
+**Evidence.** `test_interrupted_batch_is_collected_not_paid_twice` simulates the crash. The reservation stays open, collect settles it, and re-running the stage submits nothing.
+
+## D21. Filter requests pack up to 10 passages from the same filing (Phase 2)
+**Context.** Packing passages saves the per-request system-prompt overhead. Packing across filings would change every request's contents (and cache key) whenever a new filing arrives, so the monthly update would re-pay for old passages.
+**Choice.** Groups of up to `group_size` (10) passages, always from one filing, in document order. New filings create new groups and never touch old ones.
+**Evidence.** Pilot dry run (`aipb filter --dry-run`): 688 passages → 129 requests, worst case $0.09 (under the $0.50 confirm threshold).
+
+## D22. Thinking off, effort low, no sampling parameters; variants for the A/B (Phase 2)
+**Choice.**
+- Filter and extract default to `thinking: disabled` + effort `low` on Haiku 5.5. Disabled thinking is allowed there at effort high or below, and thinking would bill as output.
+- `temperature` and similar are never sent: Haiku 5.5 rejects non-default sampling values.
+- The A/B variants live in `config/stages.yaml`:
+  - `effort_low`: adaptive thinking at effort low.
+  - `sonnet`: Sonnet 5.5, adaptive at effort low. Sonnet 5.5 rejects `disabled`.
+- Variants are stored separately (the `variant` column), so a comparison never overwrites the default results.
+
+## D23. Structured outputs for filter and extract; quotes checked and mapped back by code (Phase 2)
+**Choice.**
+- Both stages use `output_config.format` with strict JSON schemas (no numeric or length constraints, which structured outputs don't support).
+- Every extracted quote is located in the passage after `normalize_for_match`. The **original** characters at that span are stored, so published quotes are the filing's own text, curly quotes included.
+- A response with a failing quote gets one retry that names the failing quotes. Anything still failing is dropped and logged in `extraction_log`.
+- Passages go to extraction when the filter says promise, says it's unsure (low confidence), or fails (recall first).
+
+**Evidence.** Tests cover a paraphrased first answer fixed on retry, a quote that never matches being dropped, and refusals not being cached.
+
+## D24. Promise clusters never merge a changed target (Phase 2)
+**Choice.** Restatements merge when the claim type matches and either the quotes are similar (word Jaccard ≥ 0.5) or the metric, target and deadline all match. The same metric with a different target or deadline starts a new cluster with `related_cluster_id` set: a raised or lowered target is evidence, not a duplicate. Cluster ids come from the earliest statement, so they're stable; non-default variants get a variant prefix.
+
+## D25. Eval design (Phase 2)
+**Choice.**
+- **Split:** by company, seeded, frozen in `evals/splits.json` (placeholder pilot: dev ACN, CAT, IBM, UNH, VZ, XOM; test CRM, JPM, MSFT, WMT). It's recomputed once with `--force` when Nick's final list arrives.
+- **Matching:** same passage, quote-span IoU ≥ 0.5 in normalized text.
+- **Metrics:** precision, recall and F1 with seeded bootstrap 95% intervals over passages (too few companies to resample by company); field accuracy (claim type, target number, deadline year); filter and end-to-end confusion matrices; prefilter miss rate from the random non-keyword rows with a Wilson interval.
+- **Rules:** `--split test` refuses without `--milestone "<reason>"`. Each run writes `evals/results/<ts>_<sha>_<split>_<variant>.{json,md}`, a README history row, and a disagreement workbook for Nick ("Model wrong", "Label wrong", "Rubric unclear").
+- **A/B:** `aipb compare` reports cost per F1 point against the default.
+
 ## Upcoming decisions (recorded when made)
 - Citations vs structured outputs. They can't be combined in one call (the API returns a 400), so the cited explanation is a separate step after the structured verdict (Phase 3).
 - Tier 2 agent as a manual loop, so every turn is logged and capped (Phase 3).

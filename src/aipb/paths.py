@@ -59,6 +59,14 @@ class Paths:
         return self.data / "aipb.sqlite"
 
     @property
+    def evidence_map(self) -> Path:
+        return self.config / "evidence_map.yaml"
+
+    @property
+    def error_reports(self) -> Path:
+        return self.data / "error_reports.csv"
+
+    @property
     def prompts_dir(self) -> Path:
         return self.root / "prompts"
 

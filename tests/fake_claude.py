@@ -15,6 +15,8 @@ import re
 from collections.abc import Callable
 from types import SimpleNamespace
 
+from tests import fake_claude_verify
+
 PROMISE_CUES = re.compile(r"\b(expect|expects|plan|plans|will|target|aim)\b", re.I)
 AI = re.compile(r"\bAI\b|artificial intelligence|generative|machine learning")
 NUMBER = re.compile(r"\$?\d[\d,.]*\s*(million|billion|percent)?")
@@ -22,7 +24,9 @@ NUMBER = re.compile(r"\$?\d[\d,.]*\s*(million|billion|percent)?")
 
 class Msg:
     def __init__(self, text: str, *, stop_reason: str = "end_turn", in_tok: int = 1000,
-                 out_tok: int = 100, model: str = "claude-haiku-5-5") -> None:  # fmt: skip
+                 out_tok: int = 100, model: str = "claude-haiku-5-5",
+                 content: list[dict] | None = None) -> None:  # fmt: skip
+        self.content = content if content is not None else [{"type": "text", "text": text}]
         self.text = text
         self.stop_reason = stop_reason
         self.model = model
@@ -34,7 +38,7 @@ class Msg:
     def model_dump(self, mode: str = "json") -> dict:
         return {
             "id": "msg_fake", "type": "message", "role": "assistant", "model": self.model,
-            "content": [{"type": "text", "text": self.text}], "stop_reason": self.stop_reason,
+            "content": self.content, "stop_reason": self.stop_reason,
             "usage": {"input_tokens": self.usage.input_tokens,
                       "output_tokens": self.usage.output_tokens},
         }  # fmt: skip
@@ -102,6 +106,9 @@ class FakeClaude:
         self.batches: dict[str, list[dict]] = {}
         self.retrieves = 0
         self.paraphrase_first = paraphrase_first
+        self.t1 = None
+        self.t2 = None
+        self.explain_bad_word = False
         self.refuse = refuse
         self.responder = responder
         self._ids = itertools.count(1)
@@ -123,6 +130,9 @@ class FakeClaude:
             return Msg("", stop_reason="refusal")
         system = _system(params)
         model = params.get("model", "claude-haiku-5-5")
+        verify_answer = fake_claude_verify.answer(self, params, Msg)
+        if verify_answer is not None:
+            return verify_answer
         if "You screen passages" in system:
             items = []
             for pid, body in re.findall(r'<passage id="(P\d+)"[^>]*>\n(.*?)\n</passage>', user,

@@ -33,7 +33,7 @@ from aipb.settings import anthropic_key_warnings
 from aipb.stages import filter as fl_mod
 from aipb.stages import ingest as ingest_stage
 from aipb.stages import parse as parse_stage
-from aipb.stages import runner
+from aipb.stages import runner, verify_runner
 from aipb.universe import Member, UniverseError, load_universe
 
 app = typer.Typer(
@@ -845,3 +845,108 @@ def calibrate_cmd(
         f"({est / actual:.2f}x). Observed {chars / actual:.2f} chars per token; config uses "
         f"{ctx.estimator.chars_per_token}. The estimate should stay above the count."
     )
+
+
+# ---------------------------------------------------------------------------- verification
+
+
+@app.command("verify")
+def verify_cmd(
+    universe: UniverseOpt = "pilot",
+    ticker: TickerOpt = None,
+    variant: VariantOpt = "default",
+    tier2: Annotated[bool, typer.Option("--tier2/--no-tier2", help="Run escalations.")] = True,
+    tier2_variant: Annotated[str, typer.Option(help="Tier 2 settings variant.")] = "default",
+    confirm: ConfirmOpt = False,
+    dry_run: DryRunOpt = False,
+) -> None:
+    """Tier 1 judge for every promise (batched), Tier 2 agent for escalations (capped)."""
+    ctx = _ctx()
+    ciks = list(_ciks_for(ctx, _members(ctx, universe, ticker)).values())
+    conn = db.connect(ctx.paths.database)
+    try:
+        _plan, st = verify_runner.run_verify(
+            ctx, conn, ciks, variant=variant, t2_variant=tier2_variant, tier2_on=tier2,
+            confirm=confirm, dry_run=dry_run, log=out.print,
+        )  # fmt: skip
+    except (BudgetError, MissingApiKey, OfflineCacheMiss) as exc:
+        _fail(exc)
+        return
+    finally:
+        conn.close()
+    if not dry_run:
+        t1 = ", ".join(f"{k} {v}" for k, v in sorted(st.tier1.items()))
+        stops = ", ".join(f"{k} {v}" for k, v in sorted(st.tier2_stops.items())) or "none"
+        out.print(f"{st.clusters} promises. Tier 1: {t1}. Escalated: {st.escalated}; Tier 2 "
+                  f"ran {st.tier2_done} ({stops}); left for later (run cap): "
+                  f"{st.tier2_skipped_cap}.")  # fmt: skip
+
+
+@app.command("explain")
+def explain_cmd(
+    universe: UniverseOpt = "pilot",
+    ticker: TickerOpt = None,
+    variant: VariantOpt = "default",
+    confirm: ConfirmOpt = False,
+    dry_run: DryRunOpt = False,
+) -> None:
+    """Cited 2-4 sentence explanations for statuses that can be published (batched)."""
+    ctx = _ctx()
+    ciks = list(_ciks_for(ctx, _members(ctx, universe, ticker)).values())
+    conn = db.connect(ctx.paths.database)
+    try:
+        _plan, counts = verify_runner.run_explain(ctx, conn, ciks, variant=variant,
+                                                  confirm=confirm, dry_run=dry_run,
+                                                  log=out.print)  # fmt: skip
+        if not dry_run:
+            gate_counts = verify_runner.run_gate(ctx, conn, variant)
+    except (BudgetError, MissingApiKey, OfflineCacheMiss) as exc:
+        _fail(exc)
+        return
+    finally:
+        conn.close()
+    if not dry_run:
+        out.print(f"Explanations: {counts.get('ok', 0)} passed citation and wording checks, "
+                  f"{counts.get('failed_checks', 0)} did not (those stay pending).")  # fmt: skip
+        out.print("Gate: " + ", ".join(f"{k} {v}" for k, v in sorted(gate_counts.items())))
+
+
+@app.command("gate")
+def gate_cmd(variant: VariantOpt = "default") -> None:
+    """Decide what can be published and what stays 'Status pending review'. Costs $0."""
+    ctx = _ctx()
+    conn = db.connect(ctx.paths.database)
+    try:
+        counts = verify_runner.run_gate(ctx, conn, variant)
+    finally:
+        conn.close()
+    out.print(
+        "Gate: " + (", ".join(f"{k} {v}" for k, v in sorted(counts.items())) or "nothing yet")
+    )
+
+
+@app.command("status")
+def status_cmd(ticker: TickerOpt = None, variant: VariantOpt = "default") -> None:
+    """Show each promise's published status, with the reason when it is pending."""
+    ctx = _ctx()
+    conn = db.connect(ctx.paths.database)
+    try:
+        rows = conn.execute(
+            "SELECT c.ticker, k.first_stated, p.quote, f.label, f.reason FROM final_status f "
+            "JOIN promise_clusters k ON k.cluster_id=f.cluster_id AND k.variant=f.variant "
+            "JOIN promises p ON p.promise_id=k.canonical_promise_id "
+            "JOIN companies c ON c.cik=k.cik WHERE f.variant=? ORDER BY c.ticker, k.first_stated",
+            (variant,),
+        ).fetchall()
+    finally:
+        conn.close()
+    wanted = {t.upper() for t in ticker} if ticker else None
+    table = Table(title="Promise statuses")
+    for col in ("ticker", "first stated", "promise", "status", "why"):
+        table.add_column(col)
+    for r in rows:
+        if wanted and r["ticker"] not in wanted:
+            continue
+        table.add_row(r["ticker"], r["first_stated"], r["quote"][:90], r["label"],
+                      r["reason"] or "")  # fmt: skip
+    out.print(table if rows else "No statuses yet (run verify, explain).")

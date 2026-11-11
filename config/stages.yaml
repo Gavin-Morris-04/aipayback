@@ -46,3 +46,36 @@ stages:
     variants:
       effort_low: {thinking: adaptive, effort: low, max_tokens: 8192}
       sonnet: {model: claude-sonnet-5-5, thinking: adaptive, effort: low, max_tokens: 8192}
+
+  verify_t1:
+    model: claude-haiku-5-5
+    prompt: v1
+    max_tokens: 1024
+    thinking: disabled
+    effort: low
+    batch: true
+    variants:
+      effort_low: {thinking: adaptive, effort: low, max_tokens: 4096}
+
+  verify_t2:                  # the capped agent: escalations and 2nd checks only
+    model: claude-haiku-5-5
+    prompt: v1
+    max_tokens: 2048          # per turn
+    thinking: adaptive
+    effort: low
+    max_turns: 8
+    max_agent_tokens: 60000   # per promise
+    run_cap_usd: "0.50"       # per verify run; escalations beyond it stay pending
+    variants:
+      sonnet: {model: claude-sonnet-5-5}
+
+  explain:
+    model: claude-haiku-5-5
+    prompt: v1
+    max_tokens: 1024
+    thinking: disabled
+    effort: low
+    batch: true
+
+gate:
+  confidence_threshold: 0.75  # below this a status is published as "Status pending review"
