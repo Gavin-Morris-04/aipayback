@@ -22,6 +22,10 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 
 ## Blocked: who does what
 
+**Step-by-step checklist for Gavin and Nick:** https://claude.ai/artifact/QqmDKJPxRPfprggV99eEJY (private; share it with Nick as an Editor so his ticks sync). It has 17 Gavin steps (G1–G17) and 9 Nick steps (N1–N9), each with exact instructions, plus a pilot company picker that shows AI-mention counts for all 100 companies. Ticks are stored in the page's shared database, so Claude Code can read progress with `ArtifactData list` on collection `steps`.
+
+**Next session:** `git pull`, read this file, then check the checklist's ticks and continue from the first unticked step. Nothing runs until the API key is in `.env` (G3).
+
 | Who | Task | Unblocks |
 |---|---|---|
 | Gavin | Console API key with a workspace spend limit (suggested $5/month) → `.env` as `AIPAYBACK_API_KEY` | every paid stage |
