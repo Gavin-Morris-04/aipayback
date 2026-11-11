@@ -776,9 +776,9 @@ def eval_cmd(
         filter_variant=filter_variant, prompts=prompts, models=models, milestone=milestone,
         cost_usd=eval_mod.costs(ctx.ledger, set(models), set(prompts)),
     )  # fmt: skip
-    stamp = eval_mod.timestamp(sha)
+    stamp = f"{eval_mod.timestamp(sha)}_{split}_{variant}"
     dis = disagree_mod.write_disagreements(
-        ctx.paths.exports_dir / "disagreements" / f"{stamp}_{split}.xlsx",
+        ctx.paths.exports_dir / "disagreements" / f"{stamp}.xlsx",
         result["disagreements"], f"{split} split, variant {variant}, {stamp}",
     )  # fmt: skip
     result["disagreements_file"] = str(dis.relative_to(ctx.paths.root))

@@ -318,6 +318,8 @@ def history_row(result: dict) -> str:
 
 
 def update_readme(readme: Path, row: str) -> None:
+    if not readme.exists():
+        return
     text = readme.read_text(encoding="utf-8")
     if README_START not in text:
         return
