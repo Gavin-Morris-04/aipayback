@@ -84,3 +84,17 @@ def test_test_split_needs_a_milestone(llm_project):
 def test_eval_without_gold_says_what_is_missing(llm_project):
     result = run("eval", "-u", "test", code=2)
     assert "No gold labels" in result.output
+
+
+def test_compare_builds_the_ab_table(llm_project, fake_claude):
+    run("filter", "-u", "test")
+    run("extract", "-u", "test")
+    run("extract", "-u", "test", "--variant", "sonnet")
+    run("packets", "-u", "test", "--total", "40", "--non-keyword-share", "0.2")
+    label_packet(llm_project)
+    run("import-labels")
+    run("eval", "-u", "test")
+    run("eval", "-u", "test", "--variant", "sonnet")
+    out = run("compare").output
+    assert "| default |" in out and "| sonnet |" in out
+    assert (llm_project / "evals" / "results" / "ab_dev.md").exists()

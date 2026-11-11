@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import shutil
 import sys
 import uuid
@@ -19,13 +20,14 @@ from aipb import db
 from aipb.budget.guard import BudgetError, _git_sha, usd
 from aipb.budget.ledger import utc_now
 from aipb.context import AppContext
+from aipb.evals import compare as compare_mod
 from aipb.evals import run as eval_mod
 from aipb.evals import split as split_mod
 from aipb.labeling import disagreements as disagree_mod
 from aipb.labeling import import_labels as import_mod
 from aipb.labeling import packets as packets_mod
 from aipb.llm.client import MissingApiKey, OfflineCacheMiss
-from aipb.llm.params import stage_settings, thinking_params
+from aipb.llm.params import load_prompt, stage_settings, thinking_params
 from aipb.sec.client import SecError
 from aipb.settings import anthropic_key_warnings
 from aipb.stages import filter as fl_mod
@@ -324,6 +326,8 @@ def restore(
                 f"{ticker}: {rep.parsed} filings parsed ({rep.skipped} up to date), "
                 f"{stats['passages']} passages, {stats['kw']} keyword hits, {facts} XBRL facts"
             )
+        out.print("Model outputs (from data/outputs, offline, $0):")
+        runner.replay(ctx, conn, sorted(ticker_cik.values()), log=out.print)
     except SecError as exc:
         _fail(exc)
     finally:
@@ -783,3 +787,61 @@ def eval_cmd(
     out.print(eval_mod.render_markdown(result))
     out.print(f"Results: {jpath.name} and {mpath.name} in evals/results/. "
               f"Disagreements for Nick: {result['disagreements_file']}")  # fmt: skip
+
+
+@app.command("compare")
+def compare_cmd(split: Annotated[str, typer.Option(help="dev or test.")] = "dev") -> None:
+    """A/B table from saved eval results: F1 with intervals, cost, cost per F1 point. $0."""
+    ctx = _ctx()
+    results = compare_mod.latest_results(ctx.paths.evals_dir / "results", split)
+    if not results:
+        _fail(FileNotFoundError(f"No {split} eval results yet. Run aipb eval first."))
+    text = compare_mod.table(results)
+    out.print(text)
+    path = ctx.paths.evals_dir / "results" / f"ab_{split}.md"
+    body = f"# A/B comparison ({split} split)\n\n{text}\n"
+    path.write_text(body, encoding="utf-8", newline="\n")
+    out.print(f"Saved to {path.relative_to(ctx.paths.root)}")
+
+
+@app.command("calibrate")
+def calibrate_cmd(
+    stage: Annotated[str, typer.Option(help="filter or extract.")] = "filter",
+    sample: Annotated[int, typer.Option(help="Requests to count.")] = 20,
+    universe: UniverseOpt = "pilot",
+) -> None:
+    """Check the cost estimator against the free count_tokens endpoint (needs the key, $0)."""
+    ctx = _ctx()
+    ciks = list(_ciks_for(ctx, _members(ctx, universe, None)).values())
+    conn = db.connect(ctx.paths.database)
+    try:
+        cfg = stage_settings(ctx.stages, stage, None)
+        prompt = load_prompt(ctx.paths.prompts_dir, stage, cfg["prompt"])
+        if stage == "filter":
+            reqs, _ = fl_mod.build_requests(fl_mod.candidates(conn, ciks), cfg, prompt)
+        else:
+            from aipb.stages import extract as ex_mod
+
+            rows = ex_mod.candidates(conn, stage_settings(ctx.stages, "filter", None), ciks)
+            reqs = [ex_mod.build_request(r, cfg, prompt) for r in rows]
+    finally:
+        conn.close()
+    if not reqs:
+        _fail(ValueError(f"No {stage} requests to sample (run the earlier stages first)."))
+    step = max(1, len(reqs) // sample)
+    picked = reqs[::step][:sample]
+    est = actual = 0
+    chars = 0
+    try:
+        for r in picked:
+            est += ctx.estimator.input_tokens(r.params)
+            actual += ctx.llm.count_tokens(r.params)
+            body = {k: r.params[k] for k in ("system", "messages") if k in r.params}
+            chars += len(json.dumps(body, ensure_ascii=False))
+    except (MissingApiKey, OfflineCacheMiss) as exc:
+        _fail(exc)
+    out.print(
+        f"{len(picked)} {stage} requests: estimator {est:,} tokens vs count_tokens {actual:,} "
+        f"({est / actual:.2f}x). Observed {chars / actual:.2f} chars per token; config uses "
+        f"{ctx.estimator.chars_per_token}. The estimate should stay above the count."
+    )

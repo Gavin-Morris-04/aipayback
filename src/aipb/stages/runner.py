@@ -180,3 +180,52 @@ def run_dedupe(conn: sqlite3.Connection, variant: str = "default") -> dict[str, 
 
 def total_cost(results: dict[str, LLMResult]) -> Decimal:
     return sum((r.cost_usd for r in results.values()), Decimal(0))
+
+
+def cached_only(llm: LLMClient, stage: str, prompt_id: str, requests: list[Request]) -> set[str]:
+    """Keys of the requests whose outputs are already cached (replay without spending)."""
+    from aipb.llm.cache import CacheKey, input_hash
+
+    keep = set()
+    for r in requests:
+        if llm.cache.get(stage, CacheKey(input_hash(r.params), prompt_id, r.params["model"])):
+            keep.add(r.key)
+    return keep
+
+
+def replay(ctx: AppContext, conn: sqlite3.Connection, ciks: list[int], log: Log = print) -> None:
+    """Rebuild classifications, promises and clusters from committed outputs. $0, offline.
+
+    Only requests whose outputs are cached are replayed; anything else is reported as not
+    run yet. Used by `aipb restore` on a fresh clone.
+    """
+    offline = LLMClient(
+        guard=ctx.guard, cache=ctx.cache, estimator=ctx.estimator, api_key=None, offline=True,
+        device=ctx.settings.aipayback_device,
+    )  # fmt: skip
+    cfg = stage_settings(ctx.stages, fl.STAGE, None)
+    prompt = load_prompt(ctx.paths.prompts_dir, fl.STAGE, cfg["prompt"])
+    rows = fl.candidates(conn, ciks)
+    requests, _groups = fl.build_requests(rows, cfg, prompt)
+    have = cached_only(offline, fl.STAGE, prompt.id, requests)
+    if not have:
+        log("  filter: no cached outputs yet (not run).")
+        return
+    group_pids = {pid for k in have for pid in _groups[k].passage_ids}
+    out = run_filter(ctx, conn, ciks, passage_ids=group_pids, llm=offline, log=lambda _m: None)
+    log(f"  filter: replayed {out.stats.passages} passages from cache.")
+    ecfg = stage_settings(ctx.stages, ex.STAGE, None)
+    eprompt = load_prompt(ctx.paths.prompts_dir, ex.STAGE, ecfg["prompt"])
+    erows = ex.candidates(conn, cfg, ciks)
+    ereqs = [ex.build_request(r, ecfg, eprompt) for r in erows]
+    ehave = cached_only(offline, ex.STAGE, eprompt.id, ereqs)
+    if not ehave:
+        log("  extract: no cached outputs yet (not run).")
+        return
+    try:
+        eout = run_extract(ctx, conn, ciks, passage_ids=ehave, llm=offline, log=lambda _m: None)
+    except Exception as exc:  # a retry that was never cached: report, don't fail restore
+        log(f"  extract: replay incomplete ({type(exc).__name__}: {exc}).")
+        return
+    counts = run_dedupe(conn)
+    log(f"  extract: replayed {eout.stats.statements} statements; {counts['clusters']} clusters.")

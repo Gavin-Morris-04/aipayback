@@ -242,6 +242,13 @@ class LLMClient:
             response=response, cached=False, call_id=call_id, cost_usd=cost, status=status
         )
 
+    def count_tokens(self, params: dict) -> int:
+        """Exact input tokens from the free count_tokens endpoint (no charge, needs the key)."""
+        if self.offline:
+            raise OfflineCacheMiss("Offline mode: count_tokens needs the network.")
+        body = {k: params[k] for k in ("model", "system", "messages", "tools") if k in params}
+        return int(self._client().messages.count_tokens(**body).input_tokens)
+
     # ------------------------------------------------------------------ many requests
 
     def plan(self, stage: str, prompt_version: str, items: list[Request], *, batch: bool) -> Plan:

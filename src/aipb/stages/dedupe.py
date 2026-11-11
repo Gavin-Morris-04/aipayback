@@ -99,8 +99,9 @@ def cluster_company(rows: list[sqlite3.Row]) -> list[_Cluster]:
                 best = c
                 break
         if best is None:
-            pid = r["promise_id"].split(":", 1)[1]
-            best = _Cluster(f"c-{pid}", r["claim_type"], r, related=related)
+            variant, pid = r["promise_id"].split(":", 1)
+            cid = f"c-{pid}" if variant == "default" else f"c-{variant}-{pid}"
+            best = _Cluster(cid, r["claim_type"], r, related=related)
             clusters.append(best)
         best.members.append(r)
     return clusters

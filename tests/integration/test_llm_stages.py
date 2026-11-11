@@ -221,3 +221,20 @@ def test_variants_are_stored_separately(llm_project, fake_claude, variant):
     conn.close()
     sent = [c for c in fake_claude.calls if c.get("thinking", {}).get("type") == "adaptive"]
     assert sent  # the variant's settings reached the request
+
+
+def test_restore_replays_model_outputs_for_free(llm_project, fake_claude):
+    run("filter", "-u", "test")
+    run("extract", "-u", "test")
+    conn = db(llm_project)
+    before = conn.execute("SELECT COUNT(*) FROM promises").fetchone()[0]
+    conn.close()
+    n = len(fake_claude.calls)
+    (llm_project / "data" / "aipb.sqlite").unlink()
+    out = run("restore").output
+    assert "replayed" in out
+    conn = db(llm_project)
+    assert conn.execute("SELECT COUNT(*) FROM promises").fetchone()[0] == before
+    assert conn.execute("SELECT COUNT(*) FROM promise_clusters").fetchone()[0] >= 1
+    conn.close()
+    assert len(fake_claude.calls) == n  # zero API calls
