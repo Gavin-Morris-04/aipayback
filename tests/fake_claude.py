@@ -56,7 +56,8 @@ def _last_user(params: dict) -> str:
 
 
 def _sentences(text: str) -> list[str]:
-    return [s.strip() for s in re.split(r"(?<=[.!?])\s+", text) if s.strip()]
+    parts = re.split(r"(?<=[.!?])\s+|(?<=[.!?][”\"])\s+|\n{2,}", text)
+    return [s.strip() for s in parts if s and s.strip()]
 
 
 def classify(text: str) -> tuple[str, str]:

@@ -278,3 +278,17 @@ def company_stats(conn: sqlite3.Connection, ciks: list[int]) -> dict[int, dict[s
         ]
         out[cik] = r
     return out
+
+
+def window_counts(conn: sqlite3.Connection, ciks: list[int]) -> dict[str, int]:
+    """Canonical passages in the promise window, with and without AI keywords."""
+    if not ciks:
+        return {"kw": 0, "nonkw": 0}
+    marks = ",".join("?" * len(ciks))
+    row = conn.execute(
+        f"SELECT SUM(kw_hits != '[]') kw, SUM(kw_hits = '[]' AND words >= 40) nonkw "
+        f"FROM passages WHERE cik IN ({marks}) AND dup_of IS NULL "
+        "AND filing_date BETWEEN '2024-01-01' AND '2025-12-31'",
+        ciks,
+    ).fetchone()
+    return {"kw": row["kw"] or 0, "nonkw": row["nonkw"] or 0}

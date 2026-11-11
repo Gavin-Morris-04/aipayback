@@ -59,7 +59,9 @@ The full SEC download is about 555 MB and isn't committed. A manifest with each 
 
 | Date | Set | Extraction F1 | Status accuracy | Quote fidelity | Cost / promise |
 |---|---|---|---|---|---|
+<!-- eval-history:start -->
 | (Phase 2) | | | | | |
+<!-- eval-history:end -->
 
 Gold labels come from a finance student and are split into dev and held-out test, grouped by company. Full method: Methodology page (Phase 4).
 

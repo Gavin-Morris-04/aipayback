@@ -16,14 +16,19 @@ from rich.console import Console
 from rich.table import Table
 
 from aipb import db
-from aipb.budget.guard import BudgetError, usd
+from aipb.budget.guard import BudgetError, _git_sha, usd
+from aipb.budget.ledger import utc_now
 from aipb.context import AppContext
+from aipb.evals import run as eval_mod
+from aipb.evals import split as split_mod
+from aipb.labeling import disagreements as disagree_mod
 from aipb.labeling import import_labels as import_mod
 from aipb.labeling import packets as packets_mod
 from aipb.llm.client import MissingApiKey, OfflineCacheMiss
-from aipb.llm.params import thinking_params
+from aipb.llm.params import stage_settings, thinking_params
 from aipb.sec.client import SecError
 from aipb.settings import anthropic_key_warnings
+from aipb.stages import filter as fl_mod
 from aipb.stages import ingest as ingest_stage
 from aipb.stages import parse as parse_stage
 from aipb.stages import runner
@@ -701,3 +706,80 @@ def batch_collect_cmd(batch_id: str) -> None:
     ok = sum(r.status == "ok" for r in res.values())
     out.print(f"Collected {len(res)} results ({ok} ok) into the cache and ledger. Re-run the "
               "stage command to store them; it will be served from cache at $0.")  # fmt: skip
+
+
+# ---------------------------------------------------------------------------- evals
+
+
+@app.command("split")
+def split_cmd(
+    universe: UniverseOpt = "pilot",
+    force: Annotated[bool, typer.Option("--force", help="Replace the frozen split.")] = False,
+) -> None:
+    """Freeze the dev / held-out test split (grouped by company) in evals/splits.json."""
+    ctx = _ctx()
+    members = _members(ctx, universe, None)
+    path = ctx.paths.evals_dir / "splits.json"
+    rec = split_mod.freeze_split(path, {m.ticker: m.sector for m in members}, force=force)
+    out.print(f"dev:  {', '.join(rec['dev'])}\ntest: {', '.join(rec['test'])}\n({path})")
+
+
+@app.command("eval")
+def eval_cmd(
+    split: Annotated[str, typer.Option(help="dev (tune on it) or test (milestones only).")] = "dev",
+    variant: VariantOpt = "default",
+    filter_variant: Annotated[str, typer.Option(help="Which filter results to score.")] = "default",
+    milestone: Annotated[
+        str | None, typer.Option(help="Required for --split test: why test is reported now.")
+    ] = None,
+    universe: UniverseOpt = "pilot",
+) -> None:
+    """Score stored outputs against the gold labels. Costs $0 (no API calls)."""
+    ctx = _ctx()
+    if split not in ("dev", "test"):
+        _fail(ValueError("--split must be dev or test"))
+    if split == "test" and not milestone:
+        _fail(ValueError("The held-out test set is reported only at milestones. Add "
+                         "--milestone \"<reason>\" (it is recorded in the results)."))  # fmt: skip
+    members = _members(ctx, universe, None)
+    rec = split_mod.freeze_split(
+        ctx.paths.evals_dir / "splits.json", {m.ticker: m.sector for m in members}
+    )
+    tickers = set(rec[split])
+    gold = eval_mod.load_gold(ctx.paths.gold_dir, tickers)
+    if not gold:
+        _fail(eval_mod.NoGold(
+            f"No gold labels for the {split} companies ({', '.join(sorted(tickers))}) yet. "
+            "Nick labels the packets, then run aipb import-labels."))  # fmt: skip
+    fcfg = stage_settings(ctx.stages, "filter", filter_variant)
+    ecfg = stage_settings(ctx.stages, "extract", variant)
+    conn = db.connect(ctx.paths.database)
+    try:
+        ciks = list(_ciks_for(ctx, [m for m in members if m.ticker in tickers]).values())
+        counts = db.window_counts(conn, ciks)
+        result = eval_mod.evaluate(
+            conn, gold, variant=variant, filter_variant=filter_variant,
+            route=lambda label, conf: fl_mod.routed_to_extraction(fcfg, label, conf),
+            corpus_counts=counts,
+        )  # fmt: skip
+    finally:
+        conn.close()
+    sha = _git_sha(ctx.paths.root)
+    prompts = sorted({f"filter/{fcfg['prompt']}", f"extract/{ecfg['prompt']}"})
+    models = sorted({fcfg["model"], ecfg["model"]})
+    result.update(
+        created=utc_now(), git_sha=sha, split=split, variant=variant,
+        filter_variant=filter_variant, prompts=prompts, models=models, milestone=milestone,
+        cost_usd=eval_mod.costs(ctx.ledger, set(models), set(prompts)),
+    )  # fmt: skip
+    stamp = eval_mod.timestamp(sha)
+    dis = disagree_mod.write_disagreements(
+        ctx.paths.exports_dir / "disagreements" / f"{stamp}_{split}.xlsx",
+        result["disagreements"], f"{split} split, variant {variant}, {stamp}",
+    )  # fmt: skip
+    result["disagreements_file"] = str(dis.relative_to(ctx.paths.root))
+    jpath, mpath = eval_mod.write_results(ctx.paths.evals_dir / "results", result, stamp)
+    eval_mod.update_readme(ctx.paths.root / "README.md", eval_mod.history_row(result))
+    out.print(eval_mod.render_markdown(result))
+    out.print(f"Results: {jpath.name} and {mpath.name} in evals/results/. "
+              f"Disagreements for Nick: {result['disagreements_file']}")  # fmt: skip

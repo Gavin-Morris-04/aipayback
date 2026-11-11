@@ -1,0 +1,32 @@
+{
+  "created": "2026-11-11T00:16:15+00:00",
+  "dev": [
+    "ACN",
+    "CAT",
+    "IBM",
+    "UNH",
+    "VZ",
+    "XOM"
+  ],
+  "dev_share": 0.6,
+  "replaced_previous": false,
+  "sectors": {
+    "ACN": "Information Technology",
+    "CAT": "Industrials",
+    "CRM": "Information Technology",
+    "IBM": "Information Technology",
+    "JPM": "Financials",
+    "MSFT": "Information Technology",
+    "UNH": "Health Care",
+    "VZ": "Communication Services",
+    "WMT": "Consumer Staples",
+    "XOM": "Energy"
+  },
+  "seed": 20261110,
+  "test": [
+    "CRM",
+    "JPM",
+    "MSFT",
+    "WMT"
+  ]
+}
