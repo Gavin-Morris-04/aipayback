@@ -21,10 +21,12 @@ from aipb.context import AppContext
 from aipb.labeling import import_labels as import_mod
 from aipb.labeling import packets as packets_mod
 from aipb.llm.client import MissingApiKey, OfflineCacheMiss
+from aipb.llm.params import thinking_params
 from aipb.sec.client import SecError
 from aipb.settings import anthropic_key_warnings
 from aipb.stages import ingest as ingest_stage
 from aipb.stages import parse as parse_stage
+from aipb.stages import runner
 from aipb.universe import Member, UniverseError, load_universe
 
 app = typer.Typer(
@@ -52,19 +54,6 @@ def _main() -> None:
 def _fail(exc: Exception) -> None:
     err.print(f"[bold red]{type(exc).__name__}:[/] {exc}")
     raise typer.Exit(code=2)
-
-
-def thinking_params(stage_cfg: dict) -> dict:
-    """Translate a stage's thinking/effort settings into request parameters."""
-    params: dict = {}
-    thinking = stage_cfg.get("thinking")
-    if thinking == "disabled":
-        params["thinking"] = {"type": "disabled"}
-    elif thinking == "adaptive":
-        params["thinking"] = {"type": "adaptive"}
-    if stage_cfg.get("effort"):
-        params["output_config"] = {"effort": stage_cfg["effort"]}
-    return params
 
 
 # ---------------------------------------------------------------------------- budget
@@ -593,3 +582,122 @@ def import_labels_cmd(
         out.print(f"[yellow]Some rows need fixing. Send this to the finance student:[/] {report}")
         raise typer.Exit(code=1)
     out.print(f"All rows passed. Report: {report}")
+
+
+# ---------------------------------------------------------------------------- LLM stages
+
+VariantOpt = Annotated[
+    str, typer.Option("--variant", help="Settings variant from config/stages.yaml (A/B tests).")
+]
+ConfirmOpt = Annotated[
+    bool, typer.Option("--confirm", help="Allow a run whose worst case is above $0.50.")
+]
+DryRunOpt = Annotated[
+    bool, typer.Option("--dry-run", help="Print the plan and worst-case cost; send nothing.")
+]
+
+
+def _llm_stage(fn, ctx, conn, ciks, **kw):
+    try:
+        return fn(ctx, conn, ciks, log=out.print, **kw)
+    except (BudgetError, MissingApiKey, OfflineCacheMiss) as exc:
+        _fail(exc)
+
+
+@app.command("filter")
+def filter_cmd(
+    universe: UniverseOpt = "pilot",
+    ticker: TickerOpt = None,
+    variant: VariantOpt = "default",
+    confirm: ConfirmOpt = False,
+    dry_run: DryRunOpt = False,
+) -> None:
+    """Haiku labels keyword passages promise / hype / none (batched, cached)."""
+    ctx = _ctx()
+    ciks = list(_ciks_for(ctx, _members(ctx, universe, ticker)).values())
+    conn = db.connect(ctx.paths.database)
+    try:
+        res = _llm_stage(runner.run_filter, ctx, conn, ciks, variant=variant, confirm=confirm,
+                         dry_run=dry_run)  # fmt: skip
+    finally:
+        conn.close()
+    if res and res.ran:
+        st = res.stats
+        labels = ", ".join(f"{k} {v}" for k, v in sorted(st.by_label.items()))
+        out.print(f"Classified {st.passages} passages in {st.requests} requests: {labels}.")
+        for e in st.errors[:10]:
+            err.print(f"  {e}")
+
+
+@app.command("extract")
+def extract_cmd(
+    universe: UniverseOpt = "pilot",
+    ticker: TickerOpt = None,
+    variant: VariantOpt = "default",
+    filter_variant: Annotated[str, typer.Option(help="Which filter results to use.")] = "default",
+    confirm: ConfirmOpt = False,
+    dry_run: DryRunOpt = False,
+) -> None:
+    """Haiku extracts promise and hype statements; code verifies every quote verbatim."""
+    ctx = _ctx()
+    ciks = list(_ciks_for(ctx, _members(ctx, universe, ticker)).values())
+    conn = db.connect(ctx.paths.database)
+    try:
+        res = _llm_stage(
+            runner.run_extract, ctx, conn, ciks, variant=variant,
+            filter_variant=filter_variant, confirm=confirm, dry_run=dry_run,
+        )  # fmt: skip
+        if res and res.ran:
+            counts = runner.run_dedupe(conn, variant)
+    finally:
+        conn.close()
+    if res and res.ran:
+        st = res.stats
+        out.print(
+            f"Extracted {st.statements} verified statements ({st.promises} promises, "
+            f"{st.hype} hype) from {st.passages} passages. Quote retries: {st.retried}; "
+            f"quotes dropped after retry: {st.dropped_quotes}; errors: {len(st.errors)}. "
+            f"Promise clusters: {counts['clusters']}."
+        )
+        for e in st.errors[:10]:
+            err.print(f"  {e}")
+
+
+@app.command("dedupe")
+def dedupe_cmd(variant: VariantOpt = "default") -> None:
+    """Merge restatements of the same promise into clusters. Costs $0."""
+    ctx = _ctx()
+    conn = db.connect(ctx.paths.database)
+    try:
+        counts = runner.run_dedupe(conn, variant)
+    finally:
+        conn.close()
+    out.print(f"{counts['statements']} promise statements -> {counts['clusters']} clusters.")
+
+
+@app.command("batches")
+def batches_cmd() -> None:
+    """List submitted batches whose results have not been collected yet."""
+    ctx = _ctx()
+    pending = ctx.llm.batch_log.uncollected()
+    if not pending:
+        out.print("No uncollected batches.")
+        return
+    for b in pending:
+        out.print(f"{b['batch_id']}  stage={b['stage']}  run={b['run_id']}  "
+                  f"requests={len(b['requests'])}  submitted={b['ts']}")  # fmt: skip
+    out.print("Collect one with: aipb batch-collect <batch_id> (it is already paid for).")
+
+
+@app.command("batch-collect")
+def batch_collect_cmd(batch_id: str) -> None:
+    """Collect an ended batch from an interrupted run, so its outputs are never paid twice."""
+    ctx = _ctx()
+    try:
+        res = ctx.llm.collect(batch_id)
+    except (RuntimeError, MissingApiKey) as exc:
+        _fail(exc)
+        return
+    ok = sum(r.status == "ok" for r in res.values())
+    out.print(f"Collected {len(res)} results ({ok} ok) into the cache and ledger. Re-run the "
+              "stage command to store them; it will be served from cache at $0.")  # fmt: skip

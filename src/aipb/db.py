@@ -124,6 +124,69 @@ CREATE TABLE IF NOT EXISTS xbrl_facts (
 """
 
 
+# Phase 2: model outputs. `variant` is "default" or an A/B variant name from stages.yaml.
+SCHEMA_LLM = """
+CREATE TABLE IF NOT EXISTS classifications (
+    passage_id TEXT NOT NULL,
+    variant TEXT NOT NULL,
+    label TEXT NOT NULL,            -- promise | hype | none | error
+    confidence TEXT,                -- high | low
+    prompt_version TEXT NOT NULL,
+    model TEXT NOT NULL,
+    PRIMARY KEY (passage_id, variant)
+);
+CREATE TABLE IF NOT EXISTS promises (
+    promise_id TEXT PRIMARY KEY,    -- {variant}:{passage_id}:s{n}
+    variant TEXT NOT NULL,
+    passage_id TEXT NOT NULL,
+    cik INTEGER NOT NULL,
+    accession TEXT NOT NULL,
+    filing_date TEXT NOT NULL,
+    seq INTEGER NOT NULL,
+    quote TEXT NOT NULL,            -- the filing's own characters (verbatim, checked by code)
+    quote_start INTEGER NOT NULL,   -- span in the original passage text
+    quote_end INTEGER NOT NULL,
+    kind TEXT NOT NULL,             -- promise | hype
+    claim_type TEXT NOT NULL,
+    metric TEXT,
+    target_text TEXT,
+    target_value REAL,
+    target_unit TEXT,
+    baseline TEXT,
+    deadline_text TEXT,
+    deadline_year INTEGER,
+    deadline_precision TEXT,
+    specificity INTEGER,
+    confidence TEXT,
+    prompt_version TEXT NOT NULL,
+    model TEXT NOT NULL,
+    retried INTEGER NOT NULL DEFAULT 0,
+    cluster_id TEXT
+);
+CREATE INDEX IF NOT EXISTS promises_variant ON promises(variant, cik);
+CREATE TABLE IF NOT EXISTS extraction_log (
+    passage_id TEXT NOT NULL,
+    variant TEXT NOT NULL,
+    status TEXT NOT NULL,           -- ok | dropped_quotes | error
+    n_statements INTEGER NOT NULL,
+    n_dropped INTEGER NOT NULL,
+    detail TEXT,
+    PRIMARY KEY (passage_id, variant)
+);
+CREATE TABLE IF NOT EXISTS promise_clusters (
+    cluster_id TEXT PRIMARY KEY,
+    variant TEXT NOT NULL,
+    cik INTEGER NOT NULL,
+    claim_type TEXT NOT NULL,
+    canonical_promise_id TEXT NOT NULL,
+    first_stated TEXT NOT NULL,
+    last_stated TEXT NOT NULL,
+    n_statements INTEGER NOT NULL,
+    related_cluster_id TEXT         -- same metric, different target or deadline
+);
+"""
+
+
 def connect(path: Path) -> sqlite3.Connection:
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(path)
@@ -131,6 +194,7 @@ def connect(path: Path) -> sqlite3.Connection:
     conn.execute("PRAGMA journal_mode=WAL")
     conn.execute("PRAGMA foreign_keys=ON")
     conn.executescript(SCHEMA)
+    conn.executescript(SCHEMA_LLM)
     return conn
 
 

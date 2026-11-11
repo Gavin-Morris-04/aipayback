@@ -209,6 +209,15 @@ class Run:
         self.spent = Decimal("0")
         self.calls = 0
         self.finished = False
+        self.held = False
+
+    def hold(self) -> None:
+        """Keep this run open (and its reservation counted) after the process stops.
+
+        Used when a batch was submitted but its results weren't collected: the batch is
+        billed anyway, so the reservation must stay until `aipb batch-collect` settles it.
+        """
+        self.held = True
 
     @property
     def left(self) -> Decimal:
@@ -241,4 +250,6 @@ class Run:
         exc: BaseException | None,
         tb: TracebackType | None,
     ) -> None:
+        if self.held:
+            return
         self.finish("ok" if exc_type is None else "error")

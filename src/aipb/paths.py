@@ -59,6 +59,14 @@ class Paths:
         return self.data / "aipb.sqlite"
 
     @property
+    def prompts_dir(self) -> Path:
+        return self.root / "prompts"
+
+    @property
+    def evals_dir(self) -> Path:
+        return self.root / "evals"
+
+    @property
     def raw_dir(self) -> Path:
         """Git-ignored SEC download cache. `aipb restore` refills it from the manifest."""
         return self.data / "raw" / "sec"

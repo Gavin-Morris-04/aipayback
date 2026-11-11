@@ -1,10 +1,15 @@
 # Per-stage LLM settings. Every stage sets thinking/effort explicitly: Claude Haiku 5.5
 # runs adaptive thinking at effort "medium" by default, and thinking tokens bill as output.
-# Later phases add filter, extract, verify_t1, verify_t2, explain and newsletter_intro.
+# "disabled" thinking is valid on Haiku 5.5 at effort high or below; Sonnet 5.5 rejects it
+# (use "between_tools" or adaptive at low effort there).
+#
+# `variants` are named overrides for A/B tests (aipb filter/extract --variant NAME). Each
+# variant's outputs are cached and stored separately, so comparisons never overwrite the
+# default results.
 
 estimator:
   # Conservative chars-per-token (English averages closer to 4). A lower number means a
-  # higher estimate. Calibrate against the free count_tokens endpoint in Phase 2.
+  # higher estimate. Calibrate against the free count_tokens endpoint once a key exists.
   chars_per_token: 3.0
   safety_margin: 1.15
   per_request_overhead_tokens: 50
@@ -15,3 +20,29 @@ stages:
     max_tokens: 16
     thinking: disabled
     batch: false
+
+  filter:
+    model: claude-haiku-5-5
+    prompt: v1
+    max_tokens: 1024          # ~10 passages x ~25 tokens of JSON, with headroom
+    thinking: disabled
+    effort: low
+    batch: true
+    group_size: 10            # passages per request, always from the same filing
+    # A passage goes on to extraction when the filter says "promise", or is unsure.
+    extract_labels: [promise]
+    extract_low_confidence: true
+    variants:
+      effort_low: {thinking: adaptive, effort: low, max_tokens: 4096}
+
+  extract:
+    model: claude-haiku-5-5
+    prompt: v1
+    max_tokens: 4096
+    thinking: disabled
+    effort: low
+    batch: true
+    quote_retries: 1          # one retry with feedback, then a failing quote is dropped
+    variants:
+      effort_low: {thinking: adaptive, effort: low, max_tokens: 8192}
+      sonnet: {model: claude-sonnet-5-5, thinking: adaptive, effort: low, max_tokens: 8192}

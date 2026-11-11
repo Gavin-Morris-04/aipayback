@@ -28,6 +28,7 @@ def _no_real_keys(monkeypatch):
 def root(tmp_path, monkeypatch) -> Path:
     """A throwaway project root with the real config files and an empty data folder."""
     shutil.copytree(REPO / "config", tmp_path / "config")
+    shutil.copytree(REPO / "prompts", tmp_path / "prompts")
     (tmp_path / "data" / "ledger").mkdir(parents=True)
     (tmp_path / "data" / "outputs").mkdir(parents=True)
     monkeypatch.setenv("AIPAYBACK_ROOT", str(tmp_path))

@@ -19,6 +19,7 @@ from aipb.parse.sections import Section
 MIN_WORDS = 150
 MAX_WORDS = 400
 BLOCK_SEP = "\n\n"
+_INVISIBLE_CHARS = frozenset(map(chr, (0x00AD, 0x200B, 0x200C, 0x200D, 0x2060, 0xFEFF)))
 
 _SENTENCE_SPLIT = re.compile(r"(?<=[.!?\u201d])\s+(?=[A-Z\u201c\"(\u2022])")
 
@@ -143,3 +144,54 @@ def build_passages(
             )
             pos += len(text) + len(BLOCK_SEP)
     return out
+
+
+def _normalize_with_map(text: str) -> tuple[str, list[int]]:
+    """normalize_for_match(text) plus, for each output character, its index in `text`."""
+    out: list[str] = []
+    where: list[int] = []
+    pending_space = False
+    for i, ch in enumerate(text):
+        piece = normalize_for_match_char(ch)
+        if piece is None:
+            continue
+        if piece == " ":
+            pending_space = bool(out)
+            continue
+        if pending_space:
+            out.append(" ")
+            where.append(i)
+            pending_space = False
+        for c in piece:
+            out.append(c)
+            where.append(i)
+    return "".join(out), where
+
+
+def normalize_for_match_char(ch: str) -> str | None:
+    """One character's contribution to normalize_for_match: None (dropped), " " or text."""
+    if ch.isspace():
+        return " "
+    norm = normalize_for_match(ch) if ch.strip() else ""
+    if not norm:
+        return None if ch in _INVISIBLE_CHARS else " "
+    return norm
+
+
+def locate_quote(passage_text: str, quote: str) -> tuple[int, int] | None:
+    """(start, end) of `quote` in the ORIGINAL passage text, matched after normalization.
+
+    Returns None unless the quote appears verbatim (case-sensitive, after the documented
+    normalization). The returned span lets us publish the filing's own characters.
+    """
+    target = normalize_for_match(quote)
+    if not target:
+        return None
+    norm, where = _normalize_with_map(passage_text)
+    i = norm.find(target)
+    if i < 0:
+        return None
+    start, end = where[i], where[i + len(target) - 1] + 1
+    if normalize_for_match(passage_text[start:end]) != target:
+        return None
+    return start, end
