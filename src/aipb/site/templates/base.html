@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ page_title }}{% if page_title != site.title %} | {{ site.title }}{% endif %}</title>
+<meta name="description" content="{{ page_description }}">
+<link rel="canonical" href="{{ site.site_url }}/{{ path }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_description }}">
+<meta property="og:url" content="{{ site.site_url }}/{{ path }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="{{ root }}static/style.css">
+{% if json_ld %}<script type="application/ld+json">{{ json_ld | safe }}</script>{% endif %}
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="{{ root }}index.html">{{ site.title }}</a>
+    <nav aria-label="Main">
+      <a href="{{ root }}index.html">Scorecards</a>
+      <a href="{{ root }}methodology.html">Methodology</a>
+      <a href="{{ root }}pricing.html">Pricing</a>
+      <a href="{{ root }}about.html">About</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+{% block content %}{% endblock %}
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Informational only. Not investment, legal or financial advice.</strong>
+    Statuses describe what companies' later SEC filings report about their earlier statements;
+    they are not judgments of management. Data from SEC EDGAR as of {{ data.as_of or "n/a" }}.</p>
+    <p>Spotted an error? <a href="mailto:{{ site.contact_email }}?subject=AIPayback%20error%20report">Report it</a>.
+    Items with an open error report are held as "Status pending review" until checked.</p>
+  </div>
+</footer>
+{% if site.analytics_token %}<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.analytics_token }}"}'></script>{% endif %}
+<script src="{{ root }}static/sort.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="crumbs"><a href="../index.html">Scorecards</a> / {{ company.ticker }}</p>
+<h1>{{ company.name }} ({{ company.ticker }})</h1>
+<p class="lede">{{ company.sector }}. {{ company.promises }} checkable AI promise{{ "" if company.promises == 1 else "s" }} from 2024–2025 SEC filings.</p>
+{% if items %}
+<ul class="cards">
+{% for p in items %}
+  <li class="card">
+    <span class="badge {{ p.status | badge }}">{{ p.status }}</span>
+    <blockquote>“{{ p.quote }}”</blockquote>
+    <p class="meta">{{ p.form }} filed {{ p.first_stated }}{% if p.deadline_text %} · deadline: {{ p.deadline_text }}{% endif %}{% if p.restatements %} · restated {{ p.restatements | length }}×{% endif %}</p>
+    <a href="../promises/{{ p.id }}.html">Details and sources →</a>
+  </li>
+{% endfor %}
+</ul>
+{% else %}
+<p class="notice">No checkable AI promises found in this company's 2024–2025 filings so far.</p>
+{% endif %}
+{% endblock %}

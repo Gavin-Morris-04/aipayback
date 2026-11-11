@@ -1,0 +1,48 @@
+# Static site settings. Fill in the TODO values before the first deploy (Phase 4).
+
+title: AIPayback
+tagline: Did the AI promises pay off?
+description: >-
+  AIPayback tracks the specific AI promises public companies made in their SEC filings
+  and shows what their later filings report, with citations to both. Informational only.
+
+# Where the site is served. GitHub Pages project sites live under /<repo>/.
+site_url: "https://gavin-morris-04.github.io/aipayback"   # TODO: confirm (or custom domain)
+
+contact_email: aipayback.team@gmail.com     # error reports and partnerships
+
+# Newsletter signup (Buttondown). Empty = the signup box says "coming soon".
+buttondown_username: ""                     # TODO: after creating the Buttondown account
+
+# Cloudflare Web Analytics token (free, cookieless). Empty = no analytics script.
+analytics_token: ""
+
+founders:
+  - name: Gavin Morris
+    role: Engineering, product and partnerships
+    linkedin: ""                            # TODO
+  - name: Nick                              # TODO: full name as Nick wants it shown
+    role: Finance research, rubric and labeling
+    linkedin: ""                            # TODO
+
+pricing:
+  free:
+    name: Free
+    price: $0
+    items:
+      - Every company scorecard and promise page
+      - Monthly "AI Promise Watch" newsletter
+      - Methodology, evaluation results and sources
+  pro:
+    name: Pro (waitlist)
+    price: "$8-15/month (to be tested)"
+    items:
+      - Alerts when a watched company adds or changes an AI promise
+      - Monthly CSV/Excel export
+      - Full history
+  reports:
+    name: Reports and pilots
+    price: Contact us
+    items:
+      - AI Disclosure Benchmark versus peers
+      - Data and benchmarking only; never legal or investment advice

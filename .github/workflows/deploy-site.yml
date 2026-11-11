@@ -1,0 +1,43 @@
+name: Deploy site
+
+# Builds the static site from committed data/site/site_data.json (no SEC download, no API
+# calls) and deploys it to GitHub Pages. Off until the repo variable SITE_DEPLOY is "true"
+# and Pages is enabled (Settings -> Pages -> Source: GitHub Actions).
+
+on:
+  push:
+    branches: [main]
+    paths: ["data/site/**", "src/aipb/site/**", "config/site.yaml", "evals/results/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: vars.SITE_DEPLOY == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      AIPAYBACK_OFFLINE: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --locked
+      - name: Build
+        run: uv run aipb site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+      - id: deployment
+        uses: actions/deploy-pages@v4

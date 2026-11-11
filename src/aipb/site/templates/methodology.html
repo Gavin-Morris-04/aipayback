@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Methodology</h1>
+<p class="lede">How a statement in an SEC filing becomes a status on this site, how we measure our own accuracy, and what we don't do.</p>
+
+<h2>Statuses</h2>
+<dl class="facts">
+  <dt>Delivered</dt><dd>A later filing reports an outcome that meets the target (within the tolerance in our rubric) by the deadline.</dd>
+  <dt>On track</dt><dd>The deadline hasn't passed and a later filing reports a measurable progress figure. Reaffirmation alone isn't enough.</dd>
+  <dt>No evidence yet</dt><dd>Nothing in the later filings confirms or refutes it.</dd>
+  <dt>Walked back</dt><dd>A later filing lowers, delays or drops the commitment. "Silent" walk-backs (the deadline passed and later filings stopped mentioning it) are flagged separately and need stricter conditions.</dd>
+  <dt>Status pending review</dt><dd>Our checks didn't reach the confidence we require. We show the verified quote only.</dd>
+</dl>
+
+<h2>How it works</h2>
+<ol>
+  <li><strong>Sources:</strong> 10-K and 10-Q filings and earnings releases (8-K Item 2.02) from SEC EDGAR, plus companies' XBRL financial data. Promises come from filings dated 2024–2025; evidence from every later filing.</li>
+  <li><strong>Finding promises:</strong> a keyword filter, then a language model, picks out forward-looking AI statements. Every quote is checked by code to appear word for word in the filing.</li>
+  <li><strong>Checking them:</strong> code searches the company's later filings and computes the relevant reported figures. A model judges the status from that material only. Uncertain cases and every "Walked back" get a second, independent check, and a negative status is published only when both checks agree.</li>
+  <li><strong>Explaining:</strong> a short explanation cites the exact sentences it relies on, and code verifies every citation against the source.</li>
+  <li><strong>Neutral wording:</strong> generated text is checked against a list of judgment words. We describe what filings report; we don't judge management.</li>
+</ol>
+
+<h2>Accuracy</h2>
+{% if evals %}
+<table><thead><tr><th scope="col">Date</th><th scope="col">Test</th><th scope="col">Result</th></tr></thead><tbody>
+{% for e in evals %}<tr><td>{{ e.date }}</td><td>{{ e.name }}</td><td>{{ e.result }}</td></tr>{% endfor %}
+</tbody></table>
+<p class="meta">Measured against hand labels by our finance lead on a held-out set of companies, with 95% intervals. Full results are in the project's evaluation history.</p>
+{% else %}
+<p class="notice">Evaluation results will appear here before any status is published.</p>
+{% endif %}
+
+<h2>Limitations</h2>
+<ul>
+  <li>SEC filings only: no earnings-call transcripts or news, so promises made only on calls aren't covered.</li>
+  <li>Promises from late 2025 have a short evidence window; many will read "No evidence yet" for a while.</li>
+  <li>Companies define their own metrics ("run-rate savings"); when a filing reports progress on its own definition, we report it as stated.</li>
+  <li>Statuses describe what filings report. They aren't judgments of management, and nothing here is investment or legal advice.</li>
+</ul>
+
+<h2>Errors</h2>
+<p>Email <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>. An item with an open report is held as "Status pending review" until we recheck it, and corrections are listed in the next newsletter.</p>
+{% endblock %}

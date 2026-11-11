@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="crumbs"><a href="../index.html">Scorecards</a> / <a href="../companies/{{ p.ticker | lower }}.html">{{ p.ticker }}</a> / promise</p>
+<h1>{{ p.company }}: {{ p.metric or p.claim_type | replace("_", " ") }}</h1>
+<p><span class="badge big {{ p.status | badge }}">{{ p.status }}</span></p>
+
+<h2>The promise</h2>
+<blockquote class="promise">“{{ p.quote }}”</blockquote>
+<p class="meta">Verbatim from the company's {{ p.form }} filed {{ p.first_stated }} (checked by code against the filing text).
+{% if p.filing_url %}<a href="{{ p.filing_url }}" rel="nofollow">View the filing on SEC.gov</a>.{% endif %}</p>
+<dl class="facts">
+  {% if p.target_text %}<dt>Target</dt><dd>{{ p.target_text }}</dd>{% endif %}
+  {% if p.deadline_text %}<dt>Deadline</dt><dd>{{ p.deadline_text }}{% if p.deadline_end %} (period ends {{ p.deadline_end }}){% endif %}</dd>{% endif %}
+  <dt>Claim type</dt><dd>{{ p.claim_type | replace("_", " ") }}</dd>
+  {% if p.restatements %}<dt>Restated in</dt><dd>{% for r in p.restatements %}<a href="{{ r.url }}" rel="nofollow">{{ r.form }} {{ r.date }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</dd>{% endif %}
+</dl>
+
+{% if p.publishable %}
+<h2>What later filings report</h2>
+<p class="explanation">{{ p.explanation.text }}</p>
+<ol class="sources">
+{% for c in p.explanation.citations %}
+  <li id="cite-{{ c.n }}"><strong>[{{ c.n }}] {{ c.title }}</strong>{% if c.url %} · <a href="{{ c.url }}" rel="nofollow">SEC.gov</a>{% endif %}<br><q>{{ c.cited_text }}</q></li>
+{% endfor %}
+</ol>
+{% if p.numbers %}
+<h3>Reported figures</h3>
+<table><thead><tr><th scope="col">Figure</th><th scope="col">Value</th><th scope="col">Source</th></tr></thead><tbody>
+{% for n in p.numbers %}<tr><td>{{ n.label }}</td><td>{{ n.display }}</td><td>{{ n.tag }}, filed {{ n.filed }}</td></tr>{% endfor %}
+</tbody></table>
+<p class="meta">From the company's XBRL financial data; all arithmetic done by code.</p>
+{% endif %}
+{% if p.evidence %}
+<details><summary>All later passages we checked ({{ p.evidence | length }})</summary>
+<ul class="evidence">{% for e in p.evidence %}<li><strong>{{ e.form }} filed {{ e.date }}</strong> · <a href="{{ e.url }}" rel="nofollow">SEC.gov</a><br>{{ e.excerpt }}…</li>{% endfor %}</ul>
+</details>
+{% endif %}
+{% else %}
+<p class="notice">This promise's status is pending review: {{ p.pending_reason }}. We publish a status only when the evidence passes our checks; until then we show the verified quote only.</p>
+{% endif %}
+
+<p class="meta">Spotted an error? <a href="mailto:{{ site.contact_email }}?subject=Error%20report:%20{{ p.id }}">Report it</a> and we'll recheck it.</p>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Pricing</h1>
+<p class="lede">The scorecards are free. Paid options are for people who track AI claims for work.</p>
+<div class="tiers">
+{% for key in ("free", "pro", "reports") %}{% set t = site.pricing[key] %}
+  <section class="tier">
+    <h2>{{ t.name }}</h2>
+    <p class="price">{{ t.price }}</p>
+    <ul>{% for i in t["items"] %}<li>{{ i }}</li>{% endfor %}</ul>
+    {% if key == "pro" %}<p><a href="mailto:{{ site.contact_email }}?subject=AIPayback%20Pro%20waitlist">Join the waitlist</a></p>{% endif %}
+    {% if key == "reports" %}<p><a href="mailto:{{ site.contact_email }}?subject=AIPayback%20report">Get in touch</a></p>{% endif %}
+  </section>
+{% endfor %}
+</div>
+<p class="meta">Data and benchmarking only. Never investment or legal advice.</p>
+{% endblock %}

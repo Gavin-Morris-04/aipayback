@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>{{ site.tagline }}</h1>
+  <p class="lede">{{ site.description }}</p>
+  {% if data.stats.promises %}
+  <ul class="stats">
+    <li><span class="num">{{ data.stats.companies }}</span> companies</li>
+    <li><span class="num">{{ data.stats.promises }}</span> checkable AI promises</li>
+    <li><span class="num">{{ data.stats.published }}</span> with a published status</li>
+    {% if data.stats.checkable_share is not none %}
+    <li><span class="num">{{ (100 * data.stats.checkable_share) | round | int }}%</span> of forward-looking AI statements were specific enough to check</li>
+    {% endif %}
+  </ul>
+  {% else %}
+  <p class="notice">Scorecards are being prepared. The first results will appear here after our checks and reviews are complete.</p>
+  {% endif %}
+</section>
+
+{% if data.stats.promises %}
+<section>
+  <h2>Leaderboard</h2>
+  <p class="hint">Click a column to sort. Counts are promises by their published status.</p>
+  <div class="table-scroll">
+  <table class="sortable">
+    <thead><tr>
+      <th scope="col">Company</th><th scope="col">Sector</th><th scope="col" data-type="num">Promises</th>
+      {% for s in data.status_order %}<th scope="col" data-type="num">{{ s }}</th>{% endfor %}
+    </tr></thead>
+    <tbody>
+    {% for c in data.companies %}
+      <tr>
+        <td><a href="companies/{{ c.ticker | lower }}.html">{{ c.name }} ({{ c.ticker }})</a></td>
+        <td>{{ c.sector }}</td>
+        <td>{{ c.promises }}</td>
+        {% for s in data.status_order %}<td>{{ c.counts.get(s, 0) }}</td>{% endfor %}
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</section>
+{% endif %}
+
+<section class="signup">
+  <h2>AI Promise Watch</h2>
+  <p>A free monthly email: new AI promises, status changes, one data-backed stat. Generated automatically from SEC filings and checked by automated tests.</p>
+  {% if site.buttondown_username %}
+  <form action="https://buttondown.com/api/emails/embed-subscribe/{{ site.buttondown_username }}" method="post" target="popupwindow" class="subscribe">
+    <label for="bd-email">Email address</label>
+    <input type="email" name="email" id="bd-email" required autocomplete="email">
+    <button type="submit">Subscribe</button>
+  </form>
+  {% else %}
+  <p class="notice">Signup opens soon.</p>
+  {% endif %}
+</section>
+{% endblock %}

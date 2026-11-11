@@ -17,6 +17,7 @@ from rich.console import Console
 from rich.table import Table
 
 from aipb import db
+from aipb import publish as publish_mod
 from aipb.budget.guard import BudgetError, _git_sha, usd
 from aipb.budget.ledger import utc_now
 from aipb.context import AppContext
@@ -30,8 +31,14 @@ from aipb.labeling import packets as packets_mod
 from aipb.labeling import status_packets as status_mod
 from aipb.llm.client import MissingApiKey, OfflineCacheMiss
 from aipb.llm.params import load_prompt, stage_settings, thinking_params
+from aipb.newsletter import flow as nl_flow
+from aipb.newsletter import intro as nl_intro
+from aipb.newsletter import issue as nl_issue
+from aipb.newsletter import render as nl_render
+from aipb.newsletter import services as nl_services
 from aipb.sec.client import SecError
 from aipb.settings import anthropic_key_warnings
+from aipb.site import build as site_mod
 from aipb.stages import filter as fl_mod
 from aipb.stages import ingest as ingest_stage
 from aipb.stages import parse as parse_stage
@@ -1023,3 +1030,149 @@ def eval_status_cmd(variant: VariantOpt = "default") -> None:
     text = status_eval_mod.render(result)
     (results_dir / f"{stamp}.md").write_text(text, encoding="utf-8", newline="\n")
     out.print(text)
+
+
+# ---------------------------------------------------------------------------- publish + site
+
+
+@app.command("publish")
+def publish_cmd(variant: VariantOpt = "default") -> None:
+    """Export gate-approved results to data/site/ (committed) for the site and newsletter."""
+    ctx = _ctx()
+    conn = db.connect(ctx.paths.database)
+    try:
+        verify_runner.run_gate(ctx, conn, variant)
+        res = publish_mod.publish(conn, ctx.paths.data / "site", ctx.paths.error_reports, variant)
+    finally:
+        conn.close()
+    out.print(f"Published {res['published']} of {res['promises']} promises with a status (the "
+              f"rest show 'Status pending review'); {res['events']} new or changed.")  # fmt: skip
+
+
+@app.command("site")
+def site_cmd() -> None:
+    """Render the static site from data/site/site_data.json into site/dist. Costs $0."""
+    ctx = _ctx()
+    res = site_mod.build_site(
+        ctx.paths.config / "site.yaml", ctx.paths.data / "site" / "site_data.json",
+        ctx.paths.evals_dir, ctx.paths.root / "site" / "dist",
+    )  # fmt: skip
+    out.print(f"Built {res['pages']} pages ({res['companies']} companies, {res['promises']} "
+              "promises) in site/dist. Open site/dist/index.html to preview.")  # fmt: skip
+
+
+# ---------------------------------------------------------------------------- newsletter
+
+IssueOpt = Annotated[
+    str | None, typer.Option("--issue", help="Issue key, e.g. free-2026-12 (default: this month).")
+]
+
+
+def _newsletter_cfg(ctx: AppContext) -> dict:
+    import yaml
+
+    return yaml.safe_load((ctx.paths.config / "newsletter.yaml").read_text(encoding="utf-8"))
+
+
+def _services(ctx: AppContext):
+    """Buttondown and GitHub clients from secrets. Tests replace this function."""
+    s = ctx.settings
+    bd = nl_services.Buttondown(s.secret(s.buttondown_api_key))
+    gh = nl_services.GitHub(s.secret(s.github_token), s.github_repository)
+    return bd, gh
+
+
+def _issue_key(issue: str | None) -> str:
+    return issue or f"free-{date.today():%Y-%m}"
+
+
+def _build_issue(ctx: AppContext, key: str, use_llm: bool):
+    cfg = _newsletter_cfg(ctx)
+    issue = nl_issue.build_issue(ctx.paths.data / "site", ctx.paths.data / "sends" /
+                                 "newsletter_log.jsonl", key, name=cfg["name"],
+                                 min_items=int(cfg["min_items"]))  # fmt: skip
+    if use_llm:
+        conn = db.connect(ctx.paths.database)
+        try:
+            names = [r[0] for r in conn.execute("SELECT name FROM companies")]
+        finally:
+            conn.close()
+        nl_intro.write_intro(ctx, issue, names, max_usd=Decimal(str(cfg["intro_max_usd"])))
+    else:
+        issue.intro = nl_issue.template_intro(issue)
+    return issue, issue.markdown(cfg["site_url"].rstrip("/")), cfg
+
+
+@app.command("newsletter-preview")
+def newsletter_preview_cmd(
+    issue: IssueOpt = None,
+    no_llm: Annotated[bool, typer.Option("--no-llm", help="Template intro only.")] = False,
+) -> None:
+    """Render an issue locally (exports/newsletter/<key>.{md,html}). Sends nothing."""
+    ctx = _ctx()
+    key = _issue_key(issue)
+    try:
+        iss, body, _cfg = _build_issue(ctx, key, not no_llm)
+    except nl_issue.IssueError as exc:
+        _fail(exc)
+        return
+    outdir = ctx.paths.exports_dir / "newsletter"
+    outdir.mkdir(parents=True, exist_ok=True)
+    (outdir / f"{key}.md").write_text(body, encoding="utf-8", newline="\n")
+    (outdir / f"{key}.html").write_text(nl_render.to_html(body, iss.subject), encoding="utf-8")
+    out.print(f"{iss.subject}: {len(iss.item_ids)} items, intro from {iss.intro_source}.")
+    for n in iss.notes:
+        out.print(f"  note: {n}")
+    out.print(f"Preview: {outdir / (key + '.html')}")
+
+
+def _rails(ctx: AppContext, cfg: dict) -> nl_flow.Rails:
+    return nl_flow.Rails(
+        autosend=ctx.settings.newsletter_autosend,
+        ramp_up_test_issues=int(cfg["ramp_up_test_issues"]),
+        hold_label=cfg["hold_label"],
+        founders=ctx.settings.founders(),
+    )
+
+
+@app.command("newsletter-stage")
+def newsletter_stage_cmd(issue: IssueOpt = None) -> None:
+    """Build the issue, create the Buttondown draft, email the founders, open the preview
+    issue. The send happens 24 hours later unless someone adds the `hold` label."""
+    ctx = _ctx()
+    key = _issue_key(issue)
+    log = ctx.paths.data / "sends" / "newsletter_log.jsonl"
+    gh = None
+    try:
+        bd, gh = _services(ctx)
+        iss, body, cfg = _build_issue(ctx, key, True)
+        rec = nl_flow.stage(iss, body, log, bd, gh, _rails(ctx, cfg), "the next scheduled run")
+    except (nl_issue.IssueError, nl_services.ServiceError, nl_flow.SendBlocked) as exc:
+        nl_flow.report_failure(gh, key, str(exc), log)
+        _fail(exc)
+        return
+    out.print(f"Staged {key}: draft {rec['email_id']}, preview issue #{rec['github_issue']}.")
+
+
+@app.command("newsletter-send")
+def newsletter_send_cmd(issue: IssueOpt = None) -> None:
+    """Send a staged issue if every rail allows it (idempotent; fails closed)."""
+    ctx = _ctx()
+    key = _issue_key(issue)
+    log = ctx.paths.data / "sends" / "newsletter_log.jsonl"
+    gh = None
+    try:
+        bd, gh = _services(ctx)
+        rec = nl_flow.send(key, log, bd, gh, _rails(ctx, _newsletter_cfg(ctx)))
+    except nl_flow.SendBlocked as exc:
+        if "cancelled" in str(exc):
+            out.print(f"Not sent: {exc}")
+            return
+        nl_flow.report_failure(gh, key, str(exc), log)
+        _fail(exc)
+        return
+    except nl_services.ServiceError as exc:
+        nl_flow.report_failure(gh, key, str(exc), log)
+        _fail(exc)
+        return
+    out.print(f"{key}: {rec['event']} ({rec.get('reason', 'to subscribers')}).")

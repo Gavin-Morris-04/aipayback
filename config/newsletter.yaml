@@ -1,0 +1,10 @@
+# "AI Promise Watch" newsletter. Sent automatically; see docs/DECISIONS.md D31-D33.
+# Secrets (never in this file): BUTTONDOWN_API_KEY, FOUNDER_EMAILS (comma-separated).
+# Repo variable NEWSLETTER_AUTOSEND=true turns real sends on (the kill switch).
+
+name: AI Promise Watch
+min_items: 1                 # fewer new/changed items than this: send nothing, open an issue
+ramp_up_test_issues: 2       # the first N issues go to the founders only
+intro_max_usd: "0.05"        # the LLM intro's worst-case cap; above it, template-only
+hold_label: hold             # a GitHub issue label that cancels a staged send
+site_url: "https://gavin-morris-04.github.io/aipayback"

@@ -32,6 +32,19 @@ class Settings(BaseSettings):
     sec_contact_email: str | None = None
     aipayback_offline: bool = False
     aipayback_device: str = Field(default_factory=_default_device)
+    # Phase 4 services. In GitHub Actions these come from secrets and repo variables.
+    buttondown_api_key: SecretStr | None = None
+    founder_emails: str = ""
+    newsletter_autosend: bool = False
+    github_token: SecretStr | None = None
+    github_repository: str | None = None
+
+    def founders(self) -> list[str]:
+        return [e.strip() for e in self.founder_emails.split(",") if e.strip()]
+
+    @staticmethod
+    def secret(value: SecretStr | None) -> str | None:
+        return value.get_secret_value().strip() or None if value is not None else None
 
     @classmethod
     def load(cls, dotenv: Path) -> Settings:

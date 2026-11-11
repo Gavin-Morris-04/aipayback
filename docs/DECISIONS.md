@@ -185,7 +185,40 @@ The FTS5 index stores the normalized text with Porter stemming.
 - **Rules:** `--split test` refuses without `--milestone "<reason>"`. Each run writes `evals/results/<ts>_<sha>_<split>_<variant>.{json,md}`, a README history row, and a disagreement workbook for Nick ("Model wrong", "Label wrong", "Rubric unclear").
 - **A/B:** `aipb compare` reports cost per F1 point against the default.
 
+## D26. Verdict and explanation are two calls: structured, then cited (Phase 3, 2026-11-10)
+**Context.** Citations and structured outputs can't be combined: the API returns a 400. That was confirmed in the citations docs on 2026-11-10.
+**Choice.** The Tier 1 verdict is a structured call: the status, the evidence and number ids it relies on, a confidence, and one neutral finding. The explanation is a separate batched call. In it, the promise passage, the cited evidence passages and the cited numbers (as sentences) are plain-text `document` blocks with citations enabled.
+
+Code checks every citation: `document.data[start:end]` must equal `cited_text`. The promise must be cited, and any status other than "No evidence yet" must also cite evidence. The neutral-language lint must pass.
+
+## D27. What the judge sees is assembled by code, deterministically (Phase 3)
+**Choice.**
+- **Evidence:** FTS5 BM25 over the company's later filings (top 8, at most 2 per filing), with ids E1–E8.
+- **Numbers:** an XBRL table for the claim type, computed in code (annual values where a restated number wins, year-over-year changes, margins), with ids N1….
+- **Code-computed facts:** fiscal-year end (inferred from the XBRL periods), deadline end, whether it has passed, whether results for the deadline period are filed, later 10-K/10-Q count, later mentions.
+- **"As of"** is the company's latest filing date, not the wall clock. Otherwise every request would change daily and re-pay.
+
+## D28. Silent walk-backs and negative statuses are gated by code (Phase 3)
+**Choice.**
+- A "silent" walk-back is accepted only when the code-computed conditions hold (from the rubric draft): deadline passed, at least two 10-K/10-Q filings after it, and no later passage mentioning the promise. Otherwise it's downgraded to "No evidence yet".
+- Any "Walked back" needs Tier 1 and Tier 2 to agree, both confident, on status and kind.
+- Two confident checks that disagree → pending. A confident check beats an unconfident one, which is the point of escalating.
+
+**Evidence.** Unit tests cover every gate branch. An integration test shows a Tier 1 walk-back staying pending until Tier 2 independently agrees.
+
+## D29. Tier 2 is a manual, capped, cached tool loop (Phase 3)
+**Choice.**
+- A manual loop, not the SDK tool runner, so every turn goes through the budget-guarded gateway and the output cache.
+- Strict tools: `search_company_filings`, `get_passage`, `get_reported_metric`, `calculate` (a safe AST calculator, no `eval`), `submit_verdict`. `tool_choice` is `auto` with an instruction to submit once.
+- Caps: 8 turns and 60k tokens per promise. Each run is capped at $0.50 by worst-case estimate; escalations beyond that stay pending.
+- No `submit_verdict` → no verdict (never published).
+- Thinking blocks are passed back unchanged. A replay of the loop is served entirely from cache.
+
+**Why not an agent for everything:** Tier 1 is one call per promise. The agent runs only on escalations and second checks, which keeps it in the project without letting it use up the budget.
+
+## D30. Status gold labels are independent of the model (Phase 3)
+**Choice.** `aipb status-packets` shows Nick each promise with the same code-retrieved evidence and numbers the judge sees, never the verdict. Gold statuses are matched back to clusters by passage and quote overlap, not cluster id, so they survive re-extraction. `aipb eval-status` reports published precision vs coverage at thresholds 0.50–0.95. That curve is how the confidence threshold (default 0.75) gets set.
+
 ## Upcoming decisions (recorded when made)
-- Citations vs structured outputs. They can't be combined in one call (the API returns a 400), so the cited explanation is a separate step after the structured verdict (Phase 3).
-- Tier 2 agent as a manual loop, so every turn is logged and capped (Phase 3).
-- Sonnet use, decided by the capped A/B test (Phase 2).
+- Sonnet use, decided by the capped A/B test (Phase 2, once there's a key and labels).
+- The confidence threshold, from the precision-coverage curve (Phase 3, once Nick labels statuses).
