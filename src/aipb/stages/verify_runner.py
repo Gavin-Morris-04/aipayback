@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import json
 import sqlite3
+from contextlib import nullcontext
 from dataclasses import dataclass, field
 from decimal import Decimal
 
@@ -12,7 +13,7 @@ import yaml
 
 from aipb.budget.guard import BudgetError, usd
 from aipb.context import AppContext
-from aipb.llm.client import LLMClient, MissingApiKey, Plan, Request
+from aipb.llm.client import LLMClient, MissingApiKey, OfflineCacheMiss, Plan, Request
 from aipb.llm.params import load_prompt, stage_settings
 from aipb.stages import explain as ex
 from aipb.stages.runner import Log, _paid_call, describe
@@ -229,9 +230,16 @@ def run_verify(
         raise MissingApiKey("Tier 2 needs AIPAYBACK_API_KEY. Nothing was reserved or sent.")
     estimate = per * len(todo)
     log(f"Tier 2: {len(todo)} promises, worst case {usd(estimate)}.")
-    with ctx.guard.start_run(
-        command="verify --tier 2", stage=tier2.STAGE, estimate=estimate, confirm=confirm
-    ) as run:
+    # Offline (CI, `aipb restore`): replay cached agent runs only, with no reservation, so
+    # a replay never writes run events to the committed ledger.
+    reservation = (
+        nullcontext(None)
+        if llm.offline
+        else ctx.guard.start_run(
+            command="verify --tier 2", stage=tier2.STAGE, estimate=estimate, confirm=confirm
+        )
+    )
+    with reservation as run:
         for cid in todo:
             c = contexts[cid]
             v1 = t1[cid]
@@ -244,6 +252,8 @@ def run_verify(
             except BudgetError as exc:
                 log(f"Tier 2 stopped: {exc}")
                 break
+            except OfflineCacheMiss:
+                continue  # not run yet: stays as Tier 1 only (and pending if it needs Tier 2)
             stats.tier2_done += 1
             stats.tier2_stops[agent.stop] = stats.tier2_stops.get(agent.stop, 0) + 1
             _store_verdict(

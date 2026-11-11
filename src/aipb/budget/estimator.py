@@ -28,6 +28,10 @@ class Estimator:
     chars_per_token: float = 3.0
     safety_margin: float = 1.15
     per_request_overhead_tokens: int = 50
+    # A request with `tools` also bills a hidden tool-use system prompt: 286 tokens
+    # (tool_choice auto/none) or 406 (any/tool) on Haiku 5.5 and Sonnet 5.5, per the
+    # pricing page. The larger number keeps the estimate on the high side.
+    tool_overhead_tokens: int = 406
 
     @classmethod
     def load(cls, path: Path) -> Estimator:
@@ -37,6 +41,7 @@ class Estimator:
             chars_per_token=float(est.get("chars_per_token", 3.0)),
             safety_margin=float(est.get("safety_margin", 1.15)),
             per_request_overhead_tokens=int(est.get("per_request_overhead_tokens", 50)),
+            tool_overhead_tokens=int(est.get("tool_overhead_tokens", 406)),
         )
 
     def tokens_for_text(self, text: str) -> int:
@@ -45,7 +50,8 @@ class Estimator:
     def input_tokens(self, params: dict) -> int:
         prompt_part = {k: params[k] for k in _PROMPT_KEYS if k in params}
         text = json.dumps(prompt_part, ensure_ascii=False, sort_keys=True, default=str)
-        return self.tokens_for_text(text) + self.per_request_overhead_tokens
+        tools = self.tool_overhead_tokens if params.get("tools") else 0
+        return self.tokens_for_text(text) + self.per_request_overhead_tokens + tools
 
     def worst_case_cost(self, pricing: PricingTable, params: dict, *, batch: bool) -> Decimal:
         model = params["model"]

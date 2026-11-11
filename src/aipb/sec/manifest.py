@@ -81,3 +81,17 @@ class Manifest:
         for e in new:
             self._entries[e.key] = e
         return jsonl.append(self.path, (asdict(e) for e in new))
+
+    def missing_on_disk(self) -> list[ManifestEntry]:
+        """Entries this process holds that the file no longer has.
+
+        Another process can rewrite the file mid-run and silently drop appended lines.
+        pre-commit's stash does this when a commit runs during an ingest (it cost six
+        Cisco documents once).
+        """
+        on_disk = {(rec["accession"], rec["doc"]) for rec in jsonl.read(self.path)}
+        return [e for k, e in sorted(self._entries.items()) if k not in on_disk]
+
+    def repair(self) -> int:
+        """Re-append entries that vanished from the file. Returns how many."""
+        return jsonl.append(self.path, (asdict(e) for e in self.missing_on_disk()))

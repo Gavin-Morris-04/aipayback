@@ -13,7 +13,7 @@ from decimal import Decimal
 
 from aipb.budget.guard import usd
 from aipb.context import AppContext
-from aipb.llm.client import LLMClient, LLMResult, MissingApiKey, Plan, Request
+from aipb.llm.client import LLMClient, LLMResult, MissingApiKey, OfflineCacheMiss, Plan, Request
 from aipb.llm.params import OutputError, load_prompt, stage_settings
 from aipb.stages import dedupe as dedupe_mod
 from aipb.stages import extract as ex
@@ -43,8 +43,9 @@ def _paid_call(
     log: Log,
 ) -> dict[str, LLMResult]:
     if plan.to_send == 0:
-        return llm.run_many(run=None, stage=stage, prompt_version=prompt_id, items=requests,
-                            batch=batch)  # fmt: skip
+        return llm.run_many(
+            run=None, stage=stage, prompt_version=prompt_id, items=requests, batch=batch
+        )
     if not llm.offline and not ctx.settings.api_key():
         raise MissingApiKey(
             f"{plan.to_send} request(s) need the API but AIPAYBACK_API_KEY is not set in .env. "
@@ -53,8 +54,9 @@ def _paid_call(
     with ctx.guard.start_run(
         command=command, stage=stage, estimate=plan.worst_case_usd, confirm=confirm
     ) as run:
-        return llm.run_many(run=run, stage=stage, prompt_version=prompt_id, items=requests,
-                            batch=batch, log=log)  # fmt: skip
+        return llm.run_many(
+            run=run, stage=stage, prompt_version=prompt_id, items=requests, batch=batch, log=log
+        )
 
 
 def describe(plan: Plan, what: str) -> str:
@@ -83,16 +85,28 @@ def run_filter(
     requests, groups = fl.build_requests(rows, cfg, prompt)
     batch = bool(cfg.get("batch", True))
     plan = llm.plan(fl.STAGE, prompt.id, requests, batch=batch)
-    log(describe(plan, f"Filter ({prompt.id}, {cfg['model']}, variant {variant}, "
-                       f"{len(rows)} passages)"))  # fmt: skip
+    log(
+        describe(
+            plan, f"Filter ({prompt.id}, {cfg['model']}, variant {variant}, {len(rows)} passages)"
+        )
+    )
     if dry_run:
         return StageOutcome(plan, ran=False)
     results = _paid_call(
-        ctx, llm, stage=fl.STAGE, prompt_id=prompt.id, requests=requests, batch=batch,
-        plan=plan, command=f"filter --variant {variant}", confirm=confirm, log=log,
-    )  # fmt: skip
-    stats = fl.store_results(conn, groups, results, variant=variant, prompt_id=prompt.id,
-                             model=cfg["model"])  # fmt: skip
+        ctx,
+        llm,
+        stage=fl.STAGE,
+        prompt_id=prompt.id,
+        requests=requests,
+        batch=batch,
+        plan=plan,
+        command=f"filter --variant {variant}",
+        confirm=confirm,
+        log=log,
+    )
+    stats = fl.store_results(
+        conn, groups, results, variant=variant, prompt_id=prompt.id, model=cfg["model"]
+    )
     return StageOutcome(plan, ran=True, stats=stats)
 
 
@@ -113,19 +127,31 @@ def run_extract(
     cfg = stage_settings(ctx.stages, ex.STAGE, variant)
     fcfg = stage_settings(ctx.stages, fl.STAGE, filter_variant)
     prompt = load_prompt(ctx.paths.prompts_dir, ex.STAGE, cfg["prompt"])
-    rows = ex.candidates(conn, fcfg, ciks, variant=variant, filter_variant=filter_variant,
-                         passage_ids=passage_ids)  # fmt: skip
+    rows = ex.candidates(
+        conn, fcfg, ciks, variant=variant, filter_variant=filter_variant, passage_ids=passage_ids
+    )
     requests = {r["passage_id"]: ex.build_request(r, cfg, prompt) for r in rows}
     batch = bool(cfg.get("batch", True))
     plan = llm.plan(ex.STAGE, prompt.id, list(requests.values()), batch=batch)
-    log(describe(plan, f"Extract ({prompt.id}, {cfg['model']}, variant {variant}, "
-                       f"{len(rows)} passages)"))  # fmt: skip
+    log(
+        describe(
+            plan, f"Extract ({prompt.id}, {cfg['model']}, variant {variant}, {len(rows)} passages)"
+        )
+    )
     if dry_run:
         return StageOutcome(plan, ran=False)
     results = _paid_call(
-        ctx, llm, stage=ex.STAGE, prompt_id=prompt.id, requests=list(requests.values()),
-        batch=batch, plan=plan, command=f"extract --variant {variant}", confirm=confirm, log=log,
-    )  # fmt: skip
+        ctx,
+        llm,
+        stage=ex.STAGE,
+        prompt_id=prompt.id,
+        requests=list(requests.values()),
+        batch=batch,
+        plan=plan,
+        command=f"extract --variant {variant}",
+        confirm=confirm,
+        log=log,
+    )
     good, bad, errors = ex.first_pass(rows, results)
     stats = ex.ExtractStats(passages=len(rows))
     retried: set[str] = set()
@@ -136,9 +162,17 @@ def run_extract(
         rplan = llm.plan(ex.STAGE, prompt.id, retry_reqs, batch=batch)
         log(describe(rplan, f"Quote retries ({len(retry_ids)} passages)"))
         rres = _paid_call(
-            ctx, llm, stage=ex.STAGE, prompt_id=prompt.id, requests=retry_reqs, batch=batch,
-            plan=rplan, command=f"extract-retry --variant {variant}", confirm=confirm, log=log,
-        )  # fmt: skip
+            ctx,
+            llm,
+            stage=ex.STAGE,
+            prompt_id=prompt.id,
+            requests=retry_reqs,
+            batch=batch,
+            plan=rplan,
+            command=f"extract-retry --variant {variant}",
+            confirm=confirm,
+            log=log,
+        )
         by_id = {r["passage_id"]: r for r in rows}
         for pid in retry_ids:
             retried.add(pid)
@@ -153,19 +187,34 @@ def run_extract(
     for r in rows:
         pid = r["passage_id"]
         if pid in errors and pid not in good:
-            ex.store_passage(conn, r, [], variant=variant, prompt_id=prompt.id,
-                             model=cfg["model"], retried=pid in retried, dropped=0,
-                             status="error", detail=errors[pid])  # fmt: skip
+            ex.store_passage(
+                conn,
+                r,
+                [],
+                variant=variant,
+                prompt_id=prompt.id,
+                model=cfg["model"],
+                retried=pid in retried,
+                dropped=0,
+                status="error",
+                detail=errors[pid],
+            )
             stats.errors.append(f"{pid}: {errors[pid]}")
             continue
         verified = good.get(pid, [])
         dropped = len(bad.get(pid, []))
         ex.store_passage(
-            conn, r, verified, variant=variant, prompt_id=prompt.id, model=cfg["model"],
-            retried=pid in retried, dropped=dropped,
+            conn,
+            r,
+            verified,
+            variant=variant,
+            prompt_id=prompt.id,
+            model=cfg["model"],
+            retried=pid in retried,
+            dropped=dropped,
             status="dropped_quotes" if dropped else "ok",
             detail="; ".join(b.get("quote", "")[:80] for b in bad.get(pid, [])),
-        )  # fmt: skip
+        )
         stats.statements += len(verified)
         stats.promises += sum(v.statement["kind"] == "promise" for v in verified)
         stats.hype += sum(v.statement["kind"] == "hype" for v in verified)
@@ -200,9 +249,13 @@ def replay(ctx: AppContext, conn: sqlite3.Connection, ciks: list[int], log: Log 
     run yet. Used by `aipb restore` on a fresh clone.
     """
     offline = LLMClient(
-        guard=ctx.guard, cache=ctx.cache, estimator=ctx.estimator, api_key=None, offline=True,
+        guard=ctx.guard,
+        cache=ctx.cache,
+        estimator=ctx.estimator,
+        api_key=None,
+        offline=True,
         device=ctx.settings.aipayback_device,
-    )  # fmt: skip
+    )
     cfg = stage_settings(ctx.stages, fl.STAGE, None)
     prompt = load_prompt(ctx.paths.prompts_dir, fl.STAGE, cfg["prompt"])
     rows = fl.candidates(conn, ciks)
@@ -229,3 +282,32 @@ def replay(ctx: AppContext, conn: sqlite3.Connection, ciks: list[int], log: Log 
         return
     counts = run_dedupe(conn)
     log(f"  extract: replayed {eout.stats.statements} statements; {counts['clusters']} clusters.")
+
+
+def replay_verification(
+    ctx: AppContext, conn: sqlite3.Connection, ciks: list[int], log: Log = print
+) -> None:
+    """Rebuild verdicts, explanations and the gate from committed outputs. $0, offline."""
+    from aipb.stages import verify_runner
+
+    offline = LLMClient(
+        guard=ctx.guard,
+        cache=ctx.cache,
+        estimator=ctx.estimator,
+        api_key=None,
+        offline=True,
+        device=ctx.settings.aipayback_device,
+    )
+    if not conn.execute("SELECT 1 FROM promise_clusters LIMIT 1").fetchone():
+        return
+    try:
+        _plan, st = verify_runner.run_verify(ctx, conn, ciks, llm=offline, log=lambda _m: None)
+        _plan, counts = verify_runner.run_explain(ctx, conn, ciks, llm=offline, log=lambda _m: None)
+    except OfflineCacheMiss:
+        log("  verify/explain: not run yet (no cached outputs for some promises).")
+        return
+    gate = verify_runner.run_gate(ctx, conn)
+    log(
+        f"  verify: replayed {st.clusters} promises; explanations ok {counts.get('ok', 0)}; "
+        f"gate: {', '.join(f'{k} {v}' for k, v in sorted(gate.items()))}."
+    )

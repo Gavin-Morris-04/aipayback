@@ -13,6 +13,9 @@ estimator:
   chars_per_token: 3.0
   safety_margin: 1.15
   per_request_overhead_tokens: 50
+  # Hidden tool-use system prompt billed on any request with tools (pricing page:
+  # 286 tokens for tool_choice auto, 406 for any/tool on Haiku 5.5). Verified 2026-11-10.
+  tool_overhead_tokens: 406
 
 stages:
   smoke:
@@ -38,7 +41,7 @@ stages:
   extract:
     model: claude-haiku-5-5
     prompt: v1
-    max_tokens: 4096
+    max_tokens: 2048          # ~8 statements of JSON with headroom (thinking is off)
     thinking: disabled
     effort: low
     batch: true

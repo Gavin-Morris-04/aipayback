@@ -17,6 +17,7 @@ from rich.console import Console
 from rich.table import Table
 
 from aipb import db
+from aipb import findings as findings_mod
 from aipb import publish as publish_mod
 from aipb.budget.guard import BudgetError, _git_sha, usd
 from aipb.budget.ledger import utc_now
@@ -337,6 +338,7 @@ def restore(
             )
         out.print("Model outputs (from data/outputs, offline, $0):")
         runner.replay(ctx, conn, sorted(ticker_cik.values()), log=out.print)
+        runner.replay_verification(ctx, conn, sorted(ticker_cik.values()), log=out.print)
     except SecError as exc:
         _fail(exc)
     finally:
@@ -416,6 +418,15 @@ def ingest(
         f"SEC requests: {st.requests}, cache hits: {st.cache_hits}, retries: {st.retries}, "
         f"downloaded: {st.bytes_downloaded / 1e6:.1f} MB. Manifest: {len(ctx.manifest)} documents."
     )
+    restored = ctx.manifest.repair()
+    if restored:
+        err.print(
+            f"WARNING: {restored} manifest lines vanished from {ctx.paths.filings_manifest} while "
+            "ingest ran (another process rewrote the file, e.g. a git commit's pre-commit "
+            "stash). They were re-appended. Don't commit while an ingest is running."
+        )
+    if ctx.manifest.missing_on_disk():
+        _fail(RuntimeError("the filings manifest still lacks entries; run ingest again"))
     if any(r.errors for r in reports):
         raise typer.Exit(code=1)
 
@@ -1176,3 +1187,18 @@ def newsletter_send_cmd(issue: IssueOpt = None) -> None:
         _fail(exc)
         return
     out.print(f"{key}: {rec['event']} ({rec.get('reason', 'to subscribers')}).")
+
+
+@app.command("findings")
+def findings_cmd() -> None:
+    """Aggregate stats from published results -> docs/FINDINGS.md (sizes and caveats). $0."""
+    ctx = _ctx()
+    conn = db.connect(ctx.paths.database)
+    try:
+        f = findings_mod.write(
+            conn, ctx.paths.data / "site", ctx.paths.root / "docs" / "FINDINGS.md"
+        )
+    finally:
+        conn.close()
+    out.print(f"docs/FINDINGS.md: {f['promises']} promises ({f['published']} published), "
+              f"{sum(f['statements'].values())} AI statements.")  # fmt: skip

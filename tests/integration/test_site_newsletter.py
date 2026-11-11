@@ -181,3 +181,10 @@ def test_too_few_items_sends_nothing(published, services):
     result = run("newsletter-stage", "--issue", "free-2100-01", code=2)
     assert "Nothing is sent" in result.output and bd.emails == {}
     assert any("Newsletter not sent" in i["title"] for i in gh.issues.values())
+
+
+def test_findings(published):
+    out = run("findings").output
+    assert "docs/FINDINGS.md" in out
+    text = (published / "docs" / "FINDINGS.md").read_text(encoding="utf-8")
+    assert "Caveats" in text and "too few to compare" in text

@@ -6,7 +6,7 @@ import pytest
 
 from aipb import jsonl
 from aipb.sec.manifest import Manifest, ManifestEntry
-from aipb.stages.ingest import expected_periodic
+from aipb.stages.ingest import expected_periodic, first_filing_is_late
 from aipb.universe import UniverseError, load_universe
 
 
@@ -94,3 +94,27 @@ def test_jsonl_rejects_corrupt_lines(tmp_path):
 def test_expected_periodic():
     assert expected_periodic(date(2024, 1, 1), today=date(2026, 11, 10)) == 9
     assert expected_periodic(date(2026, 10, 1), today=date(2026, 11, 10)) == 0
+
+
+def test_first_filing_is_late_flags_mid_window_registrants():
+    start, today = date(2024, 1, 1), date(2026, 11, 10)
+    assert not first_filing_is_late("2024-02-23", start, today=today)  # a normal 10-K
+    assert first_filing_is_late("2024-11-06", start, today=today)  # BlackRock's new CIK
+    assert first_filing_is_late(None, start, today=today)
+    # Too early in the window to tell.
+    assert not first_filing_is_late(None, date(2026, 10, 1), today=today)
+
+
+def test_manifest_repairs_lines_another_process_dropped(tmp_path):
+    path = tmp_path / "filings.jsonl"
+    m = Manifest(path)
+    m.add([entry(), entry(doc="b.htm"), entry(doc="c.htm")])
+    assert m.missing_on_disk() == []
+    # Simulate pre-commit's stash restoring an older copy of the file mid-ingest.
+    first_line = path.read_text(encoding="utf-8").splitlines()[0]
+    path.write_text(first_line + "\n", encoding="utf-8", newline="\n")
+    assert [e.doc for e in m.missing_on_disk()] == ["b.htm", "c.htm"]
+    assert m.repair() == 2
+    assert m.missing_on_disk() == []
+    assert len(Manifest(path)) == 3
+    assert m.repair() == 0

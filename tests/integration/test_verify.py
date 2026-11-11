@@ -181,3 +181,32 @@ def test_status_packet_label_import_and_eval(llm_project, fake_claude):
     assert a["published"] == a["correct"]
     # Re-running status-packets would orphan labels: it refuses without --force.
     assert "already exists" in " ".join(run("status-packets", code=2).output.split())
+
+
+def test_restore_replays_verification_without_touching_the_ledger(llm_project, fake_claude):
+    from aipb.budget.ledger import Ledger
+
+    pipeline(llm_project)
+    fake_claude.t1 = lambda user: {
+        "status": "no_evidence_yet", "walked_back_kind": "none", "confidence": 0.4,
+        "evidence_ids": [], "number_ids": [], "key_finding": "Unclear.",
+    }  # fmt: skip
+    run("verify", "-u", "test")
+    run("explain", "-u", "test")
+    conn = db(llm_project)
+    before = {r["cluster_id"]: r["label"] for r in conn.execute("SELECT * FROM final_status")}
+    conn.close()
+    ledger_before = (llm_project / "data" / "ledger" / "runs.jsonl").read_text(encoding="utf-8")
+    n = len(fake_claude.calls)
+    (llm_project / "data" / "aipb.sqlite").unlink()
+    out = run("restore").output
+    assert "verify: replayed" in out
+    conn = db(llm_project)
+    after = {r["cluster_id"]: r["label"] for r in conn.execute("SELECT * FROM final_status")}
+    conn.close()
+    assert after == before and before
+    assert len(fake_claude.calls) == n  # zero API calls
+    assert (llm_project / "data" / "ledger" / "runs.jsonl").read_text(
+        encoding="utf-8"
+    ) == ledger_before
+    assert Ledger(llm_project / "data" / "ledger").runs()

@@ -10,7 +10,7 @@ from __future__ import annotations
 import hashlib
 from collections.abc import Callable
 from dataclasses import dataclass, field
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 from aipb.budget.ledger import utc_now
@@ -22,6 +22,8 @@ from aipb.sec.xbrl import fetch_companyfacts
 from aipb.universe import Member
 
 PROMISE_WINDOW_START = date(2024, 1, 1)
+# A company that existed at the window start files a 10-K or 10-Q within about a quarter.
+LATE_FIRST_FILING_DAYS = 120
 
 
 @dataclass
@@ -40,6 +42,19 @@ def expected_periodic(start: date, today: date | None = None) -> int:
     today = today or date.today()
     years = max(0.0, (today - start).days / 365.25)
     return max(0, int(years * 4) - 2)
+
+
+def first_filing_is_late(first: str | None, start: date, today: date | None = None) -> bool:
+    """True when the first 10-K/10-Q comes well after `start`: a sign of a new CIK.
+
+    The count check alone misses a holding company that took over mid-window (BlackRock
+    in 2024 still had 9 periodic filings under its new CIK, but none before November).
+    """
+    today = today or date.today()
+    cutoff = start + timedelta(days=LATE_FIRST_FILING_DAYS)
+    if today <= cutoff:
+        return False
+    return first is None or date.fromisoformat(first) > cutoff
 
 
 def sha256(data: bytes) -> str:
@@ -86,13 +101,22 @@ def ingest(
         # A filing made jointly by the old and new registrant appears under both CIKs.
         refs = list({r.accession: r for r in reversed(refs)}.values())[::-1]
         rep.filings = len(refs)
-        periodic = sum(r.form in ("10-K", "10-Q") for r in refs)
+        periodic_dates = [r.filing_date for r in refs if r.form in ("10-K", "10-Q")]
+        periodic = len(periodic_dates)
         expected = expected_periodic(start)
+        first = min(periodic_dates, default=None)
+        problems = []
         if periodic < expected:
+            problems.append(
+                f"only {periodic} 10-K/10-Q filings since {start} (expected about {expected})"
+            )
+        if first_filing_is_late(first, start):
+            problems.append(f"the first 10-K/10-Q since {start} is {first or 'missing'}")
+        if problems:
             rep.warnings.append(
-                f"only {periodic} 10-K/10-Q filings since {start} (expected about {expected}). "
-                "The company may have re-registered under a new CIK: add the predecessor CIK "
-                "to the extra_ciks column of the universe file."
+                "; ".join(problems) + ". The company may have re-registered under a new CIK: "
+                "add the predecessor CIK to the extra_ciks column of the universe file. "
+                "A spin-off or a new listing has no predecessor (record it in DECISIONS)."
             )
             log(f"{m.ticker}: WARNING {rep.warnings[-1]}")
         known = manifest.accessions(cid.cik)

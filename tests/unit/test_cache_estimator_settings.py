@@ -41,6 +41,21 @@ def test_estimate_is_conservative_and_includes_max_tokens(pricing):
     assert cost == floor
 
 
+def test_estimate_counts_hidden_tool_system_prompt():
+    est = Estimator()
+    base = {
+        "model": "claude-haiku-5-5",
+        "max_tokens": 10,
+        "messages": [{"role": "user", "content": "hi"}],
+    }
+    tool = {"name": "t", "description": "d", "input_schema": {"type": "object"}}
+    with_tools = {**base, "tools": [tool]}
+    # The tool's own JSON plus the hidden system prompt.
+    assert est.input_tokens(with_tools) - est.input_tokens(base) > est.tool_overhead_tokens
+    # An empty tools list adds its few JSON characters, not the hidden system prompt.
+    assert est.input_tokens({**base, "tools": []}) - est.input_tokens(base) < 10
+
+
 def test_estimate_prices_cached_prefixes_at_write_rates(pricing):
     est = Estimator()
     base = {

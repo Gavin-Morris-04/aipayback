@@ -2,7 +2,7 @@
 
 **Did the AI promises pay off?** Since 2023, public companies have promised a lot from AI: cost savings, margin gains, leaner workforces, new revenue. AIPayback pulls the specific, checkable promises out of SEC filings, checks each one against the company's *later* filings and reported numbers, and publishes a neutral status with citations to both the promise and the evidence.
 
-> Status: **Phase 1 (pilot ingestion, labeling packets, outreach kit)**. See [docs/PROGRESS.md](docs/PROGRESS.md) and [docs/PLAN.md](docs/PLAN.md).
+> Status: **Phases 0–5 built and tested (176 offline tests). No paid run yet:** waiting on the API key, the finance lead's labels, and the account setups listed in [docs/PROGRESS.md](docs/PROGRESS.md). Plan: [docs/PLAN.md](docs/PLAN.md).
 > Informational only. Not investment advice.
 
 ## How it works
@@ -38,22 +38,25 @@ Statuses: **Delivered**, **On track**, **No evidence yet**, **Walked back** (sil
 - The exact cost is logged to a ledger committed in git.
 - Outputs are cached so nothing is paid for twice.
 
-Details: [docs/DECISIONS.md](docs/DECISIONS.md) (D1–D5).
+- Non-interactive stages use the Batch API (50% off); a batch that outlives its process keeps its reservation until it's collected.
+- Every paid command prints its worst case first. Example: classifying the pilot's 688 AI passages is 129 batched requests, **worst case $0.09** (`aipb filter --dry-run`).
 
-## Data so far (Phase 1, $0 of API credit)
+Details: [docs/DECISIONS.md](docs/DECISIONS.md) (D1–D5, D20–D22).
 
-Pilot universe: 10 S&P 100 companies across 7 sectors (a **placeholder** list until the finance student picks; see [docs/finance/PILOT_PICKER.md](docs/finance/PILOT_PICKER.md)). Filings since 2024-01-01:
+## Data so far ($0 of API credit)
 
-| | Count |
-|---|---|
-| Filings (10-K / 10-Q / earnings 8-K) | 236 (30 / 87 / 119) |
-| Passages (150–400 words, FTS5-indexed) | 18,381 |
-| Passages mentioning AI (keyword filter) | 1,396, or 1,128 after removing repeated boilerplate |
-| Unique AI passages in 2024–2025 filings (the promise window) | 688 |
-| XBRL facts | 99,706 |
-| Labeling rows prepared for the finance student | 450 (428 keyword + 22 random for a recall check) |
+Filings since 2024-01-01. The pilot is 10 S&P 100 companies across 7 sectors: a **placeholder** list until the finance student picks (see [docs/finance/PILOT_PICKER.md](docs/finance/PILOT_PICKER.md)). The S&P 100 list is in `config/universe/sp100.csv`.
 
-The full SEC download is about 555 MB and isn't committed. A manifest with each document's URL and sha256 is, and `aipb restore` rebuilds an identical database from it (checked on a fresh clone).
+| | Pilot | S&P 100 |
+|---|---|---|
+| Filings (10-K / 10-Q / earnings 8-K) | 236 (30 / 87 / 119) | 2,395 (293 / 882 / 1,220) |
+| Passages (150–400 words, FTS5-indexed) | 18,381 | 179,348 |
+| Unique AI passages in 2024–2025 filings (the promise window) | 688 | 3,938 |
+| XBRL facts | 99,706 | 905,926 |
+| Worst-case cost of the paid pipeline | ≤ $1.37 | ≤ $4.84 at 1,000 promises (breakdown in [docs/PROGRESS.md](docs/PROGRESS.md)) |
+| Labeling rows prepared for the finance student | 450 (428 keyword + 22 random for a recall check) | n/a |
+
+The full SEC download (about 4.8 GB with the S&P 100) isn't committed. A manifest with each document's URL and sha256 is, and `aipb restore` rebuilds an identical database from it (checked on a fresh clone).
 
 ## Evaluation
 
@@ -77,18 +80,49 @@ uv run aipb restore           # rebuild the local database from committed files 
 uv run pytest                 # offline tests
 ```
 
-The free data pipeline (SEC downloads only, no API calls):
+### Running the pipeline
+
+Free steps (SEC downloads and code only):
 
 ```bash
-uv run aipb ingest            # download filings for config/universe/pilot.csv   (make ingest)
-uv run aipb parse             # passages + FTS index + XBRL facts                (make parse)
-uv run aipb prefilter         # AI keywords, forward-looking cues, dedup         (make prefilter)
-uv run aipb stats             # per-company counts table                         (make stats)
-uv run aipb packets           # Excel labeling packets -> exports/packets/       (make packets)
-uv run aipb import-labels     # check returned packets -> evals/gold/*.csv       (make import-labels)
+uv run aipb ingest            # download filings for config/universe/pilot.csv
+uv run aipb parse             # passages + FTS index + XBRL facts
+uv run aipb prefilter         # AI keywords, forward-looking cues, dedup
+uv run aipb stats             # per-company counts
+uv run aipb packets           # Excel labeling packets -> exports/packets/
+uv run aipb import-labels     # check returned packets -> evals/gold/*.csv
 ```
 
-Add `--universe sp100` (or `make ingest U=sp100`) for another company list, and `-t TICKER` for one company.
+Paid steps. Each prints its worst case first; anything over $0.50 needs `--confirm`, and every result is cached, so re-runs are free. `--dry-run` shows the plan without sending:
+
+```bash
+uv run aipb filter            # Haiku: promise / hype / none (batched)
+uv run aipb extract           # Haiku: statements with verbatim-checked quotes; dedupe
+uv run aipb verify            # Tier 1 judge for every promise; Tier 2 agent for escalations
+uv run aipb explain           # cited explanations; then the inclusion gate
+```
+
+Evaluate, publish and share ($0):
+
+```bash
+uv run aipb split && uv run aipb eval        # dev split; --split test --milestone "..." for test
+uv run aipb compare                          # A/B table (cost per F1 point)
+uv run aipb status-packets / import-statuses / eval-status   # status labels and accuracy
+uv run aipb publish && uv run aipb site      # data/site -> site/dist (open index.html)
+uv run aipb newsletter-preview               # render this month's issue locally
+uv run aipb findings                         # docs/FINDINGS.md
+```
+
+Add `--universe sp100` for the S&P 100 (or `make <target> U=sp100`), and `-t TICKER` for one company. Every command has `--help`.
+
+### Automation (off until enabled)
+
+| Workflow | What it does | Turn on with |
+|---|---|---|
+| `ci.yml` | lint + 176 offline tests on every push | always on |
+| `deploy-site.yml` | build the site from `data/site/` and deploy to GitHub Pages | repo variable `SITE_DEPLOY=true` |
+| `newsletter.yml` | stage on the 1st, send on the 2nd (hold label, kill switch, ramp-up) | `NEWSLETTER_ENABLED=true` (+ `NEWSLETTER_AUTOSEND=true` for real sends) |
+| `monitor.yml` | monthly: new filings → paid stages (guarded) → publish | `MONITOR_ENABLED=true` |
 
 **Never set `ANTHROPIC_API_KEY`.** Claude Code would bill it instead of your Claude subscription. The app uses `AIPAYBACK_API_KEY`.
 
@@ -100,4 +134,5 @@ Add `--universe sp100` (or `make ingest U=sp100`) for another company list, and 
 
 ## Repo map
 
-`src/aipb/` code (`sec/` EDGAR client, `parse/` HTML to passages, `stages/` pipeline steps, `labeling/` packets and import, `budget/` and `llm/` cost control) · `config/` prices, budget, stages, keywords, company lists · `prompts/` versioned prompts · `data/` committed ledger, filings manifest and LLM outputs · `evals/` gold labels, packet keys and results · `docs/` plan, decisions, interview notes, `finance/` rubric and guides · `gtm/` outreach, discovery and ROI kit.
+`src/aipb/` code: `sec/` EDGAR client · `parse/` HTML to passages · `stages/` filter, extract, dedupe, explain and runners · `verify/` retrieval, numbers, Tier 1 judge, Tier 2 agent, gate · `evals/` metrics and reports · `labeling/` Excel packets and imports · `site/` static site · `newsletter/` issue, intro fact-check, Buttondown and GitHub flow · `budget/` and `llm/` cost control.
+`config/` prices, budget, stages, keywords, evidence map, site, newsletter, company lists · `prompts/` versioned prompts · `data/` committed ledger, batch log, filings manifest, LLM outputs, site data, send log · `evals/` gold labels, packet keys, splits, results · `docs/` plan, progress, decisions, interview notes, findings, `finance/` rubric and guides · `gtm/` outreach, discovery, ROI, solution brief, demo, pilot proposal, objections, LinkedIn drafts.

@@ -219,6 +219,53 @@ Code checks every citation: `document.data[start:end]` must equal `cited_text`. 
 ## D30. Status gold labels are independent of the model (Phase 3)
 **Choice.** `aipb status-packets` shows Nick each promise with the same code-retrieved evidence and numbers the judge sees, never the verdict. Gold statuses are matched back to clusters by passage and quote overlap, not cluster id, so they survive re-extraction. `aipb eval-status` reports published precision vs coverage at thresholds 0.50–0.95. That curve is how the confidence threshold (default 0.75) gets set.
 
+## D31. The site is built from a committed data file, not the database (Phase 4, 2026-11-10)
+**Choice.** `aipb publish` runs the gate and exports `data/site/site_data.json` (committed). `aipb site` renders static HTML from that file alone, so the Pages workflow builds without SEC downloads or API calls.
+- Pending items carry the verified quote only.
+- Each page has canonical URLs, OpenGraph tags and the disclaimer; the home page has a JSON-LD `Dataset` block; the site has a sitemap.
+- The leaderboard is hidden until results exist, so "0 promises" never reads as "we looked and found none".
+
+`data/site/published_log.jsonl` is append-only and records when each promise's shown status first appeared or changed, and why: first publish, status change, or correction after a closed error report. The newsletter's "new", "changed" and "corrections" sections come from it.
+
+## D32. The newsletter is templates plus a fact-checked intro (Phase 4)
+**Choice.**
+- The items, the one stat and the footer are deterministic templates over published data.
+- Haiku writes only a 2–3 sentence intro from a JSON of the issue's facts, capped at $0.05 worst case.
+- Code checks every number, ticker-like word, company name and status word against the facts, plus the neutral-language lint. A failed check regenerates once, naming the problems; a second failure (or no key or budget) falls back to the template intro.
+
+## D33. Sending is staged, vetoable, idempotent and fails closed (Phase 4)
+**Context.** Buttondown's API, checked against its OpenAPI spec on 2026-11-10: `POST /v1/emails` (status `draft`, `metadata`), `POST /v1/emails/{id}/send-draft` (`recipients`), and `PATCH /v1/emails/{id}` (status `about_to_send`).
+**Choice.**
+- **Stage** (1st of the month): build the issue, create a Buttondown draft with the issue key and body hash in its metadata, send a test copy to `FOUNDER_EMAILS`, and open a GitHub "Newsletter preview" issue.
+- **Send** (24 hours later) refuses unless:
+  - the issue was staged and not already sent;
+  - the preview issue has no `hold` label (if the labels can't be read, it doesn't send);
+  - the draft's metadata and normalized body hash still match the preview;
+  - the status is still `draft`.
+- Founders-only test mode applies while `NEWSLETTER_AUTOSEND` isn't `true` and for the first two issues.
+- Any other failure opens a "Newsletter not sent" issue. Everything is logged in `data/sends/newsletter_log.jsonl` (committed).
+- Workflow inputs pass through environment variables and a strict issue-key pattern, never interpolated into shell (script-injection safe).
+
+**Evidence.** Eight integration tests against fake Buttondown and GitHub servers: ramp-up, live send, idempotency, hold label, kill switch, edited draft, never staged, too few items.
+
+## D34. Scheduled jobs are off until a human turns them on (Phase 4)
+**Choice.** `deploy-site.yml`, `newsletter.yml` and `monitor.yml` each run only when a repo variable is `true` (`SITE_DEPLOY`, `NEWSLETTER_ENABLED`, `MONITOR_ENABLED`). The monitor job spends API credit through the same guard. It has no `--confirm`, so a monthly run over $0.50 stops and needs a person. Outputs, ledger and manifest are committed back, so the next run never re-pays.
+
+## D35. S&P 100 list: Wikipedia's constituents table, recorded with date (Phase 5)
+**Choice.** `config/universe/sp100.csv`: 100 companies parsed from the S&P 100 article's constituents table on 2026-11-10. It has 101 securities; GOOG is folded into GOOGL, since it's the same company and CIK. Exxon carries its predecessor CIK. The `source` column says to cross-check against S&P DJI or the iShares OEF holdings before the paid run, because Wikipedia isn't the index provider.
+
+## D36. Findings only from published data, with denominators (Phase 5)
+**Choice.** `aipb findings` writes `docs/FINDINGS.md` from `site_data.json` and the promises table. Every share shows "k of n", groups with fewer than 5 items are labeled "too few to compare", and the caveats sit next to the numbers. LinkedIn drafts (`gtm/linkedin/`) may only quote that file.
+
+## D37. The estimator counts the hidden tool-use system prompt (Phase 5)
+**Choice.** I re-checked `config/pricing.yaml` against the pricing page on 2026-11-10 before the S&P 100 estimate, and every Haiku 5.5 and Sonnet 5.5 price matched. The page also lists a hidden system prompt that's billed on any request with `tools`: 286 tokens (tool_choice auto) or 406 (any/tool) on Haiku 5.5. The estimator only added 50 tokens of overhead, so Tier 2 agent turns were slightly under-estimated. Now any request with tools adds `tool_overhead_tokens: 406` (in `config/stages.yaml`), so the estimate stays above the real count. That's about $0.00004 per agent turn: small, but the rule is that estimates never run low.
+
+## D38. S&P 100 re-registrations, spin-offs and a lost-lines guard (Phase 5)
+**Choice.**
+- **BlackRock** formed a new holding company (CIK 2012383) in 2024. Its 2024 10-K and first two 10-Qs are under the predecessor, CIK 1364742 (now "BlackRock Finance, Inc.", formerly "BlackRock, Inc."), which `extra_ciks` now lists. The count-based warning missed it (9 filings passed), so ingest also warns when a company's first 10-K/10-Q comes more than 120 days after the window start.
+- **Sandisk (SNDK)** triggers both warnings, but it was spun off from Western Digital in 2025 and registered as a new company, so there's no predecessor to add. Western Digital's 2024 filings are a different company's promises. SNDK's window starts with its first 10-Q (filed 2025-03-07).
+- **Lost manifest lines:** pre-commit's stash rewrote `filings.jsonl` while an ingest was appending to it, and six Cisco documents vanished. Ingest now reloads the manifest from disk after writing (`Manifest.missing_on_disk`/`repair`), re-appends anything missing and prints a warning.
+
 ## Upcoming decisions (recorded when made)
 - Sonnet use, decided by the capped A/B test (Phase 2, once there's a key and labels).
 - The confidence threshold, from the precision-coverage curve (Phase 3, once Nick labels statuses).
