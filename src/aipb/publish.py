@@ -87,8 +87,28 @@ def closed_reports(path: Path) -> dict[str, str]:
         }
 
 
+def analyzed_ciks(conn: sqlite3.Connection, filter_variant: str = "default") -> set[int]:
+    """Companies whose AI passages the filter stage actually read.
+
+    Every S&P 100 company is ingested, but a run may cover only the pilot. A company
+    that wasn't analyzed must never appear with "no checkable AI promises found", and
+    must never count in a denominator (D43).
+    """
+    return {
+        r[0]
+        for r in conn.execute(
+            "SELECT DISTINCT p.cik FROM classifications k JOIN passages p "
+            "ON p.passage_id = k.passage_id WHERE k.variant=?",
+            (filter_variant,),
+        )
+    }
+
+
 def build_site_data(conn: sqlite3.Connection, *, variant: str = "default") -> dict:
-    companies = {r["cik"]: dict(r) for r in conn.execute("SELECT * FROM companies")}
+    analyzed = analyzed_ciks(conn)
+    companies = {
+        r["cik"]: dict(r) for r in conn.execute("SELECT * FROM companies") if r["cik"] in analyzed
+    }
     rows = conn.execute(
         "SELECT k.*, f.label, f.publishable, f.reason, f.status AS code FROM promise_clusters k "
         "LEFT JOIN final_status f ON f.cluster_id=k.cluster_id AND f.variant=k.variant "

@@ -49,7 +49,8 @@ def compute(conn: sqlite3.Connection, site_data: dict, variant: str = "default")
     return {
         "generated": utc_now(),
         "as_of": site_data.get("as_of"),
-        "companies": len(sector),
+        # Companies actually analyzed in this run, not every company in the database (D43).
+        "companies": (site_data.get("stats") or {}).get("companies", len(sector)),
         "statements": dict(total_kinds),
         "kinds_by_sector": {k: dict(v) for k, v in kinds.items()},
         "promises": len(promises),

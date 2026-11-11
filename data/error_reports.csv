@@ -1,1 +1,2 @@
 report_id,cluster_id,status,received,notes
+R-001,c-1326801-0001628280-25-047240-p1item2-0021:s1,open,2026-11-11,"Internal review (Claude Code, pilot): META range target approximately $70-72B for 2025. Reported purchases of property and equipment were $69.69B, below the $70B low end; Tier 1 applied the 95% tolerance, which the rubric excludes for ranges. Including finance-lease principal ($2.52B) gives $72.2B, but the promise quote does not state that definition. Held pending until Nick decides 'approximately' ranges and the capex definition (D43)."

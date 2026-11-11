@@ -354,6 +354,27 @@ Tests cover both choices.
 - **Recall:** a link that names only a product (Tesla FSD and robotaxi, Amazon Q, Nvidia Blackwell, DGX, "an AWS agent") fails the lexicon check unless the passage names AI nearby. If Nick's labels show real misses, give the link check its own term list with AI product names, leaving the prefilter lexicon and its packets alone.
 - **Precision:** some kept items are past-tense announcements ("Announced…", "Unveiled…") rather than promises.
 
+## D43. Pilot review before anything is public: one hold, and only analyzed companies
+**Context.** I read all 14 statuses the gate published from the pilot before committing them. The site is a local preview until Gavin sets `SITE_DEPLOY` (G15).
+
+**Hold R-001 (Meta, "approximately $70 billion to $72 billion" of 2025 capex).** Tier 1 said Delivered at "about 99.5% of the $70 billion low end", which applies the 95% numeric tolerance to a range; Nick's rubric excludes that. Reported purchases of property and equipment were $69.69 billion. Adding finance-lease principal ($2.52 billion) gives $72.2 billion, which would meet the range on Meta's own definition of capex, but the promise quote doesn't state that definition. The explanation said "just below the low end… Delivered". The case is unclear, so per principle 1 it's held as "Status pending review" through an open internal report in `data/error_reports.csv`, the gate's existing hold mechanism.
+
+**Questions for Nick:**
+1. Does "approximately $X to $Y" follow the range rule (low end, no tolerance) or the "about" rule (90%)?
+2. When a capex promise doesn't say which definition it uses, may the company's usual guidance definition, such as Meta's "including principal payments on finance leases", be applied?
+
+Prompt v3 should then state the answer explicitly.
+
+**Only analyzed companies appear or count.** Every S&P 100 company is ingested, but the pilot analyzed 10. Two bugs came from treating every company in the database as analyzed:
+- the findings said statements came from "100 companies' filings";
+- the site built pages for 90 unanalyzed companies with the notice "No checkable AI promises found in this company's 2024–2025 filings so far", which would be a false statement about, for example, Apple.
+
+Now a company counts only if the filter stage read its passages (`publish.analyzed_ciks`). Tested.
+
+**Known gap:** a company with zero AI passages in the window has nothing to classify, so for the S&P 100 run it won't appear rather than showing a true "no checkable AI promises" notice. Decide before that run whether to list such companies.
+
+**Pilot result after the hold:** 13 of 40 promises published (5 Delivered, all Meta capex; 8 No evidence yet). 27 are "Status pending review". Total pilot API spend was $0.24.
+
 ## Upcoming decisions (recorded when made)
 - Sonnet use, decided by the capped A/B test (Phase 2, once there's a key and labels). Size it first (D39).
 - The confidence threshold, from the precision-coverage curve (Phase 3, once Nick labels statuses).

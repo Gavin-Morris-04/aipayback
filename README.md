@@ -43,7 +43,7 @@ Statuses: **Delivered**, **On track**, **No evidence yet**, **Walked back** (sil
 
 Details: [docs/DECISIONS.md](docs/DECISIONS.md) (D1–D5, D20–D22).
 
-## Data so far (about $0.00001 of API credit: the smoke test)
+## Data so far (pilot run: $0.24 of API credit)
 
 Filings since 2024-01-01. The pilot is 10 S&P 100 companies across 7 sectors, picked by the finance student on 2026-11-11: AMZN, BLK, CAT, FDX, META, MSFT, NVDA, PEP, PFE and TSLA. Eight talk heavily about AI and two (CAT, PEP) are low-AI comparisons. His reason for each pick is in `config/universe/pilot.csv`. The S&P 100 list is in `config/universe/sp100.csv`.
 

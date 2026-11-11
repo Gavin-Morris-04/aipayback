@@ -1,6 +1,6 @@
 # Progress
 
-_Last updated: 2026-11-11 (final pilot list in; smoke test passed; blocked on humans)_
+_Last updated: 2026-11-11 (pilot run complete: 13 of 40 AI promises published locally; blocked on Nick's labels)_
 
 ## Where things stand
 
@@ -13,16 +13,24 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
 - Checklist ticks: Gavin G1–G4; Nick N1–N5. Nick finished the rubric (N3) and the evidence map (N4) in the Google Docs **before** the em2 update, so G8 had to merge the two.
 - **G8 done:** Nick's final rubric and evidence map are in the repo and in the code (D41): verify/explain prompts v2, `pending_reason` on verdicts, stricter silent walk-backs, the gross-profit fallback, margin changes in points, evidence map em3, and capex reported apart in findings. Gavin answered the two merge questions the same day: total costs stay as context for AMZN, FDX and META, and the rubric is final.
 
-**API spend so far: $0.0000102** (the smoke test). Every other paid stage has only been exercised against a fake model.
+- **Pilot run (G7) complete: $0.24 in total.** 40 AI promise clusters from 10 companies. 13 have a published status (5 Delivered, all Meta capex; 8 No evidence yet), and 27 are "Status pending review". The site preview (`site/dist/index.html`, 54 pages) and `docs/FINDINGS.md` are built. Nothing is public: `SITE_DEPLOY` is off.
+- **Pilot review (D43):**
+  - Meta's "approximately $70–72 billion" capex promise is held pending (R-001 in `data/error_reports.csv`), because Tier 1 applied a 95% tolerance to a range.
+  - The site and findings now count only analyzed companies. They had said "100 companies", and would have shown unanalyzed companies like Apple as having "no checkable AI promises".
+- **Extract v2 (D42).** Extract v1 kept ordinary business guidance from passages that mention AI: 101 of 137 clusters had no AI term in the quote, including all of Caterpillar's. v2 keeps a statement only if code verifies the filing's own words tying it to AI. That leaves 40 AI promise clusters. Stored verdicts and explanations now carry a promise fingerprint, so a reused cluster id can never inherit another promise's result.
+- **Status packet (G11)** rebuilt from the 40 AI promises: `exports/packets/status_packet_v1.xlsx` (key committed). The packet built before extract v2 was never sent.
+- Checklist ticks: Gavin G1–G4 and G6–G8 (G7 was ticked before the run finished); Nick N1–N6. **N6 (labeling) was ticked about 40 minutes after the packets went out, and no returned files are in the repo yet.** Gavin is checking with Nick.
+
+**API spend so far: about $0.25** (smoke test + pilot). Run `uv run aipb budget` for the exact figure.
 
 The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-ahead in chat, and the S&P 100 run needs explicit cost approval.
 
 | Phase | Built | Waiting on |
 |---|---|---|
 | 0 Setup, billing safety | ✅ budget guard, ledger, cache, secret hooks, CI; smoke test passed 2026-11-11 | **Gavin:** check the Console Usage page shows about $0.00001 |
-| 1 Ingest, packets, kits | ✅ final pilot (Nick's picks) ingested; packets and split rebuilt; finance docs, outreach kit | **Gavin:** upload the packets, tell Nick (G6); bring in Nick's rubric and evidence map (G8) |
-| 2 Filter, extract, evals | ✅ stages, batches, eval harness, A/B, compare | **Gavin:** pilot run (G7, ≤ $1.53); **Nick:** labels. A/B needs sizing first (D39) |
-| 3 Verification, citations | ✅ Tier 1 + Tier 2, explain, gate, status packets + eval | key; **Nick:** ~60 status labels |
+| 1 Ingest, packets, kits | ✅ final pilot (Nick's picks) ingested; packets sent (G6); Nick's rubric and evidence map merged (G8, D41) | — |
+| 2 Filter, extract, evals | ✅ pilot filter + extract v2 run (D42) | **Nick:** returned passage labels → `aipb import-labels` + `aipb eval` (G9). A/B needs sizing first (D39) |
+| 3 Verification, citations | ✅ pilot verify run on Nick's rules; status packet of 40 AI promises built | **Gavin:** upload the status packet (G11); **Nick:** 40 status labels (N8) |
 | 4 Site, newsletter | ✅ site, publish, newsletter with rails, 3 workflows (all off) | **Gavin:** Buttondown, Pages, secrets/variables; demos |
 | 5 S&P 100, findings, launch kit | ✅ sp100 list, findings, solution brief, demo, pilot, objections, LinkedIn drafts | cost approval; real results; launch |
 | 6 Monetization, integrations | ⏸ only what partners ask for (Pro alerts, exports, MCP server, paid report) | discovery calls → `gtm/discovery/SYNTHESIS.md` |
@@ -31,14 +39,16 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 
 **Step-by-step checklist for Gavin and Nick:** https://claude.ai/artifact/QqmDKJPxRPfprggV99eEJY (private; share it with Nick as an Editor so his ticks sync). It has 17 Gavin steps (G1–G17) and 9 Nick steps (N1–N9), each with exact instructions, plus a pilot company picker that shows AI-mention counts for all 100 companies. Ticks are stored in the page's shared database, so Claude Code can read progress with `ArtifactData list` on collection `steps`.
 
-**Next session:** `git pull`, read this file, then check the checklist's ticks and continue from the first unticked step. The key is in `.env`, so the next paid step is the pilot run (G7, worst case ≤ $1.53). Do it after the packets are out to Nick (G6).
+**Next session:** `git pull`, read this file, then check the checklist's ticks and continue from the first unticked step. If the pilot's explain, publish, site and findings aren't committed yet, finish them first (the commands are in "Pilot run order").
 
 | Who | Task | Unblocks |
 |---|---|---|
-| Gavin | Upload the 10 final `exports/packets/*_packet_v1.xlsx` to Drive `packets/`, then tell Nick "the packets are final" (rest of G6). G2 was checked on the placeholder packets; the code is the same, so the format carries over | Nick's labeling |
-| Gavin | Run the pilot (G7), ideally after G8. Filter $0.11; extract ≤ $0.63, which is over $0.50, so it may need `--confirm` and a go-ahead in chat | status packet, first real results |
+| Gavin | Upload `exports/packets/status_packet_v1.xlsx` (40 AI promises, built after extract v2) to Drive `packets/` and tell Nick (G11) | status eval; confidence threshold |
+| Gavin | Check N6 with Nick. If his passage labels are done, download them from Drive `returned/` into `evals/gold/returned/` (G9); if not, he unticks N6 | first eval; Sonnet A/B |
 | Gavin | Share the checklist page with Nick as Editor: on 2026-11-11 it was still private to Gavin | Nick's own ticks |
-| Nick | Label the passage packets (~6–8 h), then the status packet (~60 promises) | evals; confidence threshold |
+| Nick | Label the passage packets (~6–8 h), then the status packet (~40 promises) | evals; confidence threshold |
+| Nick (via Gavin) | Two rubric questions (D43): does "approximately $X to $Y" follow the range rule or the 90% "about" rule? May a capex promise be judged on the company's usual guidance definition (e.g. Meta's "including finance leases") when the quote doesn't say? | R-001 hold; verify prompt v3 |
+| Nick | Before `SITE_DEPLOY` is switched on: read the 13 published pilot statuses in the site preview | first public results |
 | Gavin | Outreach (`gtm/outreach/`, ~25 messages) → discovery calls → notes | Phase 6, ROI numbers, demos |
 | Gavin | Buttondown account (free tier) → API key as GitHub secret `BUTTONDOWN_API_KEY`; username into `config/site.yaml` | newsletter, signup box |
 | Gavin | GitHub secrets `FOUNDER_EMAILS`, `AIPAYBACK_API_KEY`, `SEC_CONTACT_EMAIL`; Pages (GitHub Pro via the Student Pack, or a public deploy repo); LinkedIn URLs and Nick's display name in `config/site.yaml` | site, newsletter, monitor |
@@ -48,15 +58,22 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 
 The key is in `.env`, and the smoke test passed on 2026-11-11 ($0.0000102, ledger committed).
 
-**Pilot in progress (2026-11-11):**
+**Pilot run (2026-11-11, complete):**
 - `calibrate`: the estimator reads 1.26x the real input-token count (130,842 vs 103,628), so worst cases stay high.
 - `filter` done: **$0.04** against a $0.11 worst case (batch msgbatch_01MJuiSQd95RiLxTeHCgXLks, committed). 868 passages: promise 120 (58 high, 62 low confidence), hype 83 (60 low), none 665 (12 low).
 - Promises by company: META 39, TSLA 35, NVDA 20, AMZN 7, MSFT 6, PFE 4, CAT 4, FDX 3, BLK 2, PEP 0.
-- **Next: `extract`.** 192 passages go on (all promises, plus every low-confidence hype or none). The dry-run worst case is $0.14. Waiting on Gavin: run it now, and hold verify until G8 brings in Nick's rubric and evidence map?
+- `extract` v1: $0.03 for 192 passages; 170 promises and 246 hype in 137 clusters. Then verify on Nick's rules: $0.10. **That run exposed the non-AI extraction (D42).**
+- `extract` v2: $0.03; 44 promises and 165 hype in **40 clusters** (AMZN 10, META 13, MSFT 1, NVDA 11, PFE 4, TSLA 1); 129 statements dropped with no verified AI link.
+- `verify` on the 40: $0.05. Stale results for the 137 old cluster ids were purged.
+  - Tier 1: delivered 11, no evidence 20, on track 8, walked back 1. That one is Meta's raised 2025 capex guidance, which Tier 2 didn't confirm, so it stays pending.
+  - Tier 1 held 21 as pending by rubric rule: 18 vague deliverables, 2 changed basis, 1 undefined base.
+  - Tier 2 ran 17 of 19 escalations; 2 wait for the next run (run cap).
+- `explain`: $0.004 for 14 statuses; all 14 passed the citation and wording checks.
+- `publish`, `site` and `findings`: 13 published after the R-001 hold, 27 pending.
 
 ```bash
 uv run aipb doctor                 # must be all OK
-uv run aipb calibrate              # free count_tokens check of the estimator (not run yet)
+uv run aipb calibrate              # free count_tokens check of the estimator (1.26x on filter)
 uv run aipb filter --dry-run       # pilot: 868 passages, 165 requests, worst case $0.11
 uv run aipb filter
 uv run aipb extract --dry-run      # upper bound $0.63 if filter routed everything; over $0.50 needs --confirm + Gavin's go-ahead
@@ -118,12 +135,14 @@ git add -A && git commit -m "S&P 100 run" && git push
 ## Budget
 | Spent | Reserved | Remaining under the $15 cap | Locked reserve |
 |---|---|---|---|
-| $0.04 (smoke test + pilot filter) | $0.00 | $14.96 | $4.00 |
+| $0.24 (smoke test + pilot) | $0.00 | $14.76 | $4.00 |
 
 ## Known issues (to fix before the step that needs them)
 - **Sonnet A/B sizing (before G10, D39).** Sonnet 5.5's worst case is about $0.045 per passage (`max_tokens: 8192`), so all 569 dev passages reserve $25.67, and $1.50 covers only about 33. The guard stops the run, so nothing overspends. Fix: an `extract` option that takes a list of passage ids (`run_extract` already accepts `passage_ids`). Then run only on labeled dev passages that filter routed, with Sonnet's `max_tokens` set from the pilot's real Haiku output lengths.
 - ~~Gross margin fallback~~: **fixed** (D41). Nick's map kept "revenue minus cost of revenue", and code computes it now.
-- **Prompt v3 items (next verify prompt revision, D41):** say explicitly that a margin change against a baseline older than the prior year goes to the second check. Not built yet: showing `CostOfRevenue` only when a promise names it; bank efficiency ratios; segment-note figures.
+- **Zero-AI companies in the S&P 100 run (D43):** a company with no AI passages in the window isn't listed on the site. Decide whether to list it with a true "no AI passages found" notice.
+- **Extract recall (D42):** links that name only a product (FSD, Amazon Q, Blackwell) are dropped. If Nick's labels show misses, give the link check its own AI-product term list.
+- **Prompt v3 items (next verify prompt revision, D41/D43):** state the answer to Nick's "approximately" range question explicitly. say explicitly that a margin change against a baseline older than the prior year goes to the second check. Not built yet: showing `CostOfRevenue` only when a promise names it; bank efficiency ratios; segment-note figures.
 
 ## Latest eval numbers
 None yet: they need real outputs (the pilot run) and Nick's labels (gold).
