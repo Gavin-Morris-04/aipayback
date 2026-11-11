@@ -78,9 +78,9 @@ def evaluate(
             continue
         t1 = load_verdict(conn, cid, variant, "1")
         t2 = load_verdict(conn, cid, variant, "2")
-        e = conn.execute(
-            "SELECT * FROM explanations WHERE cluster_id=? AND variant=?", (cid, variant)
-        ).fetchone()
+        from aipb.stages.verify_runner import load_explanation
+
+        e = load_explanation(conn, cid, variant)
         exp_ok = bool(e and e["citations_valid"] and e["lint_ok"])
         best = max(
             (v for v in (t1, t2) if v is not None and v.valid),

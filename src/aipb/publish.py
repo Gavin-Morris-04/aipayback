@@ -133,10 +133,11 @@ def build_site_data(conn: sqlite3.Connection, *, variant: str = "default") -> di
             "pending_reason": "" if publishable else (k["reason"] or "not verified yet"),
         }
         if publishable:
-            e = conn.execute(
-                "SELECT * FROM explanations WHERE cluster_id=? AND variant=?",
-                (k["cluster_id"], variant),
-            ).fetchone()
+            from aipb.stages.verify_runner import load_explanation
+
+            e = load_explanation(conn, k["cluster_id"], variant)
+            if e is None:  # the gate only publishes with a matching explanation
+                raise RuntimeError(f"{k['cluster_id']}: publishable but no current explanation")
             text, notes = _with_markers(e["text"], json.loads(e["citations"]))
             ev_rows = conn.execute(
                 "SELECT e.eid, e.passage_id, e.form, e.filing_date, s.text FROM evidence e "

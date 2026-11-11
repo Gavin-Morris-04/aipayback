@@ -50,6 +50,14 @@ def test_general_guidance_without_a_real_link_is_dropped():
     assert check_ai_link(PASSAGE, statement(sales, ""), names_ai) == "no ai_link"
 
 
+def test_link_match_ignores_case_but_stores_the_filings_characters():
+    v = statement(
+        "We expect the program to deliver $150 million", "PROGRAM BUILT ON GENERATIVE AI TOOLS"
+    )
+    assert check_ai_link(PASSAGE, v, names_ai) is None
+    assert v.ai_link == "program built on generative AI tools"
+
+
 def test_split_linked_keeps_order_and_reasons():
     keep = statement(
         "We expect the program to deliver $150 million", "program built on generative AI tools"

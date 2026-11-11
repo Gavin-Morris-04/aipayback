@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import sqlite3
 from contextlib import nullcontext
@@ -87,13 +88,74 @@ def _store_context(conn: sqlite3.Connection, c: VerifyContext) -> None:
         )
 
 
+# What a stored verdict or explanation was about. Cluster ids come from the canonical
+# promise's position in its passage ("s1", "s2"), so a re-extraction can put a different
+# promise under the same id. A stored result counts only while its fingerprint matches
+# the promise now under that id (D42); otherwise it is ignored and purged.
+_SHA_FIELDS = (
+    "passage_id", "quote_start", "quote_end", "quote", "kind", "claim_type", "metric",
+    "target_text", "target_value", "target_unit", "baseline", "deadline_text",
+    "deadline_year", "deadline_precision", "specificity",
+)  # fmt: skip
+
+
+def promise_sha(conn: sqlite3.Connection, cid: str, variant: str) -> str | None:
+    """Fingerprint of a cluster's canonical promise and its restatements; None if gone."""
+    cl = conn.execute(
+        "SELECT canonical_promise_id FROM promise_clusters WHERE cluster_id=? AND variant=?",
+        (cid, variant),
+    ).fetchone()
+    if cl is None:
+        return None
+    canon = conn.execute(
+        "SELECT * FROM promises WHERE promise_id=?", (cl["canonical_promise_id"],)
+    ).fetchone()
+    if canon is None:
+        return None
+    members = conn.execute(
+        "SELECT passage_id, quote_start, quote_end, deadline_year FROM promises "
+        "WHERE cluster_id=? AND variant=? ORDER BY passage_id, quote_start",
+        (cid, variant),
+    ).fetchall()
+    body = [[canon[f] for f in _SHA_FIELDS], [list(m) for m in members]]
+    return hashlib.sha256(json.dumps(body, default=str).encode("utf-8")).hexdigest()
+
+
+def purge_stale(conn: sqlite3.Connection, variant: str) -> int:
+    """Delete verdicts and explanations that no longer match their cluster's promise."""
+    current: dict[str, str | None] = {}
+    stale: list[tuple[str, str]] = []
+    for table in ("verdicts", "explanations"):
+        for r in conn.execute(
+            f"SELECT DISTINCT cluster_id, promise_sha FROM {table} WHERE variant=?", (variant,)
+        ).fetchall():
+            cid = r["cluster_id"]
+            if cid not in current:
+                current[cid] = promise_sha(conn, cid, variant)
+            if r["promise_sha"] is None or r["promise_sha"] != current[cid]:
+                stale.append((table, cid))
+    with conn:
+        for table, cid in stale:
+            conn.execute(f"DELETE FROM {table} WHERE cluster_id=? AND variant=?", (cid, variant))
+    return len({cid for _, cid in stale})
+
+
+def load_explanation(conn: sqlite3.Connection, cid: str, variant: str) -> sqlite3.Row | None:
+    e = conn.execute(
+        "SELECT * FROM explanations WHERE cluster_id=? AND variant=?", (cid, variant)
+    ).fetchone()
+    if e is None or e["promise_sha"] is None or e["promise_sha"] != promise_sha(conn, cid, variant):
+        return None
+    return e
+
+
 def _store_verdict(conn, cid, variant, v: tier1.Verdict | None, *, tier, stop, prompt_id, model):
     with conn:
         conn.execute(
             "INSERT OR REPLACE INTO verdicts (cluster_id, variant, tier, status, "
             "walked_back_kind, confidence, evidence_ids, number_ids, key_finding, valid, "
-            "problems, stop, prompt_version, model, pending_reason) "
-            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            "problems, stop, prompt_version, model, pending_reason, promise_sha) "
+            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
             (
                 cid,
                 variant,
@@ -110,6 +172,7 @@ def _store_verdict(conn, cid, variant, v: tier1.Verdict | None, *, tier, stop, p
                 prompt_id,
                 model,
                 v.pending_reason if v else None,
+                promise_sha(conn, cid, variant),
             ),
         )
 
@@ -120,6 +183,8 @@ def load_verdict(conn: sqlite3.Connection, cid: str, variant: str, tier: str):
     ).fetchone()
     if r is None or r["status"] is None:
         return None
+    if r["promise_sha"] is None or r["promise_sha"] != promise_sha(conn, cid, variant):
+        return None  # judged a different promise that used to have this cluster id
     return tier1.Verdict(
         r["tier"],
         r["status"],
@@ -172,6 +237,8 @@ def run_verify(
     cfg1 = stage_settings(ctx.stages, tier1.STAGE, None)
     p1 = load_prompt(ctx.paths.prompts_dir, tier1.STAGE, cfg1["prompt"])
     stats = VerifyStats()
+    if not dry_run and (n := purge_stale(conn, variant)):
+        log(f"Dropped stored results for {n} cluster id(s) whose promise changed or is gone.")
     contexts = {
         cid: build_context(conn, em, cid, variant) for cid in clusters_for(conn, ciks, variant)
     }
@@ -435,7 +502,9 @@ def run_explain(
         counts["ok" if e.ok else "failed_checks"] += 1
         with conn:
             conn.execute(
-                "INSERT OR REPLACE INTO explanations VALUES (?,?,?,?,?,?,?,?,?,?)",
+                "INSERT OR REPLACE INTO explanations (cluster_id, variant, status, text, "
+                "citations, citations_valid, lint_ok, problems, prompt_version, model, "
+                "promise_sha) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
                 (
                     cid,
                     variant,
@@ -447,6 +516,7 @@ def run_explain(
                     json.dumps(e.problems),
                     prompt.id,
                     cfg["model"],
+                    promise_sha(conn, cid, variant),
                 ),
             )
     return plan, counts
@@ -460,9 +530,7 @@ def run_gate(ctx: AppContext, conn: sqlite3.Connection, variant: str = "default"
     for (cid,) in conn.execute(
         "SELECT cluster_id FROM promise_clusters WHERE variant=?", (variant,)
     ).fetchall():
-        e = conn.execute(
-            "SELECT * FROM explanations WHERE cluster_id=? AND variant=?", (cid, variant)
-        ).fetchone()
+        e = load_explanation(conn, cid, variant)
         t1 = load_verdict(conn, cid, variant, "1")
         t2 = load_verdict(conn, cid, variant, "2")
         d = gate.decide(

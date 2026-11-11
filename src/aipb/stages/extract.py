@@ -85,15 +85,28 @@ def check_ai_link(
         return "no ai_link"
     lo = max(0, v.start - window)
     near = passage_text[lo : v.end + window]
-    span = locate_quote(near, link)
+    span = _locate_any_case(near, link)
     if span is None:
-        far = locate_quote(passage_text, link)
+        far = _locate_any_case(passage_text, link)
         return "ai_link not in the passage" if far is None else "ai_link too far from the quote"
     text = near[span[0] : span[1]]
     if not names_ai(text):
         return f"ai_link names no AI term: {text[:60]!r}"
     v.ai_link = text
     return None
+
+
+def _locate_any_case(text: str, link: str) -> tuple[int, int] | None:
+    """Like locate_quote, but ignoring case: the link is a pointer, never published.
+
+    Models write "we expect…" for a sentence that starts "We expect…". The span is
+    mapped back to the original text, so the stored link keeps the filing's own
+    characters.
+    """
+    span = locate_quote(text, link)
+    if span is None and len(text.lower()) == len(text):  # lower() kept every position
+        span = locate_quote(text.lower(), link.lower())
+    return span
 
 
 def split_linked(

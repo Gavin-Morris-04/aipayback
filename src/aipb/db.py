@@ -208,6 +208,7 @@ CREATE TABLE IF NOT EXISTS verdicts (
     prompt_version TEXT,
     model TEXT,
     pending_reason TEXT,            -- a rubric condition that holds the item as pending, or none
+    promise_sha TEXT,               -- the exact promise this judged (cluster ids are reused)
     PRIMARY KEY (cluster_id, variant, tier)
 );
 CREATE TABLE IF NOT EXISTS explanations (
@@ -221,6 +222,7 @@ CREATE TABLE IF NOT EXISTS explanations (
     problems TEXT,
     prompt_version TEXT,
     model TEXT,
+    promise_sha TEXT,               -- the exact promise this explained
     PRIMARY KEY (cluster_id, variant)
 );
 CREATE TABLE IF NOT EXISTS final_status (
@@ -265,6 +267,8 @@ def connect(path: Path) -> sqlite3.Connection:
 _ADDED_COLUMNS = [
     ("verdicts", "pending_reason", "TEXT"),
     ("promises", "ai_link", "TEXT"),
+    ("verdicts", "promise_sha", "TEXT"),
+    ("explanations", "promise_sha", "TEXT"),
 ]
 
 

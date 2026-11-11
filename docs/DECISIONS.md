@@ -317,6 +317,43 @@ Version `em1-draft` becomes `em2-draft`. No verify result used em1. `docs/financ
 1. Total costs and expenses stay as context for AMZN, FDX and META's cost-savings promises: **yes**. No change to em3.
 2. The rubric is final: **yes**. `RUBRIC.md` is titled final.
 
+## D42. AI statements only (extract v2), and results tied to the promise they judged
+**Context.** The first pilot verify run showed that extract v1 kept ordinary business guidance from passages that mention AI somewhere:
+- 101 of 137 promise clusters had no AI term in the quote itself;
+- all 10 of Caterpillar's clusters were sales, tariff, restructuring or capex guidance;
+- 10 of the 12 Tier 1 "walked back" verdicts were on such statements.
+
+Nick's rubric excludes "general guidance with no AI link". Explain and publish were held until this was fixed. Gavin approved the fix and the re-runs in chat ("go").
+
+**Choice 1: an AI link checked by code.** Prompt `extract/v2` asks, for each statement, for `ai_link`: the passage's own words that tie the statement's outcome to AI. Code keeps a statement only if the link is:
+- verbatim in the passage (the same matching as quotes);
+- within 400 characters of the quote, so the model can't point at an unrelated "AI" elsewhere in the passage;
+- naming AI, using the prefilter lexicon.
+
+Anything else is dropped and logged as `dropped_unlinked`, with no retry: a retry would only push the model to find some AI word to point at. The link is stored in `promises.ai_link`, so a reviewer can see why each promise counts as an AI promise.
+
+**Choice 2: stored results follow the promise, not the cluster id.** Cluster ids come from the canonical promise's position in its passage (`c-default:<passage>:s1`), so a re-extraction can put a different statement under an old id. Verdicts and explanations were never cleared. The danger: a new low-confidence Tier 1 verdict, with Tier 2 skipped by the run cap, would have been paired with an old confident Tier 2 verdict about a different statement. Now:
+- verdicts and explanations store `promise_sha`, a fingerprint of the canonical promise's fields and its restatements;
+- `load_verdict` and `load_explanation` ignore any row whose fingerprint doesn't match the promise now under that id, and rows stored before this change have none;
+- `aipb verify` purges such rows before it runs. Results for unchanged promises are re-stored from the cache at $0.
+
+Tests cover both choices.
+
+**Result on the pilot (extract v2, $0.03 for 192 passages):**
+- 44 promises and 165 hype statements in 40 promise clusters, down from 170, 246 and 137.
+- 129 statements dropped with no verified AI link:
+  - 76 links named no AI term;
+  - 25 were too far from the quote;
+  - 18 had no link at all;
+  - 5 weren't in the passage.
+- Every Caterpillar statement is gone. The 40 clusters are AMZN 10, META 13, MSFT 1, NVDA 11, PFE 4, TSLA 1.
+
+**Link matching ignores case.** The link is a pointer, never published, and the model writes "we expect…" for a sentence that starts "We expect…". This recovered Meta's 2025 capex guidance ("…to support both our generative AI efforts"). It was a $0 re-check of cached answers.
+
+**Known limits for the eval to measure:**
+- **Recall:** a link that names only a product (Tesla FSD and robotaxi, Amazon Q, Nvidia Blackwell, DGX, "an AWS agent") fails the lexicon check unless the passage names AI nearby. If Nick's labels show real misses, give the link check its own term list with AI product names, leaving the prefilter lexicon and its packets alone.
+- **Precision:** some kept items are past-tense announcements ("Announced…", "Unveiled…") rather than promises.
+
 ## Upcoming decisions (recorded when made)
 - Sonnet use, decided by the capped A/B test (Phase 2, once there's a key and labels). Size it first (D39).
 - The confidence threshold, from the precision-coverage curve (Phase 3, once Nick labels statuses).
