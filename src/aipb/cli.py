@@ -23,9 +23,11 @@ from aipb.context import AppContext
 from aipb.evals import compare as compare_mod
 from aipb.evals import run as eval_mod
 from aipb.evals import split as split_mod
+from aipb.evals import status_eval as status_eval_mod
 from aipb.labeling import disagreements as disagree_mod
 from aipb.labeling import import_labels as import_mod
 from aipb.labeling import packets as packets_mod
+from aipb.labeling import status_packets as status_mod
 from aipb.llm.client import MissingApiKey, OfflineCacheMiss
 from aipb.llm.params import load_prompt, stage_settings, thinking_params
 from aipb.sec.client import SecError
@@ -950,3 +952,74 @@ def status_cmd(ticker: TickerOpt = None, variant: VariantOpt = "default") -> Non
         table.add_row(r["ticker"], r["first_stated"], r["quote"][:90], r["label"],
                       r["reason"] or "")  # fmt: skip
     out.print(table if rows else "No statuses yet (run verify, explain).")
+
+
+@app.command("status-packets")
+def status_packets_cmd(
+    n: Annotated[int, typer.Option(help="Promises to label (about 5-8 minutes each).")] = 60,
+    force: Annotated[bool, typer.Option("--force", help="Overwrite an existing key.")] = False,
+) -> None:
+    """Excel packet for Nick to label promise statuses (evidence shown, verdicts hidden)."""
+    ctx = _ctx()
+    key_dir = ctx.paths.gold_dir / "status_packets" / status_mod.VERSION
+    if (key_dir / "key.csv").exists() and not force:
+        msg = (f"A status packet key already exists in {key_dir}. Labels are matched "
+               "through it; use --force only before labeling starts.")  # fmt: skip
+        _fail(FileExistsError(msg))
+    conn = db.connect(ctx.paths.database)
+    try:
+        out_path = ctx.paths.exports_dir / "packets" / f"status_packet_{status_mod.VERSION}.xlsx"
+        rows = status_mod.build(conn, out_path, key_dir, n=n)
+    finally:
+        conn.close()
+    if not rows:
+        _fail(ValueError("No promise clusters yet: run filter, extract and verify first."))
+    out.print(f"Status packet: {rows} promises -> {out_path}. Key: {key_dir / 'key.csv'}")
+
+
+@app.command("import-statuses")
+def import_statuses_cmd(
+    path: Annotated[str | None, typer.Option("--file", help="The returned xlsx.")] = None,
+) -> None:
+    """Check Nick's returned status packet and write evals/gold/statuses.csv. Costs $0."""
+    ctx = _ctx()
+    key_dir = ctx.paths.gold_dir / "status_packets" / status_mod.VERSION
+    returned = Path(path) if path else (
+        ctx.paths.gold_dir / "returned" / f"status_packet_{status_mod.VERSION}.xlsx")  # fmt: skip
+    if not returned.exists():
+        _fail(FileNotFoundError(f"{returned} not found. Put Nick's returned file there."))
+    rep = status_mod.import_statuses(returned, key_dir, ctx.paths.gold_dir / "statuses.csv")
+    out.print(f"{rep.labeled} of {rep.rows} promises labeled -> evals/gold/statuses.csv")
+    for p in rep.problems:
+        err.print(f"  {p}")
+    if rep.problems:
+        raise typer.Exit(code=1)
+
+
+@app.command("eval-status")
+def eval_status_cmd(variant: VariantOpt = "default") -> None:
+    """Statuses vs gold: accuracy, per-class recall, published precision vs coverage. $0."""
+    ctx = _ctx()
+    gold = status_eval_mod.load_gold(ctx.paths.gold_dir / "statuses.csv")
+    if not gold:
+        _fail(eval_mod.NoGold("No gold statuses yet. Nick labels the status packet, then "
+                              "run aipb import-statuses."))  # fmt: skip
+    conn = db.connect(ctx.paths.database)
+    try:
+        result = status_eval_mod.evaluate(
+            conn, gold, variant=variant, threshold=verify_runner.gate_threshold(ctx),
+            load_verdict=verify_runner.load_verdict,
+            errors=verify_runner.open_error_reports(ctx),
+        )  # fmt: skip
+    finally:
+        conn.close()
+    sha = _git_sha(ctx.paths.root)
+    stamp = f"{eval_mod.timestamp(sha)}_status_{variant}"
+    results_dir = ctx.paths.evals_dir / "results"
+    results_dir.mkdir(parents=True, exist_ok=True)
+    result.update(created=utc_now(), git_sha=sha, variant=variant, kind="status")
+    (results_dir / f"{stamp}.json").write_text(json.dumps(result, indent=2, default=str) + "\n",
+                                               encoding="utf-8", newline="\n")  # fmt: skip
+    text = status_eval_mod.render(result)
+    (results_dir / f"{stamp}.md").write_text(text, encoding="utf-8", newline="\n")
+    out.print(text)

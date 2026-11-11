@@ -151,3 +151,33 @@ def test_verify_replays_from_cache_and_dry_run_prices_tier2(llm_project, fake_cl
     assert len(fake_claude.calls) == n
     out = run("verify", "-u", "test", "--dry-run").output
     assert "Tier 2 worst case" in out
+
+
+def test_status_packet_label_import_and_eval(llm_project, fake_claude):
+    from openpyxl import load_workbook
+
+    pipeline(llm_project)
+    run("verify", "-u", "test")
+    run("explain", "-u", "test")
+    run("status-packets", "--n", "10")
+    path = llm_project / "exports" / "packets" / "status_packet_v1.xlsx"
+    wb = load_workbook(path)
+    ws = wb["Promises"]
+    col = {c.value: c.column for c in ws[1]}
+    for r in range(2, ws.max_row + 1):
+        ws.cell(r, col["Your status"], "On track")
+    returned = llm_project / "evals" / "gold" / "returned"
+    returned.mkdir(parents=True, exist_ok=True)
+    wb.save(returned / path.name)
+    out = run("import-statuses").output
+    assert "labeled" in out
+    out = run("eval-status").output
+    assert "Status eval" in out and "| Threshold |" in out
+    results = list((llm_project / "evals" / "results").glob("*_status_default.json"))
+    data = json.loads(results[0].read_text(encoding="utf-8"))
+    assert data["matched_to_a_cluster"] == data["gold_items"] > 0
+    # The fake judge says on_track for these, and gold says On track: published = correct.
+    a = data["at_threshold"]
+    assert a["published"] == a["correct"]
+    # Re-running status-packets would orphan labels: it refuses without --force.
+    assert "already exists" in " ".join(run("status-packets", code=2).output.split())
