@@ -24,7 +24,7 @@ class NumberRow:
     label: str
     value: float
     unit: str
-    kind: str  # fact | ratio | change
+    kind: str  # fact | derived | ratio | change
     tag: str
     fiscal_year: int
     period_start: str
@@ -41,6 +41,8 @@ class NumberRow:
             text = f"${v / 1e9:,.2f} billion" if abs(v) >= 1e9 else f"${v / 1e6:,.1f} million"
         elif self.unit in ("percent", "pct_change"):
             text = f"{self.value:.1f}%"
+        elif self.unit == "percentage_points":
+            text = f"{self.value:+.1f} percentage points"
         else:
             text = f"{self.value:,.2f} {self.unit}"
         return text
@@ -107,6 +109,37 @@ def deadline_end(year: int | None, fy_end: str) -> str | None:
     return f"{year}-{month_day}"
 
 
+# A fallback tag that measures something broader than its measure's name gets its own label,
+# so the judge never reads total costs as operating expenses (evidence map em3, D41).
+TAG_LABELS = {"CostsAndExpenses": "total costs and expenses (includes cost of sales)"}
+
+
+def derived_gross_profit(
+    conn: sqlite3.Connection, em: EvidenceMap, cik: int
+) -> tuple[str, dict[str, dict]]:
+    """Revenue minus cost of revenue, for a company that doesn't report GrossProfit.
+
+    Nick's evidence map: "otherwise revenue minus CostOfRevenue or
+    CostOfGoodsAndServicesSold". Only fiscal years where both cover the same period.
+    """
+    rev_tag, rev = annual_series(conn, cik, em.measures.get("revenue", []))
+    cor_tag, cor = annual_series(conn, cik, em.measures.get("cost_of_revenue", []))
+    out: dict[str, dict] = {}
+    for end in sorted(set(rev) & set(cor)):
+        r, c = rev[end], cor[end]
+        if abs(_days(r["period_start"], c["period_start"])) > 7:
+            continue
+        later = r if r["filed"] >= c["filed"] else c
+        out[end] = {
+            "value": r["value"] - c["value"],
+            "period_start": r["period_start"],
+            "period_end": end,
+            "accession": later["accession"],
+            "filed": later["filed"],
+        }
+    return (f"derived: {rev_tag} minus {cor_tag}" if out else ""), out
+
+
 def number_table(
     conn: sqlite3.Connection, em: EvidenceMap, cik: int, claim_type: str, from_year: int
 ) -> list[NumberRow]:
@@ -129,7 +162,15 @@ def number_table(
     )
     for measure in names:
         tag, annual = annual_series(conn, cik, em.measures.get(measure, []))
+        derived = False
+        if not annual and measure == "gross_profit":
+            tag, annual = derived_gross_profit(conn, em, cik)
+            derived = bool(annual)
         series[measure] = annual
+        name = TAG_LABELS.get(tag, measure.replace("_", " "))
+        if derived:
+            name = "gross profit (computed by code: revenue minus cost of revenue)"
+        full_tag = tag if derived else f"us-gaap:{tag}"
         prev = None
         for end in sorted(annual):
             fact = annual[end]
@@ -137,13 +178,13 @@ def number_table(
             if fy < from_year:
                 prev = fact
                 continue
-            label = f"{measure.replace('_', ' ')} for the fiscal year ended {end}"
+            label = f"{name} for the fiscal year ended {end}"
             add(
                 label=label,
                 value=fact["value"],
                 unit="USD",
-                kind="fact",
-                tag=f"us-gaap:{tag}",
+                kind="derived" if derived else "fact",
+                tag=full_tag,
                 fiscal_year=fy,
                 period_start=fact["period_start"],
                 period_end=end,
@@ -152,11 +193,11 @@ def number_table(
             )
             if prev is not None and (ch := pct_change(prev["value"], fact["value"])) is not None:
                 add(
-                    label=f"{measure.replace('_', ' ')} change vs prior year, FY ended {end}",
+                    label=f"{name} change vs prior year, FY ended {end}",
                     value=ch,
                     unit="pct_change",
                     kind="change",
-                    tag=f"us-gaap:{tag}",
+                    tag=full_tag,
                     fiscal_year=fy,
                     period_start=prev["period_end"],
                     period_end=end,
@@ -166,10 +207,14 @@ def number_table(
             prev = fact
     for ratio in spec.get("ratios", []):
         num, den = em.ratios[ratio]["numerator"], em.ratios[ratio]["denominator"]
+        prev_end, prev_value = None, None
         for end in sorted(set(series.get(num, {})) & set(series.get(den, {}))):
-            if int(end[:4]) < from_year or not series[den][end]["value"]:
+            if not series[den][end]["value"]:
                 continue
             value = series[num][end]["value"] / series[den][end]["value"] * 100.0
+            if int(end[:4]) < from_year:
+                prev_end, prev_value = end, value
+                continue
             add(
                 label=f"{ratio.replace('_', ' ')} for the fiscal year ended {end}",
                 value=value,
@@ -182,4 +227,20 @@ def number_table(
                 accession=series[den][end]["accession"],
                 filed=series[den][end]["filed"],
             )
+            if prev_value is not None:
+                # Margin promises are stated in points (Nick's evidence map), so the change
+                # is a difference in percentage points, never a percent change.
+                add(
+                    label=f"{ratio.replace('_', ' ')} change vs prior year, FY ended {end}",
+                    value=value - prev_value,
+                    unit="percentage_points",
+                    kind="change",
+                    tag=f"{num}/{den}",
+                    fiscal_year=int(end[:4]),
+                    period_start=prev_end,
+                    period_end=end,
+                    accession=series[den][end]["accession"],
+                    filed=series[den][end]["filed"],
+                )
+            prev_end, prev_value = end, value
     return rows

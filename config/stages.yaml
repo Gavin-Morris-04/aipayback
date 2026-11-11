@@ -52,7 +52,7 @@ stages:
 
   verify_t1:
     model: claude-haiku-5-5
-    prompt: v1
+    prompt: v2   # Nick's final rubric and evidence map (D41)
     max_tokens: 1024
     thinking: disabled
     effort: low
@@ -62,7 +62,7 @@ stages:
 
   verify_t2:                  # the capped agent: escalations and 2nd checks only
     model: claude-haiku-5-5
-    prompt: v1
+    prompt: v2   # D41
     max_tokens: 2048          # per turn
     thinking: adaptive
     effort: low
@@ -74,7 +74,7 @@ stages:
 
   explain:
     model: claude-haiku-5-5
-    prompt: v1
+    prompt: v2   # D41
     max_tokens: 1024
     thinking: disabled
     effort: low

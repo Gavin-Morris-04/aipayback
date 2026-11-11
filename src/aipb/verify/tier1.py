@@ -19,6 +19,17 @@ DISPLAY = {
     "walked_back": "Walked back",
 }
 
+# Rubric conditions (Nick's final rubric and evidence map, D41) under which a promise is
+# published as "Status pending review" whatever the evidence shows. They are judgments, so
+# the model names one; the gate then holds the item and no second check is paid for.
+PENDING_REASONS = (
+    "none",
+    "vague_deliverable",  # specificity 1 without a named product, feature or program
+    "run_rate_or_realized_unclear",  # the promise doesn't say which, and context doesn't either
+    "basis_changed",  # company switched GAAP/non-GAAP, currency basis or metric definition
+    "undefined_base",  # a percentage target without saying of what, or from which year
+)
+
 VERDICT_SCHEMA = obj(
     {
         "status": {"type": "string", "enum": list(STATUSES)},
@@ -27,6 +38,7 @@ VERDICT_SCHEMA = obj(
         "evidence_ids": {"type": "array", "items": {"type": "string"}},
         "number_ids": {"type": "array", "items": {"type": "string"}},
         "key_finding": {"type": "string"},
+        "pending_reason": {"type": "string", "enum": list(PENDING_REASONS)},
     }
 )
 
@@ -42,6 +54,7 @@ class Verdict:
     key_finding: str
     valid: bool = True
     problems: list[str] = field(default_factory=list)
+    pending_reason: str = "none"
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -67,9 +80,14 @@ def validate(
         evidence_ids=list(dict.fromkeys(raw.get("evidence_ids") or [])),
         number_ids=list(dict.fromkeys(raw.get("number_ids") or [])),
         key_finding=(raw.get("key_finding") or "").strip(),
+        pending_reason=raw.get("pending_reason") or "none",
     )
     if v.status not in STATUSES:
         v.problems.append(f"unknown status {v.status!r}")
+    if v.pending_reason not in PENDING_REASONS:
+        v.problems.append(f"unknown pending_reason {v.pending_reason!r}")
+    if v.pending_reason == "vague_deliverable" and ctx.promise.get("specificity") not in (1, None):
+        v.problems.append("vague_deliverable applies only to specificity-1 promises")
     known_e = ctx.evidence_ids() | set(extra_evidence)
     known_n = ctx.number_ids() | set(extra_numbers)
     if bad := [e for e in v.evidence_ids if e not in known_e]:

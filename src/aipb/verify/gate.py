@@ -5,7 +5,9 @@ Rules (brief section 9.1 and the rubric), all checked by code:
 - a valid verdict with confidence >= threshold;
 - a cited explanation whose citations all check out and whose wording is neutral;
 - no open error report against the promise;
-- "Walked back" needs two independent checks (Tier 1 and Tier 2) that agree.
+- "Walked back" needs two independent checks (Tier 1 and Tier 2) that agree;
+- no check names a rubric pending condition (vague specificity-1 deliverable, unclear
+  run-rate vs realized, changed basis or definition, undefined percentage base).
 Anything else is published as "Status pending review" with the verified quote only.
 """
 
@@ -48,6 +50,10 @@ def decide(
         return pending("open error report")
     if t1 is None and t2 is None:
         return pending("not verified yet")
+    for v in (t1, t2):
+        if v is not None and v.valid and v.pending_reason != "none":
+            # The rubric says these cases are published as pending, whatever the status.
+            return pending(f"rubric: {v.pending_reason.replace('_', ' ')}")
 
     chosen: Verdict | None
     tier = ""
@@ -89,5 +95,11 @@ def decide(
 
 
 def needs_tier2(t1: Verdict | None, threshold: float = DEFAULT_THRESHOLD) -> bool:
-    """Escalate: invalid or low-confidence Tier 1 results, and every walk-back (2nd check)."""
+    """Escalate: invalid or low-confidence Tier 1 results, and every walk-back (2nd check).
+
+    Not when Tier 1 names a rubric pending condition: the item is held as pending
+    whatever a second check says, so paying for one changes nothing.
+    """
+    if t1 is not None and t1.valid and t1.pending_reason != "none":
+        return False
     return t1 is None or not t1.valid or t1.confidence < threshold or t1.status == "walked_back"

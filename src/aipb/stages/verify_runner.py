@@ -90,7 +90,10 @@ def _store_context(conn: sqlite3.Connection, c: VerifyContext) -> None:
 def _store_verdict(conn, cid, variant, v: tier1.Verdict | None, *, tier, stop, prompt_id, model):
     with conn:
         conn.execute(
-            "INSERT OR REPLACE INTO verdicts VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            "INSERT OR REPLACE INTO verdicts (cluster_id, variant, tier, status, "
+            "walked_back_kind, confidence, evidence_ids, number_ids, key_finding, valid, "
+            "problems, stop, prompt_version, model, pending_reason) "
+            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
             (
                 cid,
                 variant,
@@ -106,6 +109,7 @@ def _store_verdict(conn, cid, variant, v: tier1.Verdict | None, *, tier, stop, p
                 stop,
                 prompt_id,
                 model,
+                v.pending_reason if v else None,
             ),
         )
 
@@ -126,6 +130,7 @@ def load_verdict(conn: sqlite3.Connection, cid: str, variant: str, tier: str):
         r["key_finding"],
         bool(r["valid"]),
         json.loads(r["problems"]),
+        r["pending_reason"] or "none",
     )
 
 

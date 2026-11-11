@@ -206,6 +206,7 @@ CREATE TABLE IF NOT EXISTS verdicts (
     stop TEXT,                      -- tier 2: submitted | turn_cap | token_cap | no_verdict | ...
     prompt_version TEXT,
     model TEXT,
+    pending_reason TEXT,            -- a rubric condition that holds the item as pending, or none
     PRIMARY KEY (cluster_id, variant, tier)
 );
 CREATE TABLE IF NOT EXISTS explanations (
@@ -254,7 +255,20 @@ def connect(path: Path) -> sqlite3.Connection:
     conn.execute("PRAGMA foreign_keys=ON")
     conn.executescript(SCHEMA)
     conn.executescript(SCHEMA_LLM)
+    _migrate(conn)
     return conn
+
+
+# Columns added after a table first shipped: (table, column, type). CREATE TABLE IF NOT
+# EXISTS never changes an existing table, so older databases get them here.
+_ADDED_COLUMNS = [("verdicts", "pending_reason", "TEXT")]
+
+
+def _migrate(conn: sqlite3.Connection) -> None:
+    for table, column, kind in _ADDED_COLUMNS:
+        have = {r[1] for r in conn.execute(f"PRAGMA table_info({table})")}
+        if column not in have:
+            conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {kind}")
 
 
 def restore_costs(conn: sqlite3.Connection, ledger: Ledger) -> tuple[int, int]:

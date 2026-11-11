@@ -11,7 +11,13 @@ from aipb.verify import gate
 from aipb.verify.calc import CalcError, calculate, pct_change
 from aipb.verify.context import EvidencePassage, VerifyContext
 from aipb.verify.neutral import banned_words
-from aipb.verify.numbers import annual_series, deadline_end, fiscal_year_end
+from aipb.verify.numbers import (
+    EvidenceMap,
+    annual_series,
+    deadline_end,
+    fiscal_year_end,
+    number_table,
+)
 from aipb.verify.tier1 import Verdict, validate
 
 
@@ -51,6 +57,7 @@ def ctx(**kw) -> VerifyContext:
         mentions_after_deadline=1,
         evidence=[EvidencePassage("E1", "p1", "10-K", "2026-02-20", "item7", "text", 0.0)],
         numbers=[],
+        deadline_period_filed=True,
     )
     base.update(kw)
     return VerifyContext(**base)
@@ -89,6 +96,36 @@ def test_silent_walkback_is_downgraded_unless_code_conditions_hold():
         raw(status="walked_back", walked_back_kind="explicit", evidence_ids=[]), ctx(), "1"
     )
     assert not v.valid  # an explicit walk-back must cite the passage
+
+
+def test_silent_walkback_needs_the_deadline_period_filing_and_a_specific_promise():
+    """Nick's final rubric: one silent filing covers the deadline period; specificity 1
+    promises have no deadline and are never silent."""
+    silent = raw(status="walked_back", walked_back_kind="silent", evidence_ids=[])
+    quiet = dict(periodic_after_deadline=2, mentions_after_deadline=0)
+    assert validate(silent, ctx(**quiet), "1").status == "walked_back"
+    no_period = ctx(**quiet, deadline_period_filed=False)
+    assert validate(silent, no_period, "1").status == "no_evidence_yet"
+    vague = ctx(**quiet, promise={"quote": "q", "specificity": 1})
+    assert validate(silent, vague, "1").status == "no_evidence_yet"
+
+
+def test_pending_reason_holds_the_item_without_a_second_check():
+    flagged = validate(raw(pending_reason="basis_changed"), ctx(), "1")
+    assert flagged.valid and flagged.pending_reason == "basis_changed"
+    assert not gate.needs_tier2(flagged)  # pending whatever Tier 2 says: don't pay for it
+    d = gate.decide(flagged, None, explanation_ok=True, open_error_report=False)
+    assert (d.label, d.publishable, d.reason) == (gate.PENDING, False, "rubric: basis changed")
+    t2 = V(tier="2")
+    t2.pending_reason = "undefined_base"
+    d = gate.decide(V(conf=0.5), t2, explanation_ok=True, open_error_report=False)
+    assert d.label == gate.PENDING  # either check can hold it
+    assert not validate(raw(pending_reason="maybe"), ctx(), "1").valid
+    # "vague_deliverable" is only for specificity-1 promises; elsewhere it's a model error
+    spec3 = ctx(promise={"quote": "q", "specificity": 3})
+    assert not validate(raw(pending_reason="vague_deliverable"), spec3, "1").valid
+    spec1 = ctx(promise={"quote": "q", "specificity": 1})
+    assert validate(raw(pending_reason="vague_deliverable"), spec1, "1").valid
 
 
 def V(status="delivered", conf=0.9, valid=True, kind="none", tier="1"):
@@ -278,3 +315,83 @@ def test_annual_series_prefers_restated_values(facts_db: sqlite3.Connection):
     assert {k: v["value"] for k, v in annual.items()} == {"2023-12-31": 101.0, "2024-12-31": 120.0}
     assert fiscal_year_end(facts_db, 1) == "12-31"
     assert deadline_end(2025, "06-30") == "2025-06-30" and deadline_end(None, "12-31") is None
+
+
+def _fy(tag: str, year: int, value: float, acc: str = "a2") -> tuple:
+    return (1, "us-gaap", tag, "USD", f"{year}-01-01", f"{year}-12-31", value, year, "FY",
+            "10-K", f"{year + 1}-02-01", acc, "")  # fmt: skip
+
+
+def _em(**measures) -> EvidenceMap:
+    base = {
+        "revenue": ["Revenues"],
+        "gross_profit": ["GrossProfit"],
+        "cost_of_revenue": ["CostOfRevenue", "CostOfGoodsAndServicesSold"],
+        "operating_income": ["OperatingIncomeLoss"],
+        "operating_expenses": ["OperatingExpenses", "CostsAndExpenses"],
+    }
+    return EvidenceMap(
+        "test",
+        {**base, **measures},
+        {
+            "gross_margin": {"numerator": "gross_profit", "denominator": "revenue"},
+            "operating_margin": {"numerator": "operating_income", "denominator": "revenue"},
+        },
+        {
+            "margin": {"measures": ["gross_profit"], "ratios": ["gross_margin"]},
+            "cost_savings": {"measures": ["operating_expenses"]},
+        },
+    )
+
+
+def test_gross_profit_falls_back_to_revenue_minus_cost_and_margins_change_in_points(
+    facts_db: sqlite3.Connection,
+):
+    # Revenues: 101 (2023, restated) and 120 (2024) from the fixture; no GrossProfit tag.
+    facts_db.executemany(
+        "INSERT INTO xbrl_facts VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        [_fy("CostOfRevenue", 2023, 60.0), _fy("CostOfRevenue", 2024, 66.0)],
+    )
+    rows = {r.label: r for r in number_table(facts_db, _em(), 1, "margin", 2024)}
+    gp = rows["gross profit (computed by code: revenue minus cost of revenue) for the fiscal "
+              "year ended 2024-12-31"]  # fmt: skip
+    assert (gp.value, gp.kind, gp.tag) == (54.0, "derived", "derived: Revenues minus CostOfRevenue")
+    gm = rows["gross margin for the fiscal year ended 2024-12-31"]
+    assert gm.value == pytest.approx(45.0)
+    pp = rows["gross margin change vs prior year, FY ended 2024-12-31"]
+    assert pp.unit == "percentage_points"
+    assert pp.value == pytest.approx(45.0 - 41 / 101 * 100)  # points, not a percent change
+    assert pp.display().endswith("percentage points")
+
+
+def test_reported_gross_profit_wins_and_total_costs_are_labeled(facts_db: sqlite3.Connection):
+    facts_db.executemany(
+        "INSERT INTO xbrl_facts VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        [
+            _fy("GrossProfit", 2024, 70.0),
+            _fy("CostOfRevenue", 2024, 66.0),
+            _fy("CostsAndExpenses", 2024, 90.0),
+        ],
+    )
+    margin = number_table(facts_db, _em(), 1, "margin", 2024)
+    assert [r.value for r in margin if r.label.startswith("gross profit")] == [70.0]
+    assert all(r.kind != "derived" for r in margin)
+    costs = number_table(facts_db, _em(), 1, "cost_savings", 2024)
+    assert costs[0].label.startswith("total costs and expenses (includes cost of sales)")
+
+
+def test_connect_adds_columns_to_an_older_database(tmp_path):
+    path = tmp_path / "old.sqlite"
+    old = sqlite3.connect(path)
+    old.execute(
+        "CREATE TABLE verdicts (cluster_id TEXT NOT NULL, variant TEXT NOT NULL, tier TEXT NOT "
+        "NULL, status TEXT, walked_back_kind TEXT, confidence REAL, evidence_ids TEXT, "
+        "number_ids TEXT, key_finding TEXT, valid INTEGER NOT NULL, problems TEXT, stop TEXT, "
+        "prompt_version TEXT, model TEXT, PRIMARY KEY (cluster_id, variant, tier))"
+    )
+    old.close()
+    conn = db.connect(path)
+    cols = {r[1] for r in conn.execute("PRAGMA table_info(verdicts)")}
+    conn.close()
+    assert "pending_reason" in cols
+    db.connect(path).close()  # idempotent

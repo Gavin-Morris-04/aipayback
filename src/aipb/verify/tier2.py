@@ -21,7 +21,13 @@ from aipb.llm.client import LLMClient
 from aipb.llm.params import Prompt, thinking_params
 from aipb.verify.calc import CalcError, calculate
 from aipb.verify.context import EvidencePassage, VerifyContext, fts_query, render
-from aipb.verify.numbers import EvidenceMap, NumberRow, annual_series
+from aipb.verify.numbers import (
+    TAG_LABELS,
+    EvidenceMap,
+    NumberRow,
+    annual_series,
+    derived_gross_profit,
+)
 from aipb.verify.tier1 import VERDICT_SCHEMA, Verdict, validate
 
 STAGE = "verify_t2"
@@ -154,18 +160,25 @@ def run_tool(
     if name == "get_reported_metric":
         measure = args.get("measure")
         tag, annual = annual_series(conn, ctx.cik, em.measures.get(measure, []))
+        derived = False
+        if not annual and measure == "gross_profit":
+            tag, annual = derived_gross_profit(conn, em, ctx.cik)
+            derived = bool(annual)
         if not annual:
             return f"{ctx.ticker} reports no full-year XBRL value for {measure}."
+        name = TAG_LABELS.get(tag, measure)
+        if derived:
+            name = "gross profit (computed by code: revenue minus cost of revenue)"
         lines = []
         for end in sorted(annual):
             f = annual[end]
             row = NumberRow(
                 "",
-                f"{measure} for the fiscal year ended {end}",
+                f"{name} for the fiscal year ended {end}",
                 f["value"],
                 "USD",
-                "fact",
-                f"us-gaap:{tag}",
+                "derived" if derived else "fact",
+                tag if derived else f"us-gaap:{tag}",
                 int(end[:4]),
                 f["period_start"],
                 end,

@@ -58,14 +58,22 @@ class VerifyContext:
     mentions_after_deadline: int
     evidence: list[EvidencePassage] = field(default_factory=list)
     numbers: list[NumberRow] = field(default_factory=list)
+    deadline_period_filed: bool = False  # a 10-K/10-Q covering the deadline period is in
 
     @property
     def silent_walkback_possible(self) -> bool:
-        """Rubric draft: deadline passed, >= 2 later periodic filings, no later mention."""
+        """Nick's final rubric (section 4), the parts code can check:
+        (a) the deadline has passed; (b) at least two later 10-K/10-Qs, one of them the
+        filing that covers the deadline period; (c) no later passage, earnings releases
+        included, still mentions it. Specificity-1 promises have no deadline and can never
+        be silent. Condition (d), a named program, is the judge's call.
+        """
         return (
             self.deadline_passed
             and self.periodic_after_deadline >= 2
+            and self.deadline_period_filed
             and self.mentions_after_deadline == 0
+            and self.promise.get("specificity") != 1
         )
 
     def evidence_ids(self) -> set[str]:
@@ -179,7 +187,7 @@ def build_context(
     d_end = deadline_end(max(years) if years else None, fy_end)
     passed = bool(d_end and as_of > d_end)
     periodic_after = 0
-    results_filed = False
+    results_filed = period_filed = False
     if d_end:
         periodic_after = conn.execute(
             "SELECT COUNT(*) FROM filings WHERE cik=? AND form IN ('10-K','10-Q') "
@@ -189,6 +197,15 @@ def build_context(
         results_filed = bool(
             conn.execute(
                 "SELECT 1 FROM filings WHERE cik=? AND report_date >= ? LIMIT 1", (cl["cik"], d_end)
+            ).fetchone()
+        )
+        # The 10-K (or 10-Q) whose period ends at the deadline. Fiscal years that end on
+        # the last Saturday of a month can end a few days before or after the nominal date.
+        period_filed = bool(
+            conn.execute(
+                "SELECT 1 FROM filings WHERE cik=? AND form IN ('10-K','10-Q') AND "
+                "report_date BETWEEN date(?, '-10 days') AND date(?, '+10 days') LIMIT 1",
+                (cl["cik"], d_end, d_end),
             ).fetchone()
         )
     spec = em.for_claim(promise["claim_type"])
@@ -222,6 +239,7 @@ def build_context(
         mentions_after_deadline=mentions_after,
         evidence=evidence,
         numbers=numbers,
+        deadline_period_filed=period_filed,
     )
 
 
@@ -239,6 +257,8 @@ def render(ctx: VerifyContext) -> str:
             "baseline",
             "deadline_text",
             "deadline_year",
+            "deadline_precision",
+            "specificity",
         )
     }
     lines = [
@@ -257,6 +277,8 @@ def render(ctx: VerifyContext) -> str:
         f"Deadline period ends: {ctx.deadline_end or 'no deadline stated'}",
         f"Deadline passed as of {ctx.as_of}: {'yes' if ctx.deadline_passed else 'no'}",
         f"Results for the deadline period filed: {'yes' if ctx.deadline_results_filed else 'no'}",
+        f"10-K/10-Q covering the deadline period filed: "
+        f"{'yes' if ctx.deadline_period_filed else 'no'}",
         f"10-K/10-Q filings after the deadline: {ctx.periodic_after_deadline}",
         f"Later passages that still mention this promise: {ctx.mentions_after_deadline}",
         "</facts computed by code>",

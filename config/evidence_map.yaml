@@ -1,19 +1,20 @@
-# Machine version of docs/finance/EVIDENCE_MAP.md. DRAFT until Nick approves that doc;
-# change both together. Verification pulls these XBRL measures for each claim type and
-# computes every number in code; the model only reads the computed table.
+# Machine version of docs/finance/EVIDENCE_MAP.md (Nick's final map, 2026-11-11). Change
+# both together. Verification pulls these XBRL measures for each claim type and computes
+# every number in code; the model only reads the computed table.
 #
 # Tags are tried in order; the first one a company reports is used (companies tag the
 # same idea differently: JPM reports NoninterestExpense, not SG&A).
 
-version: em2-draft
+version: em3
 
-# em2 (2026-11-11): last-resort tags added for Nick's final pilot, which reports these
-# measures under different names. Each comes after the existing tags, so no company that
-# reports an earlier tag changes. Nick to confirm as a follow-up when his final evidence
-# map is merged in (G8, D40).
-#   operating_expenses += CostsAndExpenses (AMZN, FDX, META: total costs, incl. cost of sales)
-#   capex += PaymentsToAcquireProductiveAssets (AMZN, FDX, NVDA, PEP)
-#   rnd += ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost (PFE)
+# em3 (2026-11-11, D41): Nick's final evidence map merged with the em2 coverage check.
+# - Nick named the same capex and R&D fallbacks em2 had added; both stay last in line.
+# - CostsAndExpenses stays the last operating-expense fallback (AMZN, FDX, META report
+#   no operating-expense or SG&A line). Code labels it "total costs and expenses", and
+#   Nick's rule makes total expenses context only, never enough to decide a savings promise.
+# - gross_profit falls back to revenue minus cost_of_revenue in code (verify/numbers.py).
+# - Capex definition pieces (finance-lease payments, capitalized software, asset-sale
+#   proceeds) are shown next to capex, so a promise's own definition can be matched.
 measures:
   revenue: [Revenues, RevenueFromContractWithCustomerExcludingAssessedTax]
   operating_expenses: [OperatingExpenses, SellingGeneralAndAdministrativeExpense, NoninterestExpense, CostsAndExpenses]
@@ -22,6 +23,9 @@ measures:
   cost_of_revenue: [CostOfRevenue, CostOfGoodsAndServicesSold]
   operating_income: [OperatingIncomeLoss]
   capex: [PaymentsToAcquirePropertyPlantAndEquipment, PaymentsToAcquireProductiveAssets]
+  finance_lease_principal: [FinanceLeasePrincipalPayments]
+  capitalized_software: [PaymentsToDevelopSoftware]
+  ppe_sale_proceeds: [ProceedsFromSaleOfPropertyPlantAndEquipment]
   rnd: [ResearchAndDevelopmentExpense, ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost]
 
 # Ratios computed in code from the measures above (numerator / denominator).
@@ -44,7 +48,7 @@ claim_types:
     measures: []
     search_terms: [employees, headcount, workforce, "human capital", positions, roles, attrition]
   capex_investment:
-    measures: [capex, rnd]
+    measures: [capex, finance_lease_principal, capitalized_software, ppe_sale_proceeds, rnd]
     search_terms: ["capital expenditures", capex, "data center", infrastructure, investment]
   productivity:
     measures: [revenue]
