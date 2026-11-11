@@ -287,7 +287,7 @@ Code checks every citation: `document.data[start:end]` must equal `cited_text`. 
 - `capex` += `PaymentsToAcquireProductiveAssets` for AMZN, FDX, NVDA and PEP.
 - `rnd` += `ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost` for PFE.
 
-Version `em1-draft` becomes `em2-draft`. No verify result used em1. `docs/finance/EVIDENCE_MAP.md` now shows the coverage for the final pilot and marks the new tags for Nick to confirm (N4).
+Version `em1-draft` becomes `em2-draft`. No verify result used em1. `docs/finance/EVIDENCE_MAP.md` now shows the coverage for the final pilot and marks the new tags **(new)**. Nick had already finished his evidence map in the Google Doc (N4, ticked 19:51 UTC), working from the em1 draft. G8 merges his version with these changes, and the new tags and the gross-margin question go to him as follow-ups.
 
 **Gaps that remain (real absences, not missing tags):**
 - **Gross margin** is computed only from `GrossProfit`, which AMZN, BLK, CAT, FDX, META and PFE don't report. The draft doc said "otherwise revenue minus cost of revenue", but the code never did that: `cost_of_revenue` isn't used by any claim type. Until it's built, those companies' gross-margin promises can only be checked from text. The outcome is No evidence yet or Status pending review, never a guessed status.

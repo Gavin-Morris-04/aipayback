@@ -10,6 +10,7 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
 - Gavin put the API key in `.env` and ran the smoke test (G3, G4). It cost $0.0000102 for 27 input and 15 output tokens on Haiku 5.5.
 - Nick's 10 pilot picks are final (N2, D39). Ingest, parse, prefilter, packets and split were rebuilt for them, all at $0.
 - The evidence map's coverage was redone for his companies, and fallback tags were added (em2-draft, D40).
+- Checklist ticks: Gavin G1–G4; Nick N1–N5. Nick finished the rubric (N3) and the evidence map (N4) in the Google Docs **before** the em2 update, so G8 must merge the two.
 
 **API spend so far: $0.0000102** (the smoke test). Every other paid stage has only been exercised against a fake model.
 
@@ -18,7 +19,7 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 | Phase | Built | Waiting on |
 |---|---|---|
 | 0 Setup, billing safety | ✅ budget guard, ledger, cache, secret hooks, CI; smoke test passed 2026-11-11 | **Gavin:** check the Console Usage page shows about $0.00001 |
-| 1 Ingest, packets, kits | ✅ final pilot (Nick's picks) ingested; packets and split rebuilt; finance docs, outreach kit | **Gavin:** check packets in Excel/Sheets (G2), upload them, tell Nick (G6) |
+| 1 Ingest, packets, kits | ✅ final pilot (Nick's picks) ingested; packets and split rebuilt; finance docs, outreach kit | **Gavin:** upload the packets, tell Nick (G6); bring in Nick's rubric and evidence map (G8) |
 | 2 Filter, extract, evals | ✅ stages, batches, eval harness, A/B, compare | **Gavin:** pilot run (G7, ≤ $1.53); **Nick:** labels. A/B needs sizing first (D39) |
 | 3 Verification, citations | ✅ Tier 1 + Tier 2, explain, gate, status packets + eval | key; **Nick:** ~60 status labels |
 | 4 Site, newsletter | ✅ site, publish, newsletter with rails, 3 workflows (all off) | **Gavin:** Buttondown, Pages, secrets/variables; demos |
@@ -33,11 +34,10 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 
 | Who | Task | Unblocks |
 |---|---|---|
-| Gavin | Open 2–3 `exports/packets/*.xlsx` (e.g. MSFT and PEP) in Excel **and** Google Sheets (red words, dropdowns, links) (G2) | Phase 1 acceptance |
-| Gavin | Drive folder with `packets/` and `returned/`; Google Doc copies of the four `docs/finance/` guides. **If copies were made before 2026-11-11, re-copy `EVIDENCE_MAP.md`, `PILOT_PICKER.md` and `LABELING_GUIDE.md`.** (G1) | Nick's work |
-| Gavin | Upload the 10 final `exports/packets/*_packet_v1.xlsx` to Drive `packets/`, then tell Nick "the packets are final" (rest of G6) | Nick's labeling |
-| Gavin | Run the pilot (G7). Filter $0.11; extract ≤ $0.63, which is over $0.50, so it may need `--confirm` and a go-ahead in chat | status packet, first real results |
-| Nick | Decide the RUBRIC DECIDE items; correct EVIDENCE_MAP, including confirming the **(new)** tags (D40) | labels; `config/evidence_map.yaml` |
+| Gavin | Upload the 10 final `exports/packets/*_packet_v1.xlsx` to Drive `packets/`, then tell Nick "the packets are final" (rest of G6). G2 was checked on the placeholder packets; the code is the same, so the format carries over | Nick's labeling |
+| Gavin | G8: download Nick's final rubric and evidence-map Docs as `.md` and give them to Claude Code. **Don't re-copy the repo docs over his Docs.** Claude merges his version with em2 (D40), then lists two follow-ups for Nick: the (new) tags and the gross-margin fallback | verify follows Nick's rules |
+| Gavin | Run the pilot (G7), ideally after G8. Filter $0.11; extract ≤ $0.63, which is over $0.50, so it may need `--confirm` and a go-ahead in chat | status packet, first real results |
+| Gavin | Share the checklist page with Nick as Editor: on 2026-11-11 it was still private to Gavin | Nick's own ticks |
 | Nick | Label the passage packets (~6–8 h), then the status packet (~60 promises) | evals; confidence threshold |
 | Gavin | Outreach (`gtm/outreach/`, ~25 messages) → discovery calls → notes | Phase 6, ROI numbers, demos |
 | Gavin | Buttondown account (free tier) → API key as GitHub secret `BUTTONDOWN_API_KEY`; username into `config/site.yaml` | newsletter, signup box |
@@ -116,7 +116,7 @@ git add -A && git commit -m "S&P 100 run" && git push
 
 ## Known issues (to fix before the step that needs them)
 - **Sonnet A/B sizing (before G10, D39).** Sonnet 5.5's worst case is about $0.045 per passage (`max_tokens: 8192`), so all 569 dev passages reserve $25.67, and $1.50 covers only about 33. The guard stops the run, so nothing overspends. Fix: an `extract` option that takes a list of passage ids (`run_extract` already accepts `passage_ids`). Then run only on labeled dev passages that filter routed, with Sonnet's `max_tokens` set from the pilot's real Haiku output lengths.
-- **Gross margin fallback (ideally before the pilot's verify, D40).** Gross margin uses only `GrossProfit`, which AMZN, BLK, CAT, FDX, META and PFE don't report. Computing revenue minus cost of revenue is a small change in `src/aipb/verify/numbers.py`, but it's a methodology choice, so ask Nick (EVIDENCE_MAP, N4). Until then, those promises fall back to text evidence or "Status pending review".
+- **Gross margin fallback (ideally before the pilot's verify, D40).** Gross margin uses only `GrossProfit`, which AMZN, BLK, CAT, FDX, META and PFE don't report. Computing revenue minus cost of revenue is a small change in `src/aipb/verify/numbers.py`, but it's a methodology choice, so ask Nick as a follow-up to his evidence map (G8). Until then, those promises fall back to text evidence or "Status pending review".
 
 ## Latest eval numbers
 None yet: they need real outputs (the pilot run) and Nick's labels (gold).

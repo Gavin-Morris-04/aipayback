@@ -9,7 +9,8 @@ version: em2-draft
 
 # em2 (2026-11-11): last-resort tags added for Nick's final pilot, which reports these
 # measures under different names. Each comes after the existing tags, so no company that
-# reports an earlier tag changes. Nick to confirm in his evidence-map review (D40).
+# reports an earlier tag changes. Nick to confirm as a follow-up when his final evidence
+# map is merged in (G8, D40).
 #   operating_expenses += CostsAndExpenses (AMZN, FDX, META: total costs, incl. cost of sales)
 #   capex += PaymentsToAcquireProductiveAssets (AMZN, FDX, NVDA, PEP)
 #   rnd += ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost (PFE)
