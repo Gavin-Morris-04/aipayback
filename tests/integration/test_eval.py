@@ -68,7 +68,7 @@ def test_eval_end_to_end(llm_project, fake_claude):
     assert data["quote_fidelity"]["stored_quotes_verbatim"] == 1.0
     assert data["gold"]["random_non_keyword_passages"] >= 1
     assert data["prefilter"]["with_a_promise"] == 0
-    assert data["split"] == "dev" and data["prompts"] == ["extract/v1", "filter/v1"]
+    assert data["split"] == "dev" and data["prompts"] == ["extract/v2", "filter/v1"]
 
     text = readme.read_text(encoding="utf-8")
     assert "(Phase 2)" not in text and "| dev (" in text

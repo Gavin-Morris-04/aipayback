@@ -685,7 +685,8 @@ def extract_cmd(
         out.print(
             f"Extracted {st.statements} verified statements ({st.promises} promises, "
             f"{st.hype} hype) from {st.passages} passages. Quote retries: {st.retried}; "
-            f"quotes dropped after retry: {st.dropped_quotes}; errors: {len(st.errors)}. "
+            f"quotes dropped after retry: {st.dropped_quotes}; dropped with no AI link: "
+            f"{st.unlinked}; errors: {len(st.errors)}. "
             f"Promise clusters: {counts['clusters']}."
         )
         for e in st.errors[:10]:

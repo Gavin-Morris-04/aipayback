@@ -3,12 +3,19 @@
 Every quote must appear verbatim in its passage (after the documented normalization). A
 response with a failing quote gets ONE retry that names the failing quotes; any quote
 that still fails is dropped and logged. Nothing unverified is ever stored.
+
+From prompt v2 every statement also carries an `ai_link`: the passage's own words that
+tie its outcome to AI. Code checks that the link is verbatim, names AI (the prefilter
+lexicon) and sits near the quote. A statement without one is general business guidance
+from a passage that happens to mention AI, and is dropped and logged without a retry
+(D42). A retry would only push the model to find some AI word to point at.
 """
 
 from __future__ import annotations
 
 import json
 import sqlite3
+from collections.abc import Callable
 from dataclasses import dataclass, field
 
 from aipb.labeling.schema import CLAIM_TYPES, section_name
@@ -20,10 +27,13 @@ from aipb.stages.filter import routed_to_extraction
 STAGE = "extract"
 UNITS = ["USD", "percent", "percentage_points", "count", "other"]
 PRECISION = ["day", "month", "quarter", "half", "year", "none"]
+# How far (in characters) the AI link may sit from the quote: about two sentences.
+AI_LINK_WINDOW = 400
 
 STATEMENT = obj(
     {
         "quote": {"type": "string"},
+        "ai_link": {"type": "string"},
         "kind": {"type": "string", "enum": ["promise", "hype"]},
         "claim_type": {"type": "string", "enum": list(CLAIM_TYPES)},
         "metric": nullable({"type": "string"}),
@@ -47,6 +57,7 @@ class Verified:
     start: int
     end: int
     quote: str  # the filing's own characters
+    ai_link: str = ""  # the filing's own words tying it to AI (prompt v2 on)
 
 
 @dataclass
@@ -57,7 +68,46 @@ class ExtractStats:
     hype: int = 0
     retried: int = 0
     dropped_quotes: int = 0
+    unlinked: int = 0  # dropped: no verified AI link
     errors: list[str] = field(default_factory=list)
+
+
+def check_ai_link(
+    passage_text: str, v: Verified, names_ai: Callable[[str], bool], window: int = AI_LINK_WINDOW
+) -> str | None:
+    """Fill v.ai_link if the statement's AI link checks out; else say why it doesn't.
+
+    The link must be verbatim in the passage, within `window` characters of the quote,
+    and name AI (`names_ai`: the prefilter lexicon).
+    """
+    link = (v.statement.get("ai_link") or "").strip()
+    if not link:
+        return "no ai_link"
+    lo = max(0, v.start - window)
+    near = passage_text[lo : v.end + window]
+    span = locate_quote(near, link)
+    if span is None:
+        far = locate_quote(passage_text, link)
+        return "ai_link not in the passage" if far is None else "ai_link too far from the quote"
+    text = near[span[0] : span[1]]
+    if not names_ai(text):
+        return f"ai_link names no AI term: {text[:60]!r}"
+    v.ai_link = text
+    return None
+
+
+def split_linked(
+    passage_text: str, verified: list[Verified], names_ai: Callable[[str], bool]
+) -> tuple[list[Verified], list[tuple[Verified, str]]]:
+    linked: list[Verified] = []
+    unlinked: list[tuple[Verified, str]] = []
+    for v in verified:
+        why = check_ai_link(passage_text, v, names_ai)
+        if why is None:
+            linked.append(v)
+        else:
+            unlinked.append((v, why))
+    return linked, unlinked
 
 
 def candidates(
@@ -164,7 +214,8 @@ def store_passage(
                 "filing_date, seq, quote, quote_start, quote_end, kind, claim_type, metric, "
                 "target_text, target_value, target_unit, baseline, deadline_text, "
                 "deadline_year, deadline_precision, specificity, confidence, prompt_version, "
-                "model, retried) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                "model, retried, ai_link) "
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 (
                     f"{variant}:{pid}:s{n}", variant, pid, r["cik"], r["accession"],
                     r["filing_date"], n, v.quote, v.start, v.end, st["kind"],
@@ -172,7 +223,7 @@ def store_passage(
                     st.get("target_value"), st.get("target_unit"), st.get("baseline"),
                     st.get("deadline_text"), st.get("deadline_year"),
                     st.get("deadline_precision"), st.get("specificity"), st.get("confidence"),
-                    prompt_id, model, int(retried),
+                    prompt_id, model, int(retried), v.ai_link or None,
                 ),
             )  # fmt: skip
         conn.execute(

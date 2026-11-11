@@ -80,7 +80,8 @@ def extract(text: str) -> list[dict]:
         has_num = bool(NUMBER.search(s))
         year = re.search(r"\b(20\d\d)\b", s)
         out.append({
-            "quote": quote, "kind": "promise" if has_num else "hype",
+            "quote": quote, "ai_link": AI.search(s).group(0),
+            "kind": "promise" if has_num else "hype",
             "claim_type": "cost_savings" if "saving" in s else "other",
             "metric": "annual run-rate cost savings" if "saving" in s else None,
             "target_text": (m.group(0).strip() if (m := NUMBER.search(s)) else None),

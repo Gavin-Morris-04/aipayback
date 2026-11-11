@@ -161,13 +161,14 @@ CREATE TABLE IF NOT EXISTS promises (
     prompt_version TEXT NOT NULL,
     model TEXT NOT NULL,
     retried INTEGER NOT NULL DEFAULT 0,
-    cluster_id TEXT
+    cluster_id TEXT,
+    ai_link TEXT                    -- the filing's words tying it to AI (extract v2 on)
 );
 CREATE INDEX IF NOT EXISTS promises_variant ON promises(variant, cik);
 CREATE TABLE IF NOT EXISTS extraction_log (
     passage_id TEXT NOT NULL,
     variant TEXT NOT NULL,
-    status TEXT NOT NULL,           -- ok | dropped_quotes | error
+    status TEXT NOT NULL,           -- ok | dropped_quotes | dropped_unlinked | error
     n_statements INTEGER NOT NULL,
     n_dropped INTEGER NOT NULL,
     detail TEXT,
@@ -261,7 +262,10 @@ def connect(path: Path) -> sqlite3.Connection:
 
 # Columns added after a table first shipped: (table, column, type). CREATE TABLE IF NOT
 # EXISTS never changes an existing table, so older databases get them here.
-_ADDED_COLUMNS = [("verdicts", "pending_reason", "TEXT")]
+_ADDED_COLUMNS = [
+    ("verdicts", "pending_reason", "TEXT"),
+    ("promises", "ai_link", "TEXT"),
+]
 
 
 def _migrate(conn: sqlite3.Connection) -> None:

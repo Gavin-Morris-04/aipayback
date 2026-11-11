@@ -40,7 +40,7 @@ stages:
 
   extract:
     model: claude-haiku-5-5
-    prompt: v1
+    prompt: v2   # ai_link checked by code: AI statements only (D42)
     max_tokens: 2048          # ~8 statements of JSON with headroom (thinking is off)
     thinking: disabled
     effort: low

@@ -154,6 +154,11 @@ def run_extract(
     )
     good, bad, errors = ex.first_pass(rows, results)
     stats = ex.ExtractStats(passages=len(rows))
+    lexicon = ctx.lexicon
+
+    def names_ai(text: str) -> bool:
+        return bool(lexicon.scan(text)[0])
+
     retried: set[str] = set()
 
     retry_ids = [pid for pid, b in bad.items() if b] if int(cfg.get("quote_retries", 1)) else []
@@ -201,8 +206,12 @@ def run_extract(
             )
             stats.errors.append(f"{pid}: {errors[pid]}")
             continue
-        verified = good.get(pid, [])
+        # Only statements whose outcome the passage itself ties to AI are kept (D42).
+        verified, unlinked = ex.split_linked(r["text"], good.get(pid, []), names_ai)
         dropped = len(bad.get(pid, []))
+        detail = [b.get("quote", "")[:80] for b in bad.get(pid, [])]
+        detail += [f"{v.quote[:60]} ({why})" for v, why in unlinked]
+        status = "dropped_quotes" if dropped else ("dropped_unlinked" if unlinked else "ok")
         ex.store_passage(
             conn,
             r,
@@ -211,14 +220,15 @@ def run_extract(
             prompt_id=prompt.id,
             model=cfg["model"],
             retried=pid in retried,
-            dropped=dropped,
-            status="dropped_quotes" if dropped else "ok",
-            detail="; ".join(b.get("quote", "")[:80] for b in bad.get(pid, [])),
+            dropped=dropped + len(unlinked),
+            status=status,
+            detail="; ".join(detail),
         )
         stats.statements += len(verified)
         stats.promises += sum(v.statement["kind"] == "promise" for v in verified)
         stats.hype += sum(v.statement["kind"] == "hype" for v in verified)
         stats.dropped_quotes += dropped
+        stats.unlinked += len(unlinked)
     stats.retried = len(retried)
     return StageOutcome(plan, ran=True, stats=stats)
 
