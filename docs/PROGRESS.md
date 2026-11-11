@@ -48,6 +48,12 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 
 The key is in `.env`, and the smoke test passed on 2026-11-11 ($0.0000102, ledger committed).
 
+**Pilot in progress (2026-11-11):**
+- `calibrate`: the estimator reads 1.26x the real input-token count (130,842 vs 103,628), so worst cases stay high.
+- `filter` done: **$0.04** against a $0.11 worst case (batch msgbatch_01MJuiSQd95RiLxTeHCgXLks, committed). 868 passages: promise 120 (58 high, 62 low confidence), hype 83 (60 low), none 665 (12 low).
+- Promises by company: META 39, TSLA 35, NVDA 20, AMZN 7, MSFT 6, PFE 4, CAT 4, FDX 3, BLK 2, PEP 0.
+- **Next: `extract`.** 192 passages go on (all promises, plus every low-confidence hype or none). The dry-run worst case is $0.14. Waiting on Gavin: run it now, and hold verify until G8 brings in Nick's rubric and evidence map?
+
 ```bash
 uv run aipb doctor                 # must be all OK
 uv run aipb calibrate              # free count_tokens check of the estimator (not run yet)
@@ -112,7 +118,7 @@ git add -A && git commit -m "S&P 100 run" && git push
 ## Budget
 | Spent | Reserved | Remaining under the $15 cap | Locked reserve |
 |---|---|---|---|
-| $0.0000102 (smoke test) | $0.00 | $15.00 | $4.00 |
+| $0.04 (smoke test + pilot filter) | $0.00 | $14.96 | $4.00 |
 
 ## Known issues (to fix before the step that needs them)
 - **Sonnet A/B sizing (before G10, D39).** Sonnet 5.5's worst case is about $0.045 per passage (`max_tokens: 8192`), so all 569 dev passages reserve $25.67, and $1.50 covers only about 33. The guard stops the run, so nothing overspends. Fix: an `extract` option that takes a list of passage ids (`run_extract` already accepts `passage_ids`). Then run only on labeled dev passages that filter routed, with Sonnet's `max_tokens` set from the pilot's real Haiku output lengths.
