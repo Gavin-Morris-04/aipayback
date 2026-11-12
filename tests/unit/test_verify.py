@@ -9,11 +9,12 @@ from aipb.llm.client import LLMResult
 from aipb.stages import explain as ex
 from aipb.verify import gate
 from aipb.verify.calc import CalcError, calculate, pct_change
-from aipb.verify.context import EvidencePassage, VerifyContext
+from aipb.verify.context import EvidencePassage, VerifyContext, render
 from aipb.verify.neutral import banned_words
 from aipb.verify.numbers import (
     EvidenceMap,
     annual_series,
+    capex_definition,
     deadline_end,
     fiscal_year_end,
     number_table,
@@ -395,3 +396,59 @@ def test_connect_adds_columns_to_an_older_database(tmp_path):
     conn.close()
     assert "pending_reason" in cols
     db.connect(path).close()  # idempotent
+
+
+def _passage(conn: sqlite3.Connection, pid: str, accession: str, filed: str, text: str) -> None:
+    conn.execute(
+        "INSERT INTO passages (passage_id, cik, accession, form, filing_date, doc_role, section, "
+        "seq, text, text_sha256, char_start, char_end, words) "
+        "VALUES (?, 1, ?, '10-Q', ?, 'main', 'item2', 1, ?, 'h', 0, 1, 1)",
+        (pid, accession, filed, text),
+    )
+
+
+def test_capex_is_also_given_on_the_company_definition(facts_db: sqlite3.Connection):
+    """D44: a capex promise that states no definition uses the company's usual one."""
+    facts_db.execute("PRAGMA foreign_keys=OFF")
+    said = "Capital expenditures, including principal payments on finance leases, were $9."
+    _passage(facts_db, "p1", "f1", "2024-05-01", said)
+    assert capex_definition(facts_db, 1, "2025-01-01") is None  # one filing isn't "usual"
+    wrapped = "We expect capital expenditures,\nincluding principal payments on finance leases."
+    _passage(facts_db, "p2", "f2", "2024-08-01", wrapped)
+    _passage(facts_db, "p3", "f3", "2025-08-01", said)  # after the promise: not counted
+    _passage(facts_db, "p4", "f4", "2024-09-01", "Payments on finance leases were $1.")
+    cdef = capex_definition(facts_db, 1, "2025-01-01")
+    assert cdef is not None
+    assert (cdef.adds, cdef.filings, cdef.accession) == ("finance_lease_principal", 2, "f2")
+    assert cdef.phrase == "capital expenditures, including principal payments on finance leases"
+
+    facts_db.executemany(
+        "INSERT INTO xbrl_facts VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        [
+            _fy("PaymentsToAcquirePropertyPlantAndEquipment", 2024, 69.69),
+            _fy("FinanceLeasePrincipalPayments", 2024, 2.52),
+        ],
+    )
+    em = _em(
+        capex=["PaymentsToAcquirePropertyPlantAndEquipment"],
+        finance_lease_principal=["FinanceLeasePrincipalPayments"],
+    )
+    em.claim_types["capex_investment"] = {"measures": ["capex", "finance_lease_principal"]}
+    plain = number_table(facts_db, em, 1, "capex_investment", 2024)
+    assert [r.value for r in plain] == [69.69, 2.52] and all(r.kind == "fact" for r in plain)
+    rows = number_table(facts_db, em, 1, "capex_investment", 2024, cdef)
+    company = [r for r in rows if r.label.startswith("capital expenditures as the company")]
+    assert [round(r.value, 2) for r in company] == [72.21]
+    assert company[0].kind == "derived"
+    assert company[0].tag == (
+        "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    )
+    assert "principal payments on finance leases" in company[0].label
+
+
+def test_the_judge_is_told_the_company_capex_definition():
+    capex = {"quote": "q", "claim_type": "capex_investment"}
+    told = render(ctx(promise=capex, capex_definition='"capital expenditures, including x"'))
+    assert 'capex definition in its filings: "capital expenditures, including x"' in told
+    assert "none stated; use purchases of property and equipment" in render(ctx(promise=capex))
+    assert "capex definition" not in render(ctx(promise={"quote": "q", "claim_type": "margin"}))

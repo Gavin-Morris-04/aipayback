@@ -375,6 +375,26 @@ Now a company counts only if the filter stage read its passages (`publish.analyz
 
 **Pilot result after the hold:** 13 of 40 promises published (5 Delivered, all Meta capex; 8 No evidence yet). 27 are "Status pending review". Total pilot API spend was $0.24.
 
+## D44. Capex on the company's own definition; "approximately" ranges use the range rule (prompt v3, 2026-11-12)
+**Context.** The two D43 questions, answered.
+
+**Capex definition (Gavin: yes).** When a capex promise doesn't say which definition it uses, it is judged on the company's usual definition, as the company's own filings state it. This amends Nick's evidence-map answer 3 ("including finance leases only if the guidance did") for the case where the guidance is silent. How it works, all in code:
+- `numbers.capex_definition` looks for the company's own phrase "capital expenditures, including principal payments on finance leases" in its filings up to the promise date, and needs it in at least two filings to count as "usual".
+- When found, the reported numbers get an extra derived row, "capital expenditures as the company defines them", which is purchases of property and equipment plus principal payments on finance leases, summed by code for years where both cover the same period. The facts block quotes the phrase. When not found, the facts say "none stated; use purchases of property and equipment".
+- Deliberately narrow: only phrasings whose parts are both XBRL tags are recognized. In the S&P 100 data only Meta uses this phrase (24 filings). American Tower's "including payments on finance leases" and Microsoft's "capital expenditures including finance leases" are not the same sum and are not recognized.
+- Check: Meta's 2025 figure on this definition is $72.22 billion ($69.69 billion + $2.52 billion), the same figure Meta reports.
+
+**"Approximately $X to $Y" (Gavin asked me to decide): the range rule.** Met at the low end, with no extra tolerance. Reasons:
+- Nick's rubric already says the low end is "the company's own floor"; "approximately" applies to a range that is already a band.
+- Stacking the 90% "about" tolerance on a range would count $63 billion as meeting "approximately $70 billion to $72 billion".
+- A wrong Delivered is a wrong verdict about a real company. A near-miss loses nothing in accuracy: under Nick's partial-delivery rule it is "No evidence yet" (or "Walked back" if the company explicitly lowered it), and the explanation states the reported figure against the range.
+
+Nick can overrule this; it is one line in each verify prompt.
+
+**Prompt v3** (verify_t1, verify_t2, explain) states both rules, Nick's partial-delivery rule, and that a margin change against a baseline older than the prior year goes to the second check (it can calculate). The explanation names what a code-computed capex figure combines.
+
+**Result so far (Tier 1 only, $0.018):** the R-001 Meta item is Delivered at confidence 0.8, citing both $69.69 billion and $72.22 billion against $70–72 billion. 22 of 40 items escalate to Tier 2, whose worst case reaches its $0.50 run cap, so the combined run is over $0.50 and waits for Gavin's go-ahead. R-001 stays open until the re-run is published.
+
 ## Upcoming decisions (recorded when made)
 - Sonnet use, decided by the capped A/B test (Phase 2, once there's a key and labels). Size it first (D39).
 - The confidence threshold, from the precision-coverage curve (Phase 3, once Nick labels statuses).

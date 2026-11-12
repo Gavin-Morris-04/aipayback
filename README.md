@@ -2,7 +2,7 @@
 
 **Did the AI promises pay off?** Since 2023, public companies have promised a lot from AI: cost savings, margin gains, leaner workforces, new revenue. AIPayback pulls the specific, checkable promises out of SEC filings, checks each one against the company's *later* filings and reported numbers, and publishes a neutral status with citations to both the promise and the evidence.
 
-> Status: **Phases 0–5 built and tested (176 offline tests). No paid run yet:** waiting on the API key, the finance lead's labels, and the account setups listed in [docs/PROGRESS.md](docs/PROGRESS.md). Plan: [docs/PLAN.md](docs/PLAN.md).
+> Status: **Phases 0–5 built and tested (191 offline tests). Pilot run done for $0.26:** 40 AI promises from 10 companies, checked on the finance lead's rules. Results are a local preview until the finance lead reviews them and the gold labels give the first accuracy numbers. Details: [docs/PROGRESS.md](docs/PROGRESS.md). Plan: [docs/PLAN.md](docs/PLAN.md).
 > Informational only. Not investment advice.
 
 ## How it works
@@ -43,7 +43,7 @@ Statuses: **Delivered**, **On track**, **No evidence yet**, **Walked back** (sil
 
 Details: [docs/DECISIONS.md](docs/DECISIONS.md) (D1–D5, D20–D22).
 
-## Data so far (pilot run: $0.24 of API credit)
+## Data so far (pilot run: $0.26 of API credit)
 
 Filings since 2024-01-01. The pilot is 10 S&P 100 companies across 7 sectors, picked by the finance student on 2026-11-11: AMZN, BLK, CAT, FDX, META, MSFT, NVDA, PEP, PFE and TSLA. Eight talk heavily about AI and two (CAT, PEP) are low-AI comparisons. His reason for each pick is in `config/universe/pilot.csv`. The S&P 100 list is in `config/universe/sp100.csv`.
 
@@ -119,7 +119,7 @@ Add `--universe sp100` for the S&P 100 (or `make <target> U=sp100`), and `-t TIC
 
 | Workflow | What it does | Turn on with |
 |---|---|---|
-| `ci.yml` | lint + 176 offline tests on every push | always on |
+| `ci.yml` | lint + 191 offline tests on every push | always on |
 | `deploy-site.yml` | build the site from `data/site/` and deploy to GitHub Pages | repo variable `SITE_DEPLOY=true` |
 | `newsletter.yml` | stage on the 1st, send on the 2nd (hold label, kill switch, ramp-up) | `NEWSLETTER_ENABLED=true` (+ `NEWSLETTER_AUTOSEND=true` for real sends) |
 | `monitor.yml` | monthly: new filings → paid stages (guarded) → publish | `MONITOR_ENABLED=true` |

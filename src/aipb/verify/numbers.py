@@ -7,6 +7,8 @@ the judge may only cite those ids, so every number in a verdict traces to a fili
 
 from __future__ import annotations
 
+import operator
+import re
 import sqlite3
 from collections import Counter
 from dataclasses import asdict, dataclass
@@ -114,6 +116,24 @@ def deadline_end(year: int | None, fy_end: str) -> str | None:
 TAG_LABELS = {"CostsAndExpenses": "total costs and expenses (includes cost of sales)"}
 
 
+def _paired(a: dict, b: dict, op) -> dict[str, dict]:
+    """op(a, b) for fiscal years where both series cover the same period (later filing cited)."""
+    out: dict[str, dict] = {}
+    for end in sorted(set(a) & set(b)):
+        x, y = a[end], b[end]
+        if abs(_days(x["period_start"], y["period_start"])) > 7:
+            continue
+        later = x if x["filed"] >= y["filed"] else y
+        out[end] = {
+            "value": op(x["value"], y["value"]),
+            "period_start": x["period_start"],
+            "period_end": end,
+            "accession": later["accession"],
+            "filed": later["filed"],
+        }
+    return out
+
+
 def derived_gross_profit(
     conn: sqlite3.Connection, em: EvidenceMap, cik: int
 ) -> tuple[str, dict[str, dict]]:
@@ -124,26 +144,86 @@ def derived_gross_profit(
     """
     rev_tag, rev = annual_series(conn, cik, em.measures.get("revenue", []))
     cor_tag, cor = annual_series(conn, cik, em.measures.get("cost_of_revenue", []))
-    out: dict[str, dict] = {}
-    for end in sorted(set(rev) & set(cor)):
-        r, c = rev[end], cor[end]
-        if abs(_days(r["period_start"], c["period_start"])) > 7:
-            continue
-        later = r if r["filed"] >= c["filed"] else c
-        out[end] = {
-            "value": r["value"] - c["value"],
-            "period_start": r["period_start"],
-            "period_end": end,
-            "accession": later["accession"],
-            "filed": later["filed"],
-        }
+    out = _paired(rev, cor, operator.sub)
     return (f"derived: {rev_tag} minus {cor_tag}" if out else ""), out
 
 
+# A company's own capex definition, as its filings state it (D44). A capex promise that
+# doesn't say which definition it uses is judged on the company's usual one. Narrow on
+# purpose: a phrasing is recognized only when what it adds is a reported XBRL measure, so
+# code does the sum. {measure added to capex: (the company's phrasing, what the sum is)}
+CAPEX_DEFINITIONS = {
+    "finance_lease_principal": (
+        re.compile(
+            r"capital expenditures,?\s+including\s+principal\s+payments\s+on\s+finance\s+leases",
+            re.IGNORECASE,
+        ),
+        "purchases of property and equipment plus principal payments on finance leases",
+    ),
+}
+CAPEX_DEFINITION_MIN_FILINGS = 2  # "usual": stated in at least two filings
+
+
+@dataclass(frozen=True)
+class CapexDefinition:
+    adds: str  # the measure added to capex
+    phrase: str  # the company's words, verbatim, from the latest filing that uses them
+    meaning: str
+    filings: int  # distinct filings using the phrase, up to the promise date
+    accession: str
+    filed: str
+
+    def describe(self) -> str:
+        return (
+            f'"{self.phrase}" (in {self.filings} filings up to the promise date; '
+            f"latest filed {self.filed})"
+        )
+
+
+def capex_definition(conn: sqlite3.Connection, cik: int, by_date: str) -> CapexDefinition | None:
+    """The company's usual capex definition, from its filings on or before `by_date`."""
+    for adds, (pattern, meaning) in CAPEX_DEFINITIONS.items():
+        seen: dict[str, tuple[str, str]] = {}
+        for r in conn.execute(
+            "SELECT accession, filing_date, text FROM passages WHERE cik=? AND filing_date <= ? "
+            "AND text LIKE '%finance lease%' ORDER BY filing_date",
+            (cik, by_date),
+        ):
+            if m := pattern.search(r["text"]):
+                seen[r["accession"]] = (r["filing_date"], " ".join(m.group(0).split()))
+        if len(seen) >= CAPEX_DEFINITION_MIN_FILINGS:
+            accession, (filed, phrase) = max(seen.items(), key=lambda kv: (kv[1][0], kv[0]))
+            return CapexDefinition(adds, phrase, meaning, len(seen), accession, filed)
+    return None
+
+
+def derived_company_capex(
+    conn: sqlite3.Connection, em: EvidenceMap, cik: int, cdef: CapexDefinition
+) -> tuple[str, dict[str, dict]]:
+    """Capex on the company's own definition: purchases of property and equipment plus
+    the measure its definition adds, for fiscal years where both cover the same period."""
+    cap_tag, cap = annual_series(conn, cik, em.measures.get("capex", []))
+    add_tag, add = annual_series(conn, cik, em.measures.get(cdef.adds, []))
+    out = _paired(cap, add, operator.add)
+    return (f"derived: {cap_tag} plus {add_tag}" if out else ""), out
+
+
+def company_capex_name(cdef: CapexDefinition) -> str:
+    return f"capital expenditures as the company defines them (computed by code: {cdef.meaning})"
+
+
 def number_table(
-    conn: sqlite3.Connection, em: EvidenceMap, cik: int, claim_type: str, from_year: int
+    conn: sqlite3.Connection,
+    em: EvidenceMap,
+    cik: int,
+    claim_type: str,
+    from_year: int,
+    capex_def: CapexDefinition | None = None,
 ) -> list[NumberRow]:
-    """Annual values from `from_year` on, plus margins and year-over-year changes."""
+    """Annual values from `from_year` on, plus margins and year-over-year changes.
+
+    With `capex_def`, capex is also given on the company's own definition (D44).
+    """
     spec = em.for_claim(claim_type)
     rows: list[NumberRow] = []
     series: dict[str, dict] = {}
@@ -160,6 +240,7 @@ def number_table(
             + [m for r in spec.get("ratios", []) for m in em.ratios[r].values()]
         )
     )
+    to_emit: list[tuple[str, str, dict, bool]] = []  # (name, tag, annual values, derived)
     for measure in names:
         tag, annual = annual_series(conn, cik, em.measures.get(measure, []))
         derived = False
@@ -170,7 +251,12 @@ def number_table(
         name = TAG_LABELS.get(tag, measure.replace("_", " "))
         if derived:
             name = "gross profit (computed by code: revenue minus cost of revenue)"
-        full_tag = tag if derived else f"us-gaap:{tag}"
+        to_emit.append((name, tag if derived else f"us-gaap:{tag}", annual, derived))
+        if measure == "capex" and capex_def is not None:
+            ctag, cannual = derived_company_capex(conn, em, cik, capex_def)
+            if cannual:
+                to_emit.append((company_capex_name(capex_def), ctag, cannual, True))
+    for name, full_tag, annual, derived in to_emit:
         prev = None
         for end in sorted(annual):
             fact = annual[end]

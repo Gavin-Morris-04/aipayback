@@ -20,7 +20,14 @@ from dataclasses import dataclass, field
 
 from aipb.parse.passages import normalize_for_match
 from aipb.stages.dedupe import words
-from aipb.verify.numbers import EvidenceMap, NumberRow, deadline_end, fiscal_year_end, number_table
+from aipb.verify.numbers import (
+    EvidenceMap,
+    NumberRow,
+    capex_definition,
+    deadline_end,
+    fiscal_year_end,
+    number_table,
+)
 
 TOP_K = 8
 PER_FILING = 2
@@ -59,6 +66,7 @@ class VerifyContext:
     evidence: list[EvidencePassage] = field(default_factory=list)
     numbers: list[NumberRow] = field(default_factory=list)
     deadline_period_filed: bool = False  # a 10-K/10-Q covering the deadline period is in
+    capex_definition: str = ""  # the company's own capex definition, quoted (D44)
 
     @property
     def silent_walkback_possible(self) -> bool:
@@ -219,7 +227,10 @@ def build_context(
         later = search(conn, cl["cik"], terms, after=d_end, exclude_accession="", limit=200)
         mentions_after = sum(1 for r in later if mentions(promise, r["text"]))
     from_year = int(cl["first_stated"][:4]) - 1
-    numbers = number_table(conn, em, cl["cik"], promise["claim_type"], from_year)
+    cdef = None
+    if promise["claim_type"] == "capex_investment":
+        cdef = capex_definition(conn, cl["cik"], cl["first_stated"])
+    numbers = number_table(conn, em, cl["cik"], promise["claim_type"], from_year, cdef)
     return VerifyContext(
         cluster_id=cluster_id,
         variant=variant,
@@ -240,6 +251,7 @@ def build_context(
         evidence=evidence,
         numbers=numbers,
         deadline_period_filed=period_filed,
+        capex_definition=cdef.describe() if cdef else "",
     )
 
 
@@ -281,6 +293,13 @@ def render(ctx: VerifyContext) -> str:
         f"{'yes' if ctx.deadline_period_filed else 'no'}",
         f"10-K/10-Q filings after the deadline: {ctx.periodic_after_deadline}",
         f"Later passages that still mention this promise: {ctx.mentions_after_deadline}",
+    ]
+    if p.get("claim_type") == "capex_investment":
+        lines.append(
+            "Company's usual capex definition in its filings: "
+            + (ctx.capex_definition or "none stated; use purchases of property and equipment")
+        )
+    lines += [
         "</facts computed by code>",
         "",
         "<reported numbers>",

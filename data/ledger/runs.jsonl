@@ -20,3 +20,5 @@
 {"command": "", "device": "", "estimate_usd": "0", "event": "finish", "git_sha": "", "reserved_usd": "0", "run_id": "run-2026-11-11-e0c83862", "stage": "", "status": "ok", "ts": "2026-11-11T22:06:24+00:00"}
 {"command": "explain", "device": "dev-95047d", "estimate_usd": "0.0069753750", "event": "start", "git_sha": "8944010", "reserved_usd": "0.0069753750", "run_id": "run-2026-11-11-60ffe7c8", "stage": "explain", "status": "", "ts": "2026-11-11T22:07:11+00:00"}
 {"command": "", "device": "", "estimate_usd": "0", "event": "finish", "git_sha": "", "reserved_usd": "0", "run_id": "run-2026-11-11-60ffe7c8", "stage": "", "status": "ok", "ts": "2026-11-11T22:14:19+00:00"}
+{"command": "verify --tier 1", "device": "dev-95047d", "estimate_usd": "0.0401030000", "event": "start", "git_sha": "9459b14", "reserved_usd": "0.0401030000", "run_id": "run-2026-11-12-e7864fd1", "stage": "verify_t1", "status": "", "ts": "2026-11-12T19:58:36+00:00"}
+{"command": "", "device": "", "estimate_usd": "0", "event": "finish", "git_sha": "", "reserved_usd": "0", "run_id": "run-2026-11-12-e7864fd1", "stage": "", "status": "ok", "ts": "2026-11-12T20:04:16+00:00"}

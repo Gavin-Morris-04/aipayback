@@ -1,10 +1,10 @@
 # Progress
 
-_Last updated: 2026-11-11 (pilot run complete: 13 of 40 AI promises published locally; blocked on Nick's labels)_
+_Last updated: 2026-11-12 (prompt v3: Tier 1 re-run done; Tier 2 + explain wait for Gavin's go-ahead)_
 
 ## Where things stand
 
-On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed without me and Nick's help." So the code for **Phases 0–5 is built, tested (176 offline tests, CI green) and pushed**. Phase 6 is discovery-driven and waits on partner calls.
+On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed without me and Nick's help." So the code for **Phases 0–5 is built, tested (191 offline tests, CI green) and pushed**. Phase 6 is discovery-driven and waits on partner calls.
 
 **2026-11-11:**
 - Gavin put the API key in `.env` and ran the smoke test (G3, G4). It cost $0.0000102 for 27 input and 15 output tokens on Haiku 5.5.
@@ -21,7 +21,16 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
 - **Status packet (G11)** rebuilt from the 40 AI promises: `exports/packets/status_packet_v1.xlsx` (key committed). The packet built before extract v2 was never sent.
 - Checklist ticks: Gavin G1–G4 and G6–G8 (G7 was ticked before the run finished); Nick N1–N6. **N6 (labeling) was ticked about 40 minutes after the packets went out, and no returned files are in the repo yet.** Gavin is checking with Nick.
 
-**API spend so far: about $0.25** (smoke test + pilot). Run `uv run aipb budget` for the exact figure.
+**2026-11-12:**
+- Gavin answered the two D43 questions (D44):
+  - **Capex definition: yes.** A capex promise that doesn't state its definition is judged on the company's usual one, as its own filings state it. Code detects Meta's "capital expenditures, including principal payments on finance leases" and adds a summed row, $72.22 billion for 2025, the figure Meta reports.
+  - **"Approximately $X to $Y": Gavin asked me to decide.** It follows the range rule (the low end, no tolerance). A near-miss is "No evidence yet" under Nick's partial-delivery rule, with the figure stated. Nick can overrule.
+- Prompt v3 (verify_t1, verify_t2, explain) carries both rules, plus the older-baseline margin rule.
+- **Tier 1 v3 re-run done ($0.018).** The R-001 Meta item is now Delivered at 0.8, citing $69.69 billion and $72.22 billion against $70–72 billion. 22 of 40 escalate to Tier 2.
+- **Waiting on Gavin's go-ahead:** Tier 2 (worst case $0.50, its run cap; the v2 Tier 2 run cost $0.07) + explain ($0.0064). Together that's over $0.50. Until it runs, don't publish: the stored Tier 2 verdicts are still v2.
+- `evals/gold/returned/` now exists with a README; it hadn't been created before.
+
+**API spend so far: $0.26** (smoke test + pilot + Tier 1 v3). Run `uv run aipb budget` for the exact figure.
 
 The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-ahead in chat, and the S&P 100 run needs explicit cost approval.
 
@@ -39,15 +48,16 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 
 **Step-by-step checklist for Gavin and Nick:** https://claude.ai/artifact/QqmDKJPxRPfprggV99eEJY (private; share it with Nick as an Editor so his ticks sync). It has 17 Gavin steps (G1–G17) and 9 Nick steps (N1–N9), each with exact instructions, plus a pilot company picker that shows AI-mention counts for all 100 companies. Ticks are stored in the page's shared database, so Claude Code can read progress with `ArtifactData list` on collection `steps`.
 
-**Next session:** `git pull`, read this file, then check the checklist's ticks and continue from the first unticked step. If the pilot's explain, publish, site and findings aren't committed yet, finish them first (the commands are in "Pilot run order").
+**Next session:** `git pull`, read this file, then check the checklist's ticks. If Gavin has given the go-ahead for the prompt v3 Tier 2 run, do it first: `uv run aipb verify --confirm` (Tier 1 is cached, so only Tier 2 is paid), then `uv run aipb explain`, `uv run aipb publish`, `uv run aipb site`, `uv run aipb findings`, read every published status, close R-001 in `data/error_reports.csv` if the Meta item is right, and commit with the ledger and outputs.
 
 | Who | Task | Unblocks |
 |---|---|---|
 | Gavin | Upload `exports/packets/status_packet_v1.xlsx` (40 AI promises, built after extract v2) to Drive `packets/` and tell Nick (G11) | status eval; confidence threshold |
-| Gavin | Check N6 with Nick. If his passage labels are done, download them from Drive `returned/` into `evals/gold/returned/` (G9); if not, he unticks N6 | first eval; Sonnet A/B |
+| Gavin | Go-ahead in chat for the prompt v3 Tier 2 + explain run (worst case $0.51; the last Tier 2 run cost $0.07) | updated pilot statuses; R-001 closed |
+| Gavin | Check N6 with Nick. If Nick's passage labels are done, download them from Drive `returned/` into `evals/gold/returned/` (the folder is in the repo now; see its README) (G9); if not, Nick unticks N6 | first eval; Sonnet A/B |
 | Gavin | Share the checklist page with Nick as Editor: on 2026-11-11 it was still private to Gavin | Nick's own ticks |
 | Nick | Label the passage packets (~6–8 h), then the status packet (~40 promises) | evals; confidence threshold |
-| Nick (via Gavin) | Two rubric questions (D43): does "approximately $X to $Y" follow the range rule or the 90% "about" rule? May a capex promise be judged on the company's usual guidance definition (e.g. Meta's "including finance leases") when the quote doesn't say? | R-001 hold; verify prompt v3 |
+| Nick (FYI, via Gavin) | D44 decided both D43 questions: "approximately" ranges use the range rule, and capex uses the company's usual definition when the promise is silent. Both are noted in Nick's rubric and evidence map; Nick can overrule either | — |
 | Nick | Before `SITE_DEPLOY` is switched on: read the 13 published pilot statuses in the site preview | first public results |
 | Gavin | Outreach (`gtm/outreach/`, ~25 messages) → discovery calls → notes | Phase 6, ROI numbers, demos |
 | Gavin | Buttondown account (free tier) → API key as GitHub secret `BUTTONDOWN_API_KEY`; username into `config/site.yaml` | newsletter, signup box |
@@ -142,7 +152,7 @@ git add -A && git commit -m "S&P 100 run" && git push
 - ~~Gross margin fallback~~: **fixed** (D41). Nick's map kept "revenue minus cost of revenue", and code computes it now.
 - **Zero-AI companies in the S&P 100 run (D43):** a company with no AI passages in the window isn't listed on the site. Decide whether to list it with a true "no AI passages found" notice.
 - **Extract recall (D42):** links that name only a product (FSD, Amazon Q, Blackwell) are dropped. If Nick's labels show misses, give the link check its own AI-product term list.
-- **Prompt v3 items (next verify prompt revision, D41/D43):** state the answer to Nick's "approximately" range question explicitly. say explicitly that a margin change against a baseline older than the prior year goes to the second check. Not built yet: showing `CostOfRevenue` only when a promise names it; bank efficiency ratios; segment-note figures.
+- **Prompt v3 (D44) is built:** the "approximately" range rule, capex on the company's definition, the partial-delivery rule and the older-baseline margin rule. Not built yet: showing `CostOfRevenue` only when a promise names it; bank efficiency ratios; segment-note figures.
 
 ## Latest eval numbers
 None yet: they need real outputs (the pilot run) and Nick's labels (gold).
