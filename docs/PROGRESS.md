@@ -41,6 +41,8 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
   - Dev eval: recall 25.0% → 54.2%, F1 36.4% → 59.1%, precision 65.0%.
   - New command: `aipb ai-products [--suggest]`.
   - Nick's disagreement file is now `exports/disagreements/20261112T210557_262d836_dev_default.xlsx` (19 rows). It replaces the 21-row file, which Gavin should not send.
+- **Status packet rebuilt with all 58 promises ($0)** after the product-name fix: `exports/packets/status_packet_v1.xlsx`, key committed. It hadn't been sent, so there's nothing to replace in Drive except an early copy, if one was uploaded.
+- The checklist page now opens with **"Do this now"**. Gavin: OK the 58-promise check, upload the 19-row disagreement file and the 58-promise status packet, and share the page with Nick. Nick: N7, then N8.
 - **Waiting on Gavin's OK: check the 58 promises.**
   - Worst case is about $0.55: Tier 1 $0.02 for 18 new promises (40 are cached), Tier 2 at its $0.50 run cap, and explain at about $0.03 for up to 58 statuses.
   - Expected real cost is about $0.10 (the last Tier 2 run was $0.07).
@@ -56,7 +58,7 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 | 0 Setup, billing safety | ✅ budget guard, ledger, cache, secret hooks, CI; smoke test passed 2026-11-11 | **Gavin:** check the Console Usage page shows about $0.00001 |
 | 1 Ingest, packets, kits | ✅ final pilot (Nick's picks) ingested; packets sent (G6); Nick's rubric and evidence map merged (G8, D41) | — |
 | 2 Filter, extract, evals | ✅ pilot filter + extract v2 run (D42); Nick's 450 labels imported; first eval: extraction F1 36.4% (recall 25%) | AI product names fix done (D45): dev F1 59.1%, recall 54.2%. **Nick:** 19 disagreements (N7). A/B after the fix, sized first (D39) |
-| 3 Verification, citations | ✅ pilot verify run on Nick's rules; status packet of 40 AI promises built | **Gavin:** upload the status packet (G11); **Nick:** 40 status labels (N8) |
+| 3 Verification, citations | ✅ pilot verify run on Nick's rules; status packet of 40 AI promises built | **Gavin:** upload the status packet (G11, 58 promises); **Nick:** 58 status labels (N8) |
 | 4 Site, newsletter | ✅ site, publish, newsletter with rails, 3 workflows (all off) | **Gavin:** Buttondown, Pages, secrets/variables; demos |
 | 5 S&P 100, findings, launch kit | ✅ sp100 list, findings, solution brief, demo, pilot, objections, LinkedIn drafts | cost approval; real results; launch |
 | 6 Monetization, integrations | ⏸ only what partners ask for (Pro alerts, exports, MCP server, paid report) | discovery calls → `gtm/discovery/SYNTHESIS.md` |
@@ -69,11 +71,11 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 
 | Who | Task | Unblocks |
 |---|---|---|
-| Gavin | Upload `exports/packets/status_packet_v1.xlsx` (40 AI promises, built after extract v2) to Drive `packets/` and tell Nick (G11) | status eval; confidence threshold |
+| Gavin | Upload `exports/packets/status_packet_v1.xlsx` (58 AI promises, rebuilt 2026-11-12 after D45) to Drive `packets/` and tell Nick (G11) | status eval; confidence threshold |
 | Gavin | OK in chat to check the 58 promises: Tier 1 for 18 new, Tier 2, explain (worst case about $0.55; expected about $0.10) | updated pilot statuses; R-001 closed |
 | Gavin | Put `exports/disagreements/20261112T210557_262d836_dev_default.xlsx` (19 rows) in Drive for Nick (N7) | label fixes; prompt changes |
 | Gavin | Share the checklist page with Nick as Editor: on 2026-11-11 it was still private to Gavin | Nick's own ticks |
-| Nick | Review the 19 disagreements (N7), then label the status packet (~40 promises, N8) | label fixes; confidence threshold |
+| Nick | Review the 19 disagreements (N7), then label the status packet (58 promises, N8) | label fixes; confidence threshold |
 | Nick (FYI, via Gavin) | D44 decided both D43 questions: "approximately" ranges use the range rule, and capex uses the company's usual definition when the promise is silent. Both are noted in Nick's rubric and evidence map; Nick can overrule either | — |
 | Nick | Before `SITE_DEPLOY` is switched on: read the 13 published pilot statuses in the site preview | first public results |
 | Gavin | Outreach (`gtm/outreach/`, ~25 messages) → discovery calls → notes | Phase 6, ROI numbers, demos |
