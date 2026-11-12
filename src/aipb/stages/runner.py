@@ -15,6 +15,7 @@ from aipb.budget.guard import usd
 from aipb.context import AppContext
 from aipb.llm.client import LLMClient, LLMResult, MissingApiKey, OfflineCacheMiss, Plan, Request
 from aipb.llm.params import OutputError, load_prompt, stage_settings
+from aipb.stages import ai_products
 from aipb.stages import dedupe as dedupe_mod
 from aipb.stages import extract as ex
 from aipb.stages import filter as fl
@@ -155,9 +156,15 @@ def run_extract(
     good, bad, errors = ex.first_pass(rows, results)
     stats = ex.ExtractStats(passages=len(rows))
     lexicon = ctx.lexicon
-
-    def names_ai(text: str) -> bool:
-        return bool(lexicon.scan(text)[0])
+    # A link may also name an AI product the company's own filings tie to AI (D45).
+    names_ai_by_cik: dict[int, Callable[[str], bool]] = {}
+    for r in rows:
+        if r["cik"] not in names_ai_by_cik:
+            confirmed = ctx.ai_products.confirmed(conn, r["cik"], r["ticker"], lexicon)
+            names_ai_by_cik[r["cik"]] = ai_products.names_ai_for(lexicon, confirmed)
+            if confirmed:
+                names = ", ".join(p.name for p in confirmed)
+                log(f"{r['ticker']}: AI products confirmed in its filings: {names}")
 
     retried: set[str] = set()
 
@@ -207,7 +214,9 @@ def run_extract(
             stats.errors.append(f"{pid}: {errors[pid]}")
             continue
         # Only statements whose outcome the passage itself ties to AI are kept (D42).
-        verified, unlinked = ex.split_linked(r["text"], good.get(pid, []), names_ai)
+        verified, unlinked = ex.split_linked(
+            r["text"], good.get(pid, []), names_ai_by_cik[r["cik"]]
+        )
         dropped = len(bad.get(pid, []))
         detail = [b.get("quote", "")[:80] for b in bad.get(pid, [])]
         detail += [f"{v.quote[:60]} ({why})" for v, why in unlinked]

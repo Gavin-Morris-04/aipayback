@@ -395,6 +395,22 @@ Nick can overrule this; it is one line in each verify prompt.
 
 **Result so far (Tier 1 only, $0.018):** the R-001 Meta item is Delivered at confidence 0.8, citing both $69.69 billion and $72.22 billion against $70–72 billion. 22 of 40 items escalate to Tier 2, whose worst case reaches its $0.50 run cap, so the combined run is over $0.50 and waits for Gavin's go-ahead. R-001 stays open until the re-run is published.
 
+## D45. AI product names count as an AI link, if the company's own filings say so (2026-11-12)
+**Context.** The first eval against Nick's labels (dev split) found extraction recall of 25%. Of the 24 dev gold promises, 11 were dropped by the ai_link check (D42) because the link named only a product: "Blackwell revenue", "FSD (Supervised)", "Optimus", "purpose-built Robotaxi product". The rubric counts promises about "AI products" as AI promises, so these drops were wrong.
+
+**Decision.**
+- `config/ai_products.yaml` (ap1) lists AI product, platform and program names per company. A link that names one of the company's listed products counts as naming AI.
+- The safeguard is in code (`aipb.stages.ai_products`). A listed name counts for a company only if that company's own filings put it in the same sentence as a keywords.yaml AI term in at least 2 filings. Of 58 listed names, 41 are confirmed; for example H100, Full Self-Driving and Inferentia are not, and they're ignored. Names match case-sensitively, as whole words, and only for their company.
+- The list was built the same way for all 10 pilot companies: capitalized names ranked by how often they share a sentence with an AI term in the company's filings. Only products, platforms and programs were kept; segments ("Data Center", "Power Generation"), markets, places, laws and partner companies were left out. Nick's labels were not used.
+- The prefilter lexicon (kw1) is unchanged. The passages Nick labeled are still the passages the pipeline reads, and extraction replayed from cache for $0.
+- Not added: generic autonomy words ("autonomous", "level 4"). CAT's "autonomous solutions" and NVIDIA's "level 4-ready mobility network" links still don't count. Nick can say whether self-driving counts as AI in general (N7).
+
+**Result ($0):** 58 promise clusters (was 40). Dev extraction recall rose from 25.0% to 54.2%, and F1 from 36.4% to 59.1% [35.7%, 75.0%]. Precision held at 65.0% (13 matched, 7 extra, 11 missed). Claim type is right for 12 of the 13 matches. The disagreement file for Nick is now 19 rows (`exports/disagreements/20261112T210557_262d836_dev_default.xlsx`); it replaces the 21-row file from before the fix.
+
+**Still missed (dev):** 2 passages the filter labeled "none" (product launches), 2 links that name only autonomy, 1 link too far from its quote, and Nick's CAT Power Generation guidance, which ties to AI only through data-center demand. That last one is a rubric question for Nick.
+
+**For the S&P 100:** extend the list to the other 90 companies by the same procedure, then have Nick review it. `uv run aipb ai-products --universe sp100 --suggest` ranks each company's candidate names and shows which listed names its filings confirm ($0).
+
 ## Upcoming decisions (recorded when made)
 - Sonnet use, decided by the capped A/B test (Phase 2, once there's a key and labels). Size it first (D39).
 - The confidence threshold, from the precision-coverage curve (Phase 3, once Nick labels statuses).

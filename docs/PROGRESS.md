@@ -1,10 +1,10 @@
 # Progress
 
-_Last updated: 2026-11-12 (Nick's labels imported, first eval in; prompt v3 Tier 2 + explain wait for Gavin's go-ahead)_
+_Last updated: 2026-11-12 (AI product names fix: dev recall 25% → 54% at $0; checking the 58 promises waits for Gavin's OK)_
 
 ## Where things stand
 
-On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed without me and Nick's help." So the code for **Phases 0–5 is built, tested (191 offline tests, CI green) and pushed**. Phase 6 is discovery-driven and waits on partner calls.
+On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed without me and Nick's help." So the code for **Phases 0–5 is built, tested (196 offline tests, CI green) and pushed**. Phase 6 is discovery-driven and waits on partner calls.
 
 **2026-11-11:**
 - Gavin put the API key in `.env` and ran the smoke test (G3, G4). It cost $0.0000102 for 27 input and 15 output tokens on Haiku 5.5.
@@ -27,7 +27,7 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
   - **"Approximately $X to $Y": Gavin asked me to decide.** It follows the range rule (the low end, no tolerance). A near-miss is "No evidence yet" under Nick's partial-delivery rule, with the figure stated. Nick can overrule.
 - Prompt v3 (verify_t1, verify_t2, explain) carries both rules, plus the older-baseline margin rule.
 - **Tier 1 v3 re-run done ($0.018).** The R-001 Meta item is now Delivered at 0.8, citing $69.69 billion and $72.22 billion against $70–72 billion. 22 of 40 escalate to Tier 2.
-- **Waiting on Gavin's go-ahead:** Tier 2 (worst case $0.50, its run cap; the v2 Tier 2 run cost $0.07) + explain ($0.0064). Together that's over $0.50. Until it runs, don't publish: the stored Tier 2 verdicts are still v2.
+- **Waiting on Gavin's go-ahead:** Tier 2 + explain (superseded below: the run now covers all 58 promises). Until it runs, don't publish: the stored Tier 2 verdicts are still v2.
 - `evals/gold/returned/` now exists with a README; it hadn't been created before.
 - **Nick's passage labels are in (N6, G9).** All 10 pilot packets came back fully labeled: 450 rows (368 none, 46 hype, 25 checkable promise, 11 unsure), 30 with notes, and 31 promises written out. The import found no problems. Nick also returned a labeled IBM packet (95 rows) from the packet list before his picks. Its row IDs match no current key, so it's kept in `evals/gold/returned/not_in_pilot/` and not scored.
 - **First eval (dev split: BLK, CAT, META, NVDA, PFE, TSLA; 257 passages, 24 promises):**
@@ -35,6 +35,16 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
   - Filter accuracy 83.2%; 89.5% of gold-promise passages go on to extraction. Quotes are 100% verbatim. The prefilter missed none of the 13 random non-keyword passages.
   - Disagreement file for Nick (N7): `exports/disagreements/20261112T201200_8d8e263_dev_default.xlsx` (21 rows; `exports/` is git-ignored, so Gavin uploads it).
 - **Why recall is low (dev only):** of the 24 gold promises, **11 are dropped by the ai_link check**, because the link to AI is only a product name (Blackwell, Robotaxi, FSD, Optimus, Cybercab) or, for CAT, Power Generation growth. 2 more were classed "none" by the filter, 2 "hype", and 9 were extracted. This is the known product-name gap (D42). Next fix: an AI product-name list for the ai_link check (and the filter), built from dev rows and company product names, then re-run extract and verify on the pilot after showing the worst case. Nick's CAT Power Generation promises need his note: the rubric excludes general guidance unless the passage ties it to AI.
+- **AI product names fix (D45, $0).** Gavin asked for it on 2026-11-12.
+  - `config/ai_products.yaml` (ap1) lists product names per company. A link naming one counts only if the company's own filings tie that name to AI in at least 2 filings (41 of 58 names confirmed).
+  - Extraction replayed from cache: 58 promise clusters (was 40).
+  - Dev eval: recall 25.0% → 54.2%, F1 36.4% → 59.1%, precision 65.0%.
+  - New command: `aipb ai-products [--suggest]`.
+  - Nick's disagreement file is now `exports/disagreements/20261112T210557_262d836_dev_default.xlsx` (19 rows). It replaces the 21-row file, which Gavin should not send.
+- **Waiting on Gavin's OK: check the 58 promises.**
+  - Worst case is about $0.55: Tier 1 $0.02 for 18 new promises (40 are cached), Tier 2 at its $0.50 run cap, and explain at about $0.03 for up to 58 statuses.
+  - Expected real cost is about $0.10 (the last Tier 2 run was $0.07).
+  - Commands: `uv run aipb verify --confirm`, `uv run aipb explain`, then `publish`, `site`, `findings`. Read every published status, close R-001 if the Meta item is right, and commit with the ledger and outputs.
 - Gotcha: the first trace of the missed promises also printed the 7 test-split (AMZN) gold promises. Nothing was tuned on them. Build the product-name list from dev rows only, so the test split stays usable for milestones.
 
 **API spend so far: $0.26** (smoke test + pilot + Tier 1 v3). Run `uv run aipb budget` for the exact figure.
@@ -45,7 +55,7 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 |---|---|---|
 | 0 Setup, billing safety | ✅ budget guard, ledger, cache, secret hooks, CI; smoke test passed 2026-11-11 | **Gavin:** check the Console Usage page shows about $0.00001 |
 | 1 Ingest, packets, kits | ✅ final pilot (Nick's picks) ingested; packets sent (G6); Nick's rubric and evidence map merged (G8, D41) | — |
-| 2 Filter, extract, evals | ✅ pilot filter + extract v2 run (D42); Nick's 450 labels imported; first eval: extraction F1 36.4% (recall 25%) | **Gavin:** approve the AI product-name fix (recall); **Nick:** 21 disagreements (N7). A/B after the fix, sized first (D39) |
+| 2 Filter, extract, evals | ✅ pilot filter + extract v2 run (D42); Nick's 450 labels imported; first eval: extraction F1 36.4% (recall 25%) | AI product names fix done (D45): dev F1 59.1%, recall 54.2%. **Nick:** 19 disagreements (N7). A/B after the fix, sized first (D39) |
 | 3 Verification, citations | ✅ pilot verify run on Nick's rules; status packet of 40 AI promises built | **Gavin:** upload the status packet (G11); **Nick:** 40 status labels (N8) |
 | 4 Site, newsletter | ✅ site, publish, newsletter with rails, 3 workflows (all off) | **Gavin:** Buttondown, Pages, secrets/variables; demos |
 | 5 S&P 100, findings, launch kit | ✅ sp100 list, findings, solution brief, demo, pilot, objections, LinkedIn drafts | cost approval; real results; launch |
@@ -60,11 +70,10 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 | Who | Task | Unblocks |
 |---|---|---|
 | Gavin | Upload `exports/packets/status_packet_v1.xlsx` (40 AI promises, built after extract v2) to Drive `packets/` and tell Nick (G11) | status eval; confidence threshold |
-| Gavin | Go-ahead in chat for the prompt v3 Tier 2 + explain run (worst case $0.51; the last Tier 2 run cost $0.07) | updated pilot statuses; R-001 closed |
-| Gavin | Put `exports/disagreements/20261112T201200_8d8e263_dev_default.xlsx` in Drive for Nick (N7) | label fixes; prompt changes |
-| Gavin | Approve the AI product-name fix for the ai_link check (Claude Code shows the worst case of the extract + verify re-run first) | extraction recall; Sonnet A/B |
+| Gavin | OK in chat to check the 58 promises: Tier 1 for 18 new, Tier 2, explain (worst case about $0.55; expected about $0.10) | updated pilot statuses; R-001 closed |
+| Gavin | Put `exports/disagreements/20261112T210557_262d836_dev_default.xlsx` (19 rows) in Drive for Nick (N7) | label fixes; prompt changes |
 | Gavin | Share the checklist page with Nick as Editor: on 2026-11-11 it was still private to Gavin | Nick's own ticks |
-| Nick | Review the 21 disagreements (N7), then label the status packet (~40 promises, N8) | label fixes; confidence threshold |
+| Nick | Review the 19 disagreements (N7), then label the status packet (~40 promises, N8) | label fixes; confidence threshold |
 | Nick (FYI, via Gavin) | D44 decided both D43 questions: "approximately" ranges use the range rule, and capex uses the company's usual definition when the promise is silent. Both are noted in Nick's rubric and evidence map; Nick can overrule either | — |
 | Nick | Before `SITE_DEPLOY` is switched on: read the 13 published pilot statuses in the site preview | first public results |
 | Gavin | Outreach (`gtm/outreach/`, ~25 messages) → discovery calls → notes | Phase 6, ROI numbers, demos |

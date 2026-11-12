@@ -96,6 +96,10 @@ class Paths:
         return self.config / "keywords.yaml"
 
     @property
+    def ai_products_config(self) -> Path:
+        return self.config / "ai_products.yaml"
+
+    @property
     def exports_dir(self) -> Path:
         return self.root / "exports"
 

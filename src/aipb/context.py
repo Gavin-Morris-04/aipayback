@@ -17,6 +17,7 @@ from aipb.paths import Paths
 from aipb.sec.client import SecClient
 from aipb.sec.manifest import Manifest
 from aipb.settings import Settings
+from aipb.stages.ai_products import AIProducts
 from aipb.stages.prefilter import Lexicon
 
 
@@ -75,6 +76,10 @@ class AppContext:
     @cached_property
     def lexicon(self) -> Lexicon:
         return Lexicon.load(self.paths.keywords_config)
+
+    @cached_property
+    def ai_products(self) -> AIProducts:
+        return AIProducts.load(self.paths.ai_products_config)
 
     @cached_property
     def llm(self) -> LLMClient:

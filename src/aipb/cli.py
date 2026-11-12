@@ -585,6 +585,36 @@ def packets(
     )
 
 
+@app.command("ai-products")
+def ai_products_cmd(
+    universe: UniverseOpt = "pilot",
+    ticker: TickerOpt = None,
+    suggest: Annotated[
+        bool, typer.Option("--suggest", help="Also rank candidate names from the filings.")
+    ] = False,
+) -> None:
+    """AI product names per company (config/ai_products.yaml) and which ones the company's
+    own filings tie to AI (D45). Costs $0."""
+    from aipb.stages import ai_products as ap
+
+    ctx = _ctx()
+    ticker_cik = _ciks_for(ctx, _members(ctx, universe, ticker))
+    conn = db.connect(ctx.paths.database)
+    try:
+        for t, cik in ticker_cik.items():
+            listed = ctx.ai_products.by_ticker.get(t, [])
+            ok = ctx.ai_products.confirmed(conn, cik, t, ctx.lexicon)
+            names = {p.name for p in ok}
+            print(f"{t}: confirmed " + (", ".join(f"{p.name} ({p.filings})" for p in ok) or "none"))
+            if missing := [n for n in listed if n not in names]:
+                print("   listed but not tied to AI in its filings: " + ", ".join(missing))
+            if suggest:
+                ranked = ap.suggest(conn, cik, ctx.lexicon)
+                print("   candidates: " + "; ".join(f"{n} ({k})" for n, k in ranked))
+    finally:
+        conn.close()
+
+
 @app.command("import-labels")
 def import_labels_cmd(
     folder: Annotated[

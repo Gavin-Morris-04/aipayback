@@ -2,7 +2,7 @@
 
 **Did the AI promises pay off?** Since 2023, public companies have promised a lot from AI: cost savings, margin gains, leaner workforces, new revenue. AIPayback pulls the specific, checkable promises out of SEC filings, checks each one against the company's *later* filings and reported numbers, and publishes a neutral status with citations to both the promise and the evidence.
 
-> Status: **Phases 0–5 built and tested (191 offline tests). Pilot run done for $0.26:** 40 AI promises from 10 companies, checked on the finance lead's rules. Results are a local preview until the finance lead reviews them and the gold labels give the first accuracy numbers. Details: [docs/PROGRESS.md](docs/PROGRESS.md). Plan: [docs/PLAN.md](docs/PLAN.md).
+> Status: **Phases 0–5 built and tested (196 offline tests). Pilot run done for $0.26:** 40 AI promises from 10 companies, checked on the finance lead's rules. Results are a local preview until the finance lead reviews them and the gold labels give the first accuracy numbers. Details: [docs/PROGRESS.md](docs/PROGRESS.md). Plan: [docs/PLAN.md](docs/PLAN.md).
 > Informational only. Not investment advice.
 
 ## How it works
@@ -63,7 +63,8 @@ The full SEC download (about 4.8 GB with the S&P 100) isn't committed. A manifes
 | Date | Set | Extraction F1 | Status accuracy | Quote fidelity | Cost / promise |
 |---|---|---|---|---|---|
 <!-- eval-history:start -->
-| 2026-11-12 | dev (257 passages, default) | 36.4% [8.7%, 60.0%] | (Phase 3) | 100.0% | $0.0003 |
+| 2026-11-12 | dev (257 passages, default; extract v2) | 36.4% [8.7%, 60.0%] | (Phase 3) | 100.0% | $0.0003 |
+| 2026-11-12 | dev (257 passages, default; AI product names, D45) | 59.1% [35.7%, 75.0%] | (Phase 3) | 100.0% | $0.0003 |
 <!-- eval-history:end -->
 
 Gold labels come from a finance student and are split into dev and held-out test, grouped by company. Full method: Methodology page (Phase 4).
@@ -88,6 +89,7 @@ Free steps (SEC downloads and code only):
 uv run aipb ingest            # download filings for config/universe/pilot.csv
 uv run aipb parse             # passages + FTS index + XBRL facts
 uv run aipb prefilter         # AI keywords, forward-looking cues, dedup
+uv run aipb ai-products       # AI product names each company's filings tie to AI (--suggest ranks candidates)
 uv run aipb stats             # per-company counts
 uv run aipb packets           # Excel labeling packets -> exports/packets/
 uv run aipb import-labels     # check returned packets -> evals/gold/*.csv
@@ -119,7 +121,7 @@ Add `--universe sp100` for the S&P 100 (or `make <target> U=sp100`), and `-t TIC
 
 | Workflow | What it does | Turn on with |
 |---|---|---|
-| `ci.yml` | lint + 191 offline tests on every push | always on |
+| `ci.yml` | lint + 196 offline tests on every push | always on |
 | `deploy-site.yml` | build the site from `data/site/` and deploy to GitHub Pages | repo variable `SITE_DEPLOY=true` |
 | `newsletter.yml` | stage on the 1st, send on the 2nd (hold label, kill switch, ramp-up) | `NEWSLETTER_ENABLED=true` (+ `NEWSLETTER_AUTOSEND=true` for real sends) |
 | `monitor.yml` | monthly: new filings → paid stages (guarded) → publish | `MONITOR_ENABLED=true` |

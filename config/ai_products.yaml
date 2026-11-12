@@ -1,0 +1,38 @@
+# AI products, platforms and programs named in each company's own filings (D45).
+#
+# The rubric counts a promise about an "AI product" as an AI promise. Extract v2 keeps a
+# statement only if its ai_link (the filing's own words tying it to AI) names AI, and a
+# link like "Blackwell revenue" or "FSD (Supervised)" names no AI term from
+# config/keywords.yaml. This list lets such a link count.
+#
+# Two safeguards, both in code (aipb.stages.ai_products):
+# - A name counts for a company only if that company's own filings put it in the same
+#   sentence as an AI term (config/keywords.yaml) in at least `min_filings` filings. A
+#   non-AI product listed by mistake is ignored, and every confirmed name has an example
+#   passage for the audit.
+# - Names match case-sensitively, as whole words, and only for the company listed.
+#
+# How the list was built (2026-11-12), the same way for every pilot company: rank the
+# capitalized names that share a sentence with an AI term in the company's filings, then
+# keep products, platforms and programs. Segments ("Data Center", "Power Generation"),
+# markets, places, laws and partner companies are left out. Never from Nick's labels.
+#
+# This list feeds only the ai_link check. The prefilter (keywords.yaml) is unchanged, so
+# the passages Nick labeled are still the passages the pipeline reads. Bump `version`
+# whenever the list changes.
+
+version: ap1
+min_filings: 2
+
+companies:
+  NVDA: [Blackwell, Hopper, Rubin, Grace Hopper, Grace Blackwell, GB200, GB300, GH200, H100,
+         H200, H20, B200, B300, DGX, DGX Cloud, NVIDIA AI Enterprise, Omniverse, Jetson,
+         NVIDIA DRIVE, DRIVE AGX, DRIVE Hyperion, Spectrum-X, NIM, Earth-2, Isaac, Cosmos]
+  TSLA: [FSD, Full Self-Driving, Autopilot, Robotaxi, Cybercab, Optimus, Cortex, Dojo]
+  META: [Llama, MTIA, Ray-Ban Meta, Advantage+, Meta Superintelligence Labs, superintelligence]
+  AMZN: [Amazon Bedrock, Bedrock, Amazon Q, Q Developer, Q Business, Trainium, Inferentia,
+         SageMaker, Rufus, Alexa+, Amazon Nova, Project Rainier, Project Ceiba]
+  MSFT: [Azure OpenAI, Microsoft Foundry]
+  FDX: [FedEx Dataworks, Dataworks, FedEx Virtual Assistant]
+  # BLK ("Aladdin Copilot", "Aladdin AI") already match keywords.yaml terms.
+  # CAT, PEP, PFE: no AI product names in their filings.
