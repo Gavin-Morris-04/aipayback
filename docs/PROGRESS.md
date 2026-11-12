@@ -1,10 +1,10 @@
 # Progress
 
-_Last updated: 2026-11-12 (AI product names fix: dev recall 25% → 54% at $0; checking the 58 promises waits for Gavin's OK)_
+_Last updated: 2026-11-12 (58 pilot promises checked for $0.09: 12 published locally, 46 pending; waiting on Nick's N7 and N8)_
 
 ## Where things stand
 
-On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed without me and Nick's help." So the code for **Phases 0–5 is built, tested (196 offline tests, CI green) and pushed**. Phase 6 is discovery-driven and waits on partner calls.
+On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed without me and Nick's help." So the code for **Phases 0–5 is built, tested (202 offline tests, CI green) and pushed**. Phase 6 is discovery-driven and waits on partner calls.
 
 **2026-11-11:**
 - Gavin put the API key in `.env` and ran the smoke test (G3, G4). It cost $0.0000102 for 27 input and 15 output tokens on Haiku 5.5.
@@ -47,9 +47,20 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
   - Worst case is about $0.55: Tier 1 $0.02 for 18 new promises (40 are cached), Tier 2 at its $0.50 run cap, and explain at about $0.03 for up to 58 statuses.
   - Expected real cost is about $0.10 (the last Tier 2 run was $0.07).
   - Commands: `uv run aipb verify --confirm`, `uv run aipb explain`, then `publish`, `site`, `findings`. Read every published status, close R-001 if the Meta item is right, and commit with the ledger and outputs.
+- **58 promises checked (D46), Gavin's OK, $0.09.** Tier 1 for 18 new promises, all 33 Tier 2 escalations (after fixing a bug that kept re-sending the first ones), and explanations.
+  - Two NVIDIA Delivered items are held: R-002 and R-003 cite only post-deadline evidence. R-001 (Meta $70–72 billion) is closed.
+  - Explanations now get code-computed range comparisons, plus wording checks for "we/our" outside quotation marks and mentions of our checks. Explain uses brief thinking.
+  - **12 of 58 published in the local preview:** 7 Delivered (Meta capex) and 5 No evidence yet (Amazon). 46 are pending.
+  - Preview: `site/dist/index.html` (72 pages).
+  - Gavin uploaded the disagreement file and the 58-promise status packet, and shared the checklist page with Nick (2026-11-12).
+- **For Nick before `SITE_DEPLOY`** (D46): 4 of the 5 Amazon items are present-tense product claims or announcements, not promises. Extract v3 should drop them. One Meta explanation mixes up the capex and free-cash-flow definitions.
+- **Next engineering (needs no one):**
+  - extract v3 to drop non-forward-looking claims (re-extraction is paid; show the worst case);
+  - retrieval of the deadline-period earnings release for R-002 and R-003;
+  - a retry for explanations that fail the wording checks.
 - Gotcha: the first trace of the missed promises also printed the 7 test-split (AMZN) gold promises. Nothing was tuned on them. Build the product-name list from dev rows only, so the test split stays usable for milestones.
 
-**API spend so far: $0.26** (smoke test + pilot + Tier 1 v3). Run `uv run aipb budget` for the exact figure.
+**API spend so far: $0.35** (smoke test, pilot, Tier 1 v3, and the 58-promise check). Run `uv run aipb budget` for the exact figure.
 
 The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-ahead in chat, and the S&P 100 run needs explicit cost approval.
 
@@ -71,10 +82,7 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 
 | Who | Task | Unblocks |
 |---|---|---|
-| Gavin | Upload `exports/packets/status_packet_v1.xlsx` (58 AI promises, rebuilt 2026-11-12 after D45) to Drive `packets/` and tell Nick (G11) | status eval; confidence threshold |
-| Gavin | OK in chat to check the 58 promises: Tier 1 for 18 new, Tier 2, explain (worst case about $0.55; expected about $0.10) | updated pilot statuses; R-001 closed |
-| Gavin | Put `exports/disagreements/20261112T210557_262d836_dev_default.xlsx` (19 rows) in Drive for Nick (N7) | label fixes; prompt changes |
-| Gavin | Share the checklist page with Nick as Editor: on 2026-11-11 it was still private to Gavin | Nick's own ticks |
+| Gavin | Zip `site/dist` into Drive so Nick can read the 12 published statuses (D46 review list) | Nick's review before `SITE_DEPLOY` |
 | Nick | Review the 19 disagreements (N7), then label the status packet (58 promises, N8) | label fixes; confidence threshold |
 | Nick (FYI, via Gavin) | D44 decided both D43 questions: "approximately" ranges use the range rule, and capex uses the company's usual definition when the promise is silent. Both are noted in Nick's rubric and evidence map; Nick can overrule either | — |
 | Nick | Before `SITE_DEPLOY` is switched on: read the 13 published pilot statuses in the site preview | first public results |

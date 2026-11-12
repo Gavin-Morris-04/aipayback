@@ -411,6 +411,39 @@ Nick can overrule this; it is one line in each verify prompt.
 
 **For the S&P 100:** extend the list to the other 90 companies by the same procedure, then have Nick review it. `uv run aipb ai-products --universe sp100 --suggest` ranks each company's candidate names and shows which listed names its filings confirm ($0).
 
+## D46. Checking the 58 pilot promises: a Tier 2 fix, two holds, and explanations checked by code (2026-11-12)
+**Context.** Gavin OK'd checking all 58 promises (worst case about $0.55). The whole job cost $0.09: Tier 1 $0.007, Tier 2 $0.07 and explanations $0.016. Total spend is now $0.35.
+
+**Tier 2 bug fixed.** Each run sent the first escalations on the list, even ones already finished. Those replayed from the cache for $0 but still used up the run cap, so the 17 escalations past the cap could never be reached. Now finished agent runs replay first, without a reservation, and the cap applies only to escalations not done yet. Regression test: `test_a_second_run_reaches_escalations_the_run_cap_left`. All 33 escalations are done.
+
+**Held as pending (error reports):**
+- R-002: NVIDIA "ramp customer shipments of Blackwell in the second half of the fiscal year". It was marked Delivered, but the evidence is a forward statement plus results from after the deadline.
+- R-003: NVIDIA "Blackwell production ramp is scheduled to begin in the fourth quarter". It was marked Delivered on a FY2026 statement about Blackwell Ultra.
+
+Both may well be right. The evidence shown doesn't prove them, so they're held until retrieval finds the Q4 FY2025 results.
+
+**R-001 closed.** Under D44, Meta's 2025 capex on its own definition is $72.22 billion, which reaches the $70 billion low end.
+
+**Explanations, which were wrong in ways the statuses weren't.** Reading all 18 publishable explanations from explain v3 found:
+- "$37.26 billion falls within $30-37 billion" (it's above);
+- "$72.22 billion is within the $70-72 billion range only at the top end";
+- the company's voice without quotation marks ("We anticipate…", "we shipped…"), which reads as if AIPayback said it;
+- a leak of internal process ("the key finding… is not verified");
+- a Delivered reason based on progress after the deadline.
+
+Fixes, all in code where possible:
+- `verify/targets.py` places each capex figure for the deadline year against a promised dollar range ("is above the range; it reaches the low end"). The sentence goes into the reported-figures document, so the model cites it instead of comparing numbers itself.
+- `verify/neutral.py` adds two wording checks. One catches "we/our/us" outside quotation marks, the other mentions of our checks ("key finding", "the documents", "not verified"). Either one keeps the explanation from publishing, so the item stays "Status pending review".
+- A text block that repeats its cited text word for word is shown in quotation marks (it is the company's words).
+- Explain prompt v5 adds third person, the company name first, the code's comparison words, and deadline-period evidence as the reason for Delivered. Explain now uses brief thinking (adaptive, effort low, max_tokens 4096). With thinking off, 8 of 17 failed the wording checks; with it on, 5 do.
+
+**Result:** 12 of 58 published: 7 Delivered (all Meta capex) and 5 No evidence yet (Amazon). 46 are "Status pending review", including 5 whose explanations failed the wording checks (Meta $70-72 billion, NVIDIA x3, Tesla Robotaxi).
+
+**For Nick's review before anything is public:**
+- 4 of the 5 Amazon items are present-tense product claims or announcements ("DeepFleet… improving robot travel efficiency by 10%", "AI Zones", S3 Vectors, Quick Suite), not forward-looking promises. That's an extraction scope issue: extract v3 should drop them.
+- The Meta $66-72 billion explanation describes the capex definition with the free-cash-flow wording; the numbers are right.
+- Two explanations repeat a sentence (Amazon "AI Zones", S3 Vectors).
+
 ## Upcoming decisions (recorded when made)
 - Sonnet use, decided by the capped A/B test (Phase 2, once there's a key and labels). Size it first (D39).
 - The confidence threshold, from the precision-coverage curve (Phase 3, once Nick labels statuses).

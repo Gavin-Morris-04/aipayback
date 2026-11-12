@@ -3,8 +3,8 @@
  "companies": [
   {
    "counts": {
-    "No evidence yet": 4,
-    "Status pending review": 6
+    "No evidence yet": 5,
+    "Status pending review": 5
    },
    "name": "Amazon",
    "promises": 10,
@@ -34,9 +34,8 @@
   },
   {
    "counts": {
-    "Delivered": 5,
-    "No evidence yet": 1,
-    "Status pending review": 7
+    "Delivered": 7,
+    "Status pending review": 6
    },
    "name": "Meta Platforms",
    "promises": 13,
@@ -54,11 +53,10 @@
   },
   {
    "counts": {
-    "No evidence yet": 3,
-    "Status pending review": 8
+    "Status pending review": 20
    },
    "name": "Nvidia",
-   "promises": 11,
+   "promises": 20,
    "sector": "Information Technology",
    "ticker": "NVDA"
   },
@@ -80,15 +78,15 @@
   },
   {
    "counts": {
-    "Status pending review": 1
+    "Status pending review": 10
    },
    "name": "Tesla, Inc.",
-   "promises": 1,
+   "promises": 10,
    "sector": "Consumer Discretionary",
    "ticker": "TSLA"
   }
  ],
- "generated": "2026-11-11T22:17:59+00:00",
+ "generated": "2026-11-12T22:27:22+00:00",
  "promises": [
   {
    "claim_type": "cost_savings",
@@ -101,7 +99,7 @@
    "form": "8-K",
    "id": "pfe-2025-04-29-e64efc",
    "metric": "additional anticipated cost savings",
-   "pending_reason": "rubric: run rate or realized unclear",
+   "pending_reason": "confidence 0.60 below 0.75",
    "publishable": false,
    "quote": "Pfizer announced approximately $1.2 billion of additional anticipated savings associated with its ongoing cost realignment program(4), expected to be achieved by the end of 2027, designed to further reduce costs primarily in SI&A driven in large part by enhanced digital enablement, including automation and AI",
    "restatements": [],
@@ -121,7 +119,7 @@
    "form": "8-K",
    "id": "pfe-2025-04-29-da0e6d",
    "metric": "R&D organization simplification savings",
-   "pending_reason": "confidence 0.70 below 0.75",
+   "pending_reason": "rubric: run rate or realized unclear",
    "publishable": false,
    "quote": "Savings associated with the simplification of our R&D organization are anticipated to be realized by the end of 2026 and are expected to total approximately $500 million and be reinvested in R&D programs",
    "restatements": [],
@@ -141,7 +139,7 @@
    "form": "10-Q",
    "id": "pfe-2025-05-05-9fc539",
    "metric": "costs associated with additional productivity opportunities",
-   "pending_reason": "confidence 0.60 below 0.75",
+   "pending_reason": "vague_deliverable applies only to specificity-1 promises",
    "publishable": false,
    "quote": "We expect costs associated with the additional productivity opportunities to be incurred through 2027 and to total approximately $1.6 billion",
    "restatements": [
@@ -218,7 +216,7 @@
    "form": "8-K",
    "id": "amzn-2024-02-01-fcbf45",
    "metric": "people receiving free AI skills training",
-   "pending_reason": "confidence 0.30 below 0.75",
+   "pending_reason": "confidence 0.35 below 0.75",
    "publishable": false,
    "quote": "Launched AI Ready to provide free AI skills training to 2 million people globally by 2025",
    "restatements": [],
@@ -294,21 +292,14 @@
    "explanation": {
     "citations": [
      {
-      "cited_text": "The program includes eight free AWS-designed AI courses and a new generative AI scholarship program to help more than 50,000 high school and university students from underserved and underrepresented communities gain AI skills.\n\n",
+      "cited_text": "•Launched AI Ready to provide free AI skills training to 2 million people globally by 2025. The program includes eight free AWS-designed AI courses and a new generative AI scholarship program to help more than 50,000 high school and university students from underserved and underrepresented communities gain AI skills.\n\n",
       "document_index": 0,
       "n": 1,
       "title": "Promise: 8-K filed 2024-02-01",
       "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872424000006/amzn-20231231xex991.htm"
-     },
-     {
-      "cited_text": "•Launched AI Ready to provide free AI skills training to 2 million people globally by 2025. ",
-      "document_index": 0,
-      "n": 2,
-      "title": "Promise: 8-K filed 2024-02-01",
-      "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872424000006/amzn-20231231xex991.htm"
      }
     ],
-    "text": "Amazon's February 2024 8-K announced that its AI Ready initiative would include a new generative AI scholarship program to help more than 50,000 high school and university students from underserved and underrepresented communities gain AI skills[1], as part of a program to provide free AI skills training to 2 million people globally by 2025[2]. The later filings in the data do not report a figure for students helped through the scholarship program, so no evidence has been found yet for this target. The promise has no stated deadline of its own, and the status reflects only the absence of a reported result."
+    "text": "Amazon said in its 8-K filed 2024-02-01 that it would launch a generative AI scholarship program to help more than 50,000 high school and university students from underserved and underrepresented communities gain AI skills, as part of its AI Ready program. Amazon launched AI Ready to provide free AI skills training to 2 million people globally by 2025. The program includes eight free AWS-designed AI courses and a new generative AI scholarship program to help more than 50,000 high school and university students from underserved and underrepresented communities gain AI skills.[1] No later filing reports the number of students helped through the generative AI scholarship program, and no later filing mentions the program, so no result is available to compare against the target of more than 50,000 students."
    },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872424000006/amzn-20231231xex991.htm",
    "first_stated": "2024-02-01",
@@ -356,7 +347,7 @@
    "form": "10-K",
    "id": "amzn-2025-02-07-0cce57",
    "metric": "decrease in 2025 operating income from accelerated depreciation of servers and networking equipment",
-   "pending_reason": "confidence 0.50 below 0.75",
+   "pending_reason": "confidence 0.60 below 0.75",
    "publishable": false,
    "quote": "The accelerated depreciation will continue into 2025 and decrease operating income by approximately $0.6 billion in 2025",
    "restatements": [],
@@ -367,34 +358,105 @@
   },
   {
    "claim_type": "product_or_timeline",
-   "cluster_id": "c-1018724-0001018724-25-000084-ex99-0002:s1",
+   "cluster_id": "c-1018724-0001018724-25-000084-ex99-0002:s2",
    "company": "Amazon",
    "deadline_end": null,
    "deadline_text": null,
+   "evidence": [
+    {
+     "date": "2025-10-30",
+     "eid": "E1",
+     "excerpt": "•Expanded access to Kiro, an agentic coding integrated development environment that brings clarity through spec-driven development, with more than 100,000+ developers jumping in during the first days of preview and more than doubling since.\n\n•Launched Quick Suite agentic AI app that acts as an AI teammate – connecting to business data and apps, and letting employees interact with AI agents that can find insights, conduct research, and take actions across systems. Quick Suite helps turn month-long projects into days, get 80%+ time savings on complex tasks, and realize 90%+ cost savings.\n\n•Saw s",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000121/amzn-20250930xex991.htm"
+    },
+    {
+     "date": "2025-10-30",
+     "eid": "E2",
+     "excerpt": "•Launched Help Me Decide, an AI feature to help customers zero in on the right product using browsing activity, searches, shopping history, and preferences.\n\n•Empowered sellers with genAI tools, with over 1.3 million independent sellers using these tools to easily create high quality, engaging product listings and bring even more selection to customers.\n\n•Expanded Multi-Channel Fulfillment to sellers using Walmart, Shopify, and SHEIN, so brands can reach customers wherever they shop while leveraging Amazon’s fast, reliable fulfillment network.\n\n•Announced partnerships that allow advertisers to",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000121/amzn-20250930xex991.htm"
+    },
+    {
+     "date": "2026-02-05",
+     "eid": "E3",
+     "excerpt": "•AWS DevOps Agent that helps resolve and proactively prevent incidents.\n\n•Announced new agentic capabilities in AWS Transform to accelerate organization-wide code and application modernization across any code, API, framework, runtime, architecture, language, and even company-specific programming languages and frameworks. AWS Transform has also helped customers analyze 1.8 billion lines of mainframe code since launch.\n\n•Launched new agentic AI capabilities for Amazon Connect—an AI tool that enables contact centers to provide consistent, personalized customer experiences—including advanced speec",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000002/amzn-20251231xex991.htm"
+    },
+    {
+     "date": "2026-04-29",
+     "eid": "E4",
+     "excerpt": "•Signed an agreement with Meta, already an Amazon Bedrock customer at scale, to deploy tens of millions of AWS Graviton cores to power CPU-intensive workloads behind its agentic AI efforts, including real-time reasoning, code generation, and multi-step agent workflows.\n\n•Announced new AWS agreements with OpenAI, Anthropic, Meta, NVIDIA, Uber, U.S. Bank, Fox Corporation, Southwest Airlines, U.S. Army, Bloomberg, Cerebras, AT&T, DTCC, Nokia, Fundamental, The National Geographic Society, NEURA Robotics, DXC, PGA TOUR, O2 Telefónica, NTT DOCOMO, Veolia, The Evri Group, Telenor, ModMed, Yotta Data ",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000012/amzn-20260331xex991.htm"
+    },
+    {
+     "date": "2026-04-29",
+     "eid": "E5",
+     "excerpt": "•Announced the availability of Claude Mythos Preview, as part of Project Glasswing with Anthropic, in Amazon Bedrock. Claude Mythos Preview is a new class of AI model for cybersecurity and vulnerability detection that has been applied to critical AWS codebases and is available in gated research preview with enterprise-grade security controls.\n\n•Announced availability of Claude Opus 4.7 in Amazon Bedrock—Anthropic’s most capable Opus model for coding, long-running agents, and professional work—which delivers enhanced privacy controls, broader regional availability, and improved throughput.\n\n•Pr",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000012/amzn-20260331xex991.htm"
+    },
+    {
+     "date": "2026-07-30",
+     "eid": "E6",
+     "excerpt": "“AWS is booming, growing 36.7% year-over-year in Q2—our fastest growth in 18 quarters—and our AI and Chips businesses each eclipsed run rates of more than $25 billion,” said Andy Jassy, President and CEO, Amazon. “In Stores, we again set record delivery speeds for Prime members in the first half of the year—over 40% more items delivered same-day or overnight, with Grocery and Everyday Essentials growing meaningfully faster than the rest of the business. And, Advertising had another strong quarter with 26% year-over-year growth. There’s a lot to be excited about, and we have much more coming fo",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm"
+    },
+    {
+     "date": "2026-10-29",
+     "eid": "E7",
+     "excerpt": "•Previewed Strands Box, an open source sandbox that gives developers the ability to define rules for agent behavior and access, helping to prevent autonomous agents from causing unintended harm. Strands Box is designed to enforce rules, no matter where your agent runs, whether that’s on your desktop, in agents built using AgentCore on AWS, or elsewhere.\n\n•Drove continued rapid adoption of Amazon Bedrock AgentCore, AWS’s fully managed service for building, connecting, and optimizing agents securely at scale using any model and open source framework, including Strands. AgentCore is built for dev",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000038/amzn-20260930xex991.htm"
+    },
+    {
+     "date": "2026-10-29",
+     "eid": "E8",
+     "excerpt": "•Launched Full-Funnel Campaigns in Amazon Ads Agent for all U.S. advertisers, bringing sponsored ads, display, video, and streaming TV into a single campaign. Advertisers provide initial inputs, then Amazon’s AI plans, executes, and continuously optimizes the rest.\n\n•Kicked off the fifth season of Thursday Night Football on Prime Video, averaging 17.7 million viewers through six games according to Nielsen, its best start ever and a 16% increase over last year’s full-season average.\n\n•Debuted the second season of NBA on Prime in more than 200 countries, attracting more than two million viewers ",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000038/amzn-20260930xex991.htm"
+    }
+   ],
+   "explanation": {
+    "citations": [
+     {
+      "cited_text": "•Announced “AI Zones” in the Kingdom of Saudi Arabia (with HUMAIN) and Korea (with SK Group).\n\n",
+      "document_index": 0,
+      "n": 1,
+      "title": "Promise: 8-K filed 2025-07-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000084/amzn-20250630xex991.htm"
+     }
+    ],
+    "text": "Amazon announced \"AI Zones\" in the Kingdom of Saudi Arabia (with HUMAIN) and Korea (with SK Group) in an 8-K filed 2025-07-31. Announced \"AI Zones\" in the Kingdom of Saudi Arabia (with HUMAIN) and Korea (with SK Group).[1] No later filing reviewed reports on this initiative, so there is no figure or statement to confirm or contradict it. The status is \"No evidence yet\" because none of the later filings mention AI Zones in Saudi Arabia or Korea."
+   },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000084/amzn-20250630xex991.htm",
    "first_stated": "2025-07-31",
    "form": "8-K",
-   "id": "amzn-2025-07-31-7e0a09",
+   "id": "amzn-2025-07-31-41e0ce",
    "metric": null,
-   "pending_reason": "rubric: vague deliverable",
-   "publishable": false,
+   "numbers": [],
+   "pending_reason": "",
+   "publishable": true,
    "quote": "Announced “AI Zones” in the Kingdom of Saudi Arabia (with HUMAIN) and Korea (with SK Group).",
    "restatements": [],
-   "status": "Status pending review",
-   "status_code": "",
+   "status": "No evidence yet",
+   "status_code": "no_evidence_yet",
    "target_text": null,
    "ticker": "AMZN"
   },
   {
    "claim_type": "capex_investment",
-   "cluster_id": "c-1018724-0001018724-25-000084-ex99-0002:s2",
+   "cluster_id": "c-1018724-0001018724-25-000084-ex99-0002:s3",
    "company": "Amazon",
    "deadline_end": null,
    "deadline_text": null,
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000084/amzn-20250630xex991.htm",
    "first_stated": "2025-07-31",
    "form": "8-K",
-   "id": "amzn-2025-07-31-41e0ce",
+   "id": "amzn-2025-07-31-c7f770",
    "metric": "cloud infrastructure investment",
    "pending_reason": "rubric: vague deliverable",
    "publishable": false,
@@ -533,9 +595,16 @@
       "n": 1,
       "title": "Promise: 8-K filed 2025-07-31",
       "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000084/amzn-20250630xex991.htm"
+     },
+     {
+      "cited_text": "•Introduced the next-generation of Proteus, an autonomous robot that assists Amazon fulfillment center employees by moving goods up to 1,300 pounds, reducing heavy lifting and further increasing safety. Using AI, employees can now direct Proteus with plain, conversational language.\n\n",
+      "document_index": 2,
+      "n": 2,
+      "title": "Evidence E8: 8-K filed 2026-07-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000086/amzn-20250630.htm"
      }
     ],
-    "text": "Amazon's 8-K filed on July 31, 2025 said it had introduced DeepFleet, an AI model that makes Amazon's one million+ robots work smarter by coordinating movements to find optimal paths and reduce bottlenecks, improving robot travel efficiency by 10%.[1] The later filings provided to this review do not report a figure for that measure. The only robot mention in them is a Proteus update in a July 2026 8-K, which contains no travel-efficiency figure, so the status is \"No evidence yet.\""
+    "text": "Amazon said in its 8-K filed 2025-07-31 that it introduced DeepFleet, an AI model that makes Amazon's one million+ robots work smarter by coordinating movements to find optimal paths and reduce bottlenecks, improving robot travel efficiency by 10%.[1] The later 8-K filed 2026-07-30 describes a different robot, Proteus, which “assists Amazon fulfillment center employees by moving goods up to 1,300 pounds, reducing heavy lifting and further increasing safety. Using AI, employees can now direct Proteus with plain, conversational language.”[2] No later filing reports a robot travel efficiency figure against the 10% target, and the promise states no deadline, so the status is no evidence yet."
    },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000084/amzn-20250630xex991.htm",
    "first_stated": "2025-07-31",
@@ -671,7 +740,7 @@
       "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000084/amzn-20250630xex991.htm"
      }
     ],
-    "text": "Amazon's 8-K filed 2025-07-31 announced that Amazon S3 Vectors would be introduced, and that it delivers vector storage for AI agents, AI inference, and semantic search, reducing the cost of uploading, storing, and querying vectors by up to 90%.[1] The document provided for this check contains no later filings, so there is no evidence to compare against that figure. Because no later filing reports a measured reduction in the cost of uploading, storing, or querying vectors, the 90% target is neither confirmed nor refuted, and the status is \"No evidence yet.\""
+    "text": "Amazon said in its 8-K filed 2025-07-31 that Amazon S3 Vectors would reduce \"the cost of uploading, storing, and querying vectors by up to 90%\" “delivers vector storage for AI agents, AI inference, and semantic search”[1]. No later filing reports a measured reduction in the cost of uploading, storing, or querying vectors. The promise states no deadline, so no later filing is set against a date for it."
    },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000084/amzn-20250630xex991.htm",
    "first_stated": "2025-07-31",
@@ -806,11 +875,11 @@
       "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000121/amzn-20250930xex991.htm"
      },
      {
-      "cited_text": "•Launched Quick Suite agentic AI app that acts as an AI teammate – connecting to business data and apps, and letting employees interact with AI agents that can find insights, conduct research, and take actions across systems. ",
-      "document_index": 0,
+      "cited_text": "•Announced the Amazon Quick desktop app, which can query email, calendar, Slack, local files, and several other applications to retrieve and summarize information, make recommendations, compose and send communications, and create agents that highlight or automatically do work. ",
+      "document_index": 3,
       "n": 2,
-      "title": "Promise: 8-K filed 2025-10-30",
-      "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000121/amzn-20250930xex991.htm"
+      "title": "Evidence E3: 8-K filed 2026-04-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
      },
      {
       "cited_text": "•Made Amazon Quick—an intelligent AI work companion that helps manage, search, and automate digital workloads across email, calendar, local or cloud files, and custom workflows—even more capable, adding autonomous agents that customers set up in plain language to run continuously in the background and carry out multi-step tasks; a personalized activity feed that pulls email, messages, calendar, and tasks into one prioritized view; and 16 new integrations, including Adobe, Moody’s, and Snowflake. ",
@@ -827,7 +896,7 @@
       "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
      }
     ],
-    "text": "Quick Suite helps turn month-long projects into days, get 80%+ time savings on complex tasks, and realize 90%+ cost savings.[1] This was stated in the 8-K filed 2025-10-30, and the document describes Quick Suite as an agentic AI app that acts as an AI teammate – connecting to business data and apps, and letting employees interact with AI agents that can find insights, conduct research, and take actions across systems.[2] The 8-K filed 2026-07-30 describes Amazon Quick, which helps manage, search, and automate digital workloads across email, calendar, local or cloud files, and custom workflows[3], and it reports no time-savings or cost-savings percentage for complex tasks. The 8-K filed 2026-10-29 reports that Amazon Quick[4] expanded into Outlook, Word, PowerPoint, and Excel, but it likewise gives no time-savings or cost-savings figure. Because no later filing reports a figure against these targets, the status is \"No evidence yet,\" and the promise carries no deadline."
+    "text": "Amazon said in its 8-K filed 2025-10-30 that \"Quick Suite helps turn month-long projects into days, get 80%+ time savings on complex tasks, and realize 90%+ cost savings.\"[1] Later 8-K filings describe the product's development: the 8-K filed 2026-04-29 announced the Amazon Quick desktop app, which can query email, calendar, Slack, local files, and several other applications[2], and the 8-K filed 2026-07-30 said it made Amazon Quick “even more capable, adding autonomous agents that customers set up in plain language”[3]. The 8-K filed 2026-10-29 reports that Amazon expanded Amazon Quick, an intelligent AI work companion, into Outlook, Word, PowerPoint, and Excel.[4] No later filing reports a time-savings or cost-savings percentage for complex tasks against the 80%+ and 90%+ figures."
    },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872425000121/amzn-20250930xex991.htm",
    "first_stated": "2025-10-30",
@@ -911,14 +980,151 @@
   },
   {
    "claim_type": "product_or_timeline",
-   "cluster_id": "c-1045810-0001045810-24-000315-ex99-0003:s1",
+   "cluster_id": "c-1045810-0001045810-24-000124-p1item2-0002:s1",
+   "company": "Nvidia",
+   "deadline_end": "2025-01-28",
+   "deadline_text": "in the second half of the fiscal year",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000124/nvda-20240428.htm",
+   "first_stated": "2024-05-29",
+   "form": "10-Q",
+   "id": "nvda-2024-05-29-3e0d1c",
+   "metric": "customer shipments of Blackwell",
+   "pending_reason": "open error report",
+   "publishable": false,
+   "quote": "We expect to ramp customer shipments of Blackwell in the second half of the fiscal year.",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": null,
+   "ticker": "NVDA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1045810-0001045810-24-000124-p1item2-0002:s2",
+   "company": "Nvidia",
+   "deadline_end": "2025-01-28",
+   "deadline_text": "in the second quarter",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000124/nvda-20240428.htm",
+   "first_stated": "2024-05-29",
+   "form": "10-Q",
+   "id": "nvda-2024-05-29-371038",
+   "metric": "customer samples of Blackwell shipped",
+   "pending_reason": "explanation missing or its citations did not check out",
+   "publishable": false,
+   "quote": "we plan on shipping customer samples in the second quarter",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "in the second quarter",
+   "ticker": "NVDA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1045810-0001045810-24-000124-p1item2-0002:s3",
+   "company": "Nvidia",
+   "deadline_end": "2026-01-28",
+   "deadline_text": "into next year",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000124/nvda-20240428.htm",
+   "first_stated": "2024-05-29",
+   "form": "10-Q",
+   "id": "nvda-2024-05-29-3c6870",
+   "metric": "supply constraints for Blackwell offerings",
+   "pending_reason": "vague_deliverable applies only to specificity-1 promises",
+   "publishable": false,
+   "quote": "We expect supply constraints for our Blackwell offerings will continue into next year.",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "into next year",
+   "ticker": "NVDA"
+  },
+  {
+   "claim_type": "revenue",
+   "cluster_id": "c-1045810-0001045810-24-000264-p1item2-0002:s1",
+   "company": "Nvidia",
+   "deadline_end": "2025-01-28",
+   "deadline_text": "In the fourth quarter of fiscal year 2025",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000264/nvda-20240728.htm",
+   "first_stated": "2024-08-28",
+   "form": "10-Q",
+   "id": "nvda-2024-08-28-b9d065",
+   "metric": "Blackwell revenue shipped",
+   "pending_reason": "confidence 0.60 below 0.75",
+   "publishable": false,
+   "quote": "In the fourth quarter of fiscal year 2025, we expect to ship several billion dollars in Blackwell revenue.",
+   "restatements": [
+    {
+     "date": "2024-08-28",
+     "form": "10-Q",
+     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000264/nvda-20240728.htm"
+    }
+   ],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "several billion dollars",
+   "ticker": "NVDA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1045810-0001045810-24-000264-p1item2-0002:s2",
+   "company": "Nvidia",
+   "deadline_end": "2026-01-28",
+   "deadline_text": "in the fourth quarter and continue into fiscal year 2026",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000264/nvda-20240728.htm",
+   "first_stated": "2024-08-28",
+   "form": "10-Q",
+   "id": "nvda-2024-08-28-b0d392",
+   "metric": "Blackwell production ramp",
+   "pending_reason": "open error report",
+   "publishable": false,
+   "quote": "Blackwell production ramp is scheduled to begin in the fourth quarter and continue into fiscal year 2026.",
+   "restatements": [
+    {
+     "date": "2024-08-28",
+     "form": "10-Q",
+     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000264/nvda-20240728.htm"
+    },
+    {
+     "date": "2024-11-20",
+     "form": "10-Q",
+     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm"
+    }
+   ],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": null,
+   "ticker": "NVDA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1045810-0001045810-24-000264-p1item2-0002:s3",
+   "company": "Nvidia",
+   "deadline_end": "2025-01-28",
+   "deadline_text": "in the second half of fiscal 2025",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000264/nvda-20240728.htm",
+   "first_stated": "2024-08-28",
+   "form": "10-Q",
+   "id": "nvda-2024-08-28-e25168",
+   "metric": "Hopper architecture shipments",
+   "pending_reason": "confidence 0.60 below 0.75",
+   "publishable": false,
+   "quote": "shipments are expected to increase in the second half of fiscal 2025",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": null,
+   "ticker": "NVDA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1045810-0001045810-24-000315-ex99-0003:s2",
    "company": "Nvidia",
    "deadline_end": null,
    "deadline_text": null,
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000315/q3fy25pr.htm",
    "first_stated": "2024-11-20",
    "form": "8-K",
-   "id": "nvda-2024-11-20-26c25b",
+   "id": "nvda-2024-11-20-5127b2",
    "metric": "AI supercomputer build",
    "pending_reason": "rubric: vague deliverable",
    "publishable": false,
@@ -931,22 +1137,62 @@
   },
   {
    "claim_type": "product_or_timeline",
-   "cluster_id": "c-1045810-0001045810-24-000315-ex99-0003:s2",
+   "cluster_id": "c-1045810-0001045810-24-000315-ex99-0003:s3",
    "company": "Nvidia",
    "deadline_end": null,
    "deadline_text": "next quarter",
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000315/q3fy25pr.htm",
    "first_stated": "2024-11-20",
    "form": "8-K",
-   "id": "nvda-2024-11-20-5127b2",
+   "id": "nvda-2024-11-20-cbb356",
    "metric": "Copilot+ capabilities availability",
-   "pending_reason": "confidence 0.40 below 0.75",
+   "pending_reason": "vague_deliverable applies only to specificity-1 promises",
    "publishable": false,
    "quote": "Began shipping new RTX AI PCs with 321 AI trillion operations per second of performance from ASUS and MSI, with Microsoft Copilot+ capabilities anticipated next quarter.",
    "restatements": [],
    "status": "Status pending review",
    "status_code": "",
    "target_text": "next quarter",
+   "ticker": "NVDA"
+  },
+  {
+   "claim_type": "revenue",
+   "cluster_id": "c-1045810-0001045810-24-000316-p1item2-0002:s2",
+   "company": "Nvidia",
+   "deadline_end": "2026-01-28",
+   "deadline_text": "fiscal year 2026",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm",
+   "first_stated": "2024-11-20",
+   "form": "10-Q",
+   "id": "nvda-2024-11-20-001ce5",
+   "metric": "Blackwell demand relative to supply",
+   "pending_reason": "vague_deliverable applies only to specificity-1 promises",
+   "publishable": false,
+   "quote": "the demand for Blackwell is expected to exceed supply for several quarters in fiscal year 2026",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "exceed supply for several quarters",
+   "ticker": "NVDA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1045810-0001045810-24-000316-p2item1a-0002:s1",
+   "company": "Nvidia",
+   "deadline_end": "2026-01-28",
+   "deadline_text": "fiscal year 2026",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm",
+   "first_stated": "2024-11-20",
+   "form": "10-Q",
+   "id": "nvda-2024-11-20-0bcd2c",
+   "metric": "Blackwell demand versus supply",
+   "pending_reason": "vague_deliverable applies only to specificity-1 promises",
+   "publishable": false,
+   "quote": "the demand for Blackwell is expected to exceed supply for several quarters in fiscal year 2026",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "expected to exceed supply for several quarters in fiscal year 2026",
    "ticker": "NVDA"
   },
   {
@@ -1000,13 +1246,33 @@
    "form": "10-K",
    "id": "nvda-2025-02-26-03b8a4",
    "metric": "annual cadence of new Data Center computing solutions",
-   "pending_reason": "vague_deliverable applies only to specificity-1 promises",
+   "pending_reason": "confidence 0.60 below 0.75",
    "publishable": false,
    "quote": "We have introduced a new product and architecture cadence of our Data Center solutions where we seek to complete new computing solutions each year and provide a greater variety of Data Center offerings.",
    "restatements": [],
    "status": "Status pending review",
    "status_code": "",
    "target_text": "each year",
+   "ticker": "NVDA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1045810-0001045810-25-000116-p1item2-0004:s1",
+   "company": "Nvidia",
+   "deadline_end": "2026-01-28",
+   "deadline_text": "in the second quarter of fiscal year 2026",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm",
+   "first_stated": "2025-05-28",
+   "form": "10-Q",
+   "id": "nvda-2025-05-28-b194c8",
+   "metric": "shipment of samples and production units of Blackwell Ultra platforms",
+   "pending_reason": "explanation missing or its citations did not check out",
+   "publishable": false,
+   "quote": "We expect to begin shipping samples and production units of our new Blackwell Ultra platforms in the second quarter of fiscal year 2026.",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "second quarter of fiscal year 2026",
    "ticker": "NVDA"
   },
   {
@@ -1020,7 +1286,7 @@
    "form": "8-K",
    "id": "nvda-2025-11-19-9e247c",
    "metric": "NVIDIA systems deployed for OpenAI AI infrastructure",
-   "pending_reason": "confidence 0.70 below 0.75",
+   "pending_reason": "confidence 0.60 below 0.75",
    "publishable": false,
    "quote": "Announced a strategic partnership with OpenAI to deploy at least 10 gigawatts of NVIDIA systems for OpenAI’s next-generation AI infrastructure.",
    "restatements": [],
@@ -1035,123 +1301,17 @@
    "company": "Nvidia",
    "deadline_end": null,
    "deadline_text": null,
-   "evidence": [
-    {
-     "date": "2026-02-25",
-     "eid": "E1",
-     "excerpt": "•Fourth-quarter revenue was a record $62.3 billion, up 22% from the previous quarter and up 75% from a year ago, driven by the major platform shifts — accelerated computing and AI. Full-year revenue rose 68% to a record $193.7 billion.\n\n•Unveiled the NVIDIA Rubin platform, comprising six new chips to deliver up to a 10x reduction in inference token cost, compared with the NVIDIA Blackwell platform; cloud providers Amazon Web Services (AWS), Google Cloud, Microsoft Azure and Oracle Cloud Infrastructure will be among the first to deploy Vera Rubin-based instances.\n\n•Announced that the NVIDIA Blu",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000019/q4fy26pr.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E10",
-     "excerpt": "We report our business results in two segments.\n\nThe Compute & Networking segment includes our Data Center accelerated computing and networking platforms and AI solutions and software, and Automotive platforms and autonomous and electric vehicle solutions including software.\n\nThe Graphics segment includes GeForce GPUs for gaming and PCs, and Quadro/NVIDIA RTX GPUs for enterprise workstation graphics.\n\nOur Markets\n\nWe specialize in markets where our computing and AI infrastructure platforms can provide tremendous acceleration for applications. These platforms incorporate processors, interconnec",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E2",
-     "excerpt": "•Joined the U.S. Department of Energy’s Genesis Mission as a private industry partner to support U.S. AI leadership in key areas including energy, scientific research and national security.\n\n•Launched the NVIDIA Earth-2 family of open models — the world’s first fully open, accelerated set of models and tools for AI weather.\n\n•Revealed that India’s global systems integrators Infosys, Persistent, Tech Mahindra and Wipro are building the next wave of enterprise agents with NVIDIA AI.\n\n•Partnered with global industrial software leaders Cadence, Siemens and Synopsys and India’s largest manufacturer",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000019/q4fy26pr.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E3",
-     "excerpt": "Innovation is at our core. We have invested over $76.7 billion in research and development since our inception, yielding inventions that are essential to modern computing. Our invention of the GPU in 1999 sparked the growth of the PC gaming market and redefined computer graphics. With our introduction of CUDA in 2006, we opened the parallel processing capabilities of our GPU to a broad range of compute-intensive applications, paving the way for the emergence of modern AI. In 2012, the AlexNet neural network, trained on NVIDIA GPUs, won the ImageNet computer image recognition competition, marki",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E4",
-     "excerpt": "Our products for the gaming market include GeForce RTX GPUs for gaming desktop and laptop PCs, GeForce NOW cloud gaming service, as well as SoCs and development services for game consoles.\n\nOur gaming platforms leverage our GPUs and sophisticated software to enhance the gaming experience with smoother, higher quality graphics. NVIDIA RTX features ray tracing technology for real-time, cinematic-quality rendering, and deep learning super sampling, or NVIDIA DLSS, our AI technology that boosts frame rates while generating high-quality images for games. RTX GPUs also feature NVIDIA tensor core tec",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E9",
-     "excerpt": "Our AI technology leadership is reinforced by our large and expanding ecosystem. Our computing platforms are available from virtually every major server maker and CSP, as well as on our own AI supercomputers. There are over 7.5 million developers worldwide using CUDA and our other software tools to help deploy our technology in our target markets. We are the leader in accelerating and releasing open AI models which enterprises, sovereigns, and startups can leverage to develop and run applications on our platform. We evangelize AI through partnerships with hundreds of universities and tens of t",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-05-20",
-     "eid": "E11",
-     "excerpt": "The use of our GPUs for new, mercurial, or trendy applications, has impacted, and can impact in the future, demand for our products, including by leading to inconsistent spikes and drops in demand. For example, several years ago, our gaming GPUs began to be used for mining digital currencies, such as Ethereum. It is difficult for us to estimate with any reasonable degree of precision the past or current impact of cryptocurrency mining, or forecast the future impact of cryptocurrency mining, on demand for our products. Volatility in the cryptocurrency market, including new compute technologies,",
-     "form": "10-Q",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm"
-    },
-    {
-     "date": "2026-05-20",
-     "eid": "E12",
-     "excerpt": "The USG already imposed export controls restricting certain gaming GPUs, and if the USG expands such controls to restrict additional gaming products, it may disrupt a significant portion of our supply and distribution chain and negatively impact sales of such products to markets outside China, including the U.S. and Europe. For example, the French Competition Authority (FCA) is questioning whether gaming GPUs and data center GPUs are separate product categories, an inquiry that may impact the export controls applicable to gaming products sold in France and Europe. In addition, as the performan",
-     "form": "10-Q",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm"
-    },
-    {
-     "date": "2026-05-20",
-     "eid": "E5",
-     "excerpt": "•GAAP and non-GAAP operating expenses are expected to be approximately $8.5 billion and $8.3 billion, respectively.\n\nFor the full year fiscal 2027, NVIDIA expects GAAP and non-GAAP tax rates to be between 16.0% and 18.0%, excluding any discrete items and material changes to NVIDIA’s tax environment.\n\nHighlights\n\nData Center\n\n•First-quarter revenue was a record $75.2 billion, up 21% from the previous quarter and up 92% from a year ago.\n\n•Announced the NVIDIA Vera Rubin platform, including the NVIDIA Vera CPU, the world’s first processor purpose-built for agentic AI, and NVIDIA BlueField®-4 STX,",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000051/q1fy27pr.htm"
-    },
-    {
-     "date": "2026-05-20",
-     "eid": "E6",
-     "excerpt": "Certain statements in this press release including, but not limited to, statements as to: the buildout of AI factories—the largest infrastructure expansion in human history—accelerating at extraordinary speed; the value generated by agentic AI; expectations with respect to growth, performance and benefits of NVIDIA’s products, services and technologies, including Blackwell, and related trends and drivers; expectations with respect to supply and demand for NVIDIA’s products, services and technologies, including Blackwell, and related matters including inventory, production and distribution; exp",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000051/q1fy27pr.htm"
-    },
-    {
-     "date": "2026-08-26",
-     "eid": "E7",
-     "excerpt": "Non-GAAP\n($ in millions, except earnings per share) | Q2 FY27 | Q1 FY27 | Q2 FY26 | Q/Q | Y/Y\nRevenue | $96,221 | $81,615 | $46,743 | 18% | 106%\nGross margin | 75.0% | 75.0% | 72.5% | 2.5 pts\nOperating expenses | $8,232 | $7,449 | $5,361 | 11% | 54%\nOperating income | $63,956 | $53,783 | $28,541 | 19% | 124%\nNet income | $53,954 | $45,548 | $24,763 | 18% | 118%\nDiluted earnings per share | $2.22 | $1.87 | $1.01 | 19% | 120%\n\nOutlook\n\nNVIDIA’s outlook for the third quarter of fiscal 2027 is as follows:\n\n•Revenue is expected to be $108.0 billion, plus or minus 2%. NVIDIA is not assuming any Data",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm"
-    },
-    {
-     "date": "2026-08-26",
-     "eid": "E8",
-     "excerpt": "•Announced that SpaceXAI will deploy NVIDIA Vera CPUs to accelerate its next generation of agentic AI applications.\n\n•Secured land, power and shell capacity through a partnership with SB Energy at the PORTS-Pike Technology Campus in Ohio to host NVIDIA compute.\n\n•Revealed that NVIDIA Blackwell led across every category in the MLPerf Training 6.0 benchmarks and in AgentPerf, the industry’s first agentic AI infrastructure benchmark.\n\n•Announced new software, open source models and partnerships with the world’s leading software platform providers to build autonomous AI agents for industries and e",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm"
-    }
-   ],
-   "explanation": {
-    "citations": [
-     {
-      "cited_text": "•Revealed plans to accelerate seven new supercomputers, including with Oracle to build the U.S. Department of Energy’s largest AI supercomputer, Solstice, featuring 100,000 NVIDIA Blackwell GPUs, plus another system, Equinox, featuring 10,000 NVIDIA Blackwell GPUs.",
-      "document_index": 0,
-      "n": 1,
-      "title": "Promise: 8-K filed 2025-11-19",
-      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000228/q3fy26pr.htm"
-     },
-     {
-      "cited_text": "•Announced that the NVIDIA Vera Rubin platform delivers world-class supercomputers for science; announced a record 35 new NVIDIA AI HPC supercomputers in development across Europe.\n\n",
-      "document_index": 5,
-      "n": 2,
-      "title": "Evidence E8: 8-K filed 2026-08-26",
-      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-     }
-    ],
-    "text": "Nvidia's promise, made in an 8-K filed 2025-11-19, was that it revealed plans to accelerate seven new supercomputers, including with Oracle to build the U.S. Department of Energy's largest AI supercomputer, Solstice, featuring 100,000 NVIDIA Blackwell GPUs, plus another system, Equinox, featuring 10,000 NVIDIA Blackwell GPUs.[1] The promise states no deadline. The later filings reviewed, running through the 8-K filed 2026-08-26, do not mention Solstice or Equinox by name or report how many Blackwell GPUs have been installed in either system. They do describe other supercomputer activity, such as a record 35 new NVIDIA AI HPC supercomputers in development across Europe[2], but that does not address the two named systems. Because no later filing reports progress on these specific targets, the status is \"No evidence yet.\""
-   },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000228/q3fy26pr.htm",
    "first_stated": "2025-11-19",
    "form": "8-K",
    "id": "nvda-2025-11-19-6c293d",
    "metric": "NVIDIA Blackwell GPUs in Solstice and Equinox supercomputers",
-   "numbers": [],
-   "pending_reason": "",
-   "publishable": true,
+   "pending_reason": "confidence 0.70 below 0.75",
+   "publishable": false,
    "quote": "Revealed plans to accelerate seven new supercomputers, including with Oracle to build the U.S. Department of Energy’s largest AI supercomputer, Solstice, featuring 100,000 NVIDIA Blackwell GPUs, plus another system, Equinox, featuring 10,000 NVIDIA Blackwell GPUs.",
    "restatements": [],
-   "status": "No evidence yet",
-   "status_code": "no_evidence_yet",
+   "status": "Status pending review",
+   "status_code": "",
    "target_text": "100,000 NVIDIA Blackwell GPUs",
    "ticker": "NVDA"
   },
@@ -1161,231 +1321,17 @@
    "company": "Nvidia",
    "deadline_end": null,
    "deadline_text": null,
-   "evidence": [
-    {
-     "date": "2026-02-25",
-     "eid": "E1",
-     "excerpt": "We report our business results in two segments.\n\nThe Compute & Networking segment includes our Data Center accelerated computing and networking platforms and AI solutions and software, and Automotive platforms and autonomous and electric vehicle solutions including software.\n\nThe Graphics segment includes GeForce GPUs for gaming and PCs, and Quadro/NVIDIA RTX GPUs for enterprise workstation graphics.\n\nOur Markets\n\nWe specialize in markets where our computing and AI infrastructure platforms can provide tremendous acceleration for applications. These platforms incorporate processors, interconnec",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E10",
-     "excerpt": "we may face increased compliance costs as a result of changes or increases in antitrust legislation, regulation, administrative rule making, increased focus from regulators on cybersecurity vulnerabilities and risks. Our position in markets relating to AI has led to increased interest in our business from regulators worldwide, including the European Union, the United States, the United Kingdom, South Korea, Japan, and China. For example, the French Competition Authority collected information from us regarding our business and competition in the graphics card and CSP market as part of an ongoin",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E15",
-     "excerpt": "All major cloud service providers, or CSPs, AI model makers, and enterprises use our data center-scale infrastructure and computing platforms to accelerate the services and offerings they deliver to billions of end users and customers, including AI solutions and assistants, AI foundation models, advertising, search, recommendation systems, social\n\nnetworking, data processing, online shopping, live video, and translation. AI model makers use our infrastructure and software hosted at CSPs to develop, build and run AI models, product offerings, and services.\n\nEnterprises and startups across a bro",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E16",
-     "excerpt": "Our AI technology leadership is reinforced by our large and expanding ecosystem. Our computing platforms are available from virtually every major server maker and CSP, as well as on our own AI supercomputers. There are over 7.5 million developers worldwide using CUDA and our other software tools to help deploy our technology in our target markets. We are the leader in accelerating and releasing open AI models which enterprises, sovereigns, and startups can leverage to develop and run applications on our platform. We evangelize AI through partnerships with hundreds of universities and tens of t",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E17",
-     "excerpt": "Important factors that could cause actual results to differ materially include: global economic and political conditions; NVIDIA’s reliance on third parties to manufacture, assemble, package and test NVIDIA’s products; the impact of technological development and competition; development of new products and technologies or enhancements to NVIDIA’s existing products and technologies; market acceptance of NVIDIA’s products or NVIDIA’s partners’ products; design, manufacturing or software defects; changes in consumer preferences or demands; changes in industry standards and interfaces; unexpected ",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000019/q4fy26pr.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E2",
-     "excerpt": "The availability of data centers, energy, and capital to support the buildout of NVIDIA AI infrastructure by our customers and partners is crucial, and any shortage of these and other necessary resources could impact our future revenue and financial performance. Expanding energy capacity to meet demand is a complex, multi-year process involving significant regulatory, technical, and construction challenges. In addition, access to capital can be particularly constrained for less-capitalized companies, which may face difficulties securing financing for large-scale infrastructure projects. These ",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E9",
-     "excerpt": "Worldwide regulatory authorities are also considering and have approved various legislative proposals concerning data protection. The European Union adopted the General Data Protection Regulation, or GDPR, and the United Kingdom similarly adopted the U.K. GDPR, governing the strict handling of personal data of persons within the European Economic Area, or EEA, and the United Kingdom, respectively, including its use and protection and the ability of persons whose data is stored to access, correct, and delete such data about themselves. If we are found not to comply, we could be subject to penal",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-05-20",
-     "eid": "E12",
-     "excerpt": "We are subject to laws and regulations domestically and worldwide, affecting our operations in areas including, but not limited to, IP ownership and infringement; taxes; import and export requirements and tariffs; anti-corruption, including the Foreign Corrupt Practices Act; business acquisitions; foreign exchange controls and cash repatriation restrictions; foreign ownership and investment; data privacy requirements; competition and antitrust; investing; advertising; employment; product regulations; cybersecurity; environmental, health, and safety requirements; the responsible use of AI; sust",
-     "form": "10-Q",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm"
-    },
-    {
-     "date": "2026-05-20",
-     "eid": "E13",
-     "excerpt": "The availability of data centers, energy, and capital to support the buildout of NVIDIA AI infrastructure by our customers and partners is crucial, and any shortage of these or other necessary resources could impact our future revenue and financial performance. Expanding energy capacity to meet demand is a complex, multi-year process that involves significant regulatory, technical, and construction challenges. In addition, access to capital can be particularly constrained for less-capitalized companies, which may face difficulties securing financing for large-scale infrastructure projects. The",
-     "form": "10-Q",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm"
-    },
-    {
-     "date": "2026-05-20",
-     "eid": "E3",
-     "excerpt": "NVIDIA Announces Financial Results for First Quarter Fiscal 2027\n\n•Record revenue of $81.6 billion, up 85% from a year ago\n\n•Record Data Center revenue of $75.2 billion, up 92% from a year ago\n\n•NVIDIA announces $80.0 billion additional share repurchase authorization and increases its quarterly cash dividend from $0.01 per share to $0.25 per share\n\nSANTA CLARA, Calif.—May 20, 2026―NVIDIA (NASDAQ: NVDA) today reported record revenue for the first quarter ended April 26, 2026, of $81.6 billion, up 20% from the previous quarter and up 85% from a year ago.\n\nFor the quarter, GAAP and non-GAAP gross",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000051/q1fy27pr.htm"
-    },
-    {
-     "date": "2026-05-20",
-     "eid": "E4",
-     "excerpt": "•GAAP and non-GAAP operating expenses are expected to be approximately $8.5 billion and $8.3 billion, respectively.\n\nFor the full year fiscal 2027, NVIDIA expects GAAP and non-GAAP tax rates to be between 16.0% and 18.0%, excluding any discrete items and material changes to NVIDIA’s tax environment.\n\nHighlights\n\nData Center\n\n•First-quarter revenue was a record $75.2 billion, up 21% from the previous quarter and up 92% from a year ago.\n\n•Announced the NVIDIA Vera Rubin platform, including the NVIDIA Vera CPU, the world’s first processor purpose-built for agentic AI, and NVIDIA BlueField®-4 STX,",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000051/q1fy27pr.htm"
-    },
-    {
-     "date": "2026-05-20",
-     "eid": "E5",
-     "excerpt": "The availability of data centers, energy, and capital to support the buildout of NVIDIA AI infrastructure by our customers and partners is crucial, and any shortage of these and other necessary resources could impact our future revenue and financial performance. Expanding energy capacity to meet demand is a complex, multi-year process involving significant regulatory, technical, and construction challenges. In addition, access to capital can be particularly constrained for less-capitalized companies, which may face difficulties securing financing for large-scale infrastructure projects. These ",
-     "form": "10-Q",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm"
-    },
-    {
-     "date": "2026-08-26",
-     "eid": "E11",
-     "excerpt": "We are subject to laws and regulations domestically and worldwide, affecting our operations in areas including, but not limited to, IP ownership and infringement; taxes; import and export requirements and tariffs; anti-corruption, including the Foreign Corrupt Practices Act; business acquisitions; foreign exchange controls and cash repatriation restrictions; foreign ownership and investment; data privacy requirements; competition and antitrust; investing; advertising; employment; product regulations; cybersecurity; environmental, health, and safety requirements; the responsible use of AI; sust",
-     "form": "10-Q",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
-    },
-    {
-     "date": "2026-08-26",
-     "eid": "E14",
-     "excerpt": "•Announced that SpaceXAI will deploy NVIDIA Vera CPUs to accelerate its next generation of agentic AI applications.\n\n•Secured land, power and shell capacity through a partnership with SB Energy at the PORTS-Pike Technology Campus in Ohio to host NVIDIA compute.\n\n•Revealed that NVIDIA Blackwell led across every category in the MLPerf Training 6.0 benchmarks and in AgentPerf, the industry’s first agentic AI infrastructure benchmark.\n\n•Announced new software, open source models and partnerships with the world’s leading software platform providers to build autonomous AI agents for industries and e",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm"
-    },
-    {
-     "date": "2026-08-26",
-     "eid": "E6",
-     "excerpt": "Non-GAAP\n($ in millions, except earnings per share) | Q2 FY27 | Q1 FY27 | Q2 FY26 | Q/Q | Y/Y\nRevenue | $96,221 | $81,615 | $46,743 | 18% | 106%\nGross margin | 75.0% | 75.0% | 72.5% | 2.5 pts\nOperating expenses | $8,232 | $7,449 | $5,361 | 11% | 54%\nOperating income | $63,956 | $53,783 | $28,541 | 19% | 124%\nNet income | $53,954 | $45,548 | $24,763 | 18% | 118%\nDiluted earnings per share | $2.22 | $1.87 | $1.01 | 19% | 120%\n\nOutlook\n\nNVIDIA’s outlook for the third quarter of fiscal 2027 is as follows:\n\n•Revenue is expected to be $108.0 billion, plus or minus 2%. NVIDIA is not assuming any Data",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm"
-    },
-    {
-     "date": "2026-08-26",
-     "eid": "E7",
-     "excerpt": "Our notes are unsecured senior obligations. Existing and future liabilities of our subsidiaries will be effectively senior to the notes. Our notes pay interest semi-annually. We may redeem each of our notes prior to maturity, subject to a make-whole premium. The maturity dates of the notes are stated by calendar year.\n\nAs of July 26, 2026, we complied with the required covenants under the outstanding notes.\n\nAs of July 26, 2026, our commercial paper program had a capacity of $25.0 billion, with no amounts outstanding.\n\nNote 10 - Commitments and Contingencies\n\nCommitments\n\nWe entered into strat",
-     "form": "10-Q",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
-    },
-    {
-     "date": "2026-08-26",
-     "eid": "E8",
-     "excerpt": "Data center leases not commenced – These leases will be primarily used for engineering, product design, and testing of our compute chips, networking products, and systems. They are expected to begin between the third quarter of fiscal year 2027 and fiscal year 2033 and have terms up to twenty years. Many of the expected lease start dates are subject to and dependent on timing of facility construction completion. Refer to Note 14 of the Notes to Condensed Consolidated Financial Statements for additional information on our leases that have commenced and are recognized in our financial statements",
-     "form": "10-Q",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
-    }
-   ],
-   "explanation": {
-    "citations": [
-     {
-      "cited_text": "•Revealed that NVIDIA is working with partners including CoreWeave, Microsoft and Nscale to build the U.K.’s next generation of AI infrastructure, and announced an investment of £2 billion in the U.K. market.\n\n",
-      "document_index": 0,
-      "n": 1,
-      "title": "Promise: 8-K filed 2025-11-19",
-      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000228/q3fy26pr.htm"
-     },
-     {
-      "cited_text": "Non-GAAP\n($ in millions, except earnings per share) | Q2 FY27 | Q1 FY27 | Q2 FY26 | Q/Q | Y/Y\nRevenue | $96,221 | $81,615 | $46,743 | 18% | 106%\nGross margin | 75.0% | 75.0% | 72.5% | 2.5 pts\nOperating expenses | $8,232 | $7,449 | $5,361 | 11% | 54%\nOperating income | $63,956 | $53,783 | $28,541 | 19% | 124%\nNet income | $53,954 | $45,548 | $24,763 | 18% | 118%\nDiluted earnings per share | $2.22 | $1.87 | $1.01 | 19% | 120%\n\nOutlook\n\nNVIDIA’s outlook for the third quarter of fiscal 2027 is as follows:\n\n•Revenue is expected to be $108.0 billion, plus or minus 2%. ",
-      "document_index": 2,
-      "n": 2,
-      "title": "Evidence E6: 8-K filed 2026-08-26",
-      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-     }
-    ],
-    "text": "Nvidia's 8-K filed 2025-11-19 says the company was working with partners including CoreWeave, Microsoft and Nscale to build the U.K.'s next generation of AI infrastructure, and announced an investment of £2 billion in the U.K. market.[1] The later filings reviewed, which run through an 8-K and two 10-Qs filed in August 2026, do not mention this U.K. investment. The 8-K filed 2026-08-26 covers a Q2 FY27 revenue of $96,221 million[2] and lists product and partnership highlights, but none concerns the U.K. The 10-Q filed the same day describes commitments by fiscal year and does not single out U.K. spending. Because the promise sets no deadline and no later filing addresses the £2 billion figure, the status is \"No evidence yet.\""
-   },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000228/q3fy26pr.htm",
    "first_stated": "2025-11-19",
    "form": "8-K",
    "id": "nvda-2025-11-19-80d7fb",
    "metric": "investment in U.K. market for AI infrastructure",
-   "numbers": [
-    {
-     "display": "$1.07 billion",
-     "filed": "2026-02-25",
-     "label": "capex for the fiscal year ended 2024-01-28",
-     "tag": "us-gaap:PaymentsToAcquireProductiveAssets"
-    },
-    {
-     "display": "48.9%",
-     "filed": "2026-02-25",
-     "label": "rnd change vs prior year, FY ended 2025-01-26",
-     "tag": "us-gaap:ResearchAndDevelopmentExpense"
-    },
-    {
-     "display": "$18.50 billion",
-     "filed": "2026-02-25",
-     "label": "rnd for the fiscal year ended 2026-01-25",
-     "tag": "us-gaap:ResearchAndDevelopmentExpense"
-    },
-    {
-     "display": "43.2%",
-     "filed": "2026-02-25",
-     "label": "rnd change vs prior year, FY ended 2026-01-25",
-     "tag": "us-gaap:ResearchAndDevelopmentExpense"
-    },
-    {
-     "display": "-41.7%",
-     "filed": "2026-02-25",
-     "label": "capex change vs prior year, FY ended 2024-01-28",
-     "tag": "us-gaap:PaymentsToAcquireProductiveAssets"
-    },
-    {
-     "display": "$3.24 billion",
-     "filed": "2026-02-25",
-     "label": "capex for the fiscal year ended 2025-01-26",
-     "tag": "us-gaap:PaymentsToAcquireProductiveAssets"
-    },
-    {
-     "display": "202.7%",
-     "filed": "2026-02-25",
-     "label": "capex change vs prior year, FY ended 2025-01-26",
-     "tag": "us-gaap:PaymentsToAcquireProductiveAssets"
-    },
-    {
-     "display": "$6.04 billion",
-     "filed": "2026-02-25",
-     "label": "capex for the fiscal year ended 2026-01-25",
-     "tag": "us-gaap:PaymentsToAcquireProductiveAssets"
-    },
-    {
-     "display": "86.7%",
-     "filed": "2026-02-25",
-     "label": "capex change vs prior year, FY ended 2026-01-25",
-     "tag": "us-gaap:PaymentsToAcquireProductiveAssets"
-    },
-    {
-     "display": "$8.68 billion",
-     "filed": "2026-02-25",
-     "label": "rnd for the fiscal year ended 2024-01-28",
-     "tag": "us-gaap:ResearchAndDevelopmentExpense"
-    },
-    {
-     "display": "18.2%",
-     "filed": "2026-02-25",
-     "label": "rnd change vs prior year, FY ended 2024-01-28",
-     "tag": "us-gaap:ResearchAndDevelopmentExpense"
-    },
-    {
-     "display": "$12.91 billion",
-     "filed": "2026-02-25",
-     "label": "rnd for the fiscal year ended 2025-01-26",
-     "tag": "us-gaap:ResearchAndDevelopmentExpense"
-    }
-   ],
-   "pending_reason": "",
-   "publishable": true,
+   "pending_reason": "explanation missing or its citations did not check out",
+   "publishable": false,
    "quote": "announced an investment of £2 billion in the U.K. market",
    "restatements": [],
-   "status": "No evidence yet",
-   "status_code": "no_evidence_yet",
+   "status": "Status pending review",
+   "status_code": "",
    "target_text": "£2 billion",
    "ticker": "NVDA"
   },
@@ -1395,198 +1341,201 @@
    "company": "Nvidia",
    "deadline_end": null,
    "deadline_text": null,
-   "evidence": [
-    {
-     "date": "2026-02-25",
-     "eid": "E1",
-     "excerpt": "•Fourth-quarter revenue was a record $62.3 billion, up 22% from the previous quarter and up 75% from a year ago, driven by the major platform shifts — accelerated computing and AI. Full-year revenue rose 68% to a record $193.7 billion.\n\n•Unveiled the NVIDIA Rubin platform, comprising six new chips to deliver up to a 10x reduction in inference token cost, compared with the NVIDIA Blackwell platform; cloud providers Amazon Web Services (AWS), Google Cloud, Microsoft Azure and Oracle Cloud Infrastructure will be among the first to deploy Vera Rubin-based instances.\n\n•Announced that the NVIDIA Blu",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000019/q4fy26pr.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E11",
-     "excerpt": "Our products for the gaming market include GeForce RTX GPUs for gaming desktop and laptop PCs, GeForce NOW cloud gaming service, as well as SoCs and development services for game consoles.\n\nOur gaming platforms leverage our GPUs and sophisticated software to enhance the gaming experience with smoother, higher quality graphics. NVIDIA RTX features ray tracing technology for real-time, cinematic-quality rendering, and deep learning super sampling, or NVIDIA DLSS, our AI technology that boosts frame rates while generating high-quality images for games. RTX GPUs also feature NVIDIA tensor core tec",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E12",
-     "excerpt": "Our AI technology leadership is reinforced by our large and expanding ecosystem. Our computing platforms are available from virtually every major server maker and CSP, as well as on our own AI supercomputers. There are over 7.5 million developers worldwide using CUDA and our other software tools to help deploy our technology in our target markets. We are the leader in accelerating and releasing open AI models which enterprises, sovereigns, and startups can leverage to develop and run applications on our platform. We evangelize AI through partnerships with hundreds of universities and tens of t",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E2",
-     "excerpt": "•Joined the U.S. Department of Energy’s Genesis Mission as a private industry partner to support U.S. AI leadership in key areas including energy, scientific research and national security.\n\n•Launched the NVIDIA Earth-2 family of open models — the world’s first fully open, accelerated set of models and tools for AI weather.\n\n•Revealed that India’s global systems integrators Infosys, Persistent, Tech Mahindra and Wipro are building the next wave of enterprise agents with NVIDIA AI.\n\n•Partnered with global industrial software leaders Cadence, Siemens and Synopsys and India’s largest manufacturer",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000019/q4fy26pr.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E3",
-     "excerpt": "All major cloud service providers, or CSPs, AI model makers, and enterprises use our data center-scale infrastructure and computing platforms to accelerate the services and offerings they deliver to billions of end users and customers, including AI solutions and assistants, AI foundation models, advertising, search, recommendation systems, social\n\nnetworking, data processing, online shopping, live video, and translation. AI model makers use our infrastructure and software hosted at CSPs to develop, build and run AI models, product offerings, and services.\n\nEnterprises and startups across a bro",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E4",
-     "excerpt": "ODMs, system integrators and distributors which we partner with to help bring our products to market. We also have partnerships in automotive, healthcare, financial services, manufacturing, retail, and technology among others, to accelerate the adoption of AI.\n\nAt the foundation of the NVIDIA accelerated computing platform are our GPUs, which excel at parallel workloads such as the training and inferencing of neural networks. These Data Center systems are extreme co-designed with the GPU, CPU, NVLink switch, DPU, NIC, and scale-out networking along with software stacks and algorithms to delive",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-02-25",
-     "eid": "E9",
-     "excerpt": "we may face increased compliance costs as a result of changes or increases in antitrust legislation, regulation, administrative rule making, increased focus from regulators on cybersecurity vulnerabilities and risks. Our position in markets relating to AI has led to increased interest in our business from regulators worldwide, including the European Union, the United States, the United Kingdom, South Korea, Japan, and China. For example, the French Competition Authority collected information from us regarding our business and competition in the graphics card and CSP market as part of an ongoin",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
-    },
-    {
-     "date": "2026-05-20",
-     "eid": "E10",
-     "excerpt": "We are subject to laws and regulations domestically and worldwide, affecting our operations in areas including, but not limited to, IP ownership and infringement; taxes; import and export requirements and tariffs; anti-corruption, including the Foreign Corrupt Practices Act; business acquisitions; foreign exchange controls and cash repatriation restrictions; foreign ownership and investment; data privacy requirements; competition and antitrust; investing; advertising; employment; product regulations; cybersecurity; environmental, health, and safety requirements; the responsible use of AI; sust",
-     "form": "10-Q",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm"
-    },
-    {
-     "date": "2026-05-20",
-     "eid": "E5",
-     "excerpt": "•GAAP and non-GAAP operating expenses are expected to be approximately $8.5 billion and $8.3 billion, respectively.\n\nFor the full year fiscal 2027, NVIDIA expects GAAP and non-GAAP tax rates to be between 16.0% and 18.0%, excluding any discrete items and material changes to NVIDIA’s tax environment.\n\nHighlights\n\nData Center\n\n•First-quarter revenue was a record $75.2 billion, up 21% from the previous quarter and up 92% from a year ago.\n\n•Announced the NVIDIA Vera Rubin platform, including the NVIDIA Vera CPU, the world’s first processor purpose-built for agentic AI, and NVIDIA BlueField®-4 STX,",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000051/q1fy27pr.htm"
-    },
-    {
-     "date": "2026-05-20",
-     "eid": "E6",
-     "excerpt": "In addition, statements that “we believe” and similar statements reflect our beliefs and opinions on the relevant subject. These statements are based upon information available to us as of the filing date of this Quarterly Report on Form 10-Q, and while we believe such information forms a reasonable basis for such statements, such information may be limited or incomplete, and our statements should not be read to indicate that we have conducted an exhaustive inquiry into, or review of, all potentially available relevant information. These statements are inherently uncertain, and investors are c",
-     "form": "10-Q",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm"
-    },
-    {
-     "date": "2026-08-26",
-     "eid": "E7",
-     "excerpt": "•Announced that SpaceXAI will deploy NVIDIA Vera CPUs to accelerate its next generation of agentic AI applications.\n\n•Secured land, power and shell capacity through a partnership with SB Energy at the PORTS-Pike Technology Campus in Ohio to host NVIDIA compute.\n\n•Revealed that NVIDIA Blackwell led across every category in the MLPerf Training 6.0 benchmarks and in AgentPerf, the industry’s first agentic AI infrastructure benchmark.\n\n•Announced new software, open source models and partnerships with the world’s leading software platform providers to build autonomous AI agents for industries and e",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm"
-    },
-    {
-     "date": "2026-08-26",
-     "eid": "E8",
-     "excerpt": "We are subject to laws and regulations domestically and worldwide, affecting our operations in areas including, but not limited to, IP ownership and infringement; taxes; import and export requirements and tariffs; anti-corruption, including the Foreign Corrupt Practices Act; business acquisitions; foreign exchange controls and cash repatriation restrictions; foreign ownership and investment; data privacy requirements; competition and antitrust; investing; advertising; employment; product regulations; cybersecurity; environmental, health, and safety requirements; the responsible use of AI; sust",
-     "form": "10-Q",
-     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
-    }
-   ],
-   "explanation": {
-    "citations": [
-     {
-      "cited_text": "•Announced that NVIDIA is working with the South Korea government and industrial leaders, including Hyundai Motor Group, Samsung Electronics, SK Group and NAVER Cloud, to expand the nation’s AI infrastructure with over a quarter-million NVIDIA GPUs.\n\n",
-      "document_index": 0,
-      "n": 1,
-      "title": "Promise: 8-K filed 2025-11-19",
-      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000228/q3fy26pr.htm"
-     },
-     {
-      "cited_text": "•Expanded Korea’s AI factory ecosystem through strategic partnerships with SK Telecom, NAVER and Brookfield to build sovereign AI infrastructure at gigawatt scale on the NVIDIA DSX platform, as part of a broader NVIDIA-powered national AI push across Korea’s industries and research institutions.\n\n",
-      "document_index": 1,
-      "n": 2,
-      "title": "Evidence E7: 8-K filed 2026-08-26",
-      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000019/q4fy26pr.htm"
-     }
-    ],
-    "text": "Announced that NVIDIA is working with the South Korea government and industrial leaders, including Hyundai Motor Group, Samsung Electronics, SK Group and NAVER Cloud, to expand the nation's AI infrastructure with over a quarter-million NVIDIA GPUs.[1] That promise appeared in the 8-K filed 2025-11-19. The later 8-K filed 2026-08-26 reports that NVIDIA expanded Korea's AI factory ecosystem through strategic partnerships with SK Telecom, NAVER and Brookfield to build sovereign AI infrastructure at gigawatt scale on the NVIDIA DSX platform[2], but it does not report a count of NVIDIA GPUs deployed in South Korea. The promise states no deadline, and no later filing reports a GPU count against the quarter-million figure, so the status is \"No evidence yet.\""
-   },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000228/q3fy26pr.htm",
    "first_stated": "2025-11-19",
    "form": "8-K",
    "id": "nvda-2025-11-19-70aec9",
    "metric": "number of NVIDIA GPUs deployed in South Korea AI infrastructure",
-   "numbers": [
-    {
-     "display": "$1.07 billion",
-     "filed": "2026-02-25",
-     "label": "capex for the fiscal year ended 2024-01-28",
-     "tag": "us-gaap:PaymentsToAcquireProductiveAssets"
-    },
-    {
-     "display": "48.9%",
-     "filed": "2026-02-25",
-     "label": "rnd change vs prior year, FY ended 2025-01-26",
-     "tag": "us-gaap:ResearchAndDevelopmentExpense"
-    },
-    {
-     "display": "$18.50 billion",
-     "filed": "2026-02-25",
-     "label": "rnd for the fiscal year ended 2026-01-25",
-     "tag": "us-gaap:ResearchAndDevelopmentExpense"
-    },
-    {
-     "display": "43.2%",
-     "filed": "2026-02-25",
-     "label": "rnd change vs prior year, FY ended 2026-01-25",
-     "tag": "us-gaap:ResearchAndDevelopmentExpense"
-    },
-    {
-     "display": "-41.7%",
-     "filed": "2026-02-25",
-     "label": "capex change vs prior year, FY ended 2024-01-28",
-     "tag": "us-gaap:PaymentsToAcquireProductiveAssets"
-    },
-    {
-     "display": "$3.24 billion",
-     "filed": "2026-02-25",
-     "label": "capex for the fiscal year ended 2025-01-26",
-     "tag": "us-gaap:PaymentsToAcquireProductiveAssets"
-    },
-    {
-     "display": "202.7%",
-     "filed": "2026-02-25",
-     "label": "capex change vs prior year, FY ended 2025-01-26",
-     "tag": "us-gaap:PaymentsToAcquireProductiveAssets"
-    },
-    {
-     "display": "$6.04 billion",
-     "filed": "2026-02-25",
-     "label": "capex for the fiscal year ended 2026-01-25",
-     "tag": "us-gaap:PaymentsToAcquireProductiveAssets"
-    },
-    {
-     "display": "86.7%",
-     "filed": "2026-02-25",
-     "label": "capex change vs prior year, FY ended 2026-01-25",
-     "tag": "us-gaap:PaymentsToAcquireProductiveAssets"
-    },
-    {
-     "display": "$8.68 billion",
-     "filed": "2026-02-25",
-     "label": "rnd for the fiscal year ended 2024-01-28",
-     "tag": "us-gaap:ResearchAndDevelopmentExpense"
-    },
-    {
-     "display": "18.2%",
-     "filed": "2026-02-25",
-     "label": "rnd change vs prior year, FY ended 2024-01-28",
-     "tag": "us-gaap:ResearchAndDevelopmentExpense"
-    },
-    {
-     "display": "$12.91 billion",
-     "filed": "2026-02-25",
-     "label": "rnd for the fiscal year ended 2025-01-26",
-     "tag": "us-gaap:ResearchAndDevelopmentExpense"
-    }
-   ],
-   "pending_reason": "",
-   "publishable": true,
+   "pending_reason": "confidence 0.70 below 0.75",
+   "publishable": false,
    "quote": "to expand the nation’s AI infrastructure with over a quarter-million NVIDIA GPUs",
    "restatements": [],
-   "status": "No evidence yet",
-   "status_code": "no_evidence_yet",
+   "status": "Status pending review",
+   "status_code": "",
    "target_text": "over a quarter-million",
    "ticker": "NVDA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1318605-0001628280-24-032603-ex99-0009:s2",
+   "company": "Tesla, Inc.",
+   "deadline_end": null,
+   "deadline_text": null,
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828024032603/exhibit.htm",
+   "first_stated": "2024-07-23",
+   "form": "8-K",
+   "id": "tsla-2024-07-23-d16a94",
+   "metric": null,
+   "pending_reason": "rubric: vague deliverable",
+   "publishable": false,
+   "quote": "Our purpose-built Robotaxi product will continue to pursue a revolutionary “unboxed” manufacturing strategy",
+   "restatements": [
+    {
+     "date": "2025-04-22",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025018851/exhbit991.htm"
+    },
+    {
+     "date": "2025-07-23",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035738/exhibit991.htm"
+    }
+   ],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": null,
+   "ticker": "TSLA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1318605-0001628280-25-002993-ex99-0002:s2",
+   "company": "Tesla, Inc.",
+   "deadline_end": "2025-12-31",
+   "deadline_text": "later this year",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025002993/exhibit991.htm",
+   "first_stated": "2025-01-29",
+   "form": "8-K",
+   "id": "tsla-2025-01-29-86efcc",
+   "metric": "Robotaxi business launch",
+   "pending_reason": "explanation missing or its citations did not check out",
+   "publishable": false,
+   "quote": "This will eventually unlock an unsupervised FSD option for our customers and the Robotaxi business, which we expect to begin launching later this year in parts of the U.S.",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "later this year in parts of the U.S.",
+   "ticker": "TSLA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1318605-0001628280-25-002993-ex99-0002:s3",
+   "company": "Tesla, Inc.",
+   "deadline_end": "2025-12-31",
+   "deadline_text": "in 2025",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025002993/exhibit991.htm",
+   "first_stated": "2025-01-29",
+   "form": "8-K",
+   "id": "tsla-2025-01-29-9e4528",
+   "metric": "FSD (Supervised) launch in Europe and China",
+   "pending_reason": "confidence 0.60 below 0.75",
+   "publishable": false,
+   "quote": "We also continue to work on launching FSD (Supervised) in Europe and China in 2025.",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "in 2025",
+   "ticker": "TSLA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1318605-0001628280-25-002993-ex99-0009:s1",
+   "company": "Tesla, Inc.",
+   "deadline_end": "2025-12-31",
+   "deadline_text": "in 2025",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025002993/exhibit991.htm",
+   "first_stated": "2025-01-29",
+   "form": "8-K",
+   "id": "tsla-2025-01-29-0766b9",
+   "metric": "Optimus pilot production",
+   "pending_reason": "vague_deliverable applies only to specificity-1 promises",
+   "publishable": false,
+   "quote": "Progress on Optimus hardware and software continued in Q4, including the latest generation hand, robust locomotion and training on additional tasks, ahead of planned pilot production in 2025.",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "planned pilot production in 2025",
+   "ticker": "TSLA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1318605-0001628280-25-002993-ex99-0011:s2",
+   "company": "Tesla, Inc.",
+   "deadline_end": "2026-12-31",
+   "deadline_text": "starting in 2026",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025002993/exhibit991.htm",
+   "first_stated": "2025-01-29",
+   "form": "8-K",
+   "id": "tsla-2025-01-29-c0d68e",
+   "metric": "Cybercab volume production start",
+   "pending_reason": "confidence 0.70 below 0.75",
+   "publishable": false,
+   "quote": "scheduled for volume production starting in 2026",
+   "restatements": [
+    {
+     "date": "2025-07-23",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035738/exhibit991.htm"
+    },
+    {
+     "date": "2025-10-22",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025045861/exhibit991.htm"
+    }
+   ],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "starting in 2026",
+   "ticker": "TSLA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1318605-0001628280-25-018851-ex99-0008:s1",
+   "company": "Tesla, Inc.",
+   "deadline_end": "2025-12-31",
+   "deadline_text": "in 2025",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025018851/exhbit991.htm",
+   "first_stated": "2025-04-22",
+   "form": "8-K",
+   "id": "tsla-2025-04-22-042baa",
+   "metric": "Optimus builds on Fremont pilot production line",
+   "pending_reason": "vague_deliverable applies only to specificity-1 promises",
+   "publishable": false,
+   "quote": "builds of Optimus on our Fremont pilot production line in 2025",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "builds of Optimus on our Fremont pilot production line in 2025",
+   "ticker": "TSLA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1318605-0001628280-25-018911-p1item2-0001:s1",
+   "company": "Tesla, Inc.",
+   "deadline_end": null,
+   "deadline_text": null,
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025018911/tsla-20250331.htm",
+   "first_stated": "2025-04-23",
+   "form": "10-Q",
+   "id": "tsla-2025-04-23-b89ef9",
+   "metric": null,
+   "pending_reason": "rubric: vague deliverable",
+   "publishable": false,
+   "quote": "further improving and deploying our FSD (Supervised) capabilities, including future autonomous capabilities through our purpose-built Robotaxi product, Cybercab",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": null,
+   "ticker": "TSLA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1318605-0001628280-25-035806-p1item2-0003:s2",
+   "company": "Tesla, Inc.",
+   "deadline_end": "2025-12-31",
+   "deadline_text": "June 2025",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/tsla-20250630.htm",
+   "first_stated": "2025-07-24",
+   "form": "10-Q",
+   "id": "tsla-2025-07-24-8355c9",
+   "metric": "business growth from Robotaxi service",
+   "pending_reason": "vague_deliverable applies only to specificity-1 promises",
+   "publishable": false,
+   "quote": "we believe the launch of our Robotaxi service in June 2025 will unlock significant business growth to advance a service-driven business model",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "significant business growth",
+   "ticker": "TSLA"
   },
   {
    "claim_type": "capex_investment",
@@ -1606,6 +1555,26 @@
    "status": "Status pending review",
    "status_code": "",
    "target_text": null,
+   "ticker": "TSLA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1318605-0001628280-25-045861-ex99-0010:s3",
+   "company": "Tesla, Inc.",
+   "deadline_end": null,
+   "deadline_text": null,
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025045861/exhibit991.htm",
+   "first_stated": "2025-10-22",
+   "form": "8-K",
+   "id": "tsla-2025-10-22-9f188d",
+   "metric": "Optimus production lines installed",
+   "pending_reason": "rubric: vague deliverable",
+   "publishable": false,
+   "quote": "First generation production lines for Optimus are being installed in anticipation of volume production",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "volume production",
    "ticker": "TSLA"
   },
   {
@@ -1682,18 +1651,18 @@
       "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000010/meta-12312023xexhibit991.htm"
      },
      {
-      "cited_text": "We anticipate our full-year 2024 capital expenditures will be in the range of $35-40 billion, increased from our prior range of $30-37 billion as we continue to accelerate our infrastructure investments to support our artificial intelligence (AI) roadmap. ",
-      "document_index": 1,
+      "cited_text": "Capex for the fiscal year ended 2024-12-31 was $37.26 billion (us-gaap:PaymentsToAcquirePropertyPlantAndEquipment, filed 2026-01-29). ",
+      "document_index": 5,
       "n": 2,
-      "title": "Evidence E1: 8-K filed 2024-04-24",
-      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000044/meta-03312024xexhibit991.htm"
+      "title": "Reported figures (XBRL, arithmetic by code)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000014/meta-12312024xexhibit991.htm"
      },
      {
-      "cited_text": "We anticipate our full-year 2024 capital expenditures will be in the range of $38-40 billion, updated from our prior range of $37-40 billion. ",
-      "document_index": 3,
+      "cited_text": "Compared by code with the promised range of $30 billion to $37 billion, the capex for the fiscal year ended 2024-12-31 ($37.26 billion) is above the range; it reaches the low end.",
+      "document_index": 5,
       "n": 3,
-      "title": "Evidence E3: 8-K filed 2024-10-30",
-      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000077/meta-09302024xexhibit991.htm"
+      "title": "Reported figures (XBRL, arithmetic by code)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000014/meta-12312024xexhibit991.htm"
      },
      {
       "cited_text": "•Capital expenditures – Capital expenditures, including principal payments on finance leases, were $14.84 billion and $39.23 billion for the fourth quarter and full year 2024, respectively.\n\n",
@@ -1703,21 +1672,14 @@
       "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm"
      },
      {
-      "cited_text": "Capex for the fiscal year ended 2024-12-31 was $37.26 billion (us-gaap:PaymentsToAcquirePropertyPlantAndEquipment, filed 2026-01-29). ",
-      "document_index": 5,
+      "cited_text": "We anticipate our full-year 2024 capital expenditures will be in the range of $38-40 billion, updated from our prior range of $37-40 billion. ",
+      "document_index": 3,
       "n": 5,
-      "title": "Reported figures (XBRL, arithmetic by code)",
-      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000014/meta-12312024xexhibit991.htm"
-     },
-     {
-      "cited_text": "Finance lease principal for the fiscal year ended 2024-12-31 was $1.97 billion (us-gaap:FinanceLeasePrincipalPayments, filed 2026-01-29).",
-      "document_index": 5,
-      "n": 6,
-      "title": "Reported figures (XBRL, arithmetic by code)",
-      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000014/meta-12312024xexhibit991.htm"
+      "title": "Evidence E3: 8-K filed 2024-10-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000077/meta-09302024xexhibit991.htm"
      }
     ],
-    "text": "Meta's 8-K filed 2024-02-01 said it anticipated its full-year 2024 capital expenditures will be in the range of $30-37 billion[1]. Later filings raised that range several times: the 8-K filed 2024-04-24 moved it to $35-40 billion[2], and the 8-K filed 2024-10-30 gave $38-40 billion[3]. The Q4 2024 earnings release reports capital expenditures, including principal payments on finance leases, were $14.84 billion and $39.23 billion for the fourth quarter and full year 2024[4], while XBRL data computed from reported figures gives capex for the fiscal year ended 2024-12-31 was $37.26 billion[5], and finance lease principal for the fiscal year ended 2024-12-31 was $1.97 billion[6]. The status is Delivered because the FY2024 10-K's reported capital expenditures figure of $37.26 billion falls within the original $30-37 billion range, even though the company's own Q4 2024 release reports a higher $39.23 billion figure that includes finance lease principal payments."
+    "text": "Meta Platforms said in its 8-K filed 2024-02-01 that \"We anticipate our full-year 2024 capital expenditures will be in the range of $30-37 billion\"[1]. The reported figures, filed 2026-01-29, give purchases of property and equipment of $37.26 billion[2] for the fiscal year ended 2024-12-31. “Compared by code with the promised range of $30 billion to $37 billion, the capex for the fiscal year ended 2024-12-31 ($37.26 billion) is above the range; it reaches the low end.”[3] On the company's own definition, which includes principal payments on finance leases, the company reports capital expenditures, including principal payments on finance leases, were $14.84 billion and $39.23 billion for the fourth quarter and full year 2024, respectively.[4] Because the reported full-year figure is above the range, it meets the promise. Later 8-Ks raised the 2024 range, with the 2024-10-30 filing stating \"We anticipate our full-year 2024 capital expenditures will be in the range of $38-40 billion, updated from our prior range of $37-40 billion.\"[5]"
    },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000010/meta-12312023xexhibit991.htm",
    "first_stated": "2024-02-01",
@@ -1861,17 +1823,259 @@
    "company": "Meta Platforms",
    "deadline_end": "2024-12-31",
    "deadline_text": "full-year 2024",
+   "evidence": [
+    {
+     "date": "2024-07-31",
+     "eid": "E1",
+     "excerpt": "We expect full-year 2024 total expenses to be in the range of $96-99 billion, unchanged from our prior outlook. For Reality Labs, we continue to expect 2024 operating losses to increase meaningfully year-over-year due to our ongoing product development efforts and investments to further scale our ecosystem.\n\nWhile we do not intend to provide any quantitative guidance for 2025 until the fourth quarter call, we expect infrastructure costs will be a significant driver of expense growth next year as we recognize depreciation and operating costs associated with our expanded infrastructure footprint",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000065/meta-06302024xexhibit991.htm"
+    },
+    {
+     "date": "2024-10-30",
+     "eid": "E2",
+     "excerpt": "We expect full-year 2024 total expenses to be in the range of $96-98 billion, updated from our prior range of $96-99 billion. For Reality Labs, we continue to expect 2024 operating losses to increase meaningfully year-over-year due to our ongoing product development efforts and investments to further scale our ecosystem.\n\nWe anticipate our full-year 2024 capital expenditures will be in the range of $38-40 billion, updated from our prior range of $37-40 billion. We continue to expect significant capital expenditures growth in 2025. Given this, along with the back-end weighted nature of our 2024",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000077/meta-09302024xexhibit991.htm"
+    },
+    {
+     "date": "2025-01-29",
+     "eid": "E3",
+     "excerpt": "•Costs and expenses – Total costs and expenses were $25.02 billion and $95.12 billion, representing increases of 5% and 8% year-over-year for the fourth quarter and full year 2024, respectively. The fourth quarter costs and expenses included a favorable impact of $1.55 billion due to a decrease in the accrued losses for certain legal proceedings.\n\n•Capital expenditures – Capital expenditures, including principal payments on finance leases, were $14.84 billion and $39.23 billion for the fourth quarter and full year 2024, respectively.\n\n•Capital return program – Share repurchases of our Class A ",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000014/meta-12312024xexhibit991.htm"
+    },
+    {
+     "date": "2025-04-30",
+     "eid": "E4",
+     "excerpt": "We expect second quarter 2025 total revenue to be in the range of $42.5-45.5 billion. Our guidance assumes foreign currency is an approximately 1% tailwind to year-over-year total revenue growth, based on current exchange rates.\n\nWe expect full year 2025 total expenses to be in the range of $113-118 billion, lowered from our prior outlook of $114-119 billion.\n\nWe anticipate our full year 2025 capital expenditures, including principal payments on finance leases, will be in the range of $64-72 billion, increased from our prior outlook of $60-65 billion. This updated outlook reflects additional d",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000050/meta-03312025xexhibit991.htm"
+    },
+    {
+     "date": "2025-07-30",
+     "eid": "E5",
+     "excerpt": "We expect third quarter 2025 total revenue to be in the range of $47.5-50.5 billion. Our guidance assumes foreign currency is an approximately 1% tailwind to year-over-year total revenue growth, based on current exchange rates. While we are not providing an outlook for fourth quarter revenue, we would expect our year-over-year growth rate in the fourth quarter of 2025 to be slower than the third quarter as we lap a period of stronger growth in the fourth quarter of 2024.\n\nWe expect full year 2025 total expenses to be in the range of $114-118 billion, narrowed from our prior outlook of $113-118",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036719/meta-06302025xexhibit991.htm"
+    },
+    {
+     "date": "2025-10-30",
+     "eid": "E6",
+     "excerpt": "Cash used in investing activities during the nine months ended September 30, 2025 mostly consisted of $48.31 billion of purchases of property and equipment as we continued to invest in servers, data centers, and network infrastructure, and $18.26 billion of purchases of non-marketable equity investments. The increase in cash used in investing activities during the nine months ended September 30, 2025, compared to the same period in 2024, was mostly due to increases in purchases of property and equipment and non-marketable equity investments, offset by an increase in net proceeds from sales and",
+     "form": "10-Q",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
+    },
+    {
+     "date": "2026-01-28",
+     "eid": "E7",
+     "excerpt": "We anticipate 2026 capital expenditures, including principal payments on finance leases, to be in the range of $115-135 billion, with year-over-year growth driven by increased investment to support our Meta Superintelligence Labs efforts and core business.\n\nDespite the meaningful step up in infrastructure investment, in 2026 we expect to deliver operating income that is above 2025 operating income.\n\nAbsent any changes to our tax landscape, we expect our full year 2026 tax rate to be 13-16%.\n\nFinally, we recently aligned with the European Commission on further changes to our Less Personalized A",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003832/meta-12312025xexhibit991.htm"
+    },
+    {
+     "date": "2026-04-30",
+     "eid": "E8",
+     "excerpt": "Cash used in investing activities during the three months ended March 31, 2026 mostly consisted of $19.00 billion of purchases of property and equipment as we continued to invest in servers, data centers, and network infrastructure, and $13.80 billion of net purchases of marketable securities. The increase in cash used in investing activities during the three months ended March 31, 2026, compared to the same period in 2025, was mostly due to increases in net purchases of marketable securities and cash paid for property and equipment.\n\nWe anticipate making capital expenditures of approximately ",
+     "form": "10-Q",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm"
+    }
+   ],
+   "explanation": {
+    "citations": [
+     {
+      "cited_text": "We anticipate our full-year 2024 capital expenditures will be in the range of $35-40 billion, increased from our prior range of $30-37 billion as we continue to accelerate our infrastructure investments to support our artificial intelligence (AI) roadmap. ",
+      "document_index": 0,
+      "n": 1,
+      "title": "Promise: 8-K filed 2024-04-24",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000044/meta-03312024xexhibit991.htm"
+     },
+     {
+      "cited_text": "•Capital expenditures – Capital expenditures, including principal payments on finance leases, were $14.84 billion and $39.23 billion for the fourth quarter and full year 2024, respectively.\n\n",
+      "document_index": 1,
+      "n": 2,
+      "title": "Evidence E3: 8-K filed 2025-01-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000065/meta-06302024xexhibit991.htm"
+     },
+     {
+      "cited_text": "Compared by code with the promised range of $35 billion to $40 billion, the capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2024-12-31 ($39.23 billion) is within the range; it reaches the low end.",
+      "document_index": 2,
+      "n": 3,
+      "title": "Reported figures (XBRL, arithmetic by code)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000077/meta-09302024xexhibit991.htm"
+     }
+    ],
+    "text": "Meta Platforms said in its 8-K filed 2024-04-24 that \"We anticipate our full-year 2024 capital expenditures will be in the range of $35-40 billion, increased from our prior range of $30-37 billion as we continue to accelerate our infrastructure investments to support our artificial intelligence (AI) roadmap.\"[1] The 8-K filed 2025-01-29 reports, as company-reported figures, that \"Capital expenditures, including principal payments on finance leases, were $14.84 billion and $39.23 billion for the fourth quarter and full year 2024, respectively.\"[2] A figure computed by code from reported numbers, purchases of property and equipment plus principal payments on finance leases, is also $39.23 billion for fiscal 2024, and it is “within the range; it reaches the low end.”[3] The status is Delivered because the full-year 2024 result for the promised period falls within the $35-40 billion range."
+   },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000044/meta-03312024xexhibit991.htm",
    "first_stated": "2024-04-24",
    "form": "8-K",
    "id": "meta-2024-04-24-23a009",
    "metric": "full-year 2024 capital expenditures",
-   "pending_reason": "rubric: basis changed",
-   "publishable": false,
+   "numbers": [
+    {
+     "display": "$27.05 billion",
+     "filed": "2026-01-29",
+     "label": "capex for the fiscal year ended 2023-12-31",
+     "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+     "display": "39.6%",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2024-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$72.22 billion",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2025-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "84.1%",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2025-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$1.06 billion",
+     "filed": "2026-01-29",
+     "label": "finance lease principal for the fiscal year ended 2023-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "24.5%",
+     "filed": "2026-01-29",
+     "label": "finance lease principal change vs prior year, FY ended 2023-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$1.97 billion",
+     "filed": "2026-01-29",
+     "label": "finance lease principal for the fiscal year ended 2024-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "86.1%",
+     "filed": "2026-01-29",
+     "label": "finance lease principal change vs prior year, FY ended 2024-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$2.52 billion",
+     "filed": "2026-01-29",
+     "label": "finance lease principal for the fiscal year ended 2025-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "28.2%",
+     "filed": "2026-01-29",
+     "label": "finance lease principal change vs prior year, FY ended 2025-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$221.0 million",
+     "filed": "2024-02-02",
+     "label": "ppe sale proceeds for the fiscal year ended 2023-12-31",
+     "tag": "us-gaap:ProceedsFromSaleOfPropertyPlantAndEquipment"
+    },
+    {
+     "display": "-13.3%",
+     "filed": "2026-01-29",
+     "label": "capex change vs prior year, FY ended 2023-12-31",
+     "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+     "display": "-9.8%",
+     "filed": "2024-02-02",
+     "label": "ppe sale proceeds change vs prior year, FY ended 2023-12-31",
+     "tag": "us-gaap:ProceedsFromSaleOfPropertyPlantAndEquipment"
+    },
+    {
+     "display": "$38.48 billion",
+     "filed": "2026-01-29",
+     "label": "rnd for the fiscal year ended 2023-12-31",
+     "tag": "us-gaap:ResearchAndDevelopmentExpense"
+    },
+    {
+     "display": "8.9%",
+     "filed": "2026-01-29",
+     "label": "rnd change vs prior year, FY ended 2023-12-31",
+     "tag": "us-gaap:ResearchAndDevelopmentExpense"
+    },
+    {
+     "display": "$43.87 billion",
+     "filed": "2026-01-29",
+     "label": "rnd for the fiscal year ended 2024-12-31",
+     "tag": "us-gaap:ResearchAndDevelopmentExpense"
+    },
+    {
+     "display": "14.0%",
+     "filed": "2026-01-29",
+     "label": "rnd change vs prior year, FY ended 2024-12-31",
+     "tag": "us-gaap:ResearchAndDevelopmentExpense"
+    },
+    {
+     "display": "$57.37 billion",
+     "filed": "2026-01-29",
+     "label": "rnd for the fiscal year ended 2025-12-31",
+     "tag": "us-gaap:ResearchAndDevelopmentExpense"
+    },
+    {
+     "display": "30.8%",
+     "filed": "2026-01-29",
+     "label": "rnd change vs prior year, FY ended 2025-12-31",
+     "tag": "us-gaap:ResearchAndDevelopmentExpense"
+    },
+    {
+     "display": "$37.26 billion",
+     "filed": "2026-01-29",
+     "label": "capex for the fiscal year ended 2024-12-31",
+     "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+     "display": "37.8%",
+     "filed": "2026-01-29",
+     "label": "capex change vs prior year, FY ended 2024-12-31",
+     "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+     "display": "$69.69 billion",
+     "filed": "2026-01-29",
+     "label": "capex for the fiscal year ended 2025-12-31",
+     "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+     "display": "87.1%",
+     "filed": "2026-01-29",
+     "label": "capex change vs prior year, FY ended 2025-12-31",
+     "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+     "display": "$28.10 billion",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2023-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "-12.3%",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2023-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$39.23 billion",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2024-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    }
+   ],
+   "pending_reason": "",
+   "publishable": true,
    "quote": "We anticipate our full-year 2024 capital expenditures will be in the range of $35-40 billion, increased from our prior range of $30-37 billion as we continue to accelerate our infrastructure investments to support our artificial intelligence (AI) roadmap",
    "restatements": [],
-   "status": "Status pending review",
-   "status_code": "",
+   "status": "Delivered",
+   "status_code": "delivered",
    "target_text": "$35-40 billion",
    "ticker": "META"
   },
@@ -1881,102 +2085,17 @@
    "company": "Meta Platforms",
    "deadline_end": "2024-12-31",
    "deadline_text": "by the end of the year",
-   "evidence": [
-    {
-     "date": "2025-01-30",
-     "eid": "E1",
-     "excerpt": "Item 1.Business\n\nOverview\n\nOur mission is to build the future of human connection and the technology that makes it possible.\n\nWe build technology that helps people connect and share, find and build communities, and grow businesses. Our products enable people to connect and share with friends and family through mobile devices, personal computers, virtual reality (VR) and mixed reality (MR) headsets, augmented reality (AR), and wearables. We also help people discover and learn about what is going on in the world around them, enable people to share their experiences, ideas, photos, videos, and ot",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-    },
-    {
-     "date": "2025-01-30",
-     "eid": "E2",
-     "excerpt": "Our metaverse efforts include our VR, MR, and social platform initiatives. Our current product offerings in VR include our Meta Quest devices, as well as software and content available through the Meta Horizon Store, which enable a range of social experiences that allow people to defy physical distance while engaging in gaming, fitness, entertainment, and more. To drive greater adoption and acceptance of VR we have introduced MR capabilities, which allow users to experience the immersion and presence of VR while still being grounded in the physical world, through our Meta Quest devices.\n\nOur w",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-    },
-    {
-     "date": "2025-04-30",
-     "eid": "E3",
-     "excerpt": "Meta uses the investor.atmeta.com and meta.com/news websites as well as Mark Zuckerberg's Facebook Page (facebook.com/zuck), Instagram account (instagram.com/zuck) and Threads profile (threads.net/zuck) as means of disclosing material non-public information and for complying with its disclosure obligations under Regulation FD.\n\nAbout Meta\n\nMeta is building the future of human connection, powered by artificial intelligence and immersive technologies. When Facebook launched in 2004, it changed the way people connect. Apps like Messenger, Instagram, and WhatsApp further empowered billions around ",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000050/meta-03312025xexhibit991.htm"
-    },
-    {
-     "date": "2026-01-29",
-     "eid": "E4",
-     "excerpt": "•Facebook. Facebook helps give people the power to build community and bring the world closer together. It's a place for people to share life's moments and discuss what's happening, nurture and build relationships, discover and connect to people with shared interests, and create economic opportunity. They can do this through Feed, Reels, Stories, Groups, Marketplace, and more.\n\n•Instagram. Instagram brings people closer to the people and things they love. Instagram Feed, Stories, Reels, Live, and messaging are places where people and creators can connect and express themselves through photos, ",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-    },
-    {
-     "date": "2026-01-29",
-     "eid": "E5",
-     "excerpt": "Our current product offerings in VR include our Meta Quest devices, as well as software and content available through the Meta Horizon Store, which enable a range of social experiences that allow people to defy physical distance while engaging in gaming, fitness, entertainment, and more. To drive greater adoption and acceptance of VR we have introduced passthrough capabilities, which allow users to experience the immersion and presence of VR while still being grounded in the physical world, through our Meta Quest devices.\n\nOur wearables efforts include our AI glasses and long-term AR initiativ",
-     "form": "10-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-    },
-    {
-     "date": "2026-04-29",
-     "eid": "E6",
-     "excerpt": "Meta uses the investor.atmeta.com and meta.com/news websites as well as Mark Zuckerberg's Facebook profile (facebook.com/zuck), Instagram account (instagram.com/zuck) and Threads profile (threads.net/zuck) as means of disclosing material non-public information and for complying with its disclosure obligations under Regulation FD.\n\nAbout Meta\n\nMeta is building the future of human connection, powered by artificial intelligence and immersive technologies. When Facebook launched in 2004, it changed the way people connect. Apps like Messenger, Instagram, and WhatsApp further empowered billions arou",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/meta-03312026xexhibit991.htm"
-    },
-    {
-     "date": "2026-07-29",
-     "eid": "E7",
-     "excerpt": "Meta uses the investor.atmeta.com and meta.com/news websites as well as Mark Zuckerberg's Facebook profile (facebook.com/zuck), Instagram account (instagram.com/zuck) and Threads profile (threads.net/zuck) as means of disclosing material non-public information and for complying with its disclosure obligations under Regulation FD.\n\nAbout Meta\n\nMeta is building the future of human connection, powered by artificial intelligence and immersive technologies. When Facebook launched in 2004, it changed the way people connect. Apps like Messenger, Instagram, and WhatsApp further empowered billions arou",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050596/meta-06302026xexhibit991.htm"
-    },
-    {
-     "date": "2026-10-21",
-     "eid": "E8",
-     "excerpt": "Meta will host a conference call to discuss its results at 1:30 p.m. PT / 4:30 p.m. ET today. The live webcast of the call can be accessed at the Meta Investor Relations website at investor.atmeta.com, along with the company's earnings press release, financial tables, and slide presentation.\n\nFollowing the call, a replay will be available at the same website. Transcripts of conference calls with publishing equity research analysts held today will also be posted to the investor.atmeta.com website.\n\nDisclosure Information\n\nMeta uses the investor.atmeta.com and meta.com/news websites as well as M",
-     "form": "8-K",
-     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066700/meta-09302026xexhibit991.htm"
-    }
-   ],
-   "explanation": {
-    "citations": [
-     {
-      "cited_text": "\"We had a strong quarter, and Meta AI is on track to be the most used AI assistant in the world by the end of the year,\" said Mark Zuckerberg, Meta founder and CEO. ",
-      "document_index": 0,
-      "n": 1,
-      "title": "Promise: 8-K filed 2024-07-31",
-      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000065/meta-06302024xexhibit991.htm"
-     },
-     {
-      "cited_text": "For example, Meta AI is an assistant that's available across our apps, on Ray-Ban Meta AI glasses and on the web. ",
-      "document_index": 1,
-      "n": 2,
-      "title": "Evidence E1: 10-K filed 2025-01-30",
-      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     {
-      "cited_text": "Meta AI is an assistant that's available across our apps, as a stand-alone app, on our AI glasses, and on the web. ",
-      "document_index": 2,
-      "n": 3,
-      "title": "Evidence E4: 10-K filed 2026-01-29",
-      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     }
-    ],
-    "text": "Meta's CEO said in the July 31, 2024 8-K earnings release that \"Meta AI is on track to be the most used AI assistant in the world by the end of the year.\"[1] The later 10-K filings describe Meta AI, but they do not report a usage ranking. The 10-K filed 2025-01-30 says Meta AI is an assistant that's available across our apps, on Ray-Ban Meta AI glasses and on the web.[2] The 10-K filed 2026-01-29 says Meta AI is an assistant that's available across our apps, as a stand-alone app, on our AI glasses, and on the web.[3] Because neither later filing reports a figure showing Meta AI as the most used AI assistant, the status is \"No evidence yet.\""
-   },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000065/meta-06302024xexhibit991.htm",
    "first_stated": "2024-07-31",
    "form": "8-K",
    "id": "meta-2024-07-31-016498",
    "metric": "ranking of Meta AI among AI assistants in usage",
-   "numbers": [],
-   "pending_reason": "",
-   "publishable": true,
+   "pending_reason": "vague_deliverable applies only to specificity-1 promises",
+   "publishable": false,
    "quote": "Meta AI is on track to be the most used AI assistant in the world by the end of the year",
    "restatements": [],
-   "status": "No evidence yet",
-   "status_code": "no_evidence_yet",
+   "status": "Status pending review",
+   "status_code": "",
    "target_text": "the most used AI assistant in the world",
    "ticker": "META"
   },
@@ -2054,21 +2173,21 @@
       "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000065/meta-06302024xexhibit991.htm"
      },
      {
-      "cited_text": "Capex for the fiscal year ended 2025-12-31 was $69.69 billion (us-gaap:PaymentsToAcquirePropertyPlantAndEquipment, filed 2026-01-29). ",
-      "document_index": 2,
+      "cited_text": "Capex change vs prior year, FY ended 2025-12-31 was 87.1% (us-gaap:PaymentsToAcquirePropertyPlantAndEquipment, filed 2026-01-29). ",
+      "document_index": 4,
       "n": 2,
       "title": "Reported figures (XBRL, arithmetic by code)",
-      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm"
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000050/meta-03312025xexhibit991.htm"
      },
      {
-      "cited_text": "Capex change vs prior year, FY ended 2025-12-31 was 87.1% (us-gaap:PaymentsToAcquirePropertyPlantAndEquipment, filed 2026-01-29). ",
-      "document_index": 2,
+      "cited_text": "Capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2025-12-31 was 84.1% (derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments, filed 2026-01-29).",
+      "document_index": 4,
       "n": 3,
       "title": "Reported figures (XBRL, arithmetic by code)",
-      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm"
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000050/meta-03312025xexhibit991.htm"
      }
     ],
-    "text": "While we continue to refine our plans for next year, we currently expect significant capital expenditures growth in 2025 as we invest to support our artificial intelligence research and product development efforts.[1] That promise was made in the 8-K filed 2024-07-31. The FY2025 10-K, filed 2026-01-29, reports capex of $69.69 billion for the year ended 2025-12-31 (Capex for the fiscal year ended 2025-12-31 was $69.69 billion[2]), and that figure is company-reported. Computed from reported figures, this is an 87.1% change vs prior year[3], which is consistent with the promised significant growth in 2025 and is why the status is Delivered."
+    "text": "Meta Platforms said in its 8-K filed 2024-07-31 that \"we currently expect significant capital expenditures growth in 2025 as we invest to support our artificial intelligence research and product development efforts.\"[1] The promise gave no dollar figure. Figures computed from reported numbers show capital expenditures for the year ended 2025-12-31 rose 87.1% versus the prior year[2] on purchases of property and equipment, and 84.1%[3] on the company's own definition, which adds finance lease principal payments. Both figures are from annual data filed 2026-01-29, and the promise does not say which definition it uses."
    },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000065/meta-06302024xexhibit991.htm",
    "first_stated": "2024-07-31",
@@ -2081,6 +2200,42 @@
      "filed": "2026-01-29",
      "label": "capex for the fiscal year ended 2023-12-31",
      "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+     "display": "39.6%",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2024-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$72.22 billion",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2025-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "84.1%",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2025-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$1.06 billion",
+     "filed": "2026-01-29",
+     "label": "finance lease principal for the fiscal year ended 2023-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "24.5%",
+     "filed": "2026-01-29",
+     "label": "finance lease principal change vs prior year, FY ended 2023-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$1.97 billion",
+     "filed": "2026-01-29",
+     "label": "finance lease principal for the fiscal year ended 2024-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
     },
     {
      "display": "86.1%",
@@ -2105,6 +2260,12 @@
      "filed": "2024-02-02",
      "label": "ppe sale proceeds for the fiscal year ended 2023-12-31",
      "tag": "us-gaap:ProceedsFromSaleOfPropertyPlantAndEquipment"
+    },
+    {
+     "display": "-13.3%",
+     "filed": "2026-01-29",
+     "label": "capex change vs prior year, FY ended 2023-12-31",
+     "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
     },
     {
      "display": "-9.8%",
@@ -2143,12 +2304,6 @@
      "tag": "us-gaap:ResearchAndDevelopmentExpense"
     },
     {
-     "display": "-13.3%",
-     "filed": "2026-01-29",
-     "label": "capex change vs prior year, FY ended 2023-12-31",
-     "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
-    },
-    {
      "display": "30.8%",
      "filed": "2026-01-29",
      "label": "rnd change vs prior year, FY ended 2025-12-31",
@@ -2179,22 +2334,22 @@
      "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
     },
     {
-     "display": "$1.06 billion",
+     "display": "$28.10 billion",
      "filed": "2026-01-29",
-     "label": "finance lease principal for the fiscal year ended 2023-12-31",
-     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2023-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
     },
     {
-     "display": "24.5%",
+     "display": "-12.3%",
      "filed": "2026-01-29",
-     "label": "finance lease principal change vs prior year, FY ended 2023-12-31",
-     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2023-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
     },
     {
-     "display": "$1.97 billion",
+     "display": "$39.23 billion",
      "filed": "2026-01-29",
-     "label": "finance lease principal for the fiscal year ended 2024-12-31",
-     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2024-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
     }
    ],
    "pending_reason": "",
@@ -2287,14 +2442,28 @@
       "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm"
      },
      {
-      "cited_text": "Capex for the fiscal year ended 2024-12-31 was $37.26 billion (us-gaap:PaymentsToAcquirePropertyPlantAndEquipment, filed 2026-01-29).",
+      "cited_text": "Capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2024-12-31 was $39.23 billion (derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments, filed 2026-01-29). ",
       "document_index": 2,
       "n": 3,
       "title": "Reported figures (XBRL, arithmetic by code)",
       "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     {
+      "cited_text": "Compared by code with the promised range of $37 billion to $40 billion, the capex for the fiscal year ended 2024-12-31 ($37.26 billion) is within the range; it reaches the low end. ",
+      "document_index": 2,
+      "n": 4,
+      "title": "Reported figures (XBRL, arithmetic by code)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     {
+      "cited_text": "Compared by code with the promised range of $37 billion to $40 billion, the capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2024-12-31 ($39.23 billion) is within the range; it reaches the low end.",
+      "document_index": 2,
+      "n": 5,
+      "title": "Reported figures (XBRL, arithmetic by code)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
      }
     ],
-    "text": "Meta's 10-Q filed August 1, 2024 stated: \"We anticipate making capital expenditures of approximately $37 billion to $40 billion in 2024.\"[1] The 10-K filed January 30, 2025 reports that cash used in investing activities during 2024 mostly consisted of $37.26 billion of purchases of property and equipment[2], and XBRL data filed January 29, 2026 likewise shows capex for the fiscal year ended 2024-12-31 was $37.26 billion[3]. Because the reported $37.26 billion falls within the promised $37 billion to $40 billion range, the status is Delivered."
+    "text": "Meta Platforms said in its 10-Q filed 2024-08-01 that \"We anticipate making capital expenditures of approximately $37 billion to $40 billion in 2024.\"[1] The 10-K filed 2025-01-30 reports \"$37.26 billion of purchases of property and equipment\"[2] for 2024. Computed from reported figures, capital expenditures on the company's own definition, which adds principal payments on finance leases, come to $39.23 billion[3]. Against the promised range, the purchases figure “is within the range; it reaches the low end.”[4] The company-defined figure “is within the range; it reaches the low end.”[5]"
    },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000069/meta-20240630.htm",
    "first_stated": "2024-08-01",
@@ -2307,6 +2476,42 @@
      "filed": "2026-01-29",
      "label": "capex for the fiscal year ended 2023-12-31",
      "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+     "display": "39.6%",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2024-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$72.22 billion",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2025-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "84.1%",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2025-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$1.06 billion",
+     "filed": "2026-01-29",
+     "label": "finance lease principal for the fiscal year ended 2023-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "24.5%",
+     "filed": "2026-01-29",
+     "label": "finance lease principal change vs prior year, FY ended 2023-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$1.97 billion",
+     "filed": "2026-01-29",
+     "label": "finance lease principal for the fiscal year ended 2024-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
     },
     {
      "display": "86.1%",
@@ -2331,6 +2536,12 @@
      "filed": "2024-02-02",
      "label": "ppe sale proceeds for the fiscal year ended 2023-12-31",
      "tag": "us-gaap:ProceedsFromSaleOfPropertyPlantAndEquipment"
+    },
+    {
+     "display": "-13.3%",
+     "filed": "2026-01-29",
+     "label": "capex change vs prior year, FY ended 2023-12-31",
+     "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
     },
     {
      "display": "-9.8%",
@@ -2369,12 +2580,6 @@
      "tag": "us-gaap:ResearchAndDevelopmentExpense"
     },
     {
-     "display": "-13.3%",
-     "filed": "2026-01-29",
-     "label": "capex change vs prior year, FY ended 2023-12-31",
-     "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
-    },
-    {
      "display": "30.8%",
      "filed": "2026-01-29",
      "label": "rnd change vs prior year, FY ended 2025-12-31",
@@ -2405,22 +2610,22 @@
      "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
     },
     {
-     "display": "$1.06 billion",
+     "display": "$28.10 billion",
      "filed": "2026-01-29",
-     "label": "finance lease principal for the fiscal year ended 2023-12-31",
-     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2023-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
     },
     {
-     "display": "24.5%",
+     "display": "-12.3%",
      "filed": "2026-01-29",
-     "label": "finance lease principal change vs prior year, FY ended 2023-12-31",
-     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2023-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
     },
     {
-     "display": "$1.97 billion",
+     "display": "$39.23 billion",
      "filed": "2026-01-29",
-     "label": "finance lease principal for the fiscal year ended 2024-12-31",
-     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2024-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
     }
    ],
    "pending_reason": "",
@@ -2443,7 +2648,7 @@
    "form": "8-K",
    "id": "meta-2025-01-29-61abc9",
    "metric": "full year 2025 capital expenditures",
-   "pending_reason": "rubric: basis changed",
+   "pending_reason": "confidence 0.60 below 0.75",
    "publishable": false,
    "quote": "We anticipate our full year 2025 capital expenditures will be in the range of $60-65 billion",
    "restatements": [
@@ -2484,17 +2689,206 @@
    "company": "Meta Platforms",
    "deadline_end": "2025-12-31",
    "deadline_text": "in 2025",
+   "evidence": [
+    {
+     "date": "2025-04-30",
+     "eid": "E1",
+     "excerpt": "We expect second quarter 2025 total revenue to be in the range of $42.5-45.5 billion. Our guidance assumes foreign currency is an approximately 1% tailwind to year-over-year total revenue growth, based on current exchange rates.\n\nWe expect full year 2025 total expenses to be in the range of $113-118 billion, lowered from our prior outlook of $114-119 billion.\n\nWe anticipate our full year 2025 capital expenditures, including principal payments on finance leases, will be in the range of $64-72 billion, increased from our prior outlook of $60-65 billion. This updated outlook reflects additional d",
+     "form": "8-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000050/meta-03312025xexhibit991.htm"
+    },
+    {
+     "date": "2025-05-01",
+     "eid": "E2",
+     "excerpt": "Cash used in investing activities during the three months ended March 31, 2025 mostly consisted of $12.94 billion of purchases of property and equipment as we continued to invest in servers, data centers, and network infrastructure, and $6.98 billion of net purchases of marketable securities. The increase in cash used in investing activities during the three months ended March 31, 2025, compared to the same period in 2024, was mostly due to increases in purchases of property and equipment and marketable securities.\n\nWe anticipate making capital expenditures of approximately $64 billion to $72 ",
+     "form": "10-Q",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+    },
+    {
+     "date": "2025-07-31",
+     "eid": "E3",
+     "excerpt": "Cash used in investing activities during the six months ended June 30, 2025 mostly consisted of $29.48 billion of purchases of property and equipment as we continued to invest in servers, data centers, and network infrastructure, and $15.21 billion of purchases of non-marketable equity investments. The increase in cash used in investing activities during the six months ended June 30, 2025, compared to the same period in 2024, was mostly due to increases in non-marketable equity investments and purchases of property and equipment.\n\nWe anticipate making capital expenditures of approximately $66 ",
+     "form": "10-Q",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm"
+    },
+    {
+     "date": "2025-10-30",
+     "eid": "E4",
+     "excerpt": "Cash used in investing activities during the nine months ended September 30, 2025 mostly consisted of $48.31 billion of purchases of property and equipment as we continued to invest in servers, data centers, and network infrastructure, and $18.26 billion of purchases of non-marketable equity investments. The increase in cash used in investing activities during the nine months ended September 30, 2025, compared to the same period in 2024, was mostly due to increases in purchases of property and equipment and non-marketable equity investments, offset by an increase in net proceeds from sales and",
+     "form": "10-Q",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
+    },
+    {
+     "date": "2026-01-29",
+     "eid": "E5",
+     "excerpt": "Year Ended December 31,\n2025 | 2024 | 2023\nNet cash provided by operating activities | $115,800 | $91,328 | $71,113\nNet cash used in investing activities | $(102,003) | $(47,150) | $(24,495)\nNet cash used in financing activities | $(20,370) | $(40,781) | $(19,500)\n\nCash Provided by Operating Activities\n\nCash provided by operating activities during 2025 mostly consisted of $60.46 billion net income adjusted for certain non-cash items, such as $20.43 billion of share-based compensation expense, $18.74 billion of deferred income taxes, and $18.62 billion of depreciation and amortization expense. ",
+     "form": "10-K",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+    },
+    {
+     "date": "2026-04-30",
+     "eid": "E6",
+     "excerpt": "Cash used in investing activities during the three months ended March 31, 2026 mostly consisted of $19.00 billion of purchases of property and equipment as we continued to invest in servers, data centers, and network infrastructure, and $13.80 billion of net purchases of marketable securities. The increase in cash used in investing activities during the three months ended March 31, 2026, compared to the same period in 2025, was mostly due to increases in net purchases of marketable securities and cash paid for property and equipment.\n\nWe anticipate making capital expenditures of approximately ",
+     "form": "10-Q",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm"
+    },
+    {
+     "date": "2026-07-30",
+     "eid": "E7",
+     "excerpt": "Cash used in investing activities during the six months ended June 30, 2026 mostly consisted of $49.11 billion of purchases of property and equipment as we continued to invest in servers, data centers, and network infrastructure, and $31.56 billion of net purchases of marketable securities. The increase in cash used in investing activities during the six months ended June 30, 2026, compared to the same period in 2025, was mostly due to increases in net purchases of marketable securities and property and equipment, partially offset by a decrease in non-marketable equity investments.\n\nWe anticip",
+     "form": "10-Q",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm"
+    },
+    {
+     "date": "2026-10-22",
+     "eid": "E8",
+     "excerpt": "Cash provided by operating activities during the nine months ended September 30, 2026 mostly consisted of $52.48 billion net income adjusted for certain non-cash items, such as $21.05 billion of share-based compensation expense and $19.51 billion of depreciation and amortization expense. The increase in cash flows from operating activities during the nine months ended September 30, 2026, compared to the same period in 2025, was primarily due to an increase in cash collections from our customers driven by higher revenue, and a decrease in cash tax payments, partially offset by higher operationa",
+     "form": "10-Q",
+     "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+    }
+   ],
+   "explanation": {
+    "citations": [
+     {
+      "cited_text": "We anticipate making capital expenditures of approximately $60 billion to $65 billion in 2025 to support our core business and generative AI efforts.\n\n",
+      "document_index": 0,
+      "n": 1,
+      "title": "Promise: 10-K filed 2025-01-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     {
+      "cited_text": "Cash Used in Investing Activities\n\nCash used in investing activities during 2025 mostly consisted of $69.69 billion of purchases of property and equipment as we continued to invest in servers, data centers, and network infrastructure, and $18.33 billion of purchases of non-marketable equity investments, and $10.05 billion of net purchases of marketable securities. ",
+      "document_index": 1,
+      "n": 2,
+      "title": "Evidence E5: 10-K filed 2026-01-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000050/meta-03312025xexhibit991.htm"
+     },
+     {
+      "cited_text": "Capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2025-12-31 was $72.22 billion (derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments, filed 2026-01-29). ",
+      "document_index": 3,
+      "n": 3,
+      "title": "Reported figures (XBRL, arithmetic by code)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm"
+     },
+     {
+      "cited_text": "Compared by code with the promised range of $60 billion to $65 billion, the capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2025-12-31 ($72.22 billion) is above the range; it reaches the low end.",
+      "document_index": 3,
+      "n": 4,
+      "title": "Reported figures (XBRL, arithmetic by code)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm"
+     }
+    ],
+    "text": "Meta Platforms said in its 10-K filed 2025-01-30 that \"We anticipate making capital expenditures of approximately $60 billion to $65 billion in 2025 to support our core business and generative AI efforts.\"[1] The FY2025 10-K, filed 2026-01-29, reports $69.69 billion of purchases of property and equipment[2], which is above the promised range. On the company's own definition, which adds principal payments on finance leases, capital expenditures are $72.22 billion for the fiscal year ended 2025-12-31[3], a figure computed by code from reported numbers, and this is also above the range[4]. Because the 2025 results reported in that filing are above the promised range, the status is Delivered."
+   },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm",
    "first_stated": "2025-01-30",
    "form": "10-K",
    "id": "meta-2025-01-30-00899c",
    "metric": "capital expenditures",
-   "pending_reason": "walked back needs two confident checks",
-   "publishable": false,
+   "numbers": [
+    {
+     "display": "$37.26 billion",
+     "filed": "2026-01-29",
+     "label": "capex for the fiscal year ended 2024-12-31",
+     "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+     "display": "86.1%",
+     "filed": "2026-01-29",
+     "label": "finance lease principal change vs prior year, FY ended 2024-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$2.52 billion",
+     "filed": "2026-01-29",
+     "label": "finance lease principal for the fiscal year ended 2025-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "28.2%",
+     "filed": "2026-01-29",
+     "label": "finance lease principal change vs prior year, FY ended 2025-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$43.87 billion",
+     "filed": "2026-01-29",
+     "label": "rnd for the fiscal year ended 2024-12-31",
+     "tag": "us-gaap:ResearchAndDevelopmentExpense"
+    },
+    {
+     "display": "14.0%",
+     "filed": "2026-01-29",
+     "label": "rnd change vs prior year, FY ended 2024-12-31",
+     "tag": "us-gaap:ResearchAndDevelopmentExpense"
+    },
+    {
+     "display": "$57.37 billion",
+     "filed": "2026-01-29",
+     "label": "rnd for the fiscal year ended 2025-12-31",
+     "tag": "us-gaap:ResearchAndDevelopmentExpense"
+    },
+    {
+     "display": "30.8%",
+     "filed": "2026-01-29",
+     "label": "rnd change vs prior year, FY ended 2025-12-31",
+     "tag": "us-gaap:ResearchAndDevelopmentExpense"
+    },
+    {
+     "display": "37.8%",
+     "filed": "2026-01-29",
+     "label": "capex change vs prior year, FY ended 2024-12-31",
+     "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+     "display": "$69.69 billion",
+     "filed": "2026-01-29",
+     "label": "capex for the fiscal year ended 2025-12-31",
+     "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+     "display": "87.1%",
+     "filed": "2026-01-29",
+     "label": "capex change vs prior year, FY ended 2025-12-31",
+     "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+     "display": "$39.23 billion",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2024-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "39.6%",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2024-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$72.22 billion",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2025-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "84.1%",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2025-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$1.97 billion",
+     "filed": "2026-01-29",
+     "label": "finance lease principal for the fiscal year ended 2024-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    }
+   ],
+   "pending_reason": "",
+   "publishable": true,
    "quote": "We anticipate making capital expenditures of approximately $60 billion to $65 billion in 2025 to support our core business and generative AI efforts.",
    "restatements": [],
-   "status": "Status pending review",
-   "status_code": "",
+   "status": "Delivered",
+   "status_code": "delivered",
    "target_text": "approximately $60 billion to $65 billion",
    "ticker": "META"
   },
@@ -2577,9 +2971,37 @@
       "n": 2,
       "title": "Evidence E4: 10-K filed 2026-01-29",
       "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm"
+     },
+     {
+      "cited_text": "Compared by code with the promised range of $64 billion to $72 billion, the capex for the fiscal year ended 2025-12-31 ($69.69 billion) is within the range; it reaches the low end. ",
+      "document_index": 2,
+      "n": 3,
+      "title": "Reported figures (XBRL, arithmetic by code)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047114/meta-09302025xexhibit991.htm"
+     },
+     {
+      "cited_text": "We define FCF as net cash provided by operating activities reduced by purchases of property and equipment and principal payments on finance leases.",
+      "document_index": 1,
+      "n": 4,
+      "title": "Evidence E4: 10-K filed 2026-01-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm"
+     },
+     {
+      "cited_text": "Capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2025-12-31 was $72.22 billion (derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments, filed 2026-01-29). ",
+      "document_index": 2,
+      "n": 5,
+      "title": "Reported figures (XBRL, arithmetic by code)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047114/meta-09302025xexhibit991.htm"
+     },
+     {
+      "cited_text": "Compared by code with the promised range of $64 billion to $72 billion, the capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2025-12-31 ($72.22 billion) is above the range; it reaches the low end.",
+      "document_index": 2,
+      "n": 6,
+      "title": "Reported figures (XBRL, arithmetic by code)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047114/meta-09302025xexhibit991.htm"
      }
     ],
-    "text": "We anticipate making capital expenditures of approximately $64 billion to $72 billion in 2025 to support our core business and generative AI efforts.[1] That promise appeared in the 10-Q filed 2025-05-01. The FY2025 10-K, filed 2026-01-29, reports that cash used in investing activities during 2025 mostly consisted of $69.69 billion of purchases of property and equipment as we continued to invest in servers, data centers, and network infrastructure[2], and the reported figure for capital expenditures for the year is $69.69 billion. That figure falls within the promised range of $64 billion to $72 billion, which is why the status is Delivered."
+    "text": "Meta Platforms said in its 10-Q filed 2025-05-01 that \"We anticipate making capital expenditures of approximately $64 billion to $72 billion in 2025 to support our core business and generative AI efforts.\"[1] The promise does not say which definition it uses. The 10-K filed 2026-01-29 reports “$69.69 billion of purchases of property and equipment”[2] for 2025, and this figure is “within the range; it reaches the low end.”[3] Meta's own free cash flow definition also deducts “principal payments on finance leases”[4], and on that basis, computed from reported figures, capex is $72.22 billion[5], which is above the range[6]. Because the reported 2025 figures fall within or above the promised range, the status is Delivered."
    },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm",
    "first_stated": "2025-05-01",
@@ -2592,6 +3014,30 @@
      "filed": "2026-01-29",
      "label": "capex for the fiscal year ended 2024-12-31",
      "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+     "display": "86.1%",
+     "filed": "2026-01-29",
+     "label": "finance lease principal change vs prior year, FY ended 2024-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$2.52 billion",
+     "filed": "2026-01-29",
+     "label": "finance lease principal for the fiscal year ended 2025-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "28.2%",
+     "filed": "2026-01-29",
+     "label": "finance lease principal change vs prior year, FY ended 2025-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$43.87 billion",
+     "filed": "2026-01-29",
+     "label": "rnd for the fiscal year ended 2024-12-31",
+     "tag": "us-gaap:ResearchAndDevelopmentExpense"
     },
     {
      "display": "14.0%",
@@ -2630,34 +3076,34 @@
      "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
     },
     {
+     "display": "$39.23 billion",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2024-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "39.6%",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2024-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$72.22 billion",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2025-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "84.1%",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2025-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
      "display": "$1.97 billion",
      "filed": "2026-01-29",
      "label": "finance lease principal for the fiscal year ended 2024-12-31",
      "tag": "us-gaap:FinanceLeasePrincipalPayments"
-    },
-    {
-     "display": "86.1%",
-     "filed": "2026-01-29",
-     "label": "finance lease principal change vs prior year, FY ended 2024-12-31",
-     "tag": "us-gaap:FinanceLeasePrincipalPayments"
-    },
-    {
-     "display": "$2.52 billion",
-     "filed": "2026-01-29",
-     "label": "finance lease principal for the fiscal year ended 2025-12-31",
-     "tag": "us-gaap:FinanceLeasePrincipalPayments"
-    },
-    {
-     "display": "28.2%",
-     "filed": "2026-01-29",
-     "label": "finance lease principal change vs prior year, FY ended 2025-12-31",
-     "tag": "us-gaap:FinanceLeasePrincipalPayments"
-    },
-    {
-     "display": "$43.87 billion",
-     "filed": "2026-01-29",
-     "label": "rnd for the fiscal year ended 2024-12-31",
-     "tag": "us-gaap:ResearchAndDevelopmentExpense"
     }
    ],
    "pending_reason": "",
@@ -2790,14 +3236,28 @@
       "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047114/meta-09302025xexhibit991.htm"
      },
      {
-      "cited_text": "Capex for the fiscal year ended 2025-12-31 was $69.69 billion (us-gaap:PaymentsToAcquirePropertyPlantAndEquipment, filed 2026-01-29).",
+      "cited_text": "Compared by code with the promised range of $66 billion to $72 billion, the capex for the fiscal year ended 2025-12-31 ($69.69 billion) is within the range; it reaches the low end. ",
       "document_index": 2,
       "n": 3,
       "title": "Reported figures (XBRL, arithmetic by code)",
       "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
+     },
+     {
+      "cited_text": "We define FCF as net cash provided by operating activities reduced by purchases of property and equipment and principal payments on finance leases.",
+      "document_index": 1,
+      "n": 4,
+      "title": "Evidence E4: 10-K filed 2026-01-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047114/meta-09302025xexhibit991.htm"
+     },
+     {
+      "cited_text": "Compared by code with the promised range of $66 billion to $72 billion, the capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2025-12-31 ($72.22 billion) is above the range; it reaches the low end.",
+      "document_index": 2,
+      "n": 5,
+      "title": "Reported figures (XBRL, arithmetic by code)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
      }
     ],
-    "text": "Meta's 10-Q filed 2025-07-31 stated: We anticipate making capital expenditures of approximately $66 billion to $72 billion in 2025 to support our core business and AI efforts.[1] The FY2025 10-K, filed 2026-01-29, reports that cash used in investing activities during 2025 mostly consisted of $69.69 billion of purchases of property and equipment as we continued to invest in servers, data centers, and network infrastructure[2]. That figure is company-reported and falls within the promised range, which is why the status is Delivered. The XBRL data for the same fiscal year also shows capex of $69.69 billion (us-gaap:PaymentsToAcquirePropertyPlantAndEquipment, filed 2026-01-29)[3]."
+    "text": "Meta Platforms said in its 10-Q filed 2025-07-31 that \"We anticipate making capital expenditures of approximately $66 billion to $72 billion in 2025 to support our core business and AI efforts.\"[1] The FY2025 10-K filed 2026-01-29 reports “$69.69 billion of purchases of property and equipment”[2], which is within the range[3]. Computed from reported figures on the company's own definition, which reduces net cash provided by operating activities by purchases of property and equipment and principal payments on finance leases[4], capital expenditures for 2025 come to $72.22 billion, which is above the range[5]."
    },
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm",
    "first_stated": "2025-07-31",
@@ -2810,6 +3270,30 @@
      "filed": "2026-01-29",
      "label": "capex for the fiscal year ended 2024-12-31",
      "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+     "display": "86.1%",
+     "filed": "2026-01-29",
+     "label": "finance lease principal change vs prior year, FY ended 2024-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$2.52 billion",
+     "filed": "2026-01-29",
+     "label": "finance lease principal for the fiscal year ended 2025-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "28.2%",
+     "filed": "2026-01-29",
+     "label": "finance lease principal change vs prior year, FY ended 2025-12-31",
+     "tag": "us-gaap:FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$43.87 billion",
+     "filed": "2026-01-29",
+     "label": "rnd for the fiscal year ended 2024-12-31",
+     "tag": "us-gaap:ResearchAndDevelopmentExpense"
     },
     {
      "display": "14.0%",
@@ -2848,34 +3332,34 @@
      "tag": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
     },
     {
+     "display": "$39.23 billion",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2024-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "39.6%",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2024-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "$72.22 billion",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) for the fiscal year ended 2025-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
+     "display": "84.1%",
+     "filed": "2026-01-29",
+     "label": "capital expenditures as the company defines them (computed by code: purchases of property and equipment plus principal payments on finance leases) change vs prior year, FY ended 2025-12-31",
+     "tag": "derived: PaymentsToAcquirePropertyPlantAndEquipment plus FinanceLeasePrincipalPayments"
+    },
+    {
      "display": "$1.97 billion",
      "filed": "2026-01-29",
      "label": "finance lease principal for the fiscal year ended 2024-12-31",
      "tag": "us-gaap:FinanceLeasePrincipalPayments"
-    },
-    {
-     "display": "86.1%",
-     "filed": "2026-01-29",
-     "label": "finance lease principal change vs prior year, FY ended 2024-12-31",
-     "tag": "us-gaap:FinanceLeasePrincipalPayments"
-    },
-    {
-     "display": "$2.52 billion",
-     "filed": "2026-01-29",
-     "label": "finance lease principal for the fiscal year ended 2025-12-31",
-     "tag": "us-gaap:FinanceLeasePrincipalPayments"
-    },
-    {
-     "display": "28.2%",
-     "filed": "2026-01-29",
-     "label": "finance lease principal change vs prior year, FY ended 2025-12-31",
-     "tag": "us-gaap:FinanceLeasePrincipalPayments"
-    },
-    {
-     "display": "$43.87 billion",
-     "filed": "2026-01-29",
-     "label": "rnd for the fiscal year ended 2024-12-31",
-     "tag": "us-gaap:ResearchAndDevelopmentExpense"
     }
    ],
    "pending_reason": "",
@@ -2898,7 +3382,7 @@
    "form": "10-Q",
    "id": "meta-2025-10-30-942cff",
    "metric": "capital expenditures in 2025",
-   "pending_reason": "open error report",
+   "pending_reason": "explanation missing or its citations did not check out",
    "publishable": false,
    "quote": "We anticipate making capital expenditures of approximately $70 billion to $72 billion in 2025 to support our core business and AI efforts, and expect significant capital expenditures growth in 2026.",
    "restatements": [],
@@ -2910,16 +3394,16 @@
  ],
  "stats": {
   "by_status": {
-   "Delivered": 5,
-   "No evidence yet": 8,
-   "Status pending review": 27
+   "Delivered": 7,
+   "No evidence yet": 5,
+   "Status pending review": 46
   },
-  "checkable_share": 0.21052631578947367,
+  "checkable_share": 0.26848249027237353,
   "companies": 10,
-  "hype_statements": 165,
-  "promise_statements": 44,
-  "promises": 40,
-  "published": 13
+  "hype_statements": 188,
+  "promise_statements": 69,
+  "promises": 58,
+  "published": 12
  },
  "status_order": [
   "Delivered",

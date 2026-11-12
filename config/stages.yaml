@@ -74,9 +74,9 @@ stages:
 
   explain:
     model: claude-haiku-5-5
-    prompt: v3   # D44
-    max_tokens: 1024
-    thinking: disabled
+    prompt: v5   # D46: range comparisons computed by code; wording checked by code
+    max_tokens: 4096          # room for brief thinking (D46: without it, 8 of 17 mixed in "we"/"our")
+    thinking: adaptive
     effort: low
     batch: true
 

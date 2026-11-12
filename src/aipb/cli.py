@@ -929,7 +929,8 @@ def verify_cmd(
         t1 = ", ".join(f"{k} {v}" for k, v in sorted(st.tier1.items()))
         stops = ", ".join(f"{k} {v}" for k, v in sorted(st.tier2_stops.items())) or "none"
         out.print(f"{st.clusters} promises. Tier 1: {t1}. Escalated: {st.escalated}; Tier 2 "
-                  f"ran {st.tier2_done} ({stops}); left for later (run cap): "
+                  f"done {st.tier2_done} ({stops}; {st.tier2_replayed} replayed at $0); "
+                  f"left for later (run cap): "
                   f"{st.tier2_skipped_cap}.")  # fmt: skip
 
 

@@ -60,7 +60,7 @@ def test_low_confidence_escalates_to_the_agent(llm_project, fake_claude):
         "key_finding": "Unclear from these passages.",
     }
     out = run("verify", "-u", "test").output
-    assert "Tier 2 ran" in out and "submitted" in out
+    assert "Tier 2 done" in out and "submitted" in out
     conn = db(llm_project)
     t2 = conn.execute("SELECT * FROM verdicts WHERE tier='2'").fetchall()
     assert t2 and all(r["stop"] == "submitted" for r in t2)
@@ -210,3 +210,31 @@ def test_restore_replays_verification_without_touching_the_ledger(llm_project, f
         encoding="utf-8"
     ) == ledger_before
     assert Ledger(llm_project / "data" / "ledger").runs()
+
+
+def test_a_second_run_reaches_escalations_the_run_cap_left(llm_project, fake_claude, monkeypatch):
+    """Finished agent runs replay for $0 and don't use up the cap (bug found 2026-11-12:
+    every run re-sent the first escalations, so the rest were never reached)."""
+    from decimal import Decimal
+
+    from aipb.stages import verify_runner
+
+    pipeline(llm_project)
+    fake_claude.t1 = lambda user: {
+        "status": "no_evidence_yet",
+        "walked_back_kind": "none",
+        "confidence": 0.4,
+        "evidence_ids": [],
+        "number_ids": [],
+        "key_finding": "Unclear from these passages.",
+    }
+    # Each agent run is "worth" $0.30 against the $0.50 cap: one fits per run.
+    monkeypatch.setattr(verify_runner, "tier2_estimate", lambda *a: Decimal("0.30"))
+    first = run("verify", "-u", "test").output
+    assert "Escalated: 2" in first and "left for later (run cap): 1" in first
+    second = run("verify", "-u", "test").output
+    assert "1 already done in an earlier run" in second
+    assert "done 2 (submitted 2; 1 replayed at $0); left for later (run cap): 0" in second
+    conn = db(llm_project)
+    assert conn.execute("SELECT COUNT(*) FROM verdicts WHERE tier='2'").fetchone()[0] == 2
+    conn.close()

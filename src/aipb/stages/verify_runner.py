@@ -18,7 +18,7 @@ from aipb.llm.client import LLMClient, MissingApiKey, OfflineCacheMiss, Plan, Re
 from aipb.llm.params import load_prompt, stage_settings
 from aipb.stages import explain as ex
 from aipb.stages.runner import Log, _paid_call, describe
-from aipb.verify import gate, tier1, tier2
+from aipb.verify import gate, targets, tier1, tier2
 from aipb.verify.context import VerifyContext, build_context
 from aipb.verify.numbers import EvidenceMap
 
@@ -29,6 +29,7 @@ class VerifyStats:
     tier1: dict[str, int] = field(default_factory=dict)
     escalated: int = 0
     tier2_done: int = 0
+    tier2_replayed: int = 0  # finished in an earlier run: replayed from the cache for $0
     tier2_skipped_cap: int = 0
     tier2_stops: dict[str, int] = field(default_factory=dict)
 
@@ -218,6 +219,63 @@ def tier2_estimate(llm: LLMClient, first_params: dict, cfg: dict) -> Decimal:
     return total
 
 
+def _summary(v1: tier1.Verdict) -> str:
+    return (
+        f"status={v1.status or 'invalid'}, kind={v1.walked_back_kind}, "
+        f"confidence={v1.confidence:.2f}, finding={v1.key_finding}"
+    )
+
+
+def _replay_client(llm: LLMClient) -> LLMClient:
+    """The same cache, but never sends: a miss raises OfflineCacheMiss and costs nothing."""
+    return LLMClient(
+        guard=llm.guard,
+        cache=llm.cache,
+        estimator=llm.estimator,
+        api_key=None,
+        offline=True,
+        device=llm.device,
+        batch_log=llm.batch_log,
+    )
+
+
+def _number_fields(n) -> tuple:
+    return (
+        n.nid, n.label, n.value, n.unit, n.kind, n.tag, n.fiscal_year, n.period_start,
+        n.period_end, n.accession, n.filed,
+    )  # fmt: skip
+
+
+def _store_agent(
+    conn: sqlite3.Connection,
+    cid: str,
+    variant: str,
+    c: VerifyContext,
+    agent: tier2.AgentRun,
+    prompt_id: str,
+    model: str,
+    stats: VerifyStats,
+) -> None:
+    """Store a Tier 2 verdict and any evidence or numbers the agent found on its own."""
+    stats.tier2_done += 1
+    stats.tier2_stops[agent.stop] = stats.tier2_stops.get(agent.stop, 0) + 1
+    _store_verdict(
+        conn, cid, variant, agent.verdict, tier="2", stop=agent.stop, prompt_id=prompt_id,
+        model=model,
+    )  # fmt: skip
+    extra = [e for eid, e in agent.evidence.items() if eid not in c.evidence_ids()]
+    extra_n = [n for nid, n in agent.numbers.items() if nid not in c.number_ids()]
+    with conn:
+        conn.executemany(
+            "INSERT OR REPLACE INTO evidence VALUES (?,?,?,?,?,?,?)",
+            [(cid, variant, e.eid, e.passage_id, e.form, e.filing_date, "tier2") for e in extra],
+        )
+        conn.executemany(
+            "INSERT OR REPLACE INTO numbers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            [(cid, variant, *_number_fields(n)) for n in extra_n],
+        )
+
+
 def run_verify(
     ctx: AppContext,
     conn: sqlite3.Connection,
@@ -288,14 +346,30 @@ def run_verify(
     p2 = load_prompt(ctx.paths.prompts_dir, tier2.STAGE, cfg2["prompt"])
     cap = Decimal(str(cfg2.get("run_cap_usd", "0.50")))
     per = tier2_estimate(llm, reqs[0].params, cfg2)
-    fit = min(len(escalate), int(cap / per) if per > 0 else len(escalate))
-    if fit < len(escalate):
-        stats.tier2_skipped_cap = len(escalate) - fit
+    # Agent runs finished in an earlier run replay from the cache for $0. They don't count
+    # against the run cap, so each run reaches promises the last one couldn't afford.
+    replay = _replay_client(llm)
+    pending = []
+    for cid in escalate:
+        try:
+            agent = tier2.run_agent(
+                conn, replay, None, em, contexts[cid], cfg2, p2, tier1_summary=_summary(t1[cid])
+            )
+        except OfflineCacheMiss:
+            pending.append(cid)
+            continue
+        stats.tier2_replayed += 1
+        _store_agent(conn, cid, variant, contexts[cid], agent, p2.id, cfg2["model"], stats)
+    if stats.tier2_replayed:
+        log(f"Tier 2: {stats.tier2_replayed} already done in an earlier run (replayed, $0).")
+    fit = min(len(pending), int(cap / per) if per > 0 else len(pending))
+    if fit < len(pending):
+        stats.tier2_skipped_cap = len(pending) - fit
         log(
-            f"Tier 2: {len(escalate)} escalations, {fit} fit under the {usd(cap)} run cap; the "
+            f"Tier 2: {len(pending)} still to do, {fit} fit under the {usd(cap)} run cap; the "
             "rest stay pending until the next run."
         )
-    todo = escalate[:fit]
+    todo = pending[:fit]
     if not todo:
         return plan, stats
     if not llm.offline and not ctx.settings.api_key():
@@ -313,62 +387,16 @@ def run_verify(
     )
     with reservation as run:
         for cid in todo:
-            c = contexts[cid]
-            v1 = t1[cid]
-            summary = (
-                f"status={v1.status or 'invalid'}, kind={v1.walked_back_kind}, "
-                f"confidence={v1.confidence:.2f}, finding={v1.key_finding}"
-            )
             try:
-                agent = tier2.run_agent(conn, llm, run, em, c, cfg2, p2, tier1_summary=summary)
+                agent = tier2.run_agent(
+                    conn, llm, run, em, contexts[cid], cfg2, p2, tier1_summary=_summary(t1[cid])
+                )
             except BudgetError as exc:
                 log(f"Tier 2 stopped: {exc}")
                 break
             except OfflineCacheMiss:
                 continue  # not run yet: stays as Tier 1 only (and pending if it needs Tier 2)
-            stats.tier2_done += 1
-            stats.tier2_stops[agent.stop] = stats.tier2_stops.get(agent.stop, 0) + 1
-            _store_verdict(
-                conn,
-                cid,
-                variant,
-                agent.verdict,
-                tier="2",
-                stop=agent.stop,
-                prompt_id=p2.id,
-                model=cfg2["model"],
-            )
-            extra = [e for eid, e in agent.evidence.items() if eid not in c.evidence_ids()]
-            extra_n = [n for nid, n in agent.numbers.items() if nid not in c.number_ids()]
-            with conn:
-                conn.executemany(
-                    "INSERT OR REPLACE INTO evidence VALUES (?,?,?,?,?,?,?)",
-                    [
-                        (cid, variant, e.eid, e.passage_id, e.form, e.filing_date, "tier2")
-                        for e in extra
-                    ],
-                )
-                conn.executemany(
-                    "INSERT OR REPLACE INTO numbers VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
-                    [
-                        (
-                            cid,
-                            variant,
-                            n.nid,
-                            n.label,
-                            n.value,
-                            n.unit,
-                            n.kind,
-                            n.tag,
-                            n.fiscal_year,
-                            n.period_start,
-                            n.period_end,
-                            n.accession,
-                            n.filed,
-                        )
-                        for n in extra_n
-                    ],
-                )
+            _store_agent(conn, cid, variant, contexts[cid], agent, p2.id, cfg2["model"], stats)
     return plan, stats
 
 
@@ -470,7 +498,9 @@ def run_explain(
         f = conn.execute("SELECT form FROM filings WHERE accession=?", (p["accession"],)).fetchone()
         co = conn.execute("SELECT name, ticker FROM companies WHERE cik=?", (cl["cik"],)).fetchone()
         ev, nums = _evidence_docs(conn, cid, variant, verdict)
-        docs = ex.documents(p["quote"], f"{f['form']} filed {p['filing_date']}", ptext, ev, nums)
+        comps = targets.comparisons(p["target_text"], p["claim_type"], p["deadline_year"], nums)
+        meta = f"{f['form']} filed {p['filing_date']}"
+        docs = ex.documents(p["quote"], meta, ptext, ev, nums, comps)
         reqs.append(
             Request(
                 cid,

@@ -48,3 +48,27 @@ def banned_words(text: str) -> list[str]:
     """Banned words found in generated text, ignoring anything inside quotation marks."""
     unquoted = re.sub(r"[\"“][^\"”]*[\"”]", " ", text or "")
     return sorted({m.group(0).lower() for m in _PATTERN.finditer(unquoted)})
+
+
+def _unquoted(text: str) -> str:
+    return re.sub(r"[\"“][^\"”]*[\"”]", " ", text or "")
+
+
+# The company's voice belongs inside quotation marks; outside them "we" reads as if
+# AIPayback made the promise (D46).
+_FIRST_PERSON = re.compile(r"\b(?:[Ww]e|[Oo]urs?|[Uu]s)\b")
+# A published explanation talks about the company and its filings, never about our checks.
+_PROCESS = re.compile(
+    r"\b(?:key finding|documents provided|the documents|first check|second check|not verified)\b",
+    re.IGNORECASE,
+)
+
+
+def first_person(text: str) -> list[str]:
+    """ "we", "our" or "us" outside quotation marks."""
+    return sorted({m.group(0).lower() for m in _FIRST_PERSON.finditer(_unquoted(text))})
+
+
+def process_words(text: str) -> list[str]:
+    """Words about our own checks, outside quotation marks."""
+    return sorted({m.group(0).lower() for m in _PROCESS.finditer(_unquoted(text))})

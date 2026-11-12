@@ -17,7 +17,7 @@ from dataclasses import dataclass, field
 from aipb.llm.client import LLMResult
 from aipb.llm.params import Prompt, thinking_params
 from aipb.verify.context import EvidencePassage
-from aipb.verify.neutral import banned_words
+from aipb.verify.neutral import banned_words, first_person, process_words
 from aipb.verify.numbers import NumberRow
 from aipb.verify.tier1 import DISPLAY, Verdict
 
@@ -43,6 +43,7 @@ def documents(
     promise_text: str,
     evidence: list[EvidencePassage],
     numbers: list[NumberRow],
+    comparisons: list[str] | None = None,
 ) -> list[dict]:
     docs = [
         _doc(
@@ -56,6 +57,8 @@ def documents(
             f"{n.label[0].upper()}{n.label[1:]} was {n.display()} ({n.tag}, filed {n.filed})."
             for n in numbers
         )
+        if comparisons:  # computed in code (D46): the model never compares numbers itself
+            sentences += " " + " ".join(comparisons)
         docs.append(_doc("Reported figures (XBRL, arithmetic by code)", sentences))
     return docs
 
@@ -91,6 +94,25 @@ def build_params(
     }
 
 
+_QUOTES = '"“”'
+_MIN_QUOTE = 20  # shorter cited fragments ("Blackwell") read fine without quotation marks
+
+
+def _quote_if_verbatim(text: str, citations: list[dict]) -> str:
+    """A text block that repeats its cited text word for word is the company's own words:
+    show it in quotation marks (D46). With Citations the model often copies the cited
+    sentence ("We expect to ship...") without marking it as a quote."""
+    core = text.strip()
+    if len(core) < _MIN_QUOTE or core[0] in _QUOTES or core[-1] in _QUOTES:
+        return text
+    cited = " ".join(" ".join(str(c.get("cited_text", "")).split()) for c in citations)
+    if " ".join(core.rstrip(".").split()) not in cited:
+        return text
+    lead = text[: len(text) - len(text.lstrip())]
+    trail = text[len(text.rstrip()) :]
+    return f"{lead}“{core}”{trail}"
+
+
 def check(result: LLMResult, docs: list[dict], status: str) -> Explanation:
     if result.status != "ok" or result.stop_reason in ("refusal", "max_tokens"):
         why = result.status if result.status != "ok" else result.stop_reason
@@ -101,7 +123,7 @@ def check(result: LLMResult, docs: list[dict], status: str) -> Explanation:
     for block in result.response.get("content", []):
         if block.get("type") != "text":
             continue
-        parts.append(block.get("text", ""))
+        parts.append(_quote_if_verbatim(block.get("text", ""), block.get("citations") or []))
         for c in block.get("citations") or []:
             idx = c.get("document_index")
             if (
@@ -135,5 +157,9 @@ def check(result: LLMResult, docs: list[dict], status: str) -> Explanation:
     lint = banned_words(text)
     if lint:
         problems.append(f"non-neutral wording: {lint}")
+    if voice := first_person(text):
+        problems.append(f"wording: the company's voice outside quotation marks: {voice}")
+    if process := process_words(text):
+        problems.append(f"wording: mentions our checks: {process}")
     citations_valid = not [p for p in problems if "wording" not in p]
-    return Explanation(text, cites, citations_valid, not lint, problems)
+    return Explanation(text, cites, citations_valid, not (lint or voice or process), problems)
