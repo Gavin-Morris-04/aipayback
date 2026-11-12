@@ -63,7 +63,7 @@ The full SEC download (about 4.8 GB with the S&P 100) isn't committed. A manifes
 | Date | Set | Extraction F1 | Status accuracy | Quote fidelity | Cost / promise |
 |---|---|---|---|---|---|
 <!-- eval-history:start -->
-| (Phase 2) | | | | | |
+| 2026-11-12 | dev (257 passages, default) | 36.4% [8.7%, 60.0%] | (Phase 3) | 100.0% | $0.0003 |
 <!-- eval-history:end -->
 
 Gold labels come from a finance student and are split into dev and held-out test, grouped by company. Full method: Methodology page (Phase 4).

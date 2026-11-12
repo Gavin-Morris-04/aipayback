@@ -1,0 +1,142 @@
+{
+  "cost_usd": {
+    "extract": "0.027346300",
+    "filter": "0.04003070"
+  },
+  "created": "2026-11-12T20:12:00+00:00",
+  "disagreement_count": 21,
+  "disagreements_file": "exports\\disagreements\\20261112T201200_8d8e263_dev_default.xlsx",
+  "extraction": {
+    "ci95": {
+      "f1": [
+        0.08695652173913045,
+        0.6
+      ],
+      "precision": [
+        0.25,
+        1.0
+      ],
+      "recall": [
+        0.05263157894736842,
+        0.47619047619047616
+      ]
+    },
+    "f1": 0.36363636363636365,
+    "fields": {
+      "claim_type": {
+        "accuracy": 1.0,
+        "correct": 6,
+        "n": 6
+      },
+      "deadline_year": {
+        "accuracy": 1.0,
+        "correct": 5,
+        "n": 5
+      },
+      "target": {
+        "accuracy": 0.6,
+        "correct": 3,
+        "n": 5
+      }
+    },
+    "fn": 18,
+    "fp": 3,
+    "precision": 0.6666666666666666,
+    "recall": 0.25,
+    "tp": 6
+  },
+  "filter": {
+    "accuracy": 0.8319672131147541,
+    "confusion": {
+      "hype": {
+        "hype": 13,
+        "none": 6,
+        "promise": 12
+      },
+      "none": {
+        "hype": 16,
+        "none": 174,
+        "promise": 4
+      },
+      "promise": {
+        "hype": 1,
+        "none": 2,
+        "promise": 16
+      }
+    },
+    "promise_passages_routed_to_extraction": 0.8947368421052632,
+    "recall": {
+      "hype": 0.41935483870967744,
+      "none": 0.8969072164948454,
+      "promise": 0.8421052631578947
+    }
+  },
+  "filter_variant": "default",
+  "git_sha": "8d8e263",
+  "gold": {
+    "by_label": {
+      "hype": 31,
+      "none": 207,
+      "promise": 19
+    },
+    "keyword_passages": 244,
+    "passages": 257,
+    "promises": 24,
+    "random_non_keyword_passages": 13
+  },
+  "milestone": null,
+  "models": [
+    "claude-haiku-5-5"
+  ],
+  "passage_label_end_to_end": {
+    "accuracy": 0.8287937743190662,
+    "confusion": {
+      "hype": {
+        "hype": 18,
+        "none": 13,
+        "promise": 0
+      },
+      "none": {
+        "hype": 15,
+        "none": 190,
+        "promise": 2
+      },
+      "promise": {
+        "hype": 8,
+        "none": 6,
+        "promise": 5
+      }
+    },
+    "recall": {
+      "hype": 0.5806451612903226,
+      "none": 0.9178743961352657,
+      "promise": 0.2631578947368421
+    }
+  },
+  "prefilter": {
+    "corpus_counts": {
+      "kw": 569,
+      "nonkw": 6283
+    },
+    "estimated_recall": 1.0,
+    "miss_rate_ci95": [
+      0.0,
+      0.22810184305529166
+    ],
+    "miss_rate_per_passage": 0.0,
+    "random_non_keyword_rows": 13,
+    "with_a_promise": 0
+  },
+  "prompts": [
+    "extract/v2",
+    "filter/v1"
+  ],
+  "quote_fidelity": {
+    "model_first_try_verbatim": 0.6183431952662722,
+    "model_quotes_dropped_after_retry": 129,
+    "stored_quotes": 209,
+    "stored_quotes_verbatim": 1.0
+  },
+  "split": "dev",
+  "variant": "default"
+}
