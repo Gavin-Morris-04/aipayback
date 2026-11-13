@@ -60,6 +60,12 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
   - a retry for explanations that fail the wording checks.
 - Gotcha: the first trace of the missed promises also printed the 7 test-split (AMZN) gold promises. Nothing was tuned on them. Build the product-name list from dev rows only, so the test split stays usable for milestones.
 
+**2026-11-13:**
+- Checklist ticks: Gavin G1–G4, G6–G9 (8 of 17); Nick N1–N7 (7 of 9). Nick ticked N7, but his disagreement file isn't in `evals/gold/returned/disagreements/` yet. Gavin and Nick are doing N8 and G11 now.
+- Site preview zipped for Nick: `exports/aipayback_preview_2026-11-13.zip` (git-ignored; Gavin uploads it to Drive **packets**).
+- **G10 sized (D47).** `aipb extract --variant sonnet --only-labeled` reads the 60 labeled dev passages the filter routes. Sonnet runs with thinking off (`between_tools`) and `max_tokens` 2048. Dry run: **worst case $0.91**. **Waiting on Gavin's go-ahead in chat**; then `uv run aipb extract --variant sonnet --only-labeled --confirm`, `uv run aipb eval --variant sonnet`, `uv run aipb compare`, and record the decision in D47.
+- **Gotcha: Windows Smart App Control is On** and blocked jiter 0.19.0, so the Anthropic SDK wouldn't import. jiter is held at <0.19 in `pyproject.toml` (D47). If another native package gets blocked, test older versions with `uv run --with "pkg==X" python -c "import pkg"` before touching Windows security settings.
+
 **API spend so far: $0.35** (smoke test, pilot, Tier 1 v3, and the 58-promise check). Run `uv run aipb budget` for the exact figure.
 
 The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-ahead in chat, and the S&P 100 run needs explicit cost approval.
@@ -175,7 +181,7 @@ git add -A && git commit -m "S&P 100 run" && git push
 | $0.24 (smoke test + pilot) | $0.00 | $14.76 | $4.00 |
 
 ## Known issues (to fix before the step that needs them)
-- **Sonnet A/B sizing (before G10, D39).** Sonnet 5.5's worst case is about $0.045 per passage (`max_tokens: 8192`), so all 569 dev passages reserve $25.67, and $1.50 covers only about 33. The guard stops the run, so nothing overspends. Fix: an `extract` option that takes a list of passage ids (`run_extract` already accepts `passage_ids`). Then run only on labeled dev passages that filter routed, with Sonnet's `max_tokens` set from the pilot's real Haiku output lengths.
+- ~~Sonnet A/B sizing~~: **fixed** (D47). `extract --only-labeled` plus Sonnet thinking off at 2048 tokens: 60 passages, worst case $0.91.
 - ~~Gross margin fallback~~: **fixed** (D41). Nick's map kept "revenue minus cost of revenue", and code computes it now.
 - **Zero-AI companies in the S&P 100 run (D43):** a company with no AI passages in the window isn't listed on the site. Decide whether to list it with a true "no AI passages found" notice.
 - **Extract recall (D42):** links that name only a product (FSD, Amazon Q, Blackwell) are dropped. If Nick's labels show misses, give the link check its own AI-product term list.

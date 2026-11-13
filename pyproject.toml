@@ -30,6 +30,9 @@ packages = ["src/aipb"]
 [tool.uv]
 # This machine sits behind a TLS setup that needs the OS certificate store.
 system-certs = true
+# Windows Smart App Control (now On here) blocks jiter 0.19.0's native file; 0.18.0 loads.
+# jiter is the Anthropic SDK's JSON parser (anthropic needs >=0.4,<1). See D47.
+constraint-dependencies = ["jiter<0.19"]
 
 [tool.ruff]
 line-length = 100

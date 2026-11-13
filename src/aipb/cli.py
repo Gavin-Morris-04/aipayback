@@ -656,6 +656,30 @@ DryRunOpt = Annotated[
 ]
 
 
+def _labeled_dev_passages(
+    ctx: AppContext, members: list[Member], *, explicit: bool
+) -> tuple[list[Member], set[str]]:
+    """Dev companies and the passage ids Nick labeled (scored rows only), for --only-labeled.
+
+    Test-split companies are refused when named and dropped otherwise, so a sized A/B run
+    never reads the held-out set.
+    """
+    rec = split_mod.load_split(ctx.paths.evals_dir / "splits.json")
+    if rec is None:
+        _fail(FileNotFoundError("No frozen dev/test split yet. Run aipb split first."))
+    dev = set(rec["dev"])
+    held_out = sorted(m.ticker for m in members if m.ticker not in dev)
+    if explicit and held_out:
+        _fail(ValueError(f"--only-labeled reads dev companies only; {', '.join(held_out)} "
+                         "is in the held-out test split."))  # fmt: skip
+    members = [m for m in members if m.ticker in dev]
+    gold = eval_mod.load_gold(ctx.paths.gold_dir, {m.ticker for m in members})
+    if not gold:
+        _fail(eval_mod.NoGold("No labeled dev passages for these companies yet. "
+                              "Run aipb import-labels first."))  # fmt: skip
+    return members, {g.passage_id for g in gold}
+
+
 def _llm_stage(fn, ctx, conn, ciks, **kw):
     try:
         return fn(ctx, conn, ciks, log=out.print, **kw)
@@ -694,17 +718,29 @@ def extract_cmd(
     ticker: TickerOpt = None,
     variant: VariantOpt = "default",
     filter_variant: Annotated[str, typer.Option(help="Which filter results to use.")] = "default",
+    only_labeled: Annotated[
+        bool,
+        typer.Option(
+            "--only-labeled",
+            help="Only the dev-split passages Nick labeled (sized A/B tests; test stays unseen).",
+        ),
+    ] = False,
     confirm: ConfirmOpt = False,
     dry_run: DryRunOpt = False,
 ) -> None:
     """Haiku extracts promise and hype statements; code verifies every quote verbatim."""
     ctx = _ctx()
-    ciks = list(_ciks_for(ctx, _members(ctx, universe, ticker)).values())
+    members = _members(ctx, universe, ticker)
+    passage_ids = None
+    if only_labeled:
+        members, passage_ids = _labeled_dev_passages(ctx, members, explicit=bool(ticker))
+    ciks = list(_ciks_for(ctx, members).values())
     conn = db.connect(ctx.paths.database)
     try:
         res = _llm_stage(
             runner.run_extract, ctx, conn, ciks, variant=variant,
             filter_variant=filter_variant, confirm=confirm, dry_run=dry_run,
+            passage_ids=passage_ids,
         )  # fmt: skip
         if res and res.ran:
             counts = runner.run_dedupe(conn, variant)

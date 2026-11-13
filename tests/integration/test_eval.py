@@ -86,6 +86,37 @@ def test_eval_without_gold_says_what_is_missing(llm_project):
     assert "No gold labels" in result.output
 
 
+def test_only_labeled_extracts_just_the_labeled_dev_passages(llm_project, fake_claude):
+    run("filter", "-u", "test")
+    result = run("extract", "-u", "test", "--variant", "sonnet", "--only-labeled", code=2)
+    assert "split" in result.output  # no frozen split yet
+    run("split", "-u", "test")
+    result = run("extract", "-u", "test", "--variant", "sonnet", "--only-labeled", code=2)
+    assert "import-labels" in " ".join(result.output.split())  # no labels yet
+
+    run("extract", "-u", "test")
+    run("packets", "-u", "test", "--total", "40", "--non-keyword-share", "0.2")
+    label_packet(llm_project)
+    run("import-labels")
+    run("extract", "-u", "test", "--variant", "sonnet", "--only-labeled")
+
+    from aipb import db
+    from aipb.context import AppContext
+    from aipb.evals import run as eval_mod
+
+    ctx = AppContext.create()
+    labeled = {g.passage_id for g in eval_mod.load_gold(ctx.paths.gold_dir, {"EXMP"})}
+    sql = "SELECT passage_id FROM extraction_log WHERE variant=?"
+    conn = db.connect(ctx.paths.database)
+    try:
+        sonnet = {r[0] for r in conn.execute(sql, ("sonnet",))}
+        haiku = {r[0] for r in conn.execute(sql, ("default",))}
+    finally:
+        conn.close()
+    assert sonnet and sonnet <= labeled
+    assert sonnet == haiku & labeled  # the same passages Haiku read, nothing more
+
+
 def test_compare_builds_the_ab_table(llm_project, fake_claude):
     run("filter", "-u", "test")
     run("extract", "-u", "test")

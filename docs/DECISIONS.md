@@ -444,6 +444,24 @@ Fixes, all in code where possible:
 - The Meta $66-72 billion explanation describes the capex definition with the free-cash-flow wording; the numbers are right.
 - Two explanations repeat a sentence (Amazon "AI Zones", S3 Vectors).
 
+## D47. Sizing the Sonnet A/B (G10), and holding jiter at 0.18 (2026-11-13)
+
+Gavin asked to start G10. As configured, the Sonnet variant (adaptive thinking, `max_tokens` 8192) would reserve about $25 for all dev passages (D39).
+
+**Scope: only the passages Nick labeled.** New option `aipb extract --only-labeled`: it reads only dev-split passages that have a scored gold label, and it refuses test-split companies by name, so the held-out set stays unseen. The eval scores only labeled passages, so extracting the rest would add cost and no information. Of the 257 labeled dev passages, the filter sends 60 to extraction (TSLA 19, META 17, NVDA 10, CAT 6, PFE 4, BLK 4). Haiku read the same 60, so the comparison is like for like.
+
+**Settings: Sonnet with thinking off, at Haiku's cap.** Sonnet 5.5 rejects `thinking: disabled`. Its thinking-off setting is `between_tools`, which means no thinking when the request has no tools (extract uses structured output, not tools). Haiku runs extract with thinking off, so this compares the models and not the thinking. `max_tokens` is 2048, Haiku's own cap; Haiku's longest pilot answer was 1,095 output tokens (median 313).
+
+| Sonnet setting (60 passages) | Worst case |
+|---|---|
+| adaptive thinking, 8,192 (before) | $2.75 |
+| thinking off, 4,096 | $1.52 |
+| **thinking off, 2,048 (chosen)** | **$0.91** |
+
+The expected real cost is about $0.15–0.20. The worst case is over $0.50, so the run needs `--confirm` and Gavin's go-ahead in chat.
+
+**jiter held below 0.19.** Windows Smart App Control is now On on Gavin's machine (it was presumably in evaluation mode before), and it blocks jiter 0.19.0's native file. jiter is the Anthropic SDK's JSON parser, so the SDK wouldn't import and no paid call could run. Versions 0.18.0, 0.15.0, 0.11.1 and 0.10.0 all load. `pyproject.toml` adds `constraint-dependencies = ["jiter<0.19"]` (anthropic needs >=0.4,<1). This is safer than turning Smart App Control off. Lift it once 0.19+ loads on this machine (`uv run --with "jiter==0.19.0" python -c "import jiter"`).
+
 ## Upcoming decisions (recorded when made)
-- Sonnet use, decided by the capped A/B test (Phase 2, once there's a key and labels). Size it first (D39).
+- Sonnet use, decided by the capped A/B test (D47 sizes it; the result is recorded when it runs).
 - The confidence threshold, from the precision-coverage curve (Phase 3, once Nick labels statuses).
