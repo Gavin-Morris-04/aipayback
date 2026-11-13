@@ -1,6 +1,6 @@
 # Progress
 
-_Last updated: 2026-11-13 (G10 done: keep Haiku; N7 applied, dev F1 74.4%; site redesign in progress)_
+_Last updated: 2026-11-13 (G10 done: keep Haiku; N7 applied, dev F1 74.4%; site redesigned, D49)_
 
 ## Where things stand
 
@@ -65,6 +65,7 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
 - Site preview zipped for Nick: `exports/aipayback_preview_2026-11-13.zip` (git-ignored; Gavin uploads it to Drive **packets**).
 - **G10 done (D47): keep Haiku.** Sonnet on the 60 labeled dev passages cost $0.15 (worst case $0.91, Gavin's go-ahead). Dev F1: Haiku 74.4%, Sonnet 66.7%, at about 17 times the cost.
 - **N7 applied (D48), $0.** Gold corrections in `evals/gold/corrections.yaml` (applied by `aipb eval`; Nick's files untouched). New rules: a quote that names AI (or a confirmed AI product) is its own AI link, and risk-factor passages are never extracted. **Dev F1 59.1% → 74.4%.** The pilot now has 60 clusters, 12 published.
+- **Site redesigned (D49).** New templates and stylesheet in `src/aipb/site/`; same data and wording. Preview: `site/dist/index.html`. The zip for Nick (`exports/aipayback_preview_2026-11-13.zip`) has the new design; re-upload it to Drive **packets** if the old one went up.
 - **Waiting on Nick (D48 questions):** the CAT scope call (4 rows left out of scoring until then), the announcement rule, autonomy words, and a new 12-row disagreement file (`exports/disagreements/20261113T183639_1713cd8_dev_default.xlsx`).
 - **Gotcha: Windows Smart App Control is On** and blocked jiter 0.19.0, so the Anthropic SDK wouldn't import. jiter is held at <0.19 in `pyproject.toml` (D47). If another native package gets blocked, test older versions with `uv run --with "pkg==X" python -c "import pkg"` before touching Windows security settings.
 

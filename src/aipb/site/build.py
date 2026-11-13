@@ -7,12 +7,14 @@ Pages, so the site only ever shows what `aipb publish` exported (and the gate al
 from __future__ import annotations
 
 import json
+import re
 import shutil
 from datetime import date
 from pathlib import Path
 
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+from markupsafe import Markup, escape
 
 from aipb.verify.gate import PENDING
 
@@ -25,6 +27,21 @@ BADGES = {
     "Walked back (silent)": "walked",
     PENDING: "pending",
 }
+
+
+_CITE = re.compile(r"\[(\d{1,2})\]")
+
+
+def capfirst(text: str | None) -> str:
+    """Upper-case the first letter only ("AI" and product names keep their case)."""
+    text = text or ""
+    return text[:1].upper() + text[1:]
+
+
+def cite_links(text: str | None) -> Markup:
+    """Escape an explanation, then link each [n] marker to its numbered source."""
+    safe = str(escape(text or ""))
+    return Markup(_CITE.sub(r'<a class="cite" href="#cite-\1">[\1]</a>', safe))
 
 
 def empty_data() -> dict:
@@ -81,6 +98,9 @@ def build_site(site_cfg: Path, data_path: Path, evals_dir: Path, out: Path) -> d
         lstrip_blocks=True,
     )
     env.filters["badge"] = lambda s: BADGES.get(s, "pending")
+    env.filters["capfirst"] = capfirst
+    env.filters["cite_links"] = cite_links
+    env.globals["PENDING"] = PENDING
     if out.exists():
         shutil.rmtree(out)
     (out / "companies").mkdir(parents=True)

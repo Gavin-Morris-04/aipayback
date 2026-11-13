@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ page_title }}{% if page_title != site.title %} | {{ site.title }}{% endif %}</title>
 <meta name="description" content="{{ page_description }}">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1116" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="{{ site.site_url }}/{{ path }}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ page_title }}">
@@ -12,35 +15,58 @@
 <meta property="og:url" content="{{ site.site_url }}/{{ path }}">
 <meta property="og:site_name" content="{{ site.title }}">
 <meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231b2a4a'/%3E%3Cpath d='M9 17.5l4.5 4.5L23.5 11' fill='none' stroke='%23f2c14e' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@500&display=swap">
 <link rel="stylesheet" href="{{ root }}static/style.css">
 {% if json_ld %}<script type="application/ld+json">{{ json_ld | safe }}</script>{% endif %}
 </head>
+{% set section = path.split("/")[0] %}
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="{{ root }}index.html">{{ site.title }}</a>
-    <nav aria-label="Main">
+<header class="masthead">
+  <div class="wrap masthead-row">
+    <a class="brand" href="{{ root }}index.html" aria-label="{{ site.title }} home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8"/><path d="M9 17.5l4.5 4.5L23.5 11"/></svg>
+      <span class="brand-word">AI<span>Payback</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="{{ root }}index.html"{% if section in ("index.html", "companies", "promises") %} aria-current="page"{% endif %}>Scorecards</a>
+      <a href="{{ root }}methodology.html"{% if section == "methodology.html" %} aria-current="page"{% endif %}>Methodology</a>
+      <a href="{{ root }}pricing.html"{% if section == "pricing.html" %} aria-current="page"{% endif %}>Pricing</a>
+      <a href="{{ root }}about.html"{% if section == "about.html" %} aria-current="page"{% endif %}>About</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+{% block content %}{% endblock %}
+</main>
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="{{ root }}index.html" aria-label="{{ site.title }} home">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8"/><path d="M9 17.5l4.5 4.5L23.5 11"/></svg>
+        <span class="brand-word">AI<span>Payback</span></span>
+      </a>
+      <p><strong>Informational only. Not investment, legal or financial advice.</strong>
+      Statuses describe what companies' later SEC filings report about their earlier statements;
+      they are not judgments of management.</p>
+      <p class="footer-asof">Data from SEC EDGAR as of {{ data.as_of or "n/a" }}.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
       <a href="{{ root }}index.html">Scorecards</a>
       <a href="{{ root }}methodology.html">Methodology</a>
       <a href="{{ root }}pricing.html">Pricing</a>
       <a href="{{ root }}about.html">About</a>
     </nav>
-  </div>
-</header>
-<main id="main" class="wrap">
-{% block content %}{% endblock %}
-</main>
-<footer class="foot">
-  <div class="wrap">
-    <p><strong>Informational only. Not investment, legal or financial advice.</strong>
-    Statuses describe what companies' later SEC filings report about their earlier statements;
-    they are not judgments of management. Data from SEC EDGAR as of {{ data.as_of or "n/a" }}.</p>
-    <p>Spotted an error? <a href="mailto:{{ site.contact_email }}?subject=AIPayback%20error%20report">Report it</a>.
-    Items with an open error report are held as "Status pending review" until checked.</p>
+    <div class="footer-report">
+      <p class="footer-h">Spotted an error?</p>
+      <p><a href="mailto:{{ site.contact_email }}?subject=AIPayback%20error%20report">Report it</a>. Items with an open error report are held as "Status pending review" until checked.</p>
+    </div>
   </div>
 </footer>
 {% if site.analytics_token %}<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.analytics_token }}"}'></script>{% endif %}
-<script src="{{ root }}static/sort.js" defer></script>
+<script src="{{ root }}static/site.js" defer></script>
 </body>
 </html>

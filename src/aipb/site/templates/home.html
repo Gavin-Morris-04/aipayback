@@ -1,58 +1,114 @@
 {% extends "base.html" %}
+{% from "_macros.html" import chip, status_bar, legend, promise_card %}
 {% block content %}
+{% set st = data.stats %}
 <section class="hero">
-  <h1>{{ site.tagline }}</h1>
-  <p class="lede">{{ site.description }}</p>
-  {% if data.stats.promises %}
-  <ul class="stats">
-    <li><span class="num">{{ data.stats.companies }}</span> companies</li>
-    <li><span class="num">{{ data.stats.promises }}</span> checkable AI promises</li>
-    <li><span class="num">{{ data.stats.published }}</span> with a published status</li>
-    {% if data.stats.checkable_share is not none %}
-    <li><span class="num">{{ (100 * data.stats.checkable_share) | round | int }}%</span> of forward-looking AI statements were specific enough to check</li>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">AI promises in SEC filings · 2024–2025</p>
+      <h1>{{ site.tagline }}</h1>
+      <p class="lede">{{ site.description }}</p>
+      <p class="hero-actions">
+        <a class="btn btn-primary" href="#leaderboard">See the scorecards</a>
+        <a class="btn btn-ghost" href="methodology.html">How we check</a>
+      </p>
+    </div>
+    {% if st.promises %}
+    <aside class="panel hero-panel" aria-labelledby="mix-title">
+      <p class="panel-kicker">Where the promises stand</p>
+      <p class="hero-total" id="mix-title"><span class="num">{{ st.promises }}</span> AI promises from {{ st.companies }} companies</p>
+      {{ status_bar(st.by_status or {}, st.promises, data.status_order, "Status mix of all promises") }}
+      {{ legend(st.by_status or {}, data.status_order) }}
+      <p class="panel-note">A status is published only when the evidence passes every check. The rest show the verified quote and "Status pending review".</p>
+    </aside>
     {% endif %}
-  </ul>
-  {% else %}
-  <p class="notice">Scorecards are being prepared. The first results will appear here after our checks and reviews are complete.</p>
-  {% endif %}
+  </div>
 </section>
 
-{% if data.stats.promises %}
-<section>
-  <h2>Leaderboard</h2>
-  <p class="hint">Click a column to sort. Counts are promises by their published status.</p>
-  <div class="table-scroll">
-  <table class="sortable">
-    <thead><tr>
-      <th scope="col">Company</th><th scope="col">Sector</th><th scope="col" data-type="num">Promises</th>
-      {% for s in data.status_order %}<th scope="col" data-type="num">{{ s }}</th>{% endfor %}
-    </tr></thead>
-    <tbody>
-    {% for c in data.companies %}
-      <tr>
-        <td><a href="companies/{{ c.ticker | lower }}.html">{{ c.name }} ({{ c.ticker }})</a></td>
-        <td>{{ c.sector }}</td>
-        <td>{{ c.promises }}</td>
-        {% for s in data.status_order %}<td>{{ c.counts.get(s, 0) }}</td>{% endfor %}
-      </tr>
-    {% endfor %}
-    </tbody>
-  </table>
+{% if st.promises %}
+<section class="wrap">
+  <ul class="stats" aria-label="Key numbers">
+    <li><span class="num">{{ st.companies }}</span><span class="label">companies analyzed</span></li>
+    <li><span class="num">{{ st.promises }}</span><span class="label">checkable AI promises</span></li>
+    <li><span class="num">{{ st.published }}</span><span class="label">with a published status</span></li>
+    {% if st.checkable_share is not none %}
+    <li><span class="num">{{ (100 * st.checkable_share) | round | int }}%</span><span class="label">of forward-looking AI statements were specific enough to check</span></li>
+    {% endif %}
+  </ul>
+</section>
+
+<section class="wrap block" id="leaderboard">
+  <div class="block-head">
+    <h2>Leaderboard</h2>
+    <p class="hint">Promises by published status. Click a column to sort.</p>
   </div>
+  <div class="table-card">
+    <div class="table-scroll">
+    <table class="sortable board">
+      <thead><tr>
+        <th scope="col">Company</th>
+        <th scope="col" data-type="num" class="num">Promises</th>
+        <th scope="col" class="nosort mix-col">Status mix</th>
+        {% for s in data.status_order %}<th scope="col" data-type="num" class="num status-col hide-sm"><span class="th-key seg-{{ s | badge }}" aria-hidden="true"></span>{{ "Pending review" if s == PENDING else s }}</th>{% endfor %}
+      </tr></thead>
+      <tbody>
+      {% for c in data.companies %}
+        <tr{% if not c.promises %} class="is-empty"{% endif %}>
+          <td><a class="co" href="companies/{{ c.ticker | lower }}.html"><span class="ticker">{{ c.ticker }}</span><span class="co-text"><span class="co-name">{{ c.name }}</span><span class="co-sector">{{ c.sector }}</span></span></a></td>
+          <td class="num strong">{{ c.promises }}</td>
+          <td class="mix-col">{{ status_bar(c.counts, c.promises, data.status_order, c.name ~ " status mix") }}</td>
+          {% for s in data.status_order %}{% set n = c.counts.get(s, 0) %}<td class="num hide-sm{% if not n %} zero{% endif %}">{{ n }}</td>{% endfor %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <p class="hint">Companies with 0 had no checkable AI promises in their 2024–2025 filings.</p>
+</section>
+
+{% set published = data.promises | selectattr("publishable") | sort(attribute="first_stated", reverse=True) | list %}
+{% if published %}
+<section class="wrap block">
+  <div class="block-head">
+    <h2>Published statuses</h2>
+    <p class="hint">The most recent promises with a published status, each sourced to the filings.</p>
+  </div>
+  <ul class="pgrid">
+    {% for p in published[:6] %}{{ promise_card(p, root, show_company=True) }}{% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% else %}
+<section class="wrap block">
+  <p class="notice">Scorecards are being prepared. The first results will appear here after our checks and reviews are complete.</p>
 </section>
 {% endif %}
 
-<section class="signup">
-  <h2>AI Promise Watch</h2>
-  <p>A free monthly email: new AI promises, status changes, one data-backed stat. Generated automatically from SEC filings and checked by automated tests.</p>
-  {% if site.buttondown_username %}
-  <form action="https://buttondown.com/api/emails/embed-subscribe/{{ site.buttondown_username }}" method="post" target="popupwindow" class="subscribe">
-    <label for="bd-email">Email address</label>
-    <input type="email" name="email" id="bd-email" required autocomplete="email">
-    <button type="submit">Subscribe</button>
-  </form>
-  {% else %}
-  <p class="notice">Signup opens soon.</p>
-  {% endif %}
+<section class="wrap block">
+  <div class="block-head"><h2>How a status is made</h2></div>
+  <ol class="steps">
+    <li><span class="step-n">1</span><h3>Find the promise</h3><p>A keyword filter and a language model pick out forward-looking AI statements in 10-K, 10-Q and earnings filings. Code checks every quote word for word against the filing.</p></li>
+    <li><span class="step-n">2</span><h3>Check later filings</h3><p>Code gathers the company's later filings and reported XBRL figures. A model judges the status from that material only, and uncertain cases get a second, independent check.</p></li>
+    <li><span class="step-n">3</span><h3>Explain with sources</h3><p>Every status comes with a short, neutral explanation that cites the exact sentences it relies on. Below our confidence bar, we publish "Status pending review" instead.</p></li>
+  </ol>
+</section>
+
+<section class="wrap block">
+  <div class="signup">
+    <div>
+      <h2>AI Promise Watch</h2>
+      <p>A free monthly email: new AI promises, status changes, and one data-backed stat. Generated from SEC filings and checked by automated tests.</p>
+    </div>
+    {% if site.buttondown_username %}
+    <form action="https://buttondown.com/api/emails/embed-subscribe/{{ site.buttondown_username }}" method="post" target="popupwindow" class="subscribe">
+      <label class="visually-hidden" for="bd-email">Email address</label>
+      <input type="email" name="email" id="bd-email" placeholder="you@example.com" required autocomplete="email">
+      <button class="btn btn-primary" type="submit">Subscribe</button>
+    </form>
+    {% else %}
+    <p class="soon">Signup opens soon.</p>
+    {% endif %}
+  </div>
 </section>
 {% endblock %}

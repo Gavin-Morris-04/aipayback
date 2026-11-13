@@ -1,0 +1,38 @@
+{% macro chip(status, size="") -%}
+<span class="chip chip-{{ status | badge }}{% if size %} chip-{{ size }}{% endif %}"><span class="dot" aria-hidden="true"></span>{{ status }}</span>
+{%- endmacro %}
+
+{% macro status_bar(counts, total, order, label="") -%}
+{% if total %}
+<div class="mix"{% if label %} role="img" aria-label="{{ label }}"{% endif %}>
+  {% for s in order %}{% set n = counts.get(s, 0) %}{% if n %}<span class="mix-seg seg-{{ s | badge }}" style="width: {{ (100 * n / total) | round(3) }}%" title="{{ s }}: {{ n }}"></span>{% endif %}{% endfor %}
+</div>
+{% else %}
+<div class="mix mix-empty" aria-hidden="true"></div>
+{% endif %}
+{%- endmacro %}
+
+{% macro legend(counts, order) -%}
+<ul class="legend">
+  {% for s in order %}{% set n = counts.get(s, 0) %}{% if n %}
+  <li><span class="key seg-{{ s | badge }}" aria-hidden="true"></span>{{ s }} <strong>{{ n }}</strong></li>
+  {% endif %}{% endfor %}
+</ul>
+{%- endmacro %}
+
+{% macro promise_card(p, root, show_company=False) -%}
+<li class="pcard" data-status="{{ p.status | badge }}">
+  <div class="pcard-top">
+    {{ chip(p.status) }}
+    {% if show_company %}<a class="ticker" href="{{ root }}companies/{{ p.ticker | lower }}.html">{{ p.ticker }}</a>{% endif %}
+  </div>
+  <h3 class="pcard-title"><a href="{{ root }}promises/{{ p.id }}.html">{{ (p.metric or p.claim_type | replace("_", " ")) | capfirst }}</a></h3>
+  <blockquote class="pcard-quote">“{{ p.quote }}”</blockquote>
+  <p class="pcard-meta">
+    <span>{{ p.form }} filed {{ p.first_stated }}</span>
+    {% if p.deadline_text %}<span>Deadline: {{ p.deadline_text }}</span>{% endif %}
+    {% if p.restatements %}<span>Restated {{ p.restatements | length }}×</span>{% endif %}
+  </p>
+  <a class="pcard-link" href="{{ root }}promises/{{ p.id }}.html">Details and sources <span aria-hidden="true">→</span></a>
+</li>
+{%- endmacro %}

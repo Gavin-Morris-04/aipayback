@@ -1,11 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>About</h1>
-<p class="lede">AIPayback is a student project that checks whether the AI promises in companies' SEC filings paid off, with every status sourced to the filings themselves.</p>
-<ul class="people">
-{% for f in site.founders %}
-  <li><strong>{{ f.name }}</strong>: {{ f.role }}{% if f.linkedin %} · <a href="{{ f.linkedin }}">LinkedIn</a>{% endif %}</li>
-{% endfor %}
-</ul>
-<p>Contact: <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a></p>
+<section class="page-head">
+  <div class="wrap narrow">
+    <p class="eyebrow">About</p>
+    <h1>Checking AI promises against the filings themselves</h1>
+    <p class="lede">AIPayback is a student project that checks whether the AI promises in companies' SEC filings paid off, with every status sourced to the filings themselves.</p>
+  </div>
+</section>
+<div class="wrap narrow block">
+  <ul class="people">
+  {% for f in site.founders %}
+    <li class="person">
+      <span class="avatar" aria-hidden="true">{{ f.name[:1] }}</span>
+      <div>
+        <p class="person-name">{{ f.name }}</p>
+        <p class="person-role">{{ f.role }}</p>
+        {% if f.linkedin %}<a href="{{ f.linkedin }}">LinkedIn <span aria-hidden="true">↗</span></a>{% endif %}
+      </div>
+    </li>
+  {% endfor %}
+  </ul>
+  <div class="panel contact-panel">
+    <p class="panel-kicker">Contact</p>
+    <p>Partnerships, questions and error reports: <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a></p>
+  </div>
+</div>
 {% endblock %}

@@ -1,20 +1,39 @@
 {% extends "base.html" %}
+{% from "_macros.html" import chip, status_bar, legend, promise_card %}
 {% block content %}
-<p class="crumbs"><a href="../index.html">Scorecards</a> / {{ company.ticker }}</p>
-<h1>{{ company.name }} ({{ company.ticker }})</h1>
-<p class="lede">{{ company.sector }}. {{ company.promises }} checkable AI promise{{ "" if company.promises == 1 else "s" }} from 2024–2025 SEC filings.</p>
+<section class="page-head">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Scorecards</a><span aria-hidden="true">/</span>{{ company.ticker }}</nav>
+    <div class="co-head">
+      <div>
+        <p class="eyebrow"><span class="ticker ticker-lg">{{ company.ticker }}</span>{{ company.sector }}</p>
+        <h1>{{ company.name }}</h1>
+        <p class="lede">{{ company.promises }} checkable AI promise{{ "" if company.promises == 1 else "s" }} from 2024–2025 SEC filings, and what later filings report.</p>
+      </div>
+      {% if company.promises %}
+      <aside class="panel co-panel" aria-label="Status mix">
+        <p class="panel-kicker">Status mix</p>
+        {{ status_bar(company.counts, company.promises, data.status_order, company.name ~ " status mix") }}
+        {{ legend(company.counts, data.status_order) }}
+      </aside>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="wrap block">
 {% if items %}
-<ul class="cards">
-{% for p in items %}
-  <li class="card">
-    <span class="badge {{ p.status | badge }}">{{ p.status }}</span>
-    <blockquote>“{{ p.quote }}”</blockquote>
-    <p class="meta">{{ p.form }} filed {{ p.first_stated }}{% if p.deadline_text %} · deadline: {{ p.deadline_text }}{% endif %}{% if p.restatements %} · restated {{ p.restatements | length }}×{% endif %}</p>
-    <a href="../promises/{{ p.id }}.html">Details and sources →</a>
-  </li>
-{% endfor %}
-</ul>
+  <div class="filters" role="group" aria-label="Filter by status" hidden>
+    <button type="button" class="filter is-on" data-filter="all" aria-pressed="true">All <span>{{ items | length }}</span></button>
+    {% for s in data.status_order %}{% set n = company.counts.get(s, 0) %}{% if n %}
+    <button type="button" class="filter" data-filter="{{ s | badge }}" aria-pressed="false"><span class="key seg-{{ s | badge }}" aria-hidden="true"></span>{{ s }} <span>{{ n }}</span></button>
+    {% endif %}{% endfor %}
+  </div>
+  <ul class="plist">
+    {% for p in items %}{{ promise_card(p, root) }}{% endfor %}
+  </ul>
 {% else %}
-<p class="notice">No checkable AI promises found in this company's 2024–2025 filings so far.</p>
+  <p class="notice">No checkable AI promises found in this company's 2024–2025 filings so far.</p>
 {% endif %}
+</section>
 {% endblock %}

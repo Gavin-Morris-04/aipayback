@@ -495,6 +495,17 @@ Nick reviewed the 21-row disagreement file from before D45. His verdicts: 11 "Mo
 3. Autonomy: should "level 4", "autonomous driving" and "self-driving" count as AI words for the AI-link check? (The NVIDIA Uber row.)
 4. A new 12-row disagreement file from today's eval: `exports/disagreements/20261113T183639_1713cd8_dev_default.xlsx`. It includes rows Nick hasn't seen, such as two NVIDIA Blackwell statements the model found that his labels don't have.
 
+## D49. Site redesign (2026-11-13)
+
+Gavin said the preview "looks cheap and terrible" and asked for an entirely new UI. Same data, same wording rules, new presentation:
+- **Look:** editorial data-tracker style. Serif headlines (Source Serif 4), Inter for text, IBM Plex Mono for tickers, tabular figures, warm paper background, navy and gold brand, a check-mark logo. Full dark mode.
+- **Status chips:** soft tinted chips replace the solid pills. "Status pending review" is an outlined chip, and a hatched segment in bars, so it reads as "not judged" rather than as a result.
+- **Home:** a status-mix bar with a legend for all promises, a stat strip, the leaderboard with a per-company status bar (the sector sits under the company name), the six most recent published statuses as cards, and "How a status is made".
+- **Company pages:** a status-mix panel, and status filter buttons (progressive enhancement; without JavaScript every card shows).
+- **Promise pages:** two columns with a sticky "Key facts" panel. `[n]` markers in explanations link to their numbered sources, figures tables show the XBRL tag in mono, and the pending box gives the reason.
+- **Fonts load from Google Fonts.** That's a request to Google on each visit. If that matters for privacy, self-host the three fonts in `static/` before launch; the fallbacks are system fonts.
+- Checked by screenshots in headless Edge at 1280px and in a true 390px frame, in light and dark. `sort.js` became `site.js` (sort plus filter).
+
 ## Upcoming decisions (recorded when made)
 - The CAT scope question and the announcement rule (D48 questions 1–2), from Nick.
 - The confidence threshold, from the precision-coverage curve (Phase 3, once Nick labels statuses).
