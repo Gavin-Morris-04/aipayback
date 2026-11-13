@@ -61,7 +61,7 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
 - Gotcha: the first trace of the missed promises also printed the 7 test-split (AMZN) gold promises. Nothing was tuned on them. Build the product-name list from dev rows only, so the test split stays usable for milestones.
 
 **2026-11-13:**
-- Checklist ticks: Gavin G1–G4, G6–G9 (8 of 17); Nick N1–N7 (7 of 9). Nick ticked N7, but his disagreement file isn't in `evals/gold/returned/disagreements/` yet. Gavin and Nick are doing N8 and G11 now.
+- Checklist ticks: Gavin G1–G4, G6–G9 (8 of 17); Nick N1–N7 (7 of 9). Nick's N7 file is in and committed: `evals/gold/returned/disagreements/N7- Review where you and the model disagree.xlsx` (not read yet; reading it is free). Gavin and Nick are doing N8 and G11 now.
 - Site preview zipped for Nick: `exports/aipayback_preview_2026-11-13.zip` (git-ignored; Gavin uploads it to Drive **packets**).
 - **G10 sized (D47).** `aipb extract --variant sonnet --only-labeled` reads the 60 labeled dev passages the filter routes. Sonnet runs with thinking off (`between_tools`) and `max_tokens` 2048. Dry run: **worst case $0.91**. **Waiting on Gavin's go-ahead in chat**; then `uv run aipb extract --variant sonnet --only-labeled --confirm`, `uv run aipb eval --variant sonnet`, `uv run aipb compare`, and record the decision in D47.
 - **Gotcha: Windows Smart App Control is On** and blocked jiter 0.19.0, so the Anthropic SDK wouldn't import. jiter is held at <0.19 in `pyproject.toml` (D47). If another native package gets blocked, test older versions with `uv run --with "pkg==X" python -c "import pkg"` before touching Windows security settings.
