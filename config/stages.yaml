@@ -52,6 +52,9 @@ stages:
       # here, so no thinking), matching Haiku's setup so the A/B compares models only (D47).
       # 2048 is Haiku's own cap; Haiku's longest pilot answer was 1,095 output tokens.
       sonnet: {model: claude-sonnet-5-5, thinking: between_tools, effort: low, max_tokens: 2048}
+      # D51: product claims and past-action highlights are not promises; tried on the
+      # labeled dev passages first, promoted only if dev F1 holds.
+      v3: {prompt: v3}
 
   verify_t1:
     model: claude-haiku-5-5

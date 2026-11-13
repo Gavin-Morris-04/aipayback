@@ -1,6 +1,6 @@
 # Progress
 
-_Last updated: 2026-11-13 (G10 done: keep Haiku; N7 applied, dev F1 74.4%; site redesigned, D49)_
+_Last updated: 2026-11-13 (G10 done: keep Haiku; N7 applied, dev F1 74.4%; site redesigned; Tier 2 re-check done, 18 published; S&P 100 ready for cost approval)_
 
 ## Where things stand
 
@@ -67,10 +67,19 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
 - **N7 applied (D48), $0.** Gold corrections in `evals/gold/corrections.yaml` (applied by `aipb eval`; Nick's files untouched). New rules: a quote that names AI (or a confirmed AI product) is its own AI link, and risk-factor passages are never extracted. **Dev F1 59.1% → 74.4%.** The pilot now has 60 clusters, 12 published.
 - **Site redesigned (D49).** New templates and stylesheet in `src/aipb/site/`; same data and wording. Preview: `site/dist/index.html`. The zip for Nick (`exports/aipayback_preview_2026-11-13.zip`) has the new design; re-upload it to Drive **packets** if the old one went up.
 - **Status packet back, but every row is an AI draft (D50).** All 58 notes say "Claude draft, Nick to review". `import-statuses` now skips draft rows (0 of 58 imported), the eval results from the drafts were deleted, and the threshold stays at 0.75. **Nick:** review each row and delete the marker from its note. **Gavin:** then re-save it as `evals/gold/returned/status_packet_v1.xlsx` (it came back as `.xlsx.xlsx` because Windows hides extensions) and run `uv run aipb import-statuses` and `uv run aipb eval-status`. After that, Claude Code sets the threshold.
+- **Autonomous work after "now go" (D51–D53):**
+  - Extract v3 tried on dev and **not promoted** (F1 68.1% vs 74.4%; $0.004).
+  - Evidence now reserves 3 of 8 slots for filings released within 100 days after the deadline period (fixes the R-002/R-003 retrieval gap).
+  - Explain retries failing explanations once, with the failed checks named.
+  - Tier 1 re-ran on the 30 promises whose evidence changed (about $0.01). Tier 2 ran with Gavin's go-ahead: 15 new for $0.03, 17 replayed. Explain retries fixed 3 explanations.
+  - **18 of 60 published** (11 Delivered, 7 No evidence yet), up from 12. All 7 new ones were read against their evidence: NVIDIA Blackwell samples Q2 FY2025 and Blackwell Ultra Q2 FY2026, three Tesla Robotaxi promises (June 2025 Austin launch), Meta $70–72B on its own capex definition (D44), and NVIDIA's Anthropic 1 GW and £2B U.K. items (No evidence yet).
+  - R-002 and R-003 stay open (D52): the right filings are now retrieved but not the decisive passage (no stemming), and R-003's deadline reads as FY2026.
+  - Fonts self-hosted (D49); prices re-checked (D54); the S&P 100 list matches Wikipedia's; the filter dry run is $0.44. **The S&P 100 run waits on Gavin's explicit cost approval.**
+  - Checklist page "Do this now" refreshed for 2026-11-13.
 - **Waiting on Nick (D48 questions):** the CAT scope call (4 rows left out of scoring until then), the announcement rule, autonomy words, and a new 12-row disagreement file (`exports/disagreements/20261113T183639_1713cd8_dev_default.xlsx`).
 - **Gotcha: Windows Smart App Control is On** and blocked jiter 0.19.0, so the Anthropic SDK wouldn't import. jiter is held at <0.19 in `pyproject.toml` (D47). If another native package gets blocked, test older versions with `uv run --with "pkg==X" python -c "import pkg"` before touching Windows security settings.
 
-**API spend so far: $0.50** (smoke test, pilot, Tier 1 v3, the 58-promise check, and the Sonnet A/B). Run `uv run aipb budget` for the exact figure.
+**API spend so far: $0.56** (smoke test, pilot, Tier 1 v3, the 58-promise check, the Sonnet A/B, extract v3 on dev, and the 2026-11-13 re-check). Run `uv run aipb budget` for the exact figure.
 
 The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-ahead in chat, and the S&P 100 run needs explicit cost approval.
 

@@ -526,9 +526,38 @@ def run_explain(
         confirm=confirm,
         log=log,
     )
-    counts = {"ok": 0, "failed_checks": 0}
-    for cid, docs in docs_by.items():
-        e = ex.check(results[cid], docs, status_by[cid])
+    checked = {cid: ex.check(results[cid], docs, status_by[cid]) for cid, docs in docs_by.items()}
+    # One retry for an explanation that fails its checks, naming them (D53).
+    failing = [cid for cid, e in checked.items() if not e.ok and e.text]
+    retried = 0
+    if failing:
+        by_key = {r.key: r for r in reqs}
+        retry_reqs = [
+            Request(cid, ex.retry_params(by_key[cid].params, checked[cid].problems),
+                    by_key[cid].shard)
+            for cid in failing
+        ]  # fmt: skip
+        rplan = llm.plan(ex.STAGE, prompt.id, retry_reqs, batch=batch)
+        log(describe(rplan, f"Explain retries ({len(retry_reqs)} that failed their checks)"))
+        rres = _paid_call(
+            ctx,
+            llm,
+            stage=ex.STAGE,
+            prompt_id=prompt.id,
+            requests=retry_reqs,
+            batch=batch,
+            plan=rplan,
+            command="explain-retry",
+            confirm=confirm,
+            log=log,
+        )
+        for cid in failing:
+            second = ex.check(rres[cid], docs_by[cid], status_by[cid])
+            if second.ok:
+                checked[cid] = second
+                retried += 1
+    counts = {"ok": 0, "failed_checks": 0, "fixed_by_retry": retried}
+    for cid, e in checked.items():
         counts["ok" if e.ok else "failed_checks"] += 1
         with conn:
             conn.execute(

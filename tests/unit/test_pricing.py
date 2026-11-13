@@ -12,7 +12,9 @@ M = 1_000_000
 
 
 def test_pricing_file_is_dated(pricing):
-    assert pricing.verified_on == "2026-11-10"
+    from datetime import date
+
+    assert date.fromisoformat(pricing.verified_on) >= date(2026, 11, 10)  # re-checked dates move
     assert pricing.source.startswith("https://platform.claude.com/")
 
 

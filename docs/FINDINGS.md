@@ -18,7 +18,7 @@ Of 234 forward-looking AI statements extracted from 10 companies' 2024-2025 fili
 
 ## What later filings report
 
-12 of 60 promises have a published status; the rest are "Status pending review" because the evidence did not pass our checks.
+18 of 60 promises have a published status; the rest are "Status pending review" because the evidence did not pass our checks.
 
 **Promises about results** (savings, revenue, margin, products and more):
 
@@ -26,7 +26,7 @@ Of 234 forward-looking AI statements extracted from 10 companies' 2024-2025 fili
 |---|---|---|---|---|---|---|
 | cost savings | 5 | 0 | 0 | 1 | 0 | 4 |
 | other | 4 | 0 | 0 | 1 | 0 | 3 |
-| product or timeline | 27 | 0 | 0 | 1 | 0 | 26 |
+| product or timeline | 27 | 5 | 0 | 1 | 0 | 21 |
 | productivity | 3 | 0 | 0 | 2 | 0 | 1 |
 | revenue | 3 | 0 | 0 | 0 | 0 | 3 |
 
@@ -34,7 +34,7 @@ Of 234 forward-looking AI statements extracted from 10 companies' 2024-2025 fili
 
 | Claim type | Promises | Delivered | On track | No evidence yet | Walked back | Status pending review |
 |---|---|---|---|---|---|---|
-| capex investment | 18 | 7 | 0 | 0 | 0 | 11 |
+| capex investment | 18 | 6 | 0 | 2 | 0 | 10 |
 
 ## Caveats (read these before quoting any number)
 

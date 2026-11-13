@@ -67,6 +67,7 @@ The full SEC download (about 4.8 GB with the S&P 100) isn't committed. A manifes
 | 2026-11-12 | dev (257 passages, default; AI product names, D45) | 59.1% [35.7%, 75.0%] | (Phase 3) | 100.0% | $0.0003 |
 | 2026-11-13 | dev (253 passages, default) | 74.4% [54.1%, 88.9%] | (Phase 3) | 100.0% | $0.0003 |
 | 2026-11-13 | dev (253 passages, sonnet) | 66.7% [46.7%, 81.6%] | (Phase 3) | 100.0% | $0.0026 |
+| 2026-11-13 | dev (253 passages, v3) | 68.1% [50.0%, 82.8%] | (Phase 3) | 100.0% | $0.0006 |
 <!-- eval-history:end -->
 
 Gold labels come from a finance student and are split into dev and held-out test, grouped by company. Full method: Methodology page (Phase 4).

@@ -996,7 +996,8 @@ def explain_cmd(
     finally:
         conn.close()
     if not dry_run:
-        out.print(f"Explanations: {counts.get('ok', 0)} passed citation and wording checks, "
+        out.print(f"Explanations: {counts.get('ok', 0)} passed citation and wording checks "
+                  f"({counts.get('fixed_by_retry', 0)} after one retry), "
                   f"{counts.get('failed_checks', 0)} did not (those stay pending).")  # fmt: skip
         out.print("Gate: " + ", ".join(f"{k} {v}" for k, v in sorted(gate_counts.items())))
 

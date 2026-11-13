@@ -7,11 +7,13 @@ the verdict (structured) and the explanation (cited) are two calls. Documents:
   last: the reported numbers the verdict cited, written as sentences.
 Code checks every citation: its cited_text must equal the document text at its character
 span; the promise document must be cited; any status other than "No evidence yet" must
-also cite evidence; and the wording must pass the neutral-language lint.
+also cite evidence; and the wording must pass the neutral-language lint. An explanation that
+fails gets one retry that names the failed checks (D53); if that fails too, it stays pending.
 """
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass, field
 
 from aipb.llm.client import LLMResult
@@ -92,6 +94,29 @@ def build_params(
         "messages": [{"role": "user", "content": [*docs, {"type": "text", "text": ask}]}],
         **thinking_params(cfg),
     }
+
+
+def retry_params(params: dict, problems: list[str]) -> dict:
+    """The same request plus a note naming the checks the first draft failed (D53).
+
+    A fresh single-turn request: the first answer (and its thinking) isn't replayed, so the
+    retry is cached on its own and a re-run costs nothing.
+    """
+    p = json.loads(json.dumps(params))
+    listed = "\n".join(f"- {' '.join(str(x).split())[:200]}" for x in problems)
+    p["messages"][0]["content"].append(
+        {
+            "type": "text",
+            "text": (
+                "An earlier draft of this explanation failed these automated checks:\n"
+                f"{listed}\n\nWrite the explanation again so that it passes them. Write about "
+                "the company in the third person, by name. Put the company's own words only "
+                "inside quotation marks. Don't mention checks, documents or findings. Cite the "
+                "promise document, and the evidence documents for what later filings report."
+            ),
+        }
+    )
+    return p
 
 
 _QUOTES = '"“”'

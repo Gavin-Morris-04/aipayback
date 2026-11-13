@@ -6,7 +6,8 @@
   not the wall clock, so the request (and its cache key) only changes when a new filing
   arrives.
 - Evidence: FTS5 BM25 search over the company's LATER filings (top 8, at most 2 per
-  filing), each with an id E1..E8.
+  filing), each with an id E1..E8. Once the deadline has passed, up to 3 of the 8 come from
+  filings released within 100 days after the deadline period, which report its results.
 - Numbers: the XBRL table for the claim type (N1..), computed in code.
 - Silent walk-back facts: periodic filings after the deadline, and later passages that
   still mention the promise. The gate uses these, not the model's opinion.
@@ -17,6 +18,7 @@ from __future__ import annotations
 import re
 import sqlite3
 from dataclasses import dataclass, field
+from datetime import date, timedelta
 
 from aipb.parse.passages import normalize_for_match
 from aipb.stages.dedupe import words
@@ -32,6 +34,12 @@ from aipb.verify.numbers import (
 TOP_K = 8
 PER_FILING = 2
 MENTION_OVERLAP = 0.3
+# Results for a deadline period are filed after it ends (the rubric's grace period): the
+# earnings release and 10-K/10-Q within about three months. Keyword ranking alone can miss
+# them in favor of later filings, which can't make a promise Delivered (R-002, R-003), so
+# up to DEADLINE_SLOTS of the TOP_K evidence passages come from that window (D52).
+DEADLINE_WINDOW_DAYS = 100
+DEADLINE_SLOTS = 3
 
 
 @dataclass
@@ -118,6 +126,7 @@ def search(
     after: str,
     exclude_accession: str,
     limit: int = 60,
+    before: str | None = None,
 ) -> list[sqlite3.Row]:
     if not terms:
         return []
@@ -127,19 +136,29 @@ def search(
                p.accession, bm25(passages_fts) AS score
         FROM passages_fts JOIN passages p ON p.passage_id = passages_fts.passage_id
         WHERE passages_fts MATCH ? AND p.cik = ? AND p.filing_date > ? AND p.accession != ?
+              AND p.filing_date <= ?
         ORDER BY score LIMIT ?
         """,
-        (fts_query(terms), cik, after, exclude_accession, limit),
+        (fts_query(terms), cik, after, exclude_accession, before or "9999-12-31", limit),
     ).fetchall()
 
 
-def pick_evidence(rows: list[sqlite3.Row], k: int = TOP_K) -> list[EvidencePassage]:
+def pick_evidence(
+    rows: list[sqlite3.Row],
+    k: int = TOP_K,
+    *,
+    reserved: list[sqlite3.Row] | None = None,
+    reserved_k: int = DEADLINE_SLOTS,
+) -> list[EvidencePassage]:
+    """Top-k passages, at most PER_FILING per filing, no repeated text. Up to `reserved_k`
+    slots go first to `reserved` rows (the deadline-period filings)."""
     out: list[EvidencePassage] = []
     per_filing: dict[str, int] = {}
     seen_text: set[str] = set()
-    for r in rows:
+
+    def take(r: sqlite3.Row) -> bool:
         if r["text_sha256"] in seen_text or per_filing.get(r["accession"], 0) >= PER_FILING:
-            continue
+            return False
         seen_text.add(r["text_sha256"])
         per_filing[r["accession"]] = per_filing.get(r["accession"], 0) + 1
         out.append(
@@ -153,8 +172,16 @@ def pick_evidence(rows: list[sqlite3.Row], k: int = TOP_K) -> list[EvidencePassa
                 r["score"],
             )
         )
-        if len(out) == k:
+        return True
+
+    for r in reserved or []:
+        if len(out) >= min(reserved_k, k):
             break
+        take(r)
+    for r in rows:
+        if len(out) >= k:
+            break
+        take(r)
     out.sort(key=lambda e: (e.filing_date, e.passage_id))
     for i, e in enumerate(out, start=1):
         e.eid = f"E{i}"
@@ -221,7 +248,14 @@ def build_context(
     rows = search(
         conn, cl["cik"], terms, after=cl["first_stated"], exclude_accession=promise["accession"]
     )
-    evidence = pick_evidence(rows)
+    reserved = []
+    if d_end and passed:
+        window_end = (date.fromisoformat(d_end) + timedelta(days=DEADLINE_WINDOW_DAYS)).isoformat()
+        reserved = search(
+            conn, cl["cik"], terms, after=max(d_end, cl["first_stated"]),
+            exclude_accession=promise["accession"], before=window_end,
+        )  # fmt: skip
+    evidence = pick_evidence(rows, reserved=reserved)
     mentions_after = 0
     if d_end:
         later = search(conn, cl["cik"], terms, after=d_end, exclude_accession="", limit=200)

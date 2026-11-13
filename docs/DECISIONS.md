@@ -503,7 +503,7 @@ Gavin said the preview "looks cheap and terrible" and asked for an entirely new 
 - **Home:** a status-mix bar with a legend for all promises, a stat strip, the leaderboard with a per-company status bar (the sector sits under the company name), the six most recent published statuses as cards, and "How a status is made".
 - **Company pages:** a status-mix panel, and status filter buttons (progressive enhancement; without JavaScript every card shows).
 - **Promise pages:** two columns with a sticky "Key facts" panel. `[n]` markers in explanations link to their numbered sources, figures tables show the XBRL tag in mono, and the pending box gives the reason.
-- **Fonts load from Google Fonts.** That's a request to Google on each visit. If that matters for privacy, self-host the three fonts in `static/` before launch; the fallbacks are system fonts.
+- **Fonts are self-hosted** (changed the same day). They're in `static/fonts/`: Latin and Latin Extended subsets of Inter, Source Serif 4 and IBM Plex Mono, about 385 KB, under the SIL Open Font License with `OFL.txt`. The site makes no requests to Google, and the offline preview zip shows the right fonts.
 - Checked by screenshots in headless Edge at 1280px and in a true 390px frame, in light and dark. `sort.js` became `site.js` (sort plus filter).
 
 ## D50. The returned status packet holds AI drafts; the threshold stays at 0.75 (2026-11-13)
@@ -522,6 +522,38 @@ Gavin saved the returned status packet (N8) and asked for the G11 steps: import,
 **For Nick:** check each row against the evidence in the packet, change the status if needed, then delete "Claude draft, Nick to review" from that row's note. The drafts are fine as a starting point, but each status has to be his call. Rows he isn't sure of stay "Unsure". Then Gavin saves the file again as `evals/gold/returned/status_packet_v1.xlsx` and runs `uv run aipb import-statuses` and `uv run aipb eval-status`.
 
 **One useful signal from the drafts (tentative, unreviewed):** the drafts disagreed with 3 of the pipeline's "Delivered" verdicts (NVIDIA customer samples in Q2, NVIDIA second-half shipments, Pfizer R&D savings). The gate held all three: one for a failed explanation check, one on confidence (0.60), one by a rubric rule. If Nick confirms them, that's evidence the gate is doing its job.
+
+## D51. Extract v3 tried on dev, not promoted (2026-11-13)
+
+`prompts/extract/v3.md` spells out that product claims ("helps turn month-long projects into days", "improving travel efficiency by 10%") and highlight bullets reporting past actions ("Announced…", "Unveiled…") are not promises. It also says such a bullet still counts when it states something still to come, and that "on track… by June" counts. It was aimed at the 4 Amazon items in D46.
+
+It ran as the `v3` variant on the 51 labeled dev passages ($0.004; worst case $0.04). **Dev F1 68.1% vs 74.4% for v2:** same recall (16 matched), but 9 extra promises instead of 5. v3 moved quote boundaries (a fragment where Nick's gold has the full sentence) and added new extras (Volvo SUV, HUMAIN, Pfizer program text). v2 stays the default; v3 stays in the repo as a recorded experiment.
+
+A code rule requiring a forward-looking cue in a promise's sentence was considered and not built. The prefilter's cue list misses phrasings in Nick's confirmed promises ("scheduled for… starting in 2026", "is coming to…", "starting in 2027"), so it would drop real promises unless tuned on the same 22 dev promises it's scored on. The Amazon items stay with Nick (D46); nothing is public.
+
+## D52. Evidence from the deadline period gets reserved slots (2026-11-13)
+
+R-002 and R-003 (NVIDIA Blackwell, deadline FY2025 ending 2025-01-26) were held because the evidence cited only post-deadline filings. The cause was retrieval: Tier 1 gets the top 8 keyword-ranked passages from any later filing, and nothing favored the filings that report the deadline period. NVIDIA's Q4 FY2025 release and 10-K (both filed 2025-02-26) are in the corpus with 13 Blackwell passages, including "We've successfully ramped up the massive-scale production of Blackwell…".
+
+Change (`verify/context.py`): once a promise's deadline has passed, up to 3 of the 8 evidence slots go to passages from filings released within 100 days after the deadline period ends, the rubric's grace period. Per-filing caps and de-duplication apply across both lists. 30 of the 60 pilot promises got new evidence; Tier 1 re-ran on them for about $0.01 (worst case $0.03) and sent 32 promises to Tier 2, which waits for Gavin's OK.
+
+**R-002 and R-003 stay open:**
+- **R-002:** its evidence now includes three passages from the 2025-02-26 filings, and Tier 1 says Delivered at 0.8. But it reasons by inference (GB200 systems "coming to cloud regions… indicating" shipments began). The direct sentence in the Q4 FY2025 release ("We've successfully ramped up the massive-scale production of Blackwell AI supercomputers, achieving billions of dollars in sales…") wasn't among the passages picked. The FTS index doesn't stem words, so "ramp" in the promise doesn't match "ramped".
+- **R-003:** the promise is two-part ("begin in the fourth quarter and continue into fiscal year 2026"), and its deadline was read as FY2026. So the reserved slots went to 2026 filings, not the Q4 FY2025 results.
+
+Next retrieval fixes, not built yet: a stemming tokenizer for the passage index (a rebuild, $0), and taking the earliest deadline when a promise names a start date and a continuation.
+
+## D53. One retry for explanations that fail their checks (2026-11-13)
+
+Five publishable statuses were pending only because their explanation failed the wording checks (D46). `aipb explain` now retries each failing explanation once: the same request, plus a note listing the failed checks. It's a fresh request (no earlier answer or thinking replayed), so it caches on its own and re-runs cost $0. A retry that still fails stays pending. Explain worst case for the pilot: $0.01.
+
+## D54. S&P 100 run prepared; waiting on cost approval (2026-11-13)
+
+Gavin said "just do everything". Everything on his list that doesn't need his accounts, his cost approval or Nick is done:
+- **Prices re-checked** against the pricing page: all unchanged (Haiku 5.5 $0.10/$0.50 per MTok and $0.50/$2.50 over 100k tokens; Sonnet 5.5 $2/$10; batch 50% off; tool overhead 286/406 tokens). `verified_on` is now 2026-11-13.
+- **Company list:** our 100 tickers match Wikipedia's current S&P 100 table. Its 101st row is GOOG, Alphabet's second share class, which we track once as GOOGL. The iShares OEF holdings file couldn't be downloaded automatically (the page loads it with JavaScript), so the independent check stays with Gavin (G16 step 1).
+- **Filter dry run:** 913 requests, 165 cached from the pilot, 748 to send. Worst case $0.44. With extract (at most $2.84 if every AI passage were routed; fewer now that risk factors are skipped), verify and explain (about $0.001 per promise) and the Tier 2 cap ($0.50), the run stays under $5. $14.48 remained under the cap before today's Tier 2 run.
+- **Not done, and why:** enabling GitHub Pages was blocked by this session's permission rules (it changes repo settings), so G14 stays with Gavin. Buttondown (G12), the GitHub secrets (G15) and outreach (G5) need his accounts. The S&P 100 run needs his explicit cost approval, e.g. "I approve the S&P 100 run up to $5".
 
 ## Upcoming decisions (recorded when made)
 - The CAT scope question and the announcement rule (D48 questions 1–2), from Nick.
