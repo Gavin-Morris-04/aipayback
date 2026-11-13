@@ -61,7 +61,18 @@ KEY_COLUMNS = ("row_id", "cluster_id", "ticker", "passage_id", "quote", "first_s
 class StatusImport:
     rows: int = 0
     labeled: int = 0
+    drafts: int = 0  # rows still marked as an unreviewed draft: not imported (D50)
     problems: list[str] = field(default_factory=list)
+
+
+# A gold label has to be a person's own judgment. A note that says the row is still a
+# draft (as in the 2026-11-13 return: "Claude draft, Nick to review") keeps it out (D50).
+DRAFT_MARKERS = ("claude draft", "ai draft", "nick to review", "to be reviewed")
+
+
+def is_draft(note: str) -> bool:
+    low = note.lower()
+    return any(m in low for m in DRAFT_MARKERS)
 
 
 def build(
@@ -255,6 +266,9 @@ def import_statuses(returned: Path, key_dir: Path, gold_csv: Path) -> StatusImpo
         if status not in STATUS_LABELS:
             rep.problems.append(f"Row {r} ({rid}): '{status}' is not one of the status choices.")
             continue
+        if is_draft(str(values[col["notes"]] or "")):
+            rep.drafts += 1
+            continue
         rep.labeled += 1
         k = keys[rid]
         out.append(
@@ -266,6 +280,12 @@ def import_statuses(returned: Path, key_dir: Path, gold_csv: Path) -> StatusImpo
             }
         )
     wb.close()
+    if rep.drafts:
+        rep.problems.append(
+            f"{rep.drafts} row(s) are still marked as drafts in Notes (for example 'Claude "
+            "draft, Nick to review') and were not imported. Check each one yourself, then "
+            "delete that marker from its note."
+        )
     gold_csv.parent.mkdir(parents=True, exist_ok=True)
     with gold_csv.open("w", encoding="utf-8", newline="") as fh:
         w = csv.DictWriter(

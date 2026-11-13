@@ -506,6 +506,24 @@ Gavin said the preview "looks cheap and terrible" and asked for an entirely new 
 - **Fonts load from Google Fonts.** That's a request to Google on each visit. If that matters for privacy, self-host the three fonts in `static/` before launch; the fallbacks are system fonts.
 - Checked by screenshots in headless Edge at 1280px and in a true 390px frame, in light and dark. `sort.js` became `site.js` (sort plus filter).
 
+## D50. The returned status packet holds AI drafts; the threshold stays at 0.75 (2026-11-13)
+
+Gavin saved the returned status packet (N8) and asked for the G11 steps: import, eval, and set `gate.confidence_threshold` from the precision-coverage curve.
+
+**What came back.** All 58 rows have a status and a note, and **every note starts "Claude draft, Nick to review."** The packet we sent had both columns empty and no such text (our code never writes it). The returned file was last saved in Excel on a Mac. So the labels were drafted with an AI on Nick's side, and nothing in the file says he reviewed them. One note gives a revenue figure "from my own knowledge", which is exactly what the rules forbid: numbers come from filings.
+
+**Why that blocks the threshold.** A threshold set from AI-drafted labels measures one model agreeing with another, not accuracy. The first eval showed 100% precision at every threshold from 0.50 to 0.80 (8–10 items), and the Methodology page lists status-eval results automatically. Publishing that as "published status precision 100%" would be a claim we can't back.
+
+**What changed:**
+- `aipb import-statuses` now skips any row whose note still marks it as a draft ("Claude draft", "AI draft", "Nick to review", "to be reviewed"). It says how many it skipped and exits with an error. Today: 0 of 58 imported, so `evals/gold/statuses.csv` is empty.
+- The status-eval results from the drafts were deleted, so the Methodology page can't pick them up.
+- `gate.confidence_threshold` stays at the 0.75 placeholder.
+
+**For Nick:** check each row against the evidence in the packet, change the status if needed, then delete "Claude draft, Nick to review" from that row's note. The drafts are fine as a starting point, but each status has to be his call. Rows he isn't sure of stay "Unsure". Then Gavin saves the file again as `evals/gold/returned/status_packet_v1.xlsx` and runs `uv run aipb import-statuses` and `uv run aipb eval-status`.
+
+**One useful signal from the drafts (tentative, unreviewed):** the drafts disagreed with 3 of the pipeline's "Delivered" verdicts (NVIDIA customer samples in Q2, NVIDIA second-half shipments, Pfizer R&D savings). The gate held all three: one for a failed explanation check, one on confidence (0.60), one by a rubric rule. If Nick confirms them, that's evidence the gate is doing its job.
+
 ## Upcoming decisions (recorded when made)
 - The CAT scope question and the announcement rule (D48 questions 1–2), from Nick.
+- `gate.confidence_threshold`, once Nick has reviewed the status packet himself (D50).
 - The confidence threshold, from the precision-coverage curve (Phase 3, once Nick labels statuses).

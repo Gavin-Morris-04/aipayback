@@ -182,6 +182,15 @@ def test_status_packet_label_import_and_eval(llm_project, fake_claude):
     # Re-running status-packets would orphan labels: it refuses without --force.
     assert "already exists" in " ".join(run("status-packets", code=2).output.split())
 
+    # A row whose note says it's still an unreviewed draft is not gold (D50).
+    ws.cell(2, col["Notes"], "Claude draft, Nick to review. Looks delivered.")
+    wb.save(returned / path.name)
+    result = run("import-statuses", code=1)
+    out = " ".join(result.output.split())
+    assert "1 still marked as drafts" in out and "delete that marker" in out
+    rows = (llm_project / "evals" / "gold" / "statuses.csv").read_text(encoding="utf-8")
+    assert "Claude draft" not in rows
+
 
 def test_restore_replays_verification_without_touching_the_ledger(llm_project, fake_claude):
     from aipb.budget.ledger import Ledger

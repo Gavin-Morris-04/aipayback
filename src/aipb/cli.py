@@ -1077,7 +1077,8 @@ def import_statuses_cmd(
     if not returned.exists():
         _fail(FileNotFoundError(f"{returned} not found. Put Nick's returned file there."))
     rep = status_mod.import_statuses(returned, key_dir, ctx.paths.gold_dir / "statuses.csv")
-    out.print(f"{rep.labeled} of {rep.rows} promises labeled -> evals/gold/statuses.csv")
+    drafts = f" ({rep.drafts} still marked as drafts, not imported)" if rep.drafts else ""
+    out.print(f"{rep.labeled} of {rep.rows} promises labeled -> evals/gold/statuses.csv{drafts}")
     for p in rep.problems:
         err.print(f"  {p}")
     if rep.problems:
