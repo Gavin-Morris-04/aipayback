@@ -58,6 +58,21 @@ def test_link_match_ignores_case_but_stores_the_filings_characters():
     assert v.ai_link == "program built on generative AI tools"
 
 
+def test_a_quote_that_names_ai_needs_no_separate_link():
+    v = statement("We launched a productivity program built on generative AI tools", "")
+    assert check_ai_link(PASSAGE, v, names_ai) is None
+    assert v.ai_link == v.quote
+
+
+def test_risk_factor_sections_are_recognized():
+    from aipb.stages.extract import is_risk_factor
+
+    assert is_risk_factor("item1a") and is_risk_factor("p2item1a") and is_risk_factor("ITEM1A")
+    assert (
+        not is_risk_factor("item7") and not is_risk_factor("p1item2") and not is_risk_factor(None)
+    )
+
+
 def test_split_linked_keeps_order_and_reasons():
     keep = statement(
         "We expect the program to deliver $150 million", "program built on generative AI tools"

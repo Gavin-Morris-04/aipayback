@@ -131,6 +131,10 @@ def run_extract(
     rows = ex.candidates(
         conn, fcfg, ciks, variant=variant, filter_variant=filter_variant, passage_ids=passage_ids
     )
+    # Risk factors are not promises (rubric section 2, D48): never sent, and any statements
+    # stored for them by earlier runs are cleared below.
+    skipped = [r for r in rows if ex.is_risk_factor(r["section"])]
+    rows = [r for r in rows if not ex.is_risk_factor(r["section"])]
     requests = {r["passage_id"]: ex.build_request(r, cfg, prompt) for r in rows}
     batch = bool(cfg.get("batch", True))
     plan = llm.plan(ex.STAGE, prompt.id, list(requests.values()), batch=batch)
@@ -139,8 +143,16 @@ def run_extract(
             plan, f"Extract ({prompt.id}, {cfg['model']}, variant {variant}, {len(rows)} passages)"
         )
     )
+    if skipped:
+        log(f"Skipped {len(skipped)} risk-factor passages (not promises, rubric section 2).")
     if dry_run:
         return StageOutcome(plan, ran=False)
+    for r in skipped:
+        ex.store_passage(
+            conn, r, [], variant=variant, prompt_id=prompt.id, model=cfg["model"],
+            retried=False, dropped=0, status="skipped_risk_factor",
+            detail="risk factors are not promises (rubric section 2)",
+        )  # fmt: skip
     results = _paid_call(
         ctx,
         llm,
@@ -154,7 +166,7 @@ def run_extract(
         log=log,
     )
     good, bad, errors = ex.first_pass(rows, results)
-    stats = ex.ExtractStats(passages=len(rows))
+    stats = ex.ExtractStats(passages=len(rows), risk_factor=len(skipped))
     lexicon = ctx.lexicon
     # A link may also name an AI product the company's own filings tie to AI (D45).
     names_ai_by_cik: dict[int, Callable[[str], bool]] = {}

@@ -16,6 +16,7 @@ from decimal import Decimal
 from pathlib import Path
 
 from aipb.budget.ledger import Ledger, utc_now
+from aipb.evals import corrections
 from aipb.evals import metrics as M
 from aipb.labeling import schema as S
 
@@ -76,7 +77,7 @@ def load_gold(gold_dir: Path, tickers: set[str]) -> list[GoldPassage]:
                 promises.get(row["row_id"], []),
             )
         )
-    return out
+    return corrections.apply(out, corrections.load(gold_dir))
 
 
 def _predictions(conn: sqlite3.Connection, variant: str, filter_variant: str, pids: list[str]):

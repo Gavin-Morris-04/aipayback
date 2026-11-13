@@ -29,6 +29,15 @@ UNITS = ["USD", "percent", "percentage_points", "count", "other"]
 PRECISION = ["day", "month", "quarter", "half", "year", "none"]
 # How far (in characters) the AI link may sit from the quote: about two sentences.
 AI_LINK_WINDOW = 400
+# Risk factors describe risks, not commitments (rubric section 2): their passages are never
+# sent to extraction (D48). Nick labeled all 130 risk-factor passages in his packets "No
+# forward-looking AI statement".
+RISK_FACTOR_SECTIONS = frozenset({"item1a", "p2item1a"})
+
+
+def is_risk_factor(section: str | None) -> bool:
+    return (section or "").lower() in RISK_FACTOR_SECTIONS
+
 
 STATEMENT = obj(
     {
@@ -69,6 +78,7 @@ class ExtractStats:
     retried: int = 0
     dropped_quotes: int = 0
     unlinked: int = 0  # dropped: no verified AI link
+    risk_factor: int = 0  # passages skipped: risk-factor sections (D48)
     errors: list[str] = field(default_factory=list)
 
 
@@ -77,9 +87,13 @@ def check_ai_link(
 ) -> str | None:
     """Fill v.ai_link if the statement's AI link checks out; else say why it doesn't.
 
-    The link must be verbatim in the passage, within `window` characters of the quote,
-    and name AI (`names_ai`: the prefilter lexicon).
+    A quote that itself names AI (a lexicon term, or an AI product the company's own
+    filings tie to AI, D45) is its own link (D48). Otherwise the link must be verbatim in
+    the passage, within `window` characters of the quote, and name AI.
     """
+    if names_ai(v.quote):
+        v.ai_link = v.quote
+        return None
     link = (v.statement.get("ai_link") or "").strip()
     if not link:
         return "no ai_link"

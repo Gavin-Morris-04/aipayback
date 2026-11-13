@@ -23,6 +23,7 @@ from aipb.budget.guard import BudgetError, _git_sha, usd
 from aipb.budget.ledger import utc_now
 from aipb.context import AppContext
 from aipb.evals import compare as compare_mod
+from aipb.evals import corrections as corrections_mod
 from aipb.evals import run as eval_mod
 from aipb.evals import split as split_mod
 from aipb.evals import status_eval as status_eval_mod
@@ -862,6 +863,7 @@ def eval_cmd(
         created=utc_now(), git_sha=sha, split=split, variant=variant,
         filter_variant=filter_variant, prompts=prompts, models=models, milestone=milestone,
         cost_usd=eval_mod.costs(ctx.ledger, set(models), set(prompts)),
+        gold_corrections=len(corrections_mod.load(ctx.paths.gold_dir)),
     )  # fmt: skip
     stamp = f"{eval_mod.timestamp(sha)}_{split}_{variant}"
     dis = disagree_mod.write_disagreements(

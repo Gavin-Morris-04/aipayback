@@ -1,6 +1,6 @@
 # Progress
 
-_Last updated: 2026-11-12 (58 pilot promises checked for $0.09: 12 published locally, 46 pending; waiting on Nick's N7 and N8)_
+_Last updated: 2026-11-13 (G10 done: keep Haiku; N7 applied, dev F1 74.4%; site redesign in progress)_
 
 ## Where things stand
 
@@ -63,10 +63,12 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
 **2026-11-13:**
 - Checklist ticks: Gavin G1–G4, G6–G9 (8 of 17); Nick N1–N7 (7 of 9). Nick's N7 file is in and committed: `evals/gold/returned/disagreements/N7- Review where you and the model disagree.xlsx` (not read yet; reading it is free). Gavin and Nick are doing N8 and G11 now.
 - Site preview zipped for Nick: `exports/aipayback_preview_2026-11-13.zip` (git-ignored; Gavin uploads it to Drive **packets**).
-- **G10 sized (D47).** `aipb extract --variant sonnet --only-labeled` reads the 60 labeled dev passages the filter routes. Sonnet runs with thinking off (`between_tools`) and `max_tokens` 2048. Dry run: **worst case $0.91**. **Waiting on Gavin's go-ahead in chat**; then `uv run aipb extract --variant sonnet --only-labeled --confirm`, `uv run aipb eval --variant sonnet`, `uv run aipb compare`, and record the decision in D47.
+- **G10 done (D47): keep Haiku.** Sonnet on the 60 labeled dev passages cost $0.15 (worst case $0.91, Gavin's go-ahead). Dev F1: Haiku 74.4%, Sonnet 66.7%, at about 17 times the cost.
+- **N7 applied (D48), $0.** Gold corrections in `evals/gold/corrections.yaml` (applied by `aipb eval`; Nick's files untouched). New rules: a quote that names AI (or a confirmed AI product) is its own AI link, and risk-factor passages are never extracted. **Dev F1 59.1% → 74.4%.** The pilot now has 60 clusters, 12 published.
+- **Waiting on Nick (D48 questions):** the CAT scope call (4 rows left out of scoring until then), the announcement rule, autonomy words, and a new 12-row disagreement file (`exports/disagreements/20261113T183639_1713cd8_dev_default.xlsx`).
 - **Gotcha: Windows Smart App Control is On** and blocked jiter 0.19.0, so the Anthropic SDK wouldn't import. jiter is held at <0.19 in `pyproject.toml` (D47). If another native package gets blocked, test older versions with `uv run --with "pkg==X" python -c "import pkg"` before touching Windows security settings.
 
-**API spend so far: $0.35** (smoke test, pilot, Tier 1 v3, and the 58-promise check). Run `uv run aipb budget` for the exact figure.
+**API spend so far: $0.50** (smoke test, pilot, Tier 1 v3, the 58-promise check, and the Sonnet A/B). Run `uv run aipb budget` for the exact figure.
 
 The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-ahead in chat, and the S&P 100 run needs explicit cost approval.
 
@@ -213,4 +215,5 @@ Then tell Claude Code: **"Read CLAUDE.md and docs/PROGRESS.md, then continue."**
 - **The split is final** (2026-11-11, D39): dev BLK, CAT, META, NVDA, PFE, TSLA; test AMZN, FDX, MSFT, PEP. Never `split --force` again: test companies must stay unseen.
 - **Commit outputs with the ledger:** after any paid call, commit `data/ledger` **and** `data/outputs` (or `git add -A`). The checklist's G4 commands left out `data/outputs` once; the smoke output was committed later with the final pilot list.
 - **Commit after background jobs finish:** a running ingest writes the manifest, and pre-commit's stash can drop its new lines (it lost six Cisco documents once). Ingest now re-checks the file on disk and re-appends anything missing, but don't commit mid-ingest.
+- **Never rewrite repo files with Windows PowerShell `Get-Content`/`Set-Content`:** 5.1 reads UTF-8 as ANSI (it garbles → ≤ ✅) and writes CRLF plus a BOM; in `-replace`, `$0` means the whole match. Use the Edit tool or a Python script with `newline="\n"`.
 - **Tool escapes (Claude Code on this machine):** in bash heredocs `\\` collapses to `\`, and the Write tool turns `\u` escapes into literal characters. Check with `grep -nP '[^\x00-\x7F]' src/`, and use the Edit tool for strings containing backslashes.

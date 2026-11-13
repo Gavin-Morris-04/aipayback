@@ -35,10 +35,10 @@
   {
    "counts": {
     "Delivered": 7,
-    "Status pending review": 6
+    "Status pending review": 5
    },
    "name": "Meta Platforms",
-   "promises": 13,
+   "promises": 12,
    "sector": "Communication Services",
    "ticker": "META"
   },
@@ -53,10 +53,10 @@
   },
   {
    "counts": {
-    "Status pending review": 20
+    "Status pending review": 21
    },
    "name": "Nvidia",
-   "promises": 20,
+   "promises": 21,
    "sector": "Information Technology",
    "ticker": "NVDA"
   },
@@ -78,15 +78,15 @@
   },
   {
    "counts": {
-    "Status pending review": 10
+    "Status pending review": 12
    },
    "name": "Tesla, Inc.",
-   "promises": 10,
+   "promises": 12,
    "sector": "Consumer Discretionary",
    "ticker": "TSLA"
   }
  ],
- "generated": "2026-11-12T22:27:22+00:00",
+ "generated": "2026-11-13T18:37:01+00:00",
  "promises": [
   {
    "claim_type": "cost_savings",
@@ -1116,6 +1116,26 @@
    "ticker": "NVDA"
   },
   {
+   "claim_type": "revenue",
+   "cluster_id": "c-1045810-0001045810-24-000264-p1item2-0007:s3",
+   "company": "Nvidia",
+   "deadline_end": "2025-01-28",
+   "deadline_text": "in the second half of fiscal year 2025",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000264/nvda-20240728.htm",
+   "first_stated": "2024-08-28",
+   "form": "10-Q",
+   "id": "nvda-2024-08-28-d4dffc",
+   "metric": "Hopper shipments",
+   "pending_reason": "not verified yet",
+   "publishable": false,
+   "quote": "Hopper demand is strong, and shipments are expected to increase in the second half of fiscal year 2025.",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": null,
+   "ticker": "NVDA"
+  },
+  {
    "claim_type": "product_or_timeline",
    "cluster_id": "c-1045810-0001045810-24-000315-ex99-0003:s2",
    "company": "Nvidia",
@@ -1173,26 +1193,6 @@
    "status": "Status pending review",
    "status_code": "",
    "target_text": "exceed supply for several quarters",
-   "ticker": "NVDA"
-  },
-  {
-   "claim_type": "product_or_timeline",
-   "cluster_id": "c-1045810-0001045810-24-000316-p2item1a-0002:s1",
-   "company": "Nvidia",
-   "deadline_end": "2026-01-28",
-   "deadline_text": "fiscal year 2026",
-   "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm",
-   "first_stated": "2024-11-20",
-   "form": "10-Q",
-   "id": "nvda-2024-11-20-0bcd2c",
-   "metric": "Blackwell demand versus supply",
-   "pending_reason": "vague_deliverable applies only to specificity-1 promises",
-   "publishable": false,
-   "quote": "the demand for Blackwell is expected to exceed supply for several quarters in fiscal year 2026",
-   "restatements": [],
-   "status": "Status pending review",
-   "status_code": "",
-   "target_text": "expected to exceed supply for several quarters in fiscal year 2026",
    "ticker": "NVDA"
   },
   {
@@ -1296,7 +1296,7 @@
    "ticker": "NVDA"
   },
   {
-   "claim_type": "product_or_timeline",
+   "claim_type": "capex_investment",
    "cluster_id": "c-1045810-0001045810-25-000228-ex99-0002:s2",
    "company": "Nvidia",
    "deadline_end": null,
@@ -1305,8 +1305,28 @@
    "first_stated": "2025-11-19",
    "form": "8-K",
    "id": "nvda-2025-11-19-6c293d",
+   "metric": "NVIDIA compute capacity adopted by Anthropic",
+   "pending_reason": "not verified yet",
+   "publishable": false,
+   "quote": "Announced that, for the first time, Anthropic will run and scale on NVIDIA infrastructure, initially adopting 1 gigawatt of compute capacity with NVIDIA Grace Blackwell and Vera Rubin systems.",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "initially adopting 1 gigawatt",
+   "ticker": "NVDA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1045810-0001045810-25-000228-ex99-0002:s3",
+   "company": "Nvidia",
+   "deadline_end": null,
+   "deadline_text": null,
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000228/q3fy26pr.htm",
+   "first_stated": "2025-11-19",
+   "form": "8-K",
+   "id": "nvda-2025-11-19-a663d0",
    "metric": "NVIDIA Blackwell GPUs in Solstice and Equinox supercomputers",
-   "pending_reason": "confidence 0.70 below 0.75",
+   "pending_reason": "not verified yet",
    "publishable": false,
    "quote": "Revealed plans to accelerate seven new supercomputers, including with Oracle to build the U.S. Department of Energy’s largest AI supercomputer, Solstice, featuring 100,000 NVIDIA Blackwell GPUs, plus another system, Equinox, featuring 10,000 NVIDIA Blackwell GPUs.",
    "restatements": [],
@@ -1479,16 +1499,56 @@
   },
   {
    "claim_type": "product_or_timeline",
+   "cluster_id": "c-1318605-0001628280-25-003063-item1-0004:s1",
+   "company": "Tesla, Inc.",
+   "deadline_end": "2025-12-31",
+   "deadline_text": "In 2025",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025003063/tsla-20241231.htm",
+   "first_stated": "2025-01-30",
+   "form": "10-K",
+   "id": "tsla-2025-01-30-50b062",
+   "metric": null,
+   "pending_reason": "not verified yet",
+   "publishable": false,
+   "quote": "In 2025, we intend to begin launching our Robotaxi business, a ride-hailing network that will eventually operate fully autonomous vehicles.",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": null,
+   "ticker": "TSLA"
+  },
+  {
+   "claim_type": "product_or_timeline",
    "cluster_id": "c-1318605-0001628280-25-018851-ex99-0008:s1",
+   "company": "Tesla, Inc.",
+   "deadline_end": "2025-12-31",
+   "deadline_text": "by June",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025018851/exhbit991.htm",
+   "first_stated": "2025-04-22",
+   "form": "8-K",
+   "id": "tsla-2025-04-22-042baa",
+   "metric": "Robotaxi pilot launch in Austin",
+   "pending_reason": "not verified yet",
+   "publishable": false,
+   "quote": "We remain on track for pilot launch of Robotaxi in Austin by June",
+   "restatements": [],
+   "status": "Status pending review",
+   "status_code": "",
+   "target_text": "pilot launch of Robotaxi in Austin by June",
+   "ticker": "TSLA"
+  },
+  {
+   "claim_type": "product_or_timeline",
+   "cluster_id": "c-1318605-0001628280-25-018851-ex99-0008:s2",
    "company": "Tesla, Inc.",
    "deadline_end": "2025-12-31",
    "deadline_text": "in 2025",
    "filing_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025018851/exhbit991.htm",
    "first_stated": "2025-04-22",
    "form": "8-K",
-   "id": "tsla-2025-04-22-042baa",
+   "id": "tsla-2025-04-22-0163fa",
    "metric": "Optimus builds on Fremont pilot production line",
-   "pending_reason": "vague_deliverable applies only to specificity-1 promises",
+   "pending_reason": "not verified yet",
    "publishable": false,
    "quote": "builds of Optimus on our Fremont pilot production line in 2025",
    "restatements": [],
@@ -3116,26 +3176,6 @@
    "ticker": "META"
   },
   {
-   "claim_type": "product_or_timeline",
-   "cluster_id": "c-1326801-0001326801-25-000054-p2item1a-0015:s2",
-   "company": "Meta Platforms",
-   "deadline_end": null,
-   "deadline_text": null,
-   "filing_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm",
-   "first_stated": "2025-05-01",
-   "form": "10-Q",
-   "id": "meta-2025-05-01-b9f452",
-   "metric": null,
-   "pending_reason": "rubric: vague deliverable",
-   "publishable": false,
-   "quote": "we continue to launch new AI features on our products, including support for new modalities, conversational AIs, stickers and photos, and editing tools",
-   "restatements": [],
-   "status": "Status pending review",
-   "status_code": "",
-   "target_text": null,
-   "ticker": "META"
-  },
-  {
    "claim_type": "capex_investment",
    "cluster_id": "c-1326801-0001628280-25-036719-ex99-0002:s1",
    "company": "Meta Platforms",
@@ -3396,13 +3436,13 @@
   "by_status": {
    "Delivered": 7,
    "No evidence yet": 5,
-   "Status pending review": 46
+   "Status pending review": 48
   },
-  "checkable_share": 0.26848249027237353,
+  "checkable_share": 0.3034188034188034,
   "companies": 10,
-  "hype_statements": 188,
-  "promise_statements": 69,
-  "promises": 58,
+  "hype_statements": 163,
+  "promise_statements": 71,
+  "promises": 60,
   "published": 12
  },
  "status_order": [

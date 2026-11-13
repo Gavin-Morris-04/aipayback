@@ -59,6 +59,25 @@ def test_a_link_naming_a_confirmed_product_is_kept():
     assert with_products("generative AI tools") and not with_products("equipment sales")
 
 
+def test_a_quote_naming_a_confirmed_product_is_its_own_link():
+    # N7: the model pointed at "fully autonomous vehicles", but the quote names Robotaxi.
+    passage = (
+        "We are building toward fully autonomous vehicles. "
+        "In 2025, we intend to begin launching our Robotaxi business."
+    )
+    said = {
+        "quote": "In 2025, we intend to begin launching our Robotaxi business",
+        "ai_link": "fully autonomous vehicles",
+        "kind": "promise",
+    }
+    good, _ = verify(passage, [said])
+    plain = names_ai_for(LEX, [])
+    assert "names no AI term" in check_ai_link(passage, good[0], plain)
+    robotaxi = names_ai_for(LEX, [ConfirmedProduct("Robotaxi", 2, "p1")])
+    assert check_ai_link(passage, good[0], robotaxi) is None
+    assert good[0].ai_link == good[0].quote
+
+
 def test_the_repo_list_loads():
     products = AIProducts.load(Path(__file__).resolve().parents[2] / "config" / "ai_products.yaml")
     assert products.version == "ap1" and products.min_filings == 2

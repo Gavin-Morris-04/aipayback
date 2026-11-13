@@ -1,0 +1,74 @@
+# Corrections to Nick's gold labels. `aipb eval` applies them on top of evals/gold/passages.csv
+# and promises.csv; his returned workbooks are never edited. Every entry names the review row
+# it came from and why. Quotes are checked against the passage text when the gold set loads,
+# so a correction can't bring in a quote the filing doesn't have.
+#
+# Actions: set_label (promise | hype | none), add_promises, fix_quotes, exclude (left out of
+# scoring until a decision is made).
+
+version: 1
+corrections:
+  # --- N7 review (2026-11-13), D48 -------------------------------------------------------
+  - passage_id: 1045810-0001045810-24-000315-ex99-0003
+    source: "N7 row 11: Label wrong (Nick)"
+    reason: "Forward-looking, about AI and with a deadline ('next quarter'); Nick missed it at the end of a past-tense sentence. The model's quote is used."
+    set_label: promise
+    add_promises:
+      - quote: "Began shipping new RTX AI PCs with 321 AI trillion operations per second of performance from ASUS and MSI, with Microsoft Copilot+ capabilities anticipated next quarter."
+        claim_type: product_or_timeline
+        metric: Microsoft Copilot+ capabilities on RTX AI PCs
+        target: Copilot+ capabilities available
+        deadline: next quarter
+
+  - passage_id: 1045810-0001045810-24-000315-ex99-0003
+    source: "N7 row 10: Rubric unclear (Nick), decided by rubric section 2"
+    reason: "A named concrete deliverable counts as a checkable promise even without a date or number (specificity 1). Nick labeled the matching Foxconn plan a promise in N7 row 13; this makes the two consistent."
+    set_label: promise
+    add_promises:
+      - quote: "Unveiled a partnership with Foxconn to build Taiwan’s fastest AI supercomputer with NVIDIA Blackwell."
+        claim_type: product_or_timeline
+        metric: AI supercomputer built with Foxconn in Taiwan
+        target: Taiwan’s fastest AI supercomputer
+        deadline: ""
+
+  - passage_id: 1045810-0001045810-25-000207-ex99-0003
+    source: "N7 row 15: quote fix (Nick)"
+    reason: "The filing has 'PRO™' and a curly apostrophe; the gold quote had 'PROTM', so it could never match."
+    fix_quotes:
+      - from: "the NVIDIA RTX PROTM 6000 Blackwell Server Edition GPU is coming to the world's most popular enterprise servers"
+        to: "the NVIDIA RTX PRO™ 6000 Blackwell Server Edition GPU is coming to the world’s most popular enterprise servers"
+
+  - passage_id: 1045810-0001045810-25-000228-ex99-0004
+    source: "N7 row 16: quote fix (Nick)"
+    reason: "The filing has a curly apostrophe (world’s)."
+    fix_quotes:
+      - from: "Partnered with Uber to scale the world's largest level 4-ready mobility network starting in 2027, targeting 100,000 vehicles"
+        to: "Partnered with Uber to scale the world’s largest level 4-ready mobility network starting in 2027, targeting 100,000 vehicles"
+
+  - passage_id: 1318605-0001628280-25-035738-ex99-0010
+    source: "N7 row 22: quote fix (Nick)"
+    reason: "The filing has an en dash and curly quotation marks."
+    fix_quotes:
+      - from: 'Cybercab - will continue to pursue a revolutionary "unboxed" manufacturing strategy and is scheduled for volume production starting in 2026'
+        to: "Cybercab – will continue to pursue a revolutionary “unboxed” manufacturing strategy and is scheduled for volume production starting in 2026"
+
+  # CAT Power Generation (N7 rows 2-5): each passage ties the growth to "data center growth
+  # related to cloud computing and generative AI" in CAT's own words. Whether AI-driven demand
+  # for a non-AI product is "about AI" is a scope call for Nick and Gavin (D48). Left out of
+  # scoring until it's made.
+  - passage_id: 18230-0000018230-24-000053-p1item2-0005
+    source: "N7 row 2: Rubric unclear (Nick)"
+    reason: "Pending D48: AI-driven demand for a non-AI product."
+    exclude: true
+  - passage_id: 18230-0000018230-25-000008-item7-0003
+    source: "N7 row 3: Rubric unclear (Nick)"
+    reason: "Pending D48: AI-driven demand for a non-AI product."
+    exclude: true
+  - passage_id: 18230-0000018230-25-000040-p1item2-0004
+    source: "N7 row 4: Rubric unclear (Nick)"
+    reason: "Pending D48: AI-driven demand for a non-AI product."
+    exclude: true
+  - passage_id: 18230-0000018230-25-000048-p1item2-0004
+    source: "N7 row 5: Rubric unclear (Nick)"
+    reason: "Pending D48: AI-driven demand for a non-AI product."
+    exclude: true

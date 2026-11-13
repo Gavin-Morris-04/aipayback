@@ -66,3 +66,7 @@
 {"cluster_id":"c-1326801-0001326801-24-000044-ex99-0002:s2","id":"meta-2024-04-24-23a009","label":"Delivered","previous":"Status pending review","reason":"status_change","ticker":"META","ts":"2026-11-12T22:27:22+00:00"}
 {"cluster_id":"c-1326801-0001326801-24-000065-ex99-0001:s1","id":"meta-2024-07-31-016498","label":"Status pending review","previous":"No evidence yet","reason":"status_change","ticker":"META","ts":"2026-11-12T22:27:22+00:00"}
 {"cluster_id":"c-1326801-0001326801-25-000017-item7-0024:s1","id":"meta-2025-01-30-00899c","label":"Delivered","previous":"Status pending review","reason":"status_change","ticker":"META","ts":"2026-11-12T22:27:22+00:00"}
+{"cluster_id":"c-1045810-0001045810-24-000264-p1item2-0007:s3","id":"nvda-2024-08-28-d4dffc","label":"Status pending review","previous":null,"reason":"first_publish","ticker":"NVDA","ts":"2026-11-13T18:37:01+00:00"}
+{"cluster_id":"c-1045810-0001045810-25-000228-ex99-0002:s3","id":"nvda-2025-11-19-a663d0","label":"Status pending review","previous":null,"reason":"first_publish","ticker":"NVDA","ts":"2026-11-13T18:37:01+00:00"}
+{"cluster_id":"c-1318605-0001628280-25-003063-item1-0004:s1","id":"tsla-2025-01-30-50b062","label":"Status pending review","previous":null,"reason":"first_publish","ticker":"TSLA","ts":"2026-11-13T18:37:01+00:00"}
+{"cluster_id":"c-1318605-0001628280-25-018851-ex99-0008:s2","id":"tsla-2025-04-22-0163fa","label":"Status pending review","previous":null,"reason":"first_publish","ticker":"TSLA","ts":"2026-11-13T18:37:01+00:00"}

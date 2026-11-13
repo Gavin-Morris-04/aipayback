@@ -462,6 +462,39 @@ The expected real cost is about $0.15–0.20. The worst case is over $0.50, so t
 
 **jiter held below 0.19.** Windows Smart App Control is now On on Gavin's machine (it was presumably in evaluation mode before), and it blocks jiter 0.19.0's native file. jiter is the Anthropic SDK's JSON parser, so the SDK wouldn't import and no paid call could run. Versions 0.18.0, 0.15.0, 0.11.1 and 0.10.0 all load. `pyproject.toml` adds `constraint-dependencies = ["jiter<0.19"]` (anthropic needs >=0.4,<1). This is safer than turning Smart App Control off. Lift it once 0.19+ loads on this machine (`uv run --with "jiter==0.19.0" python -c "import jiter"`).
 
+**Result (2026-11-13, Gavin's go-ahead in chat): keep Haiku.** The run cost $0.15 (worst case $0.91). Both scored on the corrected dev gold (D48): 253 passages, 22 promises.
+
+| Model | Precision | Recall | F1 (95% interval) | Extraction cost, same 60 passages |
+|---|---|---|---|---|
+| Haiku 5.5 | 76.2% | 72.7% | **74.4%** [54.1%, 88.9%] | about $0.008 |
+| Sonnet 5.5 | 65.2% | 68.2% | 66.7% [46.7%, 81.6%] | $0.14 |
+
+The intervals overlap (the sample is small), but Sonnet shows no gain at about 17 times the cost. Sonnet got the target field right more often (80% vs 60% on 5 matched promises), too few to matter. Revisit only if a later prompt change makes extraction a judgment-heavy task. Saved table: `evals/results/ab_dev.md`.
+
+## D48. Nick's disagreement review (N7) applied (2026-11-13)
+
+Nick reviewed the 21-row disagreement file from before D45. His verdicts: 11 "Model wrong", 1 "Label wrong", 9 "Rubric unclear", and 3 quote fixes. The product-name fix (D45) had already resolved 6 of his "Model wrong" rows (the Blackwell revenue and Q4 ramp items, Robotaxi later this year, FSD in Europe and China, Optimus, Cybercab).
+
+**Gold corrections, applied on top of his labels.** New file `evals/gold/corrections.yaml`, applied by `aipb eval`. His returned workbooks are never edited, every entry names its review row and reason, and every quote is checked verbatim against the passage when the gold set loads.
+- Row 11 (Label wrong): the NVIDIA "Copilot+ capabilities anticipated next quarter" passage becomes a promise.
+- Row 10 (Rubric unclear, NVIDIA Foxconn supercomputer): the rubric decides it. Section 2's checkable test includes a concrete deliverable with no date or number (specificity 1), so it's a promise, consistent with his row 13. The other announcement rows (MediaTek, Foxconn factory, U.S. factories, RTX PRO 6000) keep his "promise" label for the same reason.
+- Rows 15, 16, 22: quotes fixed to the filing's characters (™, curly apostrophes, an en dash). "PROTM" could never match.
+- Rows 2–5 (CAT Power Generation): **left out of scoring, pending a decision.** Each passage ties the growth to "data center growth related to cloud computing and generative AI" in CAT's own words, so the literal rubric would count them. But the promise is about a non-AI product, and counting it makes CAT no longer a low-AI comparison. That's a scope call for Nick and Gavin.
+
+**Two extraction rules, both free (cache replay):**
+- **A quote that names AI is its own AI link.** Tesla's "In 2025, we intend to begin launching our Robotaxi business" was dropped because the model pointed at "fully autonomous vehicles". Robotaxi is a product Tesla's filings tie to AI (D45), and the quote names it.
+- **Risk factors are never extracted.** The rubric says risk factors are not promises, and Nick labeled all 130 risk-factor passages "No forward-looking AI statement". 20 pilot passages are now skipped (no API call), removing 27 statements: 2 "promises" (Meta's "we continue to launch new AI features…" from row 6, and an NVIDIA Blackwell supply line) and 25 hype statements that were inflating the hype count.
+
+**Result (dev, Haiku):** F1 59.1% → **74.4%** [54.1%, 88.9%]; precision 76.2%, recall 72.7% (16 matched, 5 extra, 6 missed). The pilot now has 60 promise clusters (was 58) and 234 AI statements. 12 are still published; the 4 changed items were all pending.
+
+**Still missed (for extract v3, paid):** the NVIDIA announcements (MediaTek and RTX PRO 6000 were filtered out as "none"; the Foxconn factory and U.S. factories were extracted as hype). The NVIDIA Uber 2027 promise was dropped because its link ("level 4-ready mobility network") has no AI word.
+
+**Questions for Nick (via Gavin):**
+1. CAT: does AI-driven demand for a non-AI product count as an AI promise? Recommendation: no. Count promises about the company's own AI products, AI investment and results it attributes to its own AI use, and keep CAT as the low-AI comparison.
+2. Announcements: keep the rubric as written (a concrete deliverable with no date or number counts, specificity 1), or require a date or number? Today's labels follow the rubric as written.
+3. Autonomy: should "level 4", "autonomous driving" and "self-driving" count as AI words for the AI-link check? (The NVIDIA Uber row.)
+4. A new 12-row disagreement file from today's eval: `exports/disagreements/20261113T183639_1713cd8_dev_default.xlsx`. It includes rows Nick hasn't seen, such as two NVIDIA Blackwell statements the model found that his labels don't have.
+
 ## Upcoming decisions (recorded when made)
-- Sonnet use, decided by the capped A/B test (D47 sizes it; the result is recorded when it runs).
+- The CAT scope question and the announcement rule (D48 questions 1–2), from Nick.
 - The confidence threshold, from the precision-coverage curve (Phase 3, once Nick labels statuses).
