@@ -1,4 +1,4 @@
-# Paid pilot proposal (template)
+# Pilot proposal (template)
 
 > Copy this file for each prospect (`gtm/pilots/<org>.md`) and fill in every `[[...]]`. Both founders review before it's sent.
 
@@ -34,9 +34,9 @@ An **AI Disclosure Benchmark** for `[[company]]` against `[[3–5 named peers]]`
 - Week 2: delivery of the workbook and the comparison; walkthrough call.
 - Week 3: your spot-check and feedback; corrections if needed.
 
-## Price
+## Cost
 
-`[[$ amount]]` for the pilot, paid by Stripe Payment Link on delivery. If the spot-check misses the accuracy target, you don't pay.
+Free. AIPayback doesn't charge for anything. All we ask is your honest feedback and the spot-check above.
 
 ## Data and security
 

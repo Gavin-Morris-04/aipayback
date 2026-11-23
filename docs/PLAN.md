@@ -2,11 +2,11 @@
 
 ## Context
 
-AIPayback checks whether the AI promises public companies made in SEC filings (2024–2025) paid off, using their later filings. It publishes neutral, cited scorecards and sells small products on top of them. In priority order, the project exists to (1) produce real Forward Deployed, Solutions and AI Transformation engineering evidence for Gavin's May 2027 job search, (2) be accurate, (3) earn some real money, and (4) produce one or two defensible LinkedIn findings. The hard constraint is **$19 of API credit in total**: a $15 app cap enforced in code and a $4 reserve.
+AIPayback checks whether the AI promises public companies made in SEC filings (2024–2025) paid off, using their later filings. It publishes neutral, cited scorecards, free to everyone (D55: no paid tiers, reports or pilots). In priority order, the project exists to (1) produce real Forward Deployed, Solutions and AI Transformation engineering evidence for Gavin's May 2027 job search, (2) be accurate, and (3) produce one or two defensible LinkedIn findings. The hard constraint is **$19 of API credit in total**: a $15 app cap enforced in code and a $4 reserve.
 
 **Decisions locked in during planning (2026-11-10):**
 - Claude Code bills the subscription plan. Checked: `ANTHROPIC_API_KEY` is unset at the process, user and machine levels. The app's key is `AIPAYBACK_API_KEY`, kept in `.env` and passed explicitly to `Anthropic(api_key=...)`.
-- **Contact email:** a new shared project Gmail, used for the SEC User-Agent, Buttondown, Stripe and public error reports.
+- **Contact email:** a new shared project Gmail, used for the SEC User-Agent, Buttondown and public error reports.
 - **Hosting:** GitHub Pages. The repo is **private while building and goes public at the Phase 5 launch**, after a secret scan of the full history and the finance student's consent to publish the gold labels.
 - **Finance-student handoff:** a shared Google Drive folder holding `.xlsx` packets with dropdowns. The CS student drops returned files into the repo, and `aipb import-labels` validates them.
 - **Project folder:** `C:\Users\g04mo\aipayback`, remote `Gavin-Morris-04/aipayback` (private). Neither exists yet.
@@ -23,7 +23,7 @@ AIPayback checks whether the AI promises public companies made in SEC filings (2
 | Citations vs structured outputs | Can't be combined in one call (returns a 400), so cited explanations are a separate step |
 | Forced `tool_choice` | Returns a 400 on Sonnet 5.5, so agents use `auto` plus `strict: true` tools plus an instruction |
 | SEC fair access | Up to 10 requests per second; descriptive User-Agent with a contact email |
-| Buttondown | Free for the first 100 subscribers. **Paid subscriptions and tagging are $9/month add-ons each.** |
+| Buttondown | Free for the first 100 subscribers. Tagging is a $9/month add-on (not used). |
 | Local tooling | git, gh (logged in as Gavin-Morris-04, `repo` + `workflow` scopes), uv 0.13.6 (this machine needs `--system-certs`), Python 3.12.10, node. **`make` is not installed.** |
 
 ---
@@ -162,7 +162,7 @@ Pilot assumptions:
 | Phase 3 verification (pilot Tier 1 + capped Tier 2 + explanations, with iterations) | Tier 1 ~$0.06 and explain ~$0.05 per pass; Tier 2 ≤$0.02 per escalation | $1.50 |
 | S&P 100 run (needs its own approval) | ~10× the pilot corpus after dedup, plus 2nd checks; recomputed after the pilot | $5.00 |
 | Monthly monitoring + newsletters (~6 months) | new passages ~$0.10–0.20 per month; ≤$0.05 per issue | $2.00 |
-| Pro deep checks / partner demos | Tier 2 on request | $0.50 |
+| Partner demos and deep checks | Tier 2 on request | $0.50 |
 | Contingency inside the cap | | $1.45 |
 | **App cap (enforced)** | | **$15.00** |
 | **Reserve (locked)** | | **$4.00** |
@@ -192,7 +192,7 @@ Pilot assumptions:
   - A manual tool loop, so every turn is logged and capped: ≤8 turns and ≤60k tokens per promise, plus a run-level dollar cap.
   - Strict tools: `search_company_filings`, `get_passage`, `get_reported_metric`, `calculate`, `submit_verdict`. `tool_choice` is `auto` plus an instruction.
   - If there's no `submit_verdict` call, the result is "inconclusive" and isn't published.
-  - It runs only on low-confidence Tier 1 cases, on every "Walked back" (as the second check) and on Pro deep checks.
+  - It runs only on low-confidence Tier 1 cases, on every "Walked back" (as the second check) and on deep checks a design partner asks for.
 - **Explain:** a separate batch call with the promise and evidence passages as `document` blocks with citations enabled. Code checks that each `cited_text` is a substring of its source. Output is neutral, 2–4 sentences.
 - **Neutral-language lint:** a banned-word list ("failed", "misled", "broke", and others) is checked by code on every piece of generated text.
 - **Publishing rule:** below-threshold items appear as "Status pending review" with the verified quote only.
@@ -219,7 +219,7 @@ Pilot assumptions:
 
 **Website:**
 - A static site built with Python + Jinja2, plus a little vanilla JS for sorting the leaderboard.
-- Pages: Home (stats, leaderboard, signup), one page per company, one page per promise (quotes, evidence, cited explanation, SEC links), Methodology (rubric, eval table, limitations, errors), Pricing, About.
+- Pages: Home (stats, leaderboard, signup), one page per company, one page per promise (quotes, evidence, cited explanation, SEC links), Methodology (rubric, eval table, limitations, errors), About. No pricing page: everything is free (D55).
 - SEO: sitemap.xml, canonical URLs, OpenGraph tags, JSON-LD Dataset. The footer carries the not-investment-advice disclaimer.
 - **Deploy:**
   - If the CS student has GitHub Pro (free with the Student Developer Pack): `actions/deploy-pages` from the private repo.
@@ -234,7 +234,7 @@ Pilot assumptions:
 - Code fact-checks every number, ticker, company name, date and status. On a mismatch it regenerates once; if that also fails, the issue goes out template-only.
 - Inclusion gate, a corrections section, a 24-hour preview as a GitHub issue plus a test send to the founders, a `hold` label to veto, the `NEWSLETTER_AUTOSEND` repo variable, idempotent issue keys, a committed send log, and fail-closed behavior throughout. All as in brief §9.1.
 - The finance student isn't on GitHub. They can veto by messaging the CS student, or optionally get a GitHub account with Triage access so they can add the `hold` label themselves.
-- **Pro:** stays a waitlist until at least 2 people commit, since the paid-subscriptions add-on costs $9/month. Watchlist alerts use a full-coverage weekly digest until the tagging add-on ($9/month) pays for itself.
+- **No paid tier** (D55). If partners ask for watchlist alerts, they use a full-coverage weekly digest on the free plan.
 - **Verify in Phase 4:** the Buttondown API can create, schedule, send and test-send issues.
 
 ## 8. Phases and acceptance criteria
@@ -354,23 +354,21 @@ Each phase ends with the protocol in §11. **Bold** human tasks block the phase.
 - CS student: **approves the cost**, publishes the LinkedIn post, records the demo.
 - Finance student: **writes the FINDINGS interpretation and the methodology section.**
 
-### Phase 6: Monetization and integrations, driven by SYNTHESIS (ongoing, ≈$0.50 plus monthly runs)
+### Phase 6: Partner integrations, driven by SYNTHESIS (ongoing, ≈$0.50 plus monthly runs; all free)
 Build only what partners ask for:
 - Sheets/CSV exports.
 - Email or Slack alerts.
 - An MCP server (`search_promises`, `get_company_scorecard`) over the precomputed data, with zero LLM cost per query.
-- Pro through the Buttondown paid add-on, once ≥2 people commit.
-- The "AI Disclosure Benchmark" report generator plus a Stripe Payment Link, with a human review before anything is sent. `gtm/PILOT_PROPOSAL.md`.
+- The "AI Disclosure Benchmark" report generator, free for design partners, with a human review before anything is sent. `gtm/PILOT_PROPOSAL.md`.
 
 **Acceptance:**
 - Each feature traces back to a request in SYNTHESIS.
-- ≥1 paid pilot or report has been pitched.
+- ≥1 free pilot has been offered to a design partner.
 - ROI before/after numbers exist for ≥2 partners.
-- Cost per paying user appears in `cost-report`.
 
 **Humans:**
-- CS student: **creates the Stripe account**, pitches and measures ROI.
-- Finance student: shapes the report product; runs the monthly 30-minute sample check.
+- CS student: offers pilots and measures ROI.
+- Finance student: shapes the benchmark report; runs the monthly 30-minute sample check.
 
 ## 9. Top risks and mitigations
 
@@ -380,12 +378,11 @@ Build only what partners ask for:
 | A wrong verdict about a real company | Verbatim quotes checked by code, validated citations, two independent checks for "Walked back", publication gated on dev-set precision, "pending" instead of guessing, neutral-language lint, corrections section, error-report channel |
 | Low promise counts | Pilot weighted toward AI-heavy companies; the hype-to-promise ratio is itself a finding; 8-K earnings releases included; low counts reported honestly |
 | Ambiguous verdicts and short evidence windows (late-2025 promises) | Rubric tolerances; "On track" and "No evidence yet" are first-class statuses; confidence threshold; disagreement review |
-| No paying customers | Revenue is goal #3; the B2B report via a Payment Link needs no platform cost; the discovery evidence still delivers goal #1 |
 | Legal wording | Data and benchmarking only, a disclaimer on every page and issue, statements framed as "later filings report / do not report…"; suggest a free review by the LSU law clinic or entrepreneurship center before launch (not legal advice from us) |
 | Messy SEC parsing | Fixture tests, fallbacks, a per-filing override list, malformed filings logged and skipped |
 | Finance student bandwidth (December finals) | Packets sized at 6–8 hours, an "unsure" option, the label work front-loaded in Phase 1–2 |
 | GitHub Pages: private-repo and commercial-use terms | Public deploy repo or GitHub Pro; Cloudflare Pages as a one-workflow fallback |
-| Buttondown limits (100 free subscribers, $9 add-ons) | Upgrade proposed only when revenue covers it; waitlist otherwise |
+| Buttondown limits (100 free subscribers) | Stay on the free tier; any paid upgrade needs explicit approval |
 | Multi-device ledger conflicts | Union-merge JSONL ledger, `git pull` before any run, one runner at a time |
 
 ## 10. Definition of done (v1)
@@ -394,7 +391,7 @@ Build only what partners ask for:
 - The held-out eval table, cost per promise and production-accuracy trend are in the README and on the Methodology page.
 - Total app spend is ≤$15, reconciled with the Console.
 - The newsletter sends itself monthly through every gate, with zero unsafe sends.
-- 3–5 design partners have been engaged; SYNTHESIS.md, ROI numbers for ≥2 partners, and ≥1 paid pilot or report pitched.
+- 3–5 design partners have been engaged; SYNTHESIS.md, ROI numbers for ≥2 partners, and ≥1 free pilot offered.
 - The GTM kit, solution brief and demo video are done.
 - DECISIONS and INTERVIEW_NOTES are grounded in real numbers. The repo is public with a clean history; a fresh-clone `make restore` makes zero API calls; CI is green.
 

@@ -18,7 +18,7 @@ Since 2023, public companies have made big claims about AI: cost savings, margin
 1. **Extracts** specific, checkable AI promises from SEC filings.
 2. **Verifies** each promise against the company's *later* filings and reported financials.
 3. **Assigns a status** (§4), with **citations to both the promise and the evidence**.
-4. **Publishes** free public scorecards, and sells paid products on top of them (§9).
+4. **Publishes** free public scorecards (§9).
 
 **Goals, in priority order:**
 
@@ -29,7 +29,7 @@ Since 2023, public companies have made big claims about AI: cost savings, margin
    - demos and technical selling;
    - plus production-grade AI engineering: evals, citations, cost control, observability.
 2. **Accuracy:** a wrong verdict about a real company is the worst failure mode.
-3. **Revenue:** make *some* money (§9). Small and real beats big and imaginary.
+3. **Free for now** (changed 2026-11-23, D55): nobody pays for AIPayback. No paid tiers, reports or pilots (§9).
 4. **Visibility:** one or two defensible findings for a LinkedIn launch.
 
 ## 2. HARD CONSTRAINT: the total API budget is $19
@@ -57,7 +57,7 @@ These rules override everything else in this brief.
 - Cheap deterministic code comes first: keyword filters, full-text search, XBRL numbers, arithmetic. The LLM only does what code can't.
 - Include a budget table in the plan (dev, evals, pilot, S&P 100 run, monthly updates, reserve) and recompute it with real numbers after the pilot.
 
-**2.4 Free infrastructure only.** Static hosting on a free tier (e.g., Vercel or Cloudflare Pages); scheduled jobs on GitHub Actions; SQLite. Paid services need explicit approval. The one expected exception is the newsletter platform (§9.1): verify its current pricing, use the free tier for as long as possible, and propose upgrading only when Pro revenue covers the cost.
+**2.4 Free infrastructure only.** Static hosting on a free tier (e.g., Vercel or Cloudflare Pages); scheduled jobs on GitHub Actions; SQLite. Paid services need explicit approval. The newsletter platform (§9.1) stays on its free tier.
 
 ## 3. Scope
 
@@ -95,7 +95,7 @@ Use neutral language only. Every status links to its sources.
 5. **Deduplicate:** merge restatements of the same promise.
 6. **Verify, in two tiers to control cost:**
    - **Tier 1 (all promises):** deterministic retrieval (FTS search of later filings, plus the relevant XBRL metrics) feeds **one** Haiku judge call, which uses a strict-schema verdict tool. All arithmetic is done in code.
-   - **Tier 2 (escalations only, capped):** a **tool-using agent** with `search_company_filings`, `get_passage`, `get_reported_metric`, `calculate` and `submit_verdict`, with iteration and token caps. It runs only on low-confidence Tier 1 cases and on Pro "deep check" requests. This keeps an agent in the project without letting it consume the budget.
+   - **Tier 2 (escalations only, capped):** a **tool-using agent** with `search_company_filings`, `get_passage`, `get_reported_metric`, `calculate` and `submit_verdict`, with iteration and token caps. It runs only on low-confidence Tier 1 cases and on deep checks a design partner asks for. This keeps an agent in the project without letting it consume the budget.
 7. **Explain with citations:** a separate call with the promise and evidence passages passed as documents with **Citations** enabled. Citations can't be combined with structured outputs, which is why this is a separate step. Record that tradeoff in DECISIONS.md.
 8. **Publish:** export to the static site's data files.
 9. **Monitor (monthly or daily cron on GitHub Actions):** detect new filings for tracked companies and process only new passages, which should cost pennies. This feeds the fully automatic newsletter and alerts (§9.1).
@@ -129,45 +129,42 @@ Check all Claude API details against the current docs (https://platform.claude.c
   - Company scorecard.
   - Promise detail: quotes, evidence, cited explanation, and SEC links.
   - Methodology: rubric, eval results, limitations, and how to report errors.
-  - Pricing: the free and paid tiers.
   - About: both founders, with LinkedIn links.
 - The footer carries a disclaimer: informational only, not investment advice.
 - Credible, fast and SEO-friendly: one page per company and per promise.
 
-## 9. Business model (keep the engineering cheap; validate before building)
+## 9. Free for now (changed 2026-11-23, D55)
 
-Build in this order, and only build a paid feature after a design partner or user asks for it:
+AIPayback is completely free: no paid tiers, paid reports or pilots, sponsors, ads or payment accounts. Build in this order, and only build a feature after a design partner or user asks for it:
 
 1. **Free public site.** This drives traffic, search rankings and credibility.
 2. **Free newsletter, "AI Promise Watch," sent fully automatically every month** (§9.1).
-3. **Pro tier**, at a price for the humans to test (suggested starting point: $8–15 per month). Start as a **paid newsletter tier** on the same platform (zero auth code), sent fully automatically and offering:
+3. **Free extras, only if partners ask for them:**
    - watchlist alerts when a tracked company adds or changes an AI promise;
    - monthly CSV/Excel exports;
    - full history.
-
-   Only later, if demand exists, add accounts (e.g., Supabase auth) and Stripe Checkout for in-site Pro features.
-4. **Paid reports and pilots (B2B), the most realistic real money.** For example, an "AI Disclosure Benchmark" comparing one company's AI claims and their support against its peers. Possible buyers: investor-relations and compliance teams, securities lawyers, consultants, and journalists. The SEC is actively scrutinizing companies' AI disclosures in 2026, which creates demand. Sell with a Stripe Payment Link and deliver a generated report that the humans review before sending. **Data and benchmarking only; never legal or investment advice.**
-5. **Ads:** no display ad networks; they pay very little at low traffic and undermine trust. At most one clearly labeled **sponsor slot** in the newsletter or site, once there's an audience.
+4. **Free pilots for design partners.** For example, an "AI Disclosure Benchmark" comparing one company's AI claims and their support against its peers. Likely partners: investor-relations and compliance teams, securities lawyers, consultants, and journalists. The SEC is actively scrutinizing companies' AI disclosures in 2026. Deliver a generated report that the humans review before sending. **Data and benchmarking only; never legal or investment advice.**
+5. **No ads or sponsors.**
 
 **Integrations for design partners** (the Forward Deployed Engineer evidence; build only what partners ask for):
 - a Google Sheets/Excel export;
 - Slack or email alerts;
 - an **MCP server** (`search_promises`, `get_company_scorecard`) so partners can query AIPayback from their own Claude app.
 
-**Unit economics:** the public pages cost nothing per visitor (precomputed). Alerts and monthly updates should cost cents. Track API cost per paying user in `make cost-report`. **Revenue buys more API credits first**, for example to expand to the S&P 500.
+**Unit economics:** the public pages cost nothing per visitor (precomputed). Alerts and monthly updates should cost cents, paid from the API budget (§2).
 
 ### 9.1 Fully automatic newsletter and alerts (no human editing or sending)
 
 The newsletter must write, check and send itself on a schedule. Automated safeguards replace human review, and a wrong claim about a real company must never go out.
 
-**Platform.** Use a newsletter platform whose API can create *and send* issues and that supports paid subscriptions.
-- **Default: Buttondown.** Its API covers the draft, schedule and send lifecycle, and it supports paid subscriptions through Stripe.
+**Platform.** Use a newsletter platform whose API can create *and send* issues on a free tier.
+- **Default: Buttondown.** Its API covers the draft, schedule and send lifecycle.
 - **Avoid beehiiv for this.** Its API post creation is limited to its Max and Enterprise plans.
 - Verify the current API capabilities and pricing before committing. Ask before enabling anything paid.
 
 **Schedule (GitHub Actions cron):**
 - **Free issue:** monthly. New AI promises, status changes, one data-backed stat, and links to the site.
-- **Pro:**
+- **Watchlist alerts (free, only if partners ask):**
   - a weekly digest;
   - alerts when a watched company files something that adds or changes an AI promise. Implement watchlists with platform subscriber tags if supported; otherwise use a full-coverage weekly digest.
   - a monthly CSV export link.
@@ -197,11 +194,11 @@ The newsletter must write, check and send itself on a schedule. Automated safegu
 Store these under `gtm/` (go-to-market):
 
 - `gtm/outreach/`: short outreach messages for each design-partner type (LinkedIn DM, email).
-- `gtm/discovery/`: a 30-minute discovery call guide and a notes template (problem, current workflow, time spent, tools used, what "useful" means, willingness to pay).
+- `gtm/discovery/`: a 30-minute discovery call guide and a notes template (problem, current workflow, time spent, tools used, what "useful" means).
 - `gtm/discovery/SYNTHESIS.md`: after the calls, synthesize the findings into requirements with priorities, and propose plan changes.
-- `gtm/SOLUTION_BRIEF.md`: a one-page solution brief (problem, solution, how it works, proof from the evals, security and data sources, pricing).
+- `gtm/SOLUTION_BRIEF.md`: a one-page solution brief (problem, solution, how it works, proof from the evals, security and data sources; it's free).
 - `gtm/DEMO_SCRIPT.md`: a 5-minute demo script and a shot list for a recorded demo video.
-- `gtm/PILOT_PROPOSAL.md`: a paid pilot proposal template (scope, success metrics, timeline, price).
+- `gtm/PILOT_PROPOSAL.md`: a free pilot proposal template (scope, success metrics, timeline).
 - `gtm/OBJECTIONS.md`: an objection-handling sheet (accuracy, hallucinations, data freshness, "why not just ask ChatGPT", security).
 - An **ROI measurement plan:** for each design partner, time spent on manual AI-claims research before AIPayback versus after. This is the AI Transformation story: measuring whether *our* AI pays off.
 
@@ -227,7 +224,7 @@ Store these under `gtm/` (go-to-market):
 4. **Label passages.** You build labeling packets per company from the *keyword* filter, not model output, so the labels aren't biased toward what the model finds. The finance student fills in `evals/gold/promises.csv`. Size the work to about 6–8 hours.
 5. Label statuses for 40–60 promises in `evals/gold/statuses.csv`.
 6. Review disagreements after each eval run, marking each row as model wrong, label wrong, or rubric unclear.
-7. Join the discovery calls with finance users (wealth advisors, the student fund). Help define the paid report product.
+7. Join the discovery calls with finance users (wealth advisors, the student fund). Help define the pilot benchmark report.
 8. Spot-check the top company pages before launch. Write the interpretation in `docs/FINDINGS.md` and the methodology section.
 9. **Monthly, about 30 minutes:** check the random sample of published items (§6, production monitoring). The newsletter itself is fully automatic: no editing or sending.
 
@@ -240,14 +237,14 @@ Also write `docs/finance/LABELING_GUIDE.md`: how to open the files, worked examp
 2. Run Claude Code on the Claude subscription plan (§2.1).
 3. Create the Console API key with a **spend limit**. Store it as `AIPAYBACK_API_KEY` in `.env`.
 4. Provide the SEC contact email.
-5. Create the free hosting, newsletter (Buttondown) and Stripe accounts when the plan reaches them, and add their API keys as GitHub Actions secrets as instructed.
+5. Create the free hosting and newsletter (Buttondown) accounts when the plan reaches them, and add their API keys as GitHub Actions secrets as instructed.
 
 **Customers:**
 6. Recruit 3–5 design partners, using the outreach drafts.
 7. Run the discovery calls and fill in the notes.
 8. Demo the product to partners and collect feedback.
 9. Measure each partner's before/after time.
-10. Pitch at least one paid pilot or report.
+10. Offer at least one free pilot to a design partner.
 
 **Every phase:**
 11. Approve the phase, commit the finance student's files, and read DECISIONS.md and INTERVIEW_NOTES.md.
@@ -271,9 +268,9 @@ Also write `docs/finance/LABELING_GUIDE.md`: how to open the files, worked examp
      - Phase 3: two-tier verification and cited explanations;
      - Phase 4: free website launch, plus the automatic newsletter in founders-only test mode for two issues before auto-send is enabled; design-partner demos;
      - Phase 5: the S&P 100 run after cost approval, findings, the LinkedIn launch, and the solution brief and demo video;
-     - Phase 6: monetization and partner integrations, driven by what discovery found (Pro alerts, exports, MCP server, paid report and pilot).
+     - Phase 6: free partner integrations, driven by what discovery found (alerts, exports, MCP server, pilot benchmark).
    - the human tasks each phase depends on;
-   - the top risks and their mitigations, including running out of budget, low promise counts, ambiguous verdicts, no paying customers, and legal wording;
+   - the top risks and their mitigations, including running out of budget, low promise counts, ambiguous verdicts, and legal wording;
    - a definition of done.
 3. **After approval:**
    - save this brief as `docs/BRIEF.md` and the plan as `docs/PLAN.md`;

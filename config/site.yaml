@@ -24,25 +24,3 @@ founders:
   - name: Nick                              # TODO: full name as Nick wants it shown
     role: Finance research, rubric and labeling
     linkedin: ""                            # TODO
-
-pricing:
-  free:
-    name: Free
-    price: $0
-    items:
-      - Every company scorecard and promise page
-      - Monthly "AI Promise Watch" newsletter
-      - Methodology, evaluation results and sources
-  pro:
-    name: Pro (waitlist)
-    price: "$8-15/month (to be tested)"
-    items:
-      - Alerts when a watched company adds or changes an AI promise
-      - Monthly CSV/Excel export
-      - Full history
-  reports:
-    name: Reports and pilots
-    price: Contact us
-    items:
-      - AI Disclosure Benchmark versus peers
-      - Data and benchmarking only; never legal or investment advice

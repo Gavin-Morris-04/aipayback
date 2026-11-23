@@ -17,7 +17,7 @@ AIPayback checks whether the AI promises companies made in their SEC filings in 
 **"What was a surprising detail?"**
 - **Haiku 5.5 thinks by default.** It runs adaptive thinking at medium effort, and thinking tokens bill as output, so a yes/no classifier can quietly cost about 10× more than it should. Every stage now sets thinking explicitly.
 - **The 100k tier counts cached tokens.** Haiku's long-prompt price tier counts cache reads, so a mostly cached 110k prompt still pays the 5× rate. The guard refuses anything over 100k.
-- **Vercel's free plan bans commercial use.** That ruled it out for a site with a paid tier.
+- **Vercel's free plan bans commercial use.** That ruled it out while a paid tier was planned. AIPayback is now free (D55), and it stays on GitHub Pages.
 
 **"How do you handle messy real-world data?"** (Phase 1)
 Every surprise in the SEC data became a rule and a test:

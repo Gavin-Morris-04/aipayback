@@ -1,6 +1,6 @@
 # Progress
 
-_Last updated: 2026-11-13 (G10 done: keep Haiku; N7 applied, dev F1 74.4%; site redesigned; Tier 2 re-check done, 18 published; S&P 100 ready for cost approval)_
+_Last updated: 2026-11-23 (D55: AIPayback is free; the pricing page and all paid plans removed. Earlier: G10 keep Haiku, N7 applied, dev F1 74.4%, 18 published, S&P 100 ready for cost approval)_
 
 ## Where things stand
 
@@ -77,7 +77,14 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
   - Fonts self-hosted (D49); prices re-checked (D54); the S&P 100 list matches Wikipedia's; the filter dry run is $0.44. **The S&P 100 run waits on Gavin's explicit cost approval.**
   - Checklist page "Do this now" refreshed for 2026-11-13.
 - **Waiting on Nick (D48 questions):** the CAT scope call (4 rows left out of scoring until then), the announcement rule, autonomy words, and a new 12-row disagreement file (`exports/disagreements/20261113T183639_1713cd8_dev_default.xlsx`).
+- **Gotcha (2026-11-23): Smart App Control now also blocks the `.exe` launchers** in `.venv/Scripts` (`pytest.exe`, `detect-secrets-hook.exe`). Run tests with `uv run python -m pytest`; the pre-commit secret scan now runs as `python -m detect_secrets.pre_commit_hook`.
 - **Gotcha: Windows Smart App Control is On** and blocked jiter 0.19.0, so the Anthropic SDK wouldn't import. jiter is held at <0.19 in `pyproject.toml` (D47). If another native package gets blocked, test older versions with `uv run --with "pkg==X" python -c "import pkg"` before touching Windows security settings.
+
+**2026-11-23:**
+- **AIPayback is free (D55).** Gavin asked to remove everything about people paying us. The site's Pricing page, the Pro waitlist and the paid reports tier are gone; pilots in `gtm/` are free; the brief and plan no longer have revenue as a goal, and no Stripe account is needed. Site rebuilt locally; tests pass. $0.
+- No new commits, issues or PRs since 2026-11-13. Checklist ticks: Gavin 9 of 17 (G1–G4, G6–G10); Nick 8 of 9 (N1–N8). **N8 is ticked, but the status packet in the repo is still the AI-draft copy (D50),** so G11 is still open: Nick's own review of each row is what's needed.
+- The repo has been public since 2026-11-18, so **GitHub Pages no longer needs GitHub Pro** (G14 can be done now on the free plan).
+- `.env.example` has an uncommitted Anthropic workload-identity test workflow pasted at the end. It isn't committed; move it to `.github/workflows/` (without the org and workspace IDs in a public repo) or delete it.
 
 **API spend so far: $0.56** (smoke test, pilot, Tier 1 v3, the 58-promise check, the Sonnet A/B, extract v3 on dev, and the 2026-11-13 re-check). Run `uv run aipb budget` for the exact figure.
 
@@ -91,7 +98,7 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 | 3 Verification, citations | ✅ pilot verify run on Nick's rules; status packet of 40 AI promises built | **Gavin:** upload the status packet (G11, 58 promises); **Nick:** 58 status labels (N8) |
 | 4 Site, newsletter | ✅ site, publish, newsletter with rails, 3 workflows (all off) | **Gavin:** Buttondown, Pages, secrets/variables; demos |
 | 5 S&P 100, findings, launch kit | ✅ sp100 list, findings, solution brief, demo, pilot, objections, LinkedIn drafts | cost approval; real results; launch |
-| 6 Monetization, integrations | ⏸ only what partners ask for (Pro alerts, exports, MCP server, paid report) | discovery calls → `gtm/discovery/SYNTHESIS.md` |
+| 6 Partner integrations (free, D55) | ⏸ only what partners ask for (alerts, exports, MCP server, pilot benchmark); no paid tiers | discovery calls → `gtm/discovery/SYNTHESIS.md` |
 
 ## Blocked: who does what
 
@@ -107,7 +114,7 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 | Nick | Before `SITE_DEPLOY` is switched on: read the 13 published pilot statuses in the site preview | first public results |
 | Gavin | Outreach (`gtm/outreach/`, ~25 messages) → discovery calls → notes | Phase 6, ROI numbers, demos |
 | Gavin | Buttondown account (free tier) → API key as GitHub secret `BUTTONDOWN_API_KEY`; username into `config/site.yaml` | newsletter, signup box |
-| Gavin | GitHub secrets `FOUNDER_EMAILS`, `AIPAYBACK_API_KEY`, `SEC_CONTACT_EMAIL`; Pages (GitHub Pro via the Student Pack, or a public deploy repo); LinkedIn URLs and Nick's display name in `config/site.yaml` | site, newsletter, monitor |
+| Gavin | GitHub secrets `FOUNDER_EMAILS`, `AIPAYBACK_API_KEY`, `SEC_CONTACT_EMAIL`; Pages (the repo is public since 2026-11-18, so the free plan works: Settings → Pages → Source: GitHub Actions); LinkedIn URLs and Nick's display name in `config/site.yaml` | site, newsletter, monitor |
 | Gavin | Approve the S&P 100 cost (table below) | Phase 5 run |
 
 ## Pilot run order (each step prints its worst case first)

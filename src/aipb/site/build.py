@@ -167,7 +167,6 @@ def build_site(site_cfg: Path, data_path: Path, evals_dir: Path, out: Path) -> d
         "How AIPayback finds, checks and explains AI promises in SEC filings.",
         evals=eval_rows(evals_dir),
     )
-    render("pricing.html", "pricing.html", "Pricing", "Free scorecards; Pro alerts and reports.")
     render("about.html", "about.html", "About", "Who builds AIPayback.")
     urls = "".join(f"<url><loc>{site['site_url']}/{p}</loc></url>" for p in pages)
     (out / "sitemap.xml").write_text(

@@ -9,7 +9,8 @@ repos:
         language: system
       - id: detect-secrets
         name: detect-secrets (high-entropy strings)
-        entry: uv run detect-secrets-hook --baseline .secrets.baseline
+        # Run as a module: Windows Smart App Control blocks the detect-secrets-hook.exe launcher.
+        entry: uv run python -m detect_secrets.pre_commit_hook --baseline .secrets.baseline
         language: system
         # Hashes in committed JSONL and uv.lock are high-entropy by design;
         # block-secrets still scans them for real key formats.

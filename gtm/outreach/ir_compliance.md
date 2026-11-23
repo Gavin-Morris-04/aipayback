@@ -1,6 +1,6 @@
 # Investor relations, compliance or securities law
 
-Replace everything in [brackets]. This is the most likely paying audience (the B2B "AI Disclosure Benchmark"), and the most sensitive. Stay factual: we compare disclosures and their later support; we never judge legality and never give legal advice.
+Replace everything in [brackets]. This audience gets the most from peer comparisons (the free "AI Disclosure Benchmark" pilot), and it's the most sensitive. Stay factual: we compare disclosures and their later support; we never judge legality and never give legal advice.
 
 ## LinkedIn connection note (under 200 characters)
 

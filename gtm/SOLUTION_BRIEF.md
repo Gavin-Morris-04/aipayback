@@ -39,11 +39,9 @@ Labels come from a finance student who hand-labeled `[[N]]` passages and `[[M]]`
 - API keys live in GitHub secrets and a git-ignored `.env`. Pre-commit hooks and CI block key patterns, and a full-history secret scan runs on every push.
 - Static site: nothing runs on the server, and visitors never trigger model calls.
 
-## Pricing
+## Cost
 
-- **Free:** all scorecards, the monthly newsletter, methodology.
-- **Pro (pilot price `[[ $8–15/month ]]`):** watchlist alerts, monthly CSV/Excel exports, full history.
-- **AI Disclosure Benchmark (B2B):** one company's AI claims and their support against its peers, reviewed by both founders before delivery. `[[price]]` per report.
+Free. Every scorecard, the monthly newsletter and the methodology are free, and there are no paid tiers. Design partners can also ask for a free pilot: an **AI Disclosure Benchmark** of one company's AI claims and their support against its peers, reviewed by both founders before delivery (`gtm/PILOT_PROPOSAL.md`).
 
 Data and benchmarking only: never investment or legal advice.
 

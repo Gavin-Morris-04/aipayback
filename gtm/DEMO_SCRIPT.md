@@ -1,6 +1,6 @@
 # 5-minute demo script (live or recorded)
 
-**Audience:** a design partner or a buyer (fund analyst, IR/compliance lead, journalist). **Goal:** they see one real promise traced from the filing to its status, see why they can trust it, and say what they'd use it for.
+**Audience:** a design partner or a likely user (fund analyst, IR/compliance lead, journalist). **Goal:** they see one real promise traced from the filing to its status, see why they can trust it, and say what they'd use it for.
 
 **Before you start:** open the live site, one company page you know well (pick one with a Delivered or On track promise and one "Status pending review"), the promise's SEC filing in another tab, and the Methodology page. Use the partner's own company or holding if it's covered.
 

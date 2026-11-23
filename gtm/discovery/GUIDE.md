@@ -1,6 +1,6 @@
 # 30-minute discovery call guide
 
-**Who runs it:** the CS student, with the finance student joining calls with finance users (fund members, advisors). **Goal:** learn how this person researches companies' AI claims **today**, what it costs them, and what would make a tool worth using or paying for. You're not demoing or selling.
+**Who runs it:** the CS student, with the finance student joining calls with finance users (fund members, advisors). **Goal:** learn how this person researches companies' AI claims **today**, what it costs them, and what would make a tool worth using. You're not demoing or selling.
 
 **The one rule:** ask about **what they did last time**, not what they would do someday. "Walk me through the last time you checked a company's AI claim" gives facts. "Would you use a tool that…" gives polite fiction.
 
@@ -16,7 +16,7 @@
 |---|---|---|
 | 0–3 | Intro | Who we are, why we're calling, ask permission to take notes |
 | 3–18 | Their world | Their workflow, problem, time spent, tools |
-| 18–25 | What useful means | What they'd trust, formats, willingness to pay |
+| 18–25 | What useful means | What they'd trust, formats, coverage |
 | 25–30 | Close | What happens next, referrals, design-partner ask |
 
 ## 0–3: Intro (say it in your own words)
@@ -47,7 +47,6 @@ Pick the questions that fit. Follow interesting answers instead of the list.
 8. "If something did this for you, what would it have to get right for you to trust it?"
 9. "What format would you actually use?" (A website, a spreadsheet export, alerts, a weekly email, an API or chat tool.)
 10. "Which companies would you want covered first?"
-11. **Willingness to pay** (ask about what they pay now, not hypotheticals): "What do you pay for research tools today? Who approves that spending? What's a tool like this replacing?" If it fits naturally: "Would $10 a month for alerts on your watchlist be an easy yes, a maybe or a no? Why?"
 
 ## 25–30: Close
 
@@ -66,6 +65,6 @@ Pick the questions that fit. Follow interesting answers instead of the list.
 ## Don't
 
 - Pitch, demo or describe features before minute 18.
-- Ask "would you use…?" or "would you pay for…?" as your main questions.
+- Ask "would you use…?" as your main question.
 - Argue with their answers or explain why they're wrong.
 - Share any company verdict that isn't published with citations.

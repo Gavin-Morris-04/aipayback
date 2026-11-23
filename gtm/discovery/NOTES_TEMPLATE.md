@@ -31,17 +31,13 @@ _Hardest or most annoying parts; times they got burned._
 - **Format they'd use:** website / spreadsheet export / alerts / email digest / API or MCP / other
 - **Companies they'd want first:**
 
-## Willingness to pay
-- **What they pay for research tools now, and who approves it:**
-- **Reaction to a price, if asked:** easy yes / maybe / no, and why
-
 ## Best quotes
 >
 
 ## Design-partner fit
 - **Interested in trying an early version?** yes / maybe / no
 - **Baseline time recorded for the ROI plan?** yes / no
-- **Fit score (1–5):**   _5 = has the problem often, will try it, could pay or refer buyers_
+- **Fit score (1–5):**   _5 = has the problem often, will try it, could refer others_
 
 ## Follow-ups
 - [ ] Thank-you note sent (within 24 hours)

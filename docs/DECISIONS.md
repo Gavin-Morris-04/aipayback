@@ -555,6 +555,20 @@ Gavin said "just do everything". Everything on his list that doesn't need his ac
 - **Filter dry run:** 913 requests, 165 cached from the pilot, 748 to send. Worst case $0.44. With extract (at most $2.84 if every AI passage were routed; fewer now that risk factors are skipped), verify and explain (about $0.001 per promise) and the Tier 2 cap ($0.50), the run stays under $5. $14.48 remained under the cap before today's Tier 2 run.
 - **Not done, and why:** enabling GitHub Pages was blocked by this session's permission rules (it changes repo settings), so G14 stays with Gavin. Buttondown (G12), the GitHub secrets (G15) and outreach (G5) need his accounts. The S&P 100 run needs his explicit cost approval, e.g. "I approve the S&P 100 run up to $5".
 
+## D55. AIPayback is free; everything about people paying us is removed (2026-11-23)
+
+Gavin, 2026-11-23: "get rid of anything that has to do with people paying us. For now this will be completely free."
+
+**Removed:**
+- **Site:** the Pricing page (`pricing.html`) and its nav and footer links, the "Pro (waitlist)" and "Reports and pilots" tiers in `config/site.yaml`, and the pricing styles. The About page now says the project is free and there's nothing to buy.
+- **Go-to-market kit:** the price in `gtm/PILOT_PROPOSAL.md` (pilots are now free; the Stripe Payment Link is gone), the Pricing section of `gtm/SOLUTION_BRIEF.md` (now "Cost: free"), the willingness-to-pay question and notes section in `gtm/discovery/`, and "paying audience" and "buyer" wording in the outreach and demo drafts.
+- **Plans:** the Pro tier, Stripe Checkout and Payment Links, paid reports and pilots, sponsor slots and "cost per paying user" in `docs/BRIEF.md` §9 and `docs/PLAN.md` Phase 6. Revenue is no longer a project goal; the goals are now career evidence, accuracy and LinkedIn findings.
+- **Accounts:** no Stripe account is needed. Buttondown stays on its free tier.
+
+**Kept:** API-cost wording ("paid stages", "never pay twice"), which is about our own API spend, and the secret scanner's Stripe-key pattern, which only blocks keys from being committed. D4's note that Vercel bans commercial use is history; GitHub Pages stays either way.
+
+**Phase 6** is now free partner integrations only (alerts, exports, an MCP server, pilot benchmarks), built only when a design partner asks.
+
 ## Upcoming decisions (recorded when made)
 - The CAT scope question and the announcement rule (D48 questions 1–2), from Nick.
 - `gate.confidence_threshold`, once Nick has reviewed the status packet himself (D50).

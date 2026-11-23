@@ -360,16 +360,6 @@ a.cite:hover { background: var(--surface-2); }
 .ticks li { position: relative; padding-left: 28px; color: var(--ink-2); }
 .ticks li::before { content: ""; position: absolute; left: 2px; top: 0.45em; width: 12px; height: 7px; border-left: 2px solid var(--delivered); border-bottom: 2px solid var(--delivered); transform: rotate(-45deg); }
 
-/* ---------- pricing ---------- */
-.tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
-.tier { position: relative; display: flex; flex-direction: column; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 28px 26px; box-shadow: var(--shadow); }
-.tier h2 { font-size: 1.3rem; }
-.tier .ticks { margin-bottom: 8px; flex: 1; }
-.tier .btn { margin-top: auto; }
-.tier-featured { border: 2px solid var(--brand); }
-.tier-flag { position: absolute; top: -12px; left: 24px; background: var(--gold); color: #141a24; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
-.price { font: 600 1.9rem/1.1 var(--serif); letter-spacing: -0.01em; }
-
 /* ---------- about ---------- */
 .people { list-style: none; margin: 0 0 20px; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
 .person { display: flex; gap: 16px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
@@ -396,7 +386,7 @@ a.cite:hover { background: var(--surface-2); }
 @media (max-width: 960px) {
   .hero-grid, .co-head, .detail { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .detail-side { position: static; }
-  .steps, .tiers { grid-template-columns: minmax(0, 1fr); }
+  .steps { grid-template-columns: minmax(0, 1fr); }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stats li:nth-child(3) { border-left: 0; }
   .stats li:nth-child(n + 3) { border-top: 1px solid var(--line); }
