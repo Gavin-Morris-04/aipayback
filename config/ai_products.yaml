@@ -21,8 +21,14 @@
 # the passages Nick labeled are still the passages the pipeline reads. Bump `version`
 # whenever the list changes.
 
-version: ap1
+version: ap2
 min_filings: 2
+
+# ap2 (2026-11-23, S&P 100 run): added AMD, ADBE and NOW from the statements the S&P 100
+# extract dropped for "ai_link names no AI term" (Instinct MI325X/MI450, ROCm, Adobe
+# Firefly, Now Assist). Left out on purpose: AI demand for non-AI products (Micron HBM,
+# Oracle OCI, Intel Core Ultra and Panther Lake), the same question Nick has open for
+# Caterpillar's Power Generation (D48).
 
 companies:
   NVDA: [Blackwell, Hopper, Rubin, Grace Hopper, Grace Blackwell, GB200, GB300, GH200, H100,
@@ -34,5 +40,8 @@ companies:
          SageMaker, Rufus, Alexa+, Amazon Nova, Project Rainier, Project Ceiba]
   MSFT: [Azure OpenAI, Microsoft Foundry]
   FDX: [FedEx Dataworks, Dataworks, FedEx Virtual Assistant]
+  AMD: [AMD Instinct, Instinct, ROCm]
+  ADBE: [Adobe Firefly, Firefly, GenStudio]
+  NOW: [Now Assist]
   # BLK ("Aladdin Copilot", "Aladdin AI") already match keywords.yaml terms.
   # CAT, PEP, PFE: no AI product names in their filings.
