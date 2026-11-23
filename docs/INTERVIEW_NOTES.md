@@ -40,6 +40,12 @@ For the S&P 100, ingest pulled 2,407 SEC documents for $0: 179,348 passages and 
 
 That worst case assumes every response uses its full token limit. The pilot's 165 filter requests are reused from cache, so the S&P 100 run only sends 748 new ones.
 
+**"What did the S&P 100 run actually cost?"** (Phase 5, 2026-11-23)
+$0.39, against the $4.84 worst case: filter $0.14 (913 requests, 748 new), extract $0.05 (400 new), verification $0.18 (Tier 1 on 111 new promises, the Tier 2 agent on 68 new escalations over four capped runs) and cited explanations $0.02. It found 728 forward-looking AI statements in 96 companies' filings; 200 (27%) were specific enough to check, and they merged into 171 promises. After two independent checks, cited explanations and a human-style read of every new status, 49 are published and 122 say "Status pending review".
+
+**"Did a status ever come out wrong?"** (2026-11-23)
+Yes, and the review caught it before anything was public. Reading all 41 new statuses against their evidence turned up two wrong Delivered verdicts: an Oracle "double-digit revenue growth" promise next to 8.4% growth, and a ServiceNow "available in November" promise whose own later filing moved it to March. Eight more were held because they weren't the company's own promise (analyst forecasts, a customer's plan, market-size estimates, a fund already set up) or because "On track" rested on a restated target alone. All ten are open error reports (R-004 to R-013) and show "Status pending review" until they're fixed. That's why a person reads every status before the site goes public.
+
 **"What did Phase 1 cost?"** $0.00 of API credit. 236 filings, 18,381 passages and about 100,000 XBRL facts were processed with plain code: rate-limited downloads, parsing, full-text search and keyword filters. The LLM only starts in Phase 2, and only on the 688 unique AI-keyword passages from 2024–2025 filings: under 4% of the corpus. Later filings are searched as evidence, not classified. (Those were the placeholder pilot's numbers. The finance lead's final list talks more about AI: 868 of 17,834 passages, under 5%.)
 
 ## Forward Deployed Engineer

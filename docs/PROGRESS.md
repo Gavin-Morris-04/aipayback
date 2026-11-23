@@ -1,6 +1,6 @@
 # Progress
 
-_Last updated: 2026-11-23 (D55: AIPayback is free; the pricing page and all paid plans removed. Earlier: G10 keep Haiku, N7 applied, dev F1 74.4%, 18 published, S&P 100 ready for cost approval)_
+_Last updated: 2026-11-23 (S&P 100 run done for $0.39, D56: 171 promises, 49 published after review, 10 held; D55: AIPayback is free)_
 
 ## Where things stand
 
@@ -86,7 +86,13 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
 - The repo has been public since 2026-11-18, so **GitHub Pages no longer needs GitHub Pro** (G14 can be done now on the free plan).
 - `.env.example` has an uncommitted Anthropic workload-identity test workflow pasted at the end. It isn't committed; move it to `.github/workflows/` (without the org and workspace IDs in a public repo) or delete it.
 
-**API spend so far: $0.56** (smoke test, pilot, Tier 1 v3, the 58-promise check, the Sonnet A/B, extract v3 on dev, and the 2026-11-13 re-check). Run `uv run aipb budget` for the exact figure.
+- **S&P 100 run done (D56), Gavin's approval "up to $5", $0.39.** Prices re-checked and the company list matched the iShares OEF holdings first. Filter $0.14, extract $0.05, verify $0.18 (all 85 Tier 2 escalations done over four capped runs), explain $0.02. AI product names ap2 added AMD, ADBE and NOW ($0 replay).
+  - **171 AI promises from 96 companies; 49 published** (32 Delivered, 15 No evidence yet, 2 On track), 122 pending. Four companies have no AI passages (ABT, BRK-B, LIN, XOM) and aren't listed (D43 known issue).
+  - **Every new status was read against its evidence; 10 are held** with open error reports R-004 to R-013: two wrong Delivered verdicts (Oracle double-digit growth vs 8.4%; ServiceNow November availability moved to March), two statuses the evidence doesn't support (AMD MI325X, Micron Idaho fab), and six items that aren't the company's own promise (Qualcomm analyst forecasts, AT&T's plan, AMD and Intel market sizes, IBM's fund).
+  - **Next engineering ($0 to build):** a code check comparing "double-digit" and percentage targets with computed growth; an extract rule dropping third-party forecasts and market-size statements. Then re-check the held items (cents).
+  - Preview: `site/dist/index.html` (270 pages). Findings: `docs/FINDINGS.md`. Not public.
+
+**API spend so far: $0.95** (smoke test, pilot, Tier 1 v3, the 58-promise check, the Sonnet A/B, extract v3 on dev, the 2026-11-13 re-check, and the S&P 100 run at $0.39). Run `uv run aipb budget` for the exact figure.
 
 The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-ahead in chat, and the S&P 100 run needs explicit cost approval.
 
@@ -97,14 +103,14 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 | 2 Filter, extract, evals | ✅ pilot filter + extract v2 run (D42); Nick's 450 labels imported; first eval: extraction F1 36.4% (recall 25%) | AI product names fix done (D45): dev F1 59.1%, recall 54.2%. **Nick:** 19 disagreements (N7). A/B after the fix, sized first (D39) |
 | 3 Verification, citations | ✅ pilot verify run on Nick's rules; status packet of 40 AI promises built | **Gavin:** upload the status packet (G11, 58 promises); **Nick:** 58 status labels (N8) |
 | 4 Site, newsletter | ✅ site, publish, newsletter with rails, 3 workflows (all off) | **Gavin:** Buttondown, Pages, secrets/variables; demos |
-| 5 S&P 100, findings, launch kit | ✅ sp100 list, findings, solution brief, demo, pilot, objections, LinkedIn drafts | cost approval; real results; launch |
+| 5 S&P 100, findings, launch kit | ✅ S&P 100 run done 2026-11-23 ($0.39, D56): 171 promises, 49 published locally; findings, solution brief, demo, pilot, objections, LinkedIn drafts | **Nick:** read the 49 statuses; launch |
 | 6 Partner integrations (free, D55) | ⏸ only what partners ask for (alerts, exports, MCP server, pilot benchmark); no paid tiers | discovery calls → `gtm/discovery/SYNTHESIS.md` |
 
 ## Blocked: who does what
 
 **Step-by-step checklist for Gavin and Nick:** https://claude.ai/artifact/QqmDKJPxRPfprggV99eEJY (private; share it with Nick as an Editor so his ticks sync). It has 17 Gavin steps (G1–G17) and 9 Nick steps (N1–N9), each with exact instructions, plus a pilot company picker that shows AI-mention counts for all 100 companies. Ticks are stored in the page's shared database, so Claude Code can read progress with `ArtifactData list` on collection `steps`.
 
-**Next session:** `git pull`, read this file, then check the checklist's ticks. If Gavin has given the go-ahead for the prompt v3 Tier 2 run, do it first: `uv run aipb verify --confirm` (Tier 1 is cached, so only Tier 2 is paid), then `uv run aipb explain`, `uv run aipb publish`, `uv run aipb site`, `uv run aipb findings`, read every published status, close R-001 in `data/error_reports.csv` if the Meta item is right, and commit with the ledger and outputs.
+**Next session:** `git pull`, read this file, then check the checklist's ticks. Build the two $0 checks from D56 ("double-digit" and percentage targets compared with computed growth; drop third-party forecasts and market sizes at extract), re-check the held items R-004 to R-013 (show the worst case first), then `uv run aipb publish`, `site` and `findings`, read every changed status, and commit with the ledger and outputs.
 
 | Who | Task | Unblocks |
 |---|---|---|
@@ -115,7 +121,7 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 | Gavin | Outreach (`gtm/outreach/`, ~25 messages) → discovery calls → notes | Phase 6, ROI numbers, demos |
 | Gavin | Buttondown account (free tier) → API key as GitHub secret `BUTTONDOWN_API_KEY`; username into `config/site.yaml` | newsletter, signup box |
 | Gavin | GitHub secrets `FOUNDER_EMAILS`, `AIPAYBACK_API_KEY`, `SEC_CONTACT_EMAIL`; Pages (the repo is public since 2026-11-18, so the free plan works: Settings → Pages → Source: GitHub Actions); LinkedIn URLs and Nick's display name in `config/site.yaml` | site, newsletter, monitor |
-| Gavin | Approve the S&P 100 cost (table below) | Phase 5 run |
+| Nick (via Gavin) | Read the 49 published S&P 100 statuses in the preview, and the 10 held items (R-004 to R-013) | `SITE_DEPLOY`, launch |
 
 ## Pilot run order (each step prints its worst case first)
 
@@ -153,7 +159,7 @@ After labels return: `aipb import-labels` → `aipb eval` → send `exports/disa
 
 After the status packet: `aipb status-packets` (after verify) → Nick labels → `aipb import-statuses` → `aipb eval-status` → set `gate.confidence_threshold` in `config/stages.yaml` from the precision-coverage curve.
 
-## S&P 100 (needs explicit cost approval)
+## S&P 100 (run 2026-11-23, D56; the plan below is kept for reference)
 
 **Corpus (ingested, parsed and pre-filtered on 2026-11-10; $0, SEC only):**
 - 100 of 100 companies
@@ -198,7 +204,7 @@ git add -A && git commit -m "S&P 100 run" && git push
 ## Budget
 | Spent | Reserved | Remaining under the $15 cap | Locked reserve |
 |---|---|---|---|
-| $0.24 (smoke test + pilot) | $0.00 | $14.76 | $4.00 |
+| $0.95 (smoke test, pilot and its re-checks, Sonnet A/B, S&P 100 run) | $0.00 | $14.05 | $4.00 |
 
 ## Known issues (to fix before the step that needs them)
 - ~~Sonnet A/B sizing~~: **fixed** (D47). `extract --only-labeled` plus Sonnet thinking off at 2048 tokens: 60 passages, worst case $0.91.

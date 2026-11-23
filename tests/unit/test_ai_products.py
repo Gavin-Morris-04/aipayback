@@ -80,8 +80,9 @@ def test_a_quote_naming_a_confirmed_product_is_its_own_link():
 
 def test_the_repo_list_loads():
     products = AIProducts.load(Path(__file__).resolve().parents[2] / "config" / "ai_products.yaml")
-    assert products.version == "ap1" and products.min_filings == 2
+    assert products.version == "ap2" and products.min_filings == 2
     assert "Blackwell" in products.by_ticker["NVDA"] and "Robotaxi" in products.by_ticker["TSLA"]
+    assert "Instinct" in products.by_ticker["AMD"]  # ap2, from the S&P 100 run (D56)
 
 
 def test_suggest_ranks_names_that_share_a_sentence_with_ai(tmp_path):

@@ -569,6 +569,30 @@ Gavin, 2026-11-23: "get rid of anything that has to do with people paying us. Fo
 
 **Phase 6** is now free partner integrations only (alerts, exports, an MCP server, pilot benchmarks), built only when a design partner asks.
 
+## D56. The S&P 100 run: $0.39, 49 statuses published after review (2026-11-23)
+
+Gavin approved the run "up to $5" on 2026-11-23. Before it: prices re-checked against the pricing page (all unchanged; `verified_on` 2026-11-23), and `config/universe/sp100.csv` matched the iShares OEF holdings as of 2026-11-20 (the fund's 101st line is GOOG, Alphabet's second share class, tracked once as GOOGL). That closes G16 step 1.
+
+| Stage | Worst case | Actual | Notes |
+|---|---|---|---|
+| filter | $0.44 | $0.14 | 913 requests, 748 new; 340 promise, 397 hype, 3,201 none |
+| extract | $0.30 | $0.05 | 572 passages (79 risk-factor passages skipped), 400 new requests |
+| verify Tier 1 | $0.11 | | 171 promises, 111 new |
+| verify Tier 2 | $0.50 per run | $0.18 with Tier 1 | 85 escalations, 68 new, over four runs at the $0.50 run cap |
+| explain | $0.08 | $0.02 | 59 passed the checks (10 after one retry); 6 failed and stay pending |
+| **Total** | **$4.84 planned** | **$0.39** | |
+
+**AI product names ap2.** The extract dropped 109 statements outside the pilot for having no verified AI link. Most were right to drop (fab construction, acquisitions, cloud capacity). Added the AI products the drops named: AMD Instinct and ROCm, Adobe Firefly and GenStudio, ServiceNow Now Assist (each confirmed in 7–15 of the company's own filings). Extract replayed from cache at $0: 171 promise clusters, up from 167. Left out on purpose: AI demand for non-AI products (Micron HBM, Oracle OCI, Intel Core Ultra), the same question as Nick's open Caterpillar call (D48).
+
+**Review of the 41 new published statuses.** Every one was read against its evidence. Ten are held with open error reports (R-004 to R-013), so 49 of 171 are published (32 Delivered, 15 No evidence yet, 2 On track):
+- **Wrong verdicts (2):** Oracle "double-digit revenue growth" in FY2025 marked Delivered against 8.4% growth (R-004); ServiceNow "available in November" marked Delivered though the later filing moved it to March 2025 (R-005).
+- **Evidence doesn't support the status (2):** AMD MI325X "available in Q4 2024" Delivered on an "unveiled" announcement with no availability date (R-006); Micron's second Idaho fab "On track" on a restated plan alone (R-007).
+- **Not the company's promise (6):** two Qualcomm analyst forecasts (R-008, R-009), AT&T's Open RAN plan in an Intel release (R-010), two market-size estimates from AMD and Intel (R-011, R-012), and IBM's fund that was already set up (R-013).
+
+**What this says about the pipeline.** Tier 1 and Tier 2 agreed on the Oracle error, so two checks are not enough on their own: the explanation stated 8.4%, and nothing compared it with "double-digit" in code. Next fixes, not built yet: a code check that compares "double-digit" and percentage targets with the computed growth figure (as D46 did for ranges), and an extract rule that drops third-party forecasts and market-size statements. Both are $0 to build; re-checking the affected promises costs cents.
+
+Not public: `SITE_DEPLOY` is off, and Nick reads the published statuses before it goes on.
+
 ## Upcoming decisions (recorded when made)
 - The CAT scope question and the announcement rule (D48 questions 1–2), from Nick.
 - `gate.confidence_threshold`, once Nick has reviewed the status packet himself (D50).
