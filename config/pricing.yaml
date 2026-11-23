@@ -1,7 +1,7 @@
 # Claude API prices in USD per million tokens (MTok).
 # Source: https://platform.claude.com/docs/en/about-claude/pricing
 # Re-verify against that page before any large run, and update verified_on.
-verified_on: "2026-11-13"   # re-checked before the S&P 100 run: all prices unchanged
+verified_on: "2026-11-23"   # re-checked again right before the S&P 100 run: all prices unchanged
 source: "https://platform.claude.com/docs/en/about-claude/pricing"
 
 # Message Batches API: 50% off input and output. It stacks with the cache multipliers.
