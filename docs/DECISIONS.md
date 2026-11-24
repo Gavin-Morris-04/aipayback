@@ -620,6 +620,29 @@ Tried and not kept: handing the comparison sentence to the explainer, as D46 doe
 
 Result: 167 promises (from 171), 49 published (unchanged: 32 Delivered, 15 No evidence yet, 2 On track), 118 pending. The published set is identical to D56's. Nick still reads the 49 statuses and the five open items before `SITE_DEPLOY`.
 
+## D58. Pending pages say why in plain language (2026-11-23)
+
+Gavin said "Yes, rewrite them" on 2026-11-23. Each pending promise page showed the gate's internal reason, for example "checks disagree (walked_back/explicit vs delivered/none)", "non-neutral wording in key_finding: ['broke']" or "confidence 0.70 below 0.75". Those name draft statuses that were never published (a "walked back" hint about a real company without two agreeing checks), field names and scores.
+
+Now `aipb.verify.gate.public_reason` maps each internal reason to one plain sentence, and `publish` puts only that sentence in `site_data.json`; the page shows it after "Why:". The internal reason stays in `final_status` and `aipb status` for the audit. No sentence names a draft status, a figure or a direction. Anything the table doesn't list (the joined problems of an invalid verdict) gets a general sentence: "The check of later filings didn't produce a result that could be published."
+
+On the S&P 100 preview the 118 pending pages now read:
+
+| Pages | Why |
+|---|---|
+| 44 | Later filings don't show clearly enough what happened. |
+| 35 | The promise doesn't name a specific enough product, feature or program to check. |
+| 13 | The check of later filings didn't produce a result that could be published. |
+| 7 | A possible error was reported, and it is being reviewed. |
+| 6 | The written explanation didn't pass the citation and wording checks. |
+| 5 | Two independent checks didn't reach the same status. |
+| 4 | The company changed how it reports this measure, so later figures can't be compared directly. |
+| 2 | The promise doesn't say whether its target is a run rate or an amount actually realized. |
+| 1 | The reported revenue growth for the deadline year needs a closer look against the promised target. |
+| 1 | The promise doesn't say what its percentage is measured against. |
+
+Statuses, counts and the change log are unchanged (the log tracks labels only, so no newsletter events). Tests check every reason the gate can give against a list of internal words.
+
 ## Upcoming decisions (recorded when made)
 - The CAT scope question and the announcement rule (D48 questions 1–2), from Nick.
 - `gate.confidence_threshold`, once Nick has reviewed the status packet himself (D50).

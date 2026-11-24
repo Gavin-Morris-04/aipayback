@@ -18,7 +18,7 @@ from pathlib import Path
 
 from aipb import jsonl
 from aipb.budget.ledger import utc_now
-from aipb.verify.gate import PENDING
+from aipb.verify.gate import PENDING, public_reason
 from aipb.verify.numbers import NumberRow, deadline_end, fiscal_year_end
 
 STATUS_ORDER = (
@@ -150,7 +150,8 @@ def build_site_data(conn: sqlite3.Connection, *, variant: str = "default") -> di
             "status": label if publishable else PENDING,
             "status_code": k["code"] if publishable else "",
             "publishable": publishable,
-            "pending_reason": "" if publishable else (k["reason"] or "not verified yet"),
+            # The page shows a plain sentence; the internal reason stays in final_status (D58).
+            "pending_reason": "" if publishable else public_reason(k["reason"]),
         }
         if publishable:
             from aipb.stages.verify_runner import load_explanation

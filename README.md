@@ -2,7 +2,7 @@
 
 **Did the AI promises pay off?** Since 2023, public companies have promised a lot from AI: cost savings, margin gains, leaner workforces, new revenue. AIPayback pulls the specific, checkable promises out of SEC filings, checks each one against the company's *later* filings and reported numbers, and publishes a neutral status with citations to both the promise and the evidence.
 
-> Status: **Phases 0–5 built and tested (225 offline tests). S&P 100 run done on 2026-11-23 for $0.39** (worst case $4.84): 167 AI promises from 96 companies, 49 with a published status. Code now checks revenue growth targets and drops analysts' forecasts and market sizes (D57). Results are a local preview until the finance lead reviews them. AIPayback is free. Details: [docs/PROGRESS.md](docs/PROGRESS.md). Plan: [docs/PLAN.md](docs/PLAN.md).
+> Status: **Phases 0–5 built and tested (240 offline tests). S&P 100 run done on 2026-11-23 for $0.39** (worst case $4.84): 167 AI promises from 96 companies, 49 with a published status. Code now checks revenue growth targets and drops analysts' forecasts and market sizes (D57). Results are a local preview until the finance lead reviews them. AIPayback is free. Details: [docs/PROGRESS.md](docs/PROGRESS.md). Plan: [docs/PLAN.md](docs/PLAN.md).
 > Informational only. Not investment advice.
 
 ## How it works

@@ -1,6 +1,6 @@
 # Progress
 
-_Last updated: 2026-11-23 (D57: growth targets checked in code, analysts' forecasts and market sizes dropped at extract; 167 promises, 49 published, 5 items held for Nick; D56: S&P 100 run done for $0.39; D55: AIPayback is free)_
+_Last updated: 2026-11-23 (D58: pending pages say why in plain language; D57: growth targets checked in code, analysts' forecasts and market sizes dropped at extract; 167 promises, 49 published, 5 items held for Nick; D56: S&P 100 run done for $0.39; D55: AIPayback is free)_
 
 ## Where things stand
 
@@ -92,6 +92,7 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
   - **Next engineering ($0 to build):** a code check comparing "double-digit" and percentage targets with computed growth; an extract rule dropping third-party forecasts and market-size statements. Then re-check the held items (cents).
   - Preview: `site/dist/index.html` (270 pages). Findings: `docs/FINDINGS.md`. Not public.
 
+- **Pending pages say why in plain language (D58), $0.** The page showed the gate's internal reason (draft statuses like "walked_back/explicit vs delivered/none", field names, confidence scores). Now one plain sentence per reason; the internal one stays in `final_status` and `aipb status`. 240 tests pass.
 - **Two $0 checks built from the S&P 100 review (D57), Gavin's "Yes, build them".** Re-check cost $0.0017.
   - **Growth targets in code:** a total-revenue growth target is compared with the deadline year's reported growth using the rubric's tolerances, and the gate holds a status the figure contradicts. Oracle (8.4% vs double-digit) is now held by code; Intuit (15.6%) is consistent.
   - **Extract drops statements that aren't the company's own:** analysts' forecasts and market sizes. Exactly 4 of 887 stored statements (the two Qualcomm estimates, AMD's and Intel's market sizes); none of Nick's gold promises.
@@ -117,7 +118,7 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 
 **Step-by-step checklist for Gavin and Nick:** https://claude.ai/artifact/QqmDKJPxRPfprggV99eEJY (private; share it with Nick as an Editor so his ticks sync). It has 17 Gavin steps (G1–G17) and 9 Nick steps (N1–N9), each with exact instructions, plus a pilot company picker that shows AI-mention counts for all 100 companies. Ticks are stored in the page's shared database, so Claude Code can read progress with `ArtifactData list` on collection `steps`.
 
-**Next session:** `git pull`, read this file, then check the checklist's ticks. Nick reads the 49 published statuses and the 5 held items (R-005, R-006, R-007, R-010, R-013), closes or keeps each report, and confirms D57's extract rule. Before `SITE_DEPLOY`, the public "Reason:" lines on pending pages need a plain-language pass: some name draft statuses ("checks disagree (walked_back/explicit vs delivered/none)") or internal field names.
+**Next session:** `git pull`, read this file, then check the checklist's ticks. Nick reads the 49 published statuses and the 5 held items (R-005, R-006, R-007, R-010, R-013), closes or keeps each report, and confirms D57's extract rule. Pending pages now say why in plain language (D58); Nick may want to adjust the wording.
 
 | Who | Task | Unblocks |
 |---|---|---|

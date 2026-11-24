@@ -53,7 +53,7 @@
     <section class="pending-box" aria-labelledby="h-pending">
       <h2 id="h-pending">Status pending review</h2>
       <p>We publish a status only when the evidence passes our checks; until then we show the verified quote only.</p>
-      {% if p.pending_reason %}<p class="pending-reason">Reason: {{ p.pending_reason }}.</p>{% endif %}
+      {% if p.pending_reason %}<p class="pending-reason">Why: {{ p.pending_reason }}</p>{% endif %}
     </section>
     {% endif %}
   </article>

@@ -8,6 +8,7 @@ from typer.testing import CliRunner
 from aipb import cli
 from aipb.newsletter import intro as nl_intro
 from aipb.newsletter.services import Buttondown, GitHub
+from aipb.verify import gate
 from tests.fake_services import FakeButtondown, FakeGitHub
 
 runner = CliRunner()
@@ -53,6 +54,8 @@ def test_publish_and_site(published):
     assert pub and all(p["explanation"]["citations"] for p in pub)
     pending = [p for p in data["promises"] if not p["publishable"]]
     assert all("explanation" not in p for p in pending)  # pending: the quote only
+    plain = {text for _, text in gate.PUBLIC_REASONS} | {gate.PUBLIC_REASON_OTHER}
+    assert all(p["pending_reason"] in plain for p in pending)  # D58: never the internal reason
     log = (published / "data" / "site" / "published_log.jsonl").read_text(encoding="utf-8")
     assert "first_publish" in log
     run("publish")  # nothing changed: no new events
