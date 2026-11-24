@@ -8,6 +8,8 @@ Rules (brief section 9.1 and the rubric), all checked by code:
 - "Walked back" needs two independent checks (Tier 1 and Tier 2) that agree;
 - no check names a rubric pending condition (vague specificity-1 deliverable, unclear
   run-rate vs realized, changed basis or definition, undefined percentage base).
+- the status agrees with what code computes from the reported figures (D57: a total-revenue
+  growth target against the deadline year's growth; applied by the verify runner).
 Anything else is published as "Status pending review" with the verified quote only.
 """
 
@@ -29,6 +31,11 @@ class Decision:
     silent: bool
     reason: str
     source_tier: str  # "1", "2", "1+2" or ""
+
+
+def held(reason: str) -> Decision:
+    """Pending, for a reason found after the verdicts (a code check, a stale explanation)."""
+    return Decision("", PENDING, False, False, reason, "")
 
 
 def _ok(v: Verdict | None, threshold: float) -> bool:

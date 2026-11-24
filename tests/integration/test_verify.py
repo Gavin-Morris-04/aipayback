@@ -6,6 +6,8 @@ import sqlite3
 from typer.testing import CliRunner
 
 from aipb import cli
+from aipb.stages import verify_runner
+from aipb.verify import targets
 
 runner = CliRunner()
 
@@ -246,4 +248,43 @@ def test_a_second_run_reaches_escalations_the_run_cap_left(llm_project, fake_cla
     assert "done 2 (submitted 2; 1 replayed at $0); left for later (run cap): 0" in second
     conn = db(llm_project)
     assert conn.execute("SELECT COUNT(*) FROM verdicts WHERE tier='2'").fetchone()[0] == 2
+    conn.close()
+
+
+def test_a_status_the_reported_growth_contradicts_is_held(llm_project, fake_claude):
+    # D57: the Oracle case. Code compares a revenue growth target with the deadline year's
+    # reported growth, and the gate holds a status the figure contradicts.
+    pipeline(llm_project)
+    run("verify", "-u", "test")
+    run("explain", "-u", "test")
+    conn = db(llm_project)
+    row = conn.execute("SELECT * FROM final_status WHERE publishable=1").fetchone()
+    cid, status = row["cluster_id"], row["status"]
+    canon = conn.execute(
+        "SELECT canonical_promise_id FROM promise_clusters WHERE cluster_id=?", (cid,)
+    ).fetchone()[0]
+    # Below the target contradicts Delivered and On track; meeting it contradicts the rest.
+    growth = 8.4 if status in ("delivered", "on_track") else 15.6
+    with conn:
+        conn.execute(
+            "UPDATE promises SET claim_type='revenue', metric='revenue growth', "
+            "target_text='double-digit revenue growth', deadline_year=2025 WHERE promise_id=?",
+            (canon,),
+        )
+        conn.execute(
+            "INSERT INTO numbers VALUES (?, 'default', 'N99', "
+            "'revenue change vs prior year, FY ended 2025-12-31', ?, 'pct_change', 'change', "
+            "'us-gaap:Revenues', 2025, '2024-12-31', '2025-12-31', 'a', '2026-02-01')",
+            (cid, growth),
+        )
+        # Keep the verdicts current for the edited promise: only the reported growth differs.
+        sha = verify_runner.promise_sha(conn, cid, "default")
+        conn.execute("UPDATE verdicts SET promise_sha=? WHERE cluster_id=?", (sha, cid))
+        conn.execute("UPDATE explanations SET promise_sha=? WHERE cluster_id=?", (sha, cid))
+    conn.close()
+    run("gate")
+    conn = db(llm_project)
+    held = conn.execute("SELECT * FROM final_status WHERE cluster_id=?", (cid,)).fetchone()
+    assert not held["publishable"] and held["label"] == "Status pending review"
+    assert held["reason"] == targets.GROWTH_HOLD
     conn.close()

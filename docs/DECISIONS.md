@@ -589,9 +589,36 @@ Gavin approved the run "up to $5" on 2026-11-23. Before it: prices re-checked ag
 - **Evidence doesn't support the status (2):** AMD MI325X "available in Q4 2024" Delivered on an "unveiled" announcement with no availability date (R-006); Micron's second Idaho fab "On track" on a restated plan alone (R-007).
 - **Not the company's promise (6):** two Qualcomm analyst forecasts (R-008, R-009), AT&T's Open RAN plan in an Intel release (R-010), two market-size estimates from AMD and Intel (R-011, R-012), and IBM's fund that was already set up (R-013).
 
-**What this says about the pipeline.** Tier 1 and Tier 2 agreed on the Oracle error, so two checks are not enough on their own: the explanation stated 8.4%, and nothing compared it with "double-digit" in code. Next fixes, not built yet: a code check that compares "double-digit" and percentage targets with the computed growth figure (as D46 did for ranges), and an extract rule that drops third-party forecasts and market-size statements. Both are $0 to build; re-checking the affected promises costs cents.
+**What this says about the pipeline.** _(Corrected in D57: only Tier 1 checked the Oracle promise. Its confidence was 0.85, so it wasn't escalated, and its own finding said 8.4% was "short of the 10% double-digit growth target" while its status said Delivered.)_ Nothing compared the growth figure with "double-digit" in code. Next fixes (built in D57): a code check that compares "double-digit" and percentage targets with the computed growth figure (as D46 did for ranges), and an extract rule that drops third-party forecasts and market-size statements. Both are $0 to build; re-checking the affected promises costs cents.
 
 Not public: `SITE_DEPLOY` is off, and Nick reads the published statuses before it goes on.
+
+## D57. Two $0 checks from the S&P 100 review, and the 10 held items re-checked (2026-11-23)
+
+Gavin said "Yes, build them" on 2026-11-23. Both checks are code; the re-check cost $0.0017 (spend still $0.95).
+
+**Correction to D56.** D56 said Tier 1 and Tier 2 agreed on the Oracle error. They didn't: only Tier 1 checked it (confidence 0.85, so no escalation), and its own key finding said FY2025 revenue growth of 8.4% was "short of the 10% double-digit growth target" while its status said Delivered. The lesson is the same (a confident model can contradict itself; arithmetic belongs in code), but the claim was wrong.
+
+**1. Growth targets checked in code (`aipb.verify.targets`, applied by the gate).** For a total-revenue growth target in percent, code takes the deadline year's reported revenue change from the promise's whole number table and holds any status it contradicts: below the target but Delivered or On track, or meeting it but anything other than Delivered. It uses the rubric's tolerances (section 5): "double-digit" is a 10% target and "triple-digit" 100%, met at 95%; "at least / more than / exceed X%" at 100%; "about X%" at 90%; "X% to Y%" at the low end. Narrow on purpose: segments ("cloud revenue", "ISG net revenue"), quarters ("Q3 2025 revenue growth") and other measures (ARR, RPO) aren't the annual total and aren't compared. On the S&P 100 data it applies to two promises: Oracle (8.4% against a 9.5% floor, held) and Intuit (15.6%, Delivered, consistent). The public hold reason names no figure, draft status or direction ("the reported revenue growth for the deadline year and the draft status disagree"), since "8.4%, below the target" would be an unreviewed finding.
+
+Tried and not kept: handing the comparison sentence to the explainer, as D46 does for capex ranges. The Intuit explanation copied it ("meets the target; the lowest figure that meets it is 9.5%"), and the D46 auto-quoting put it in quotation marks as if a filing said it. Restricting the auto-quoting to filing text instead turned the figure sentences other explanations copy ("Capex for the fiscal year ended 2025-12-31 was $91.45 billion…") into run-on prose, so that was reverted too. The gate check alone carries the safety property: no published status contradicts a computed growth figure.
+
+**2. Statements that aren't the company's own commitment are dropped at extract (`aipb.stages.extract.not_own_statement`).** A forecast its sentence attributes to analysts or research firms ("analysts estimate", "according to IDC"), and a target that is a market's size ("TAM", "addressable market", "market opportunity", "market size") rather than the company's result. Logged as `dropped_not_own`; replayed from cache at $0. Over all 887 stored statements it drops exactly 4, all from the review, and none of Nick's 31 gold promises. The rubric (section 2) doesn't name these cases, so this is a rule for Nick to confirm: a promise is about what AI will deliver *for the company*, as the company states it. A company's own market share is still its result and is kept.
+
+**Re-check of the 10 held items (R-004 to R-013).**
+
+| Report | Item | Now |
+|---|---|---|
+| R-004 | Oracle double-digit growth vs 8.4% | Held by the growth check; report closed |
+| R-008, R-009 | Qualcomm analyst estimates | Dropped at extract; reports closed |
+| R-011, R-012 | AMD and Intel market sizes | Dropped at extract; reports closed |
+| R-005 | ServiceNow November availability moved to March | Still open: a moved date needs reading, not arithmetic |
+| R-006 | AMD MI325X "unveiled", not shown available | Still open |
+| R-007 | Micron Idaho fab "On track" on a restated plan | Still open (rubric 4: a reaffirmation is "No evidence yet") |
+| R-010 | AT&T's plan in an Intel release | Still open: whose plan it is isn't safe to decide by pattern |
+| R-013 | IBM's fund already set up (past action) | Still open: extract v3's past-action rule targets it, but v3 isn't promoted |
+
+Result: 167 promises (from 171), 49 published (unchanged: 32 Delivered, 15 No evidence yet, 2 On track), 118 pending. The published set is identical to D56's. Nick still reads the 49 statuses and the five open items before `SITE_DEPLOY`.
 
 ## Upcoming decisions (recorded when made)
 - The CAT scope question and the announcement rule (D48 questions 1–2), from Nick.

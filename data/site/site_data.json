@@ -45,10 +45,10 @@
    "counts": {
     "Delivered": 2,
     "No evidence yet": 3,
-    "Status pending review": 12
+    "Status pending review": 11
    },
    "name": "Advanced Micro Devices",
-   "promises": 17,
+   "promises": 16,
    "sector": "Information Technology",
    "ticker": "AMD"
   },
@@ -344,10 +344,10 @@
    "counts": {
     "Delivered": 2,
     "No evidence yet": 2,
-    "Status pending review": 14
+    "Status pending review": 13
    },
    "name": "Intel",
-   "promises": 18,
+   "promises": 17,
    "sector": "Information Technology",
    "ticker": "INTC"
   },
@@ -602,11 +602,9 @@
    "ticker": "PM"
   },
   {
-   "counts": {
-    "Status pending review": 2
-   },
+   "counts": {},
    "name": "Qualcomm",
-   "promises": 2,
+   "promises": 0,
    "sector": "Information Technology",
    "ticker": "QCOM"
   },
@@ -753,7 +751,7 @@
    "ticker": "WMT"
   }
  ],
- "generated": "2026-11-23T21:10:10+00:00",
+ "generated": "2026-11-24T00:01:06+00:00",
  "promises": [
   {
    "claim_type": "product_or_timeline",
@@ -1089,26 +1087,6 @@
    "status": "Status pending review",
    "status_code": "",
    "target_text": null,
-   "ticker": "AMD"
-  },
-  {
-   "claim_type": "revenue",
-   "cluster_id": "c-2488-0000002488-25-000045-ex99-0002:s1",
-   "company": "Advanced Micro Devices",
-   "deadline_end": "2028-12-28",
-   "deadline_text": "in 2028",
-   "filing_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248825000045/q12025991.htm",
-   "first_stated": "2025-05-06",
-   "form": "8-K",
-   "id": "amd-2025-05-06-dc3d59",
-   "metric": "data center AI accelerator market opportunity",
-   "pending_reason": "open error report",
-   "publishable": false,
-   "quote": "AMD closed the acquisition of ZT Systems, bringing together leadership systems and rack-level expertise with AMD GPU, CPU and networking silicon and open-source software to address the $500 billion data center AI accelerator opportunity in 2028.",
-   "restatements": [],
-   "status": "Status pending review",
-   "status_code": "",
-   "target_text": "$500 billion",
    "ticker": "AMD"
   },
   {
@@ -2162,26 +2140,6 @@
    "status": "Status pending review",
    "status_code": "",
    "target_text": "multi-billion-dollar",
-   "ticker": "INTC"
-  },
-  {
-   "claim_type": "revenue",
-   "cluster_id": "c-50863-0000050863-25-000009-cover-0032:s1",
-   "company": "Intel",
-   "deadline_end": null,
-   "deadline_text": null,
-   "filing_url": "https://www.sec.gov/Archives/edgar/data/50863/000005086325000009/intc-20241228.htm",
-   "first_stated": "2025-01-31",
-   "form": "10-K",
-   "id": "intc-2025-01-31-1dfcbf",
-   "metric": "long-term PC TAM",
-   "pending_reason": "open error report",
-   "publishable": false,
-   "quote": "We believe the AI PC is a significant potential driver of PC demand over the coming years, and believe we are well-positioned to capitalize on this trend that we expect will support a long-term PC TAM of 300 million units",
-   "restatements": [],
-   "status": "Status pending review",
-   "status_code": "",
-   "target_text": "300 million units",
    "ticker": "INTC"
   },
   {
@@ -3495,46 +3453,6 @@
    "status_code": "on_track",
    "target_text": "double-digit ARR growth",
    "ticker": "ADBE"
-  },
-  {
-   "claim_type": "other",
-   "cluster_id": "c-804328-0000804328-24-000075-item1-0004:s2",
-   "company": "Qualcomm",
-   "deadline_end": "2027-09-24",
-   "deadline_text": "in 2027",
-   "filing_url": "https://www.sec.gov/Archives/edgar/data/804328/000080432824000075/qcom-20240929.htm",
-   "first_stated": "2024-11-06",
-   "form": "10-K",
-   "id": "qcom-2024-11-06-c06dc2",
-   "metric": "share of smartphones sold that are generative AI capable",
-   "pending_reason": "open error report",
-   "publishable": false,
-   "quote": "analysts estimate that 46% of smartphones sold in 2027 will be generative AI capable, up from 19% in 2024",
-   "restatements": [],
-   "status": "Status pending review",
-   "status_code": "",
-   "target_text": "46%",
-   "ticker": "QCOM"
-  },
-  {
-   "claim_type": "other",
-   "cluster_id": "c-804328-0000804328-24-000075-item1-0006:s1",
-   "company": "Qualcomm",
-   "deadline_end": "2027-09-24",
-   "deadline_text": "By 2027",
-   "filing_url": "https://www.sec.gov/Archives/edgar/data/804328/000080432824000075/qcom-20240929.htm",
-   "first_stated": "2024-11-06",
-   "form": "10-K",
-   "id": "qcom-2024-11-06-f991b0",
-   "metric": "share of PCs sold that are AI capable",
-   "pending_reason": "open error report",
-   "publishable": false,
-   "quote": "By 2027, analysts expect that at least 50% of PCs sold will be AI capable, compared to 22% of PCs in 2024",
-   "restatements": [],
-   "status": "Status pending review",
-   "status_code": "",
-   "target_text": "at least 50%",
-   "ticker": "QCOM"
   },
   {
    "claim_type": "other",
@@ -8340,7 +8258,7 @@
    "form": "8-K",
    "id": "orcl-2024-06-11-4628be",
    "metric": "revenue growth",
-   "pending_reason": "open error report",
+   "pending_reason": "the reported revenue growth for the deadline year and the draft status disagree",
    "publishable": false,
    "quote": "I expect continued strong AI demand to push Oracle sales and RPO even higher—and result in double-digit revenue growth this fiscal year",
    "restatements": [],
@@ -10278,13 +10196,13 @@
    "Delivered": 32,
    "No evidence yet": 15,
    "On track": 2,
-   "Status pending review": 122
+   "Status pending review": 118
   },
-  "checkable_share": 0.27472527472527475,
+  "checkable_share": 0.27071823204419887,
   "companies": 96,
   "hype_statements": 528,
-  "promise_statements": 200,
-  "promises": 171,
+  "promise_statements": 196,
+  "promises": 167,
   "published": 49
  },
  "status_order": [

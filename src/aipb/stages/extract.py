@@ -9,11 +9,16 @@ tie its outcome to AI. Code checks that the link is verbatim, names AI (the pref
 lexicon) and sits near the quote. A statement without one is general business guidance
 from a passage that happens to mention AI, and is dropped and logged without a retry
 (D42). A retry would only push the model to find some AI word to point at.
+
+Code also drops two kinds of statement that aren't the company's own commitment (D57): a
+forecast its sentence attributes to analysts or research firms, and a target that is the
+size of a market (a TAM or "market opportunity") rather than the company's own result.
 """
 
 from __future__ import annotations
 
 import json
+import re
 import sqlite3
 from collections.abc import Callable
 from dataclasses import dataclass, field
@@ -78,6 +83,7 @@ class ExtractStats:
     retried: int = 0
     dropped_quotes: int = 0
     unlinked: int = 0  # dropped: no verified AI link
+    not_own: int = 0  # dropped: an analyst forecast or a market size (D57)
     risk_factor: int = 0  # passages skipped: risk-factor sections (D48)
     errors: list[str] = field(default_factory=list)
 
@@ -108,6 +114,63 @@ def check_ai_link(
         return f"ai_link names no AI term: {text[:60]!r}"
     v.ai_link = text
     return None
+
+
+# D57. In the S&P 100 run, two Qualcomm "promises" were analyst estimates ("analysts
+# estimate that 46% of smartphones sold in 2027 will be generative AI capable") and two
+# were market sizes (AMD's "$500 billion data center AI accelerator opportunity", Intel's
+# "long-term PC TAM of 300 million units"). None is something the company says it will do.
+_THIRD_PARTY = re.compile(
+    r"\b(?:(?:industry|third[- ]party|independent|market)\s+)?(?:analysts?|research\s+firms?|"
+    r"forecasters?)\s+(?:currently\s+|now\s+)?(?:estimate|expect|forecast|project|predict|"
+    r"anticipate|believe)s?\b"
+    r"|\baccording\s+to\s+(?:industry\s+|third[- ]party\s+)?(?:analysts?|research|forecasts?|"
+    r"estimates?|IDC|Gartner|Forrester|Canalys|Counterpoint|Omdia|TrendForce)",
+    re.IGNORECASE,
+)
+_MARKET_SIZE = re.compile(
+    r"\b(?:TAM|SAM)\b|(?i:\b(?:total\s+|serviceable\s+)?addressable\s+market\b|"
+    r"\bmarket\s+(?:opportunity|size|sizing)\b|\bsize\s+of\s+the\s+market\b)"
+)
+_SENTENCE_END = re.compile(r"[.!?][\"\u201d\u2019)]*\s+|\n")
+
+
+def _sentence_start(text: str, at: int) -> int:
+    """Where the sentence containing position `at` starts."""
+    start = 0
+    for m in _SENTENCE_END.finditer(text, 0, at):
+        start = m.end()
+    return start
+
+
+def not_own_statement(passage_text: str, v: Verified) -> str | None:
+    """Why a verified statement isn't the company's own commitment (D57), or None.
+
+    The attribution is looked for in the quote's whole sentence, since a quote can start
+    after "Analysts expect that".
+    """
+    st = v.statement
+    measured = " ".join(str(st.get(k) or "") for k in ("metric", "target_text"))
+    if m := _MARKET_SIZE.search(measured):
+        return f"the target is a market size, not the company's result: {m.group(0)!r}"
+    sentence = passage_text[_sentence_start(passage_text, v.start) : v.end]
+    if m := _THIRD_PARTY.search(sentence):
+        return f"a forecast the filing attributes to others: {m.group(0)!r}"
+    return None
+
+
+def split_own(
+    passage_text: str, verified: list[Verified]
+) -> tuple[list[Verified], list[tuple[Verified, str]]]:
+    own: list[Verified] = []
+    others: list[tuple[Verified, str]] = []
+    for v in verified:
+        why = not_own_statement(passage_text, v)
+        if why is None:
+            own.append(v)
+        else:
+            others.append((v, why))
+    return own, others
 
 
 def _locate_any_case(text: str, link: str) -> tuple[int, int] | None:

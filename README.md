@@ -2,7 +2,7 @@
 
 **Did the AI promises pay off?** Since 2023, public companies have promised a lot from AI: cost savings, margin gains, leaner workforces, new revenue. AIPayback pulls the specific, checkable promises out of SEC filings, checks each one against the company's *later* filings and reported numbers, and publishes a neutral status with citations to both the promise and the evidence.
 
-> Status: **Phases 0–5 built and tested (215 offline tests). S&P 100 run done on 2026-11-23 for $0.39** (worst case $4.84): 171 AI promises from 96 companies, 49 with a published status. Results are a local preview until the finance lead reviews them. AIPayback is free. Details: [docs/PROGRESS.md](docs/PROGRESS.md). Plan: [docs/PLAN.md](docs/PLAN.md).
+> Status: **Phases 0–5 built and tested (225 offline tests). S&P 100 run done on 2026-11-23 for $0.39** (worst case $4.84): 167 AI promises from 96 companies, 49 with a published status. Code now checks revenue growth targets and drops analysts' forecasts and market sizes (D57). Results are a local preview until the finance lead reviews them. AIPayback is free. Details: [docs/PROGRESS.md](docs/PROGRESS.md). Plan: [docs/PLAN.md](docs/PLAN.md).
 > Informational only. Not investment advice.
 
 ## How it works
@@ -55,8 +55,8 @@ Filings since 2024-01-01. The pilot is 10 S&P 100 companies across 7 sectors, pi
 | XBRL facts | 90,424 | 905,926 |
 | Worst-case cost of the paid pipeline | ≤ $1.53 at 300 promises | ≤ $4.84 at 1,000 promises (breakdown in [docs/PROGRESS.md](docs/PROGRESS.md)) |
 | Actual cost of the run | about $0.35 (with re-runs) | $0.39 on top of the pilot's cache (filter $0.14, extract $0.05, verify $0.18, explain $0.02) |
-| AI promise clusters (after dedup) | 60 | 171 (from 200 checkable statements; 728 AI statements in all) |
-| Published statuses (local preview) | 18 | 49: 32 Delivered, 15 No evidence yet, 2 On track; 122 Status pending review |
+| AI promise clusters (after dedup) | 60 | 167 (from 196 checkable statements; 724 AI statements in all; 4 analysts' forecasts and market sizes dropped, D57) |
+| Published statuses (local preview) | 18 | 49: 32 Delivered, 15 No evidence yet, 2 On track; 118 Status pending review |
 | Labeling rows prepared for the finance student | 450 (428 keyword + 22 random for a recall check) | n/a |
 
 The full SEC download (about 4.8 GB with the S&P 100) isn't committed. A manifest with each document's URL and sha256 is, and `aipb restore` rebuilds an identical database from it (checked on a fresh clone).

@@ -229,10 +229,16 @@ def run_extract(
         verified, unlinked = ex.split_linked(
             r["text"], good.get(pid, []), names_ai_by_cik[r["cik"]]
         )
+        # ...and only the company's own commitments: not analysts' forecasts or market sizes (D57).
+        verified, not_own = ex.split_own(r["text"], verified)
         dropped = len(bad.get(pid, []))
         detail = [b.get("quote", "")[:80] for b in bad.get(pid, [])]
-        detail += [f"{v.quote[:60]} ({why})" for v, why in unlinked]
-        status = "dropped_quotes" if dropped else ("dropped_unlinked" if unlinked else "ok")
+        detail += [f"{v.quote[:60]} ({why})" for v, why in unlinked + not_own]
+        status = (
+            "dropped_quotes"
+            if dropped
+            else ("dropped_unlinked" if unlinked else ("dropped_not_own" if not_own else "ok"))
+        )
         ex.store_passage(
             conn,
             r,
@@ -241,7 +247,7 @@ def run_extract(
             prompt_id=prompt.id,
             model=cfg["model"],
             retried=pid in retried,
-            dropped=dropped + len(unlinked),
+            dropped=dropped + len(unlinked) + len(not_own),
             status=status,
             detail="; ".join(detail),
         )
@@ -250,6 +256,7 @@ def run_extract(
         stats.hype += sum(v.statement["kind"] == "hype" for v in verified)
         stats.dropped_quotes += dropped
         stats.unlinked += len(unlinked)
+        stats.not_own += len(not_own)
     stats.retried = len(retried)
     return StageOutcome(plan, ran=True, stats=stats)
 

@@ -1,6 +1,6 @@
 # Progress
 
-_Last updated: 2026-11-23 (S&P 100 run done for $0.39, D56: 171 promises, 49 published after review, 10 held; D55: AIPayback is free)_
+_Last updated: 2026-11-23 (D57: growth targets checked in code, analysts' forecasts and market sizes dropped at extract; 167 promises, 49 published, 5 items held for Nick; D56: S&P 100 run done for $0.39; D55: AIPayback is free)_
 
 ## Where things stand
 
@@ -92,7 +92,14 @@ On 2026-11-10 Gavin said: "Do all the phases until you absolutely cannot proceed
   - **Next engineering ($0 to build):** a code check comparing "double-digit" and percentage targets with computed growth; an extract rule dropping third-party forecasts and market-size statements. Then re-check the held items (cents).
   - Preview: `site/dist/index.html` (270 pages). Findings: `docs/FINDINGS.md`. Not public.
 
-**API spend so far: $0.95** (smoke test, pilot, Tier 1 v3, the 58-promise check, the Sonnet A/B, extract v3 on dev, the 2026-11-13 re-check, and the S&P 100 run at $0.39). Run `uv run aipb budget` for the exact figure.
+- **Two $0 checks built from the S&P 100 review (D57), Gavin's "Yes, build them".** Re-check cost $0.0017.
+  - **Growth targets in code:** a total-revenue growth target is compared with the deadline year's reported growth using the rubric's tolerances, and the gate holds a status the figure contradicts. Oracle (8.4% vs double-digit) is now held by code; Intuit (15.6%) is consistent.
+  - **Extract drops statements that aren't the company's own:** analysts' forecasts and market sizes. Exactly 4 of 887 stored statements (the two Qualcomm estimates, AMD's and Intel's market sizes); none of Nick's gold promises.
+  - **Reports closed:** R-004, R-008, R-009, R-011, R-012. **Still open for Nick:** R-005 (ServiceNow date moved), R-006 (AMD "unveiled"), R-007 (Micron restated plan), R-010 (AT&T's plan), R-013 (IBM fund already set up).
+  - **Result:** 167 promises, 49 published (the same 49 as D56), 118 pending. 225 tests pass.
+  - **Correction:** D56 said both checks agreed on Oracle; only Tier 1 checked it, and its own finding contradicted its status (D57).
+
+**API spend so far: $0.95** (smoke test, pilot, Tier 1 v3, the 58-promise check, the Sonnet A/B, extract v3 on dev, the 2026-11-13 re-check, the S&P 100 run at $0.39, and the D57 re-check at $0.0017). Run `uv run aipb budget` for the exact figure.
 
 The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-ahead in chat, and the S&P 100 run needs explicit cost approval.
 
@@ -103,14 +110,14 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 | 2 Filter, extract, evals | ✅ pilot filter + extract v2 run (D42); Nick's 450 labels imported; first eval: extraction F1 36.4% (recall 25%) | AI product names fix done (D45): dev F1 59.1%, recall 54.2%. **Nick:** 19 disagreements (N7). A/B after the fix, sized first (D39) |
 | 3 Verification, citations | ✅ pilot verify run on Nick's rules; status packet of 40 AI promises built | **Gavin:** upload the status packet (G11, 58 promises); **Nick:** 58 status labels (N8) |
 | 4 Site, newsletter | ✅ site, publish, newsletter with rails, 3 workflows (all off) | **Gavin:** Buttondown, Pages, secrets/variables; demos |
-| 5 S&P 100, findings, launch kit | ✅ S&P 100 run done 2026-11-23 ($0.39, D56): 171 promises, 49 published locally; findings, solution brief, demo, pilot, objections, LinkedIn drafts | **Nick:** read the 49 statuses; launch |
+| 5 S&P 100, findings, launch kit | ✅ S&P 100 run done 2026-11-23 ($0.39, D56; D57 checks): 167 promises, 49 published locally; findings, solution brief, demo, pilot, objections, LinkedIn drafts | **Nick:** read the 49 statuses; launch |
 | 6 Partner integrations (free, D55) | ⏸ only what partners ask for (alerts, exports, MCP server, pilot benchmark); no paid tiers | discovery calls → `gtm/discovery/SYNTHESIS.md` |
 
 ## Blocked: who does what
 
 **Step-by-step checklist for Gavin and Nick:** https://claude.ai/artifact/QqmDKJPxRPfprggV99eEJY (private; share it with Nick as an Editor so his ticks sync). It has 17 Gavin steps (G1–G17) and 9 Nick steps (N1–N9), each with exact instructions, plus a pilot company picker that shows AI-mention counts for all 100 companies. Ticks are stored in the page's shared database, so Claude Code can read progress with `ArtifactData list` on collection `steps`.
 
-**Next session:** `git pull`, read this file, then check the checklist's ticks. Build the two $0 checks from D56 ("double-digit" and percentage targets compared with computed growth; drop third-party forecasts and market sizes at extract), re-check the held items R-004 to R-013 (show the worst case first), then `uv run aipb publish`, `site` and `findings`, read every changed status, and commit with the ledger and outputs.
+**Next session:** `git pull`, read this file, then check the checklist's ticks. Nick reads the 49 published statuses and the 5 held items (R-005, R-006, R-007, R-010, R-013), closes or keeps each report, and confirms D57's extract rule. Before `SITE_DEPLOY`, the public "Reason:" lines on pending pages need a plain-language pass: some name draft statuses ("checks disagree (walked_back/explicit vs delivered/none)") or internal field names.
 
 | Who | Task | Unblocks |
 |---|---|---|
@@ -121,7 +128,7 @@ The money rules are unchanged: runs over $0.50 need `--confirm` plus Gavin's go-
 | Gavin | Outreach (`gtm/outreach/`, ~25 messages) → discovery calls → notes | Phase 6, ROI numbers, demos |
 | Gavin | Buttondown account (free tier) → API key as GitHub secret `BUTTONDOWN_API_KEY`; username into `config/site.yaml` | newsletter, signup box |
 | Gavin | GitHub secrets `FOUNDER_EMAILS`, `AIPAYBACK_API_KEY`, `SEC_CONTACT_EMAIL`; Pages (the repo is public since 2026-11-18, so the free plan works: Settings → Pages → Source: GitHub Actions); LinkedIn URLs and Nick's display name in `config/site.yaml` | site, newsletter, monitor |
-| Nick (via Gavin) | Read the 49 published S&P 100 statuses in the preview, and the 10 held items (R-004 to R-013) | `SITE_DEPLOY`, launch |
+| Nick (via Gavin) | Read the 49 published S&P 100 statuses in the preview, the 5 still-held items (R-005, R-006, R-007, R-010, R-013), and confirm D57's rule that analysts' forecasts and market sizes aren't promises | `SITE_DEPLOY`, launch |
 
 ## Pilot run order (each step prints its worst case first)
 
@@ -228,6 +235,7 @@ uv run pytest
 Then tell Claude Code: **"Read CLAUDE.md and docs/PROGRESS.md, then continue."**
 
 ## Gotchas
+- **Shell escapes (2026-11-23):** a Python script passed through a Bash heredoc to `python -` lost backslashes (`\b` became a backspace byte, `\n` a newline). Write scripts that contain regexes to a file and run the file.
 - **Never set `ANTHROPIC_API_KEY`:** Claude Code would bill it. `aipb doctor` checks for it.
 - **Windows TLS:** uv needs the OS certificate store (`[tool.uv] system-certs = true`). httpx2 uses it too.
 - **No make on Windows:** use `uv run aipb <command>`.

@@ -753,7 +753,8 @@ def extract_cmd(
             f"Extracted {st.statements} verified statements ({st.promises} promises, "
             f"{st.hype} hype) from {st.passages} passages. Quote retries: {st.retried}; "
             f"quotes dropped after retry: {st.dropped_quotes}; dropped with no AI link: "
-            f"{st.unlinked}; errors: {len(st.errors)}. "
+            f"{st.unlinked}; dropped as analysts' forecasts or market sizes (D57): "
+            f"{st.not_own}; errors: {len(st.errors)}. "
             f"Promise clusters: {counts['clusters']}."
         )
         for e in st.errors[:10]:

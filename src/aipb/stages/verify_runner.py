@@ -20,7 +20,7 @@ from aipb.stages import explain as ex
 from aipb.stages.runner import Log, _paid_call, describe
 from aipb.verify import gate, targets, tier1, tier2
 from aipb.verify.context import VerifyContext, build_context
-from aipb.verify.numbers import EvidenceMap
+from aipb.verify.numbers import EvidenceMap, NumberRow
 
 
 @dataclass
@@ -413,7 +413,6 @@ def open_error_reports(ctx: AppContext) -> set[str]:
 
 def _evidence_docs(conn, cid, variant, verdict: tier1.Verdict):
     from aipb.verify.context import EvidencePassage
-    from aipb.verify.numbers import NumberRow
 
     ev = []
     for eid in verdict.evidence_ids:
@@ -434,22 +433,53 @@ def _evidence_docs(conn, cid, variant, verdict: tier1.Verdict):
             "SELECT * FROM numbers WHERE cluster_id=? AND variant=? AND nid=?", (cid, variant, nid)
         ).fetchone()
         if r:
-            nums.append(
-                NumberRow(
-                    nid,
-                    r["label"],
-                    r["value"],
-                    r["unit"],
-                    r["kind"],
-                    r["tag"],
-                    r["fiscal_year"],
-                    r["period_start"],
-                    r["period_end"],
-                    r["accession"],
-                    r["filed"],
-                )
-            )
+            nums.append(_number_row(r))
     return ev, nums
+
+
+def _number_row(r: sqlite3.Row) -> NumberRow:
+    return NumberRow(
+        r["nid"],
+        r["label"],
+        r["value"],
+        r["unit"],
+        r["kind"],
+        r["tag"],
+        r["fiscal_year"],
+        r["period_start"],
+        r["period_end"],
+        r["accession"],
+        r["filed"],
+    )
+
+
+def _canonical_promise(conn: sqlite3.Connection, cid: str, variant: str) -> sqlite3.Row:
+    return conn.execute(
+        "SELECT p.* FROM promise_clusters c JOIN promises p "
+        "ON p.promise_id = c.canonical_promise_id WHERE c.cluster_id=? AND c.variant=?",
+        (cid, variant),
+    ).fetchone()
+
+
+def code_hold(conn: sqlite3.Connection, cid: str, variant: str, status: str) -> str | None:
+    """Why the reported figures contradict a status, computed in code (D57); else None.
+
+    Uses the promise's whole number table, not only the rows the verdict cited: the Oracle
+    verdict in D56 cited the 8.4% row and still said Delivered.
+    """
+    p = _canonical_promise(conn, cid, variant)
+    if p is None:
+        return None
+    rows = [
+        _number_row(r)
+        for r in conn.execute(
+            "SELECT * FROM numbers WHERE cluster_id=? AND variant=?", (cid, variant)
+        )
+    ]
+    checks = targets.growth_checks(
+        p["target_text"], p["metric"], p["claim_type"], p["deadline_year"], rows
+    )
+    return targets.growth_conflict(status, checks)
 
 
 def chosen_verdict(
@@ -460,6 +490,8 @@ def chosen_verdict(
     d = gate.decide(
         t1, t2, explanation_ok=True, open_error_report=cid in errors, threshold=threshold
     )
+    if d.publishable and (why := code_hold(conn, cid, variant, d.status)):
+        return gate.held(why), None
     if not d.publishable:
         return d, None
     return d, (t2 if d.source_tier == "2" else t1)
@@ -498,6 +530,9 @@ def run_explain(
         f = conn.execute("SELECT form FROM filings WHERE accession=?", (p["accession"],)).fetchone()
         co = conn.execute("SELECT name, ticker FROM companies WHERE cik=?", (cl["cik"],)).fetchone()
         ev, nums = _evidence_docs(conn, cid, variant, verdict)
+        # Growth targets (D57) are checked by the gate, not handed to the explainer: in a
+        # trial the explainer copied the comparison sentence ("meets the target; the lowest
+        # figure that meets it is 9.5%") into the published text.
         comps = targets.comparisons(p["target_text"], p["claim_type"], p["deadline_year"], nums)
         meta = f"{f['form']} filed {p['filing_date']}"
         docs = ex.documents(p["quote"], meta, ptext, ev, nums, comps)
@@ -599,10 +634,10 @@ def run_gate(ctx: AppContext, conn: sqlite3.Connection, variant: str = "default"
             open_error_report=cid in errors,
             threshold=threshold,
         )
+        if d.publishable and (why := code_hold(conn, cid, variant, d.status)):
+            d = gate.held(why)
         if d.publishable and e is not None and e["status"] != d.status:
-            d = gate.Decision(
-                "", gate.PENDING, False, False, "explanation was written for a different status", ""
-            )
+            d = gate.held("explanation was written for a different status")
         counts[d.label] = counts.get(d.label, 0) + 1
         rows.append(
             (
